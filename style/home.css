@@ -1,0 +1,513 @@
+body {
+    margin: 0px;
+    background-color:black;
+    color: white;
+    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif
+
+}
+hr {
+    border-color: rgba(255, 255, 255, 0.362);
+}
+.black-separator{
+    height: 20%;
+}
+.logo {
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    padding: 1%;
+    background-color: rgb(0, 0, 0);
+    font-size: xx-large;
+    z-index: 5;
+}
+.cover{
+    background-image: url("/Images/Generated\ Images/banner_06.png");
+
+    /* Full height */
+    height: 130%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+.nav_darkening {
+    top: 56px; 
+    width: 100%;
+    position: fixed;
+    height: 50px; 
+    z-index: 5;
+    background-image: linear-gradient(black, transparent);
+}
+.cover>img {
+    width: 100%;
+}
+.cover-text {
+    text-align: center;
+    position: relative;
+    left: 50%;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+
+    font-family:  "Helvetica Neue", Arial, Helvetica, sans-serif;
+    top: 85vh;
+    padding: 3%;
+    background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    font-weight: lighter;
+    font-size: x-large;
+}
+.separator {
+   
+    border-left: 0.5px solid rgba(255, 255, 255, 0.488);
+    position: relative;
+    left: 50%;
+    width: 50%;
+    height: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.map-container {
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.map-container-info{
+    position: fixed;
+    top:30%;
+    z-index: 10;
+    width: 25%;
+    background-color: black;
+    display: none;
+    text-align: justify;
+    padding: 1%;
+}
+
+.map-container-info>h1{
+    text-align: left;
+}
+
+.slice-map-area {
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+}
+
+.slice-map-area:hover {
+    cursor: pointer;
+
+}
+
+.map-container-info>img{
+    width: 100%
+}
+.slice-map-text {
+    display: inline-block;
+    width: max-content;
+    left: 0; 
+    right: 0; 
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    color: grey;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+.map-download-box{
+    display: inline-block;
+    position: relative;
+
+}
+.mapbox {
+    display: inline-block;
+    position: relative;
+}
+
+.banner-navigator {
+    position: sticky;
+    display: inline-block;
+    top: 70%;
+    left: 0%;
+    z-index: 5;
+    outline: 1px solid white;
+    height: 70vh;
+}
+.banner-navigator-section {
+    border: 2px solid white;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    height: 50px;
+}
+#text_01 {
+
+    bottom:0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#text_02 {
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#text_03 {
+    top: 65%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    transform: rotate(45deg);
+}
+
+#text_04 {
+    top: 65%;
+    left: 73%;
+    transform: translate(-50%, -50%);
+    transform: rotate(-45deg);
+}
+
+#area_01 {
+    top: 5%;
+    height: 15%;
+}
+
+#area_02 {
+    top: 20%;
+    height: 30%;
+    width: 80%;
+    left: 10%;
+}
+
+#area_03 {
+    top: 50%;
+    height: 30%;
+    width: 40%;
+    left: 30%;
+
+}
+
+#area_04 {
+    top: 80%;
+    height: 15%;
+    width: 20%;
+    left: 40%;
+
+}
+
+.slice-map-text:hover{
+    color: white;
+    cursor: pointer;
+}
+.map-container>.row{
+    position: absolute;
+    bottom: 0%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.mapbox>img{
+    position: relative;
+    max-width:100vw;
+    max-height:95vh;
+    height: auto;
+    width:auto;
+    
+}
+
+.banner-information {
+    top:10%;
+    position: relative;
+}
+
+.col {
+    text-align: left;
+}
+.col-sm>p{
+    line-height: normal;
+}
+
+.flavor-text {
+    font-weight: 100;
+    text-align: center;
+    font-size: x-large;
+}
+
+.info-box {
+}
+
+.slice-info-box {
+    visibility: hidden;
+}
+
+.slice-info-box>img {
+    width: 50%;
+}
+h3 {
+    font-weight: 100;;
+}
+h1 {
+    font-weight: lighter;
+}
+
+.fluid-container {
+    /*
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type: y proximity;
+    */
+  }
+
+.child {
+    /*
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100vh;
+    */
+
+}
+
+
+.downloads-container{
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.navbar {
+    padding-left: 4%;
+    padding-right: 4%;
+    background: none;
+    background-color: transparent;
+}
+.nav-item {
+    font-size: medium;
+}
+.navbar-brand {
+    font-size: x-large;
+}
+.about-container {
+    padding-left: 4%;
+    padding-right: 4%;
+
+}
+.download-card {
+    padding: 3%;
+}
+.download-card > p{
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: rgb(215, 215, 215);
+
+}
+p {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    line-height: normal;
+}
+
+.vl {
+    height: 500px;
+}
+
+.banner-box {
+}
+
+.banner-outline {
+    border: 1px solid gray;
+}
+
+.banner-tick {
+    font-size: x-large;
+    font-weight: 100;
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 0%;
+}
+
+.banner-tick:hover {
+    color: white;
+}
+
+.left {
+    text-align: left;
+    left: 0%;
+
+}
+.right {
+    text-align: right;
+    right: 0%;
+
+}
+
+
+.banner-map-area {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+}
+.banner-sidebar {
+    position: sticky;
+    text-align: center;
+    top: 20%;
+    cursor: pointer;
+}
+
+#banner-area-01{
+    bottom: 0%;
+    height: 25%;
+}
+#banner-area-02{
+    bottom: 25%;
+    height: 30%;
+}
+#banner-area-03{
+    bottom: 56%;
+    height: 40%;
+}
+#banner-area-04{
+    bottom: 98%;
+    height: 5%;
+}
+
+p {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.button-text {
+    font-size: x-large;
+    font-weight: 100;
+}
+.accordion {
+    background-color: black;
+}
+.accordion-item {
+    background-color: black;
+    color: white;
+    border: none;
+
+}
+.accordion-button{
+    background-color: black;
+    color: white;
+    font-size: x-large;
+    font-weight: 100;
+
+}
+.accordion-button:not(.collapsed) {
+    background-color: black;
+    color: white;
+        font-size: x-large;
+    font-weight: 100;
+
+}
+.underline-hover {
+    text-decoration: underline;
+}
+.underline-hover:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.icon-button {
+    width: 50px;
+}
+
+.btn-outline-light {
+    border: 0px;
+
+}
+.btn-outline-light:hover {
+    color: blue;
+}
+.btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active, .btn-outline-light.active, .open>.dropdown-toggle.btn-outline-light {
+    background-color: #00b3db00;
+    border-color: #ffffff; /*set the color you want here*/
+    border: 0px;
+}
+.col-3{
+    position: relative;
+}
+.col-1{
+    position: relative;
+}
+.banner-info-box {
+    position: absolute;
+}
+.banner-info-box>img{
+    padding: 10%;
+}
+#banner-info-1 {
+    top: 0%;
+}
+
+#banner-info-2 {
+    top: 15%;
+}
+
+#banner-info-3 {
+    top: 30%;
+}
+
+#banner-info-4 {
+    top: 60%;
+}
+
+#banner-info-5 {
+    top: 75%;
+}
+
+#banner-info-6 {
+    top: 85%;
+}
+
+#banner-info-7 {
+    top: 95%;
+}
+
+
+
+#lookback-tick-01{
+    top:0%
+}
+
+#lookback-tick-02{
+    top:12.4087591241%
+}
+
+#lookback-tick-03{
+    top:27.0072992701%
+}
+#lookback-tick-04{
+    top:41.6058394161%
+}
+#lookback-tick-05{
+    top:56.204379562%
+}
+#lookback-tick-06{
+    top:70.802919708%
+}
+
+#lookback-tick-07{
+    top: 85.40145%
+}
+#lookback-tick-08{
+    top:99%
+}
+#lookback-tick-09{
+    top:0%
+}
+#lookback-tick-10{
+    top:0%
+}

@@ -1,0 +1,404 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="Images/iconmonstr-map-1.svg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style/home.css">
+
+    <title> Map of the Universe</title>
+  </head>
+  <div class = "logo">
+    Map of the Universe
+  </div>
+  
+  <!--
+  <div class = "nav_darkening"></div>
+  -->
+
+  <body>
+    </div>
+
+    <!--Cover of the page-->
+    <div class = "fluid-container">
+      <div class = "cover child">
+        <div class = "cover-text">
+          <button type="button" class="btn btn-outline-light">
+            <div id = "viewMap" class = "button-text">
+              - Click to see a map of the entire Universe -
+            </div>
+          </button>
+        </div>
+      </div>
+
+    <!--The Map-->
+    <!--
+
+    <div class = "slice-info-box">
+      <img src = "Images/Placeholder images/placeholder.jpeg">
+      <h1>You are Here</h1>
+      <p>Lorem ipsum...</p>
+    </div>
+        -->
+        
+        <br>
+      <div class = "map-container child" >
+        <div class = "map-container-info">
+          <img id = "info-image" src = "Images/Placeholder images/placeholder.jpeg">
+          <h1>You are Here</h1>
+          <p>LLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec diam sit amet quam tristique maximus. Donec quis augue purus. Quisque congue mauris nisl, ut dictum dolor sollicitudin et. Phasellus ante odio, fermentum et eleifend non, molestie in justo. Duis eget tristique odio. Aliquam erat volutpat. Cras hendrerit, purus aliquet auctor fermentum, justo orci porta eros, nec varius nisi eros at nulla. Vivamus metus leo, suscipit at laoreet a, bibendum eget nisl.
+            <br>
+            Vivamus sed ullamcorper neque, eget cursus turpis. Vestibulum varius ultricies tortor et molestie. Quisque ut lectus mauris. Sed ornare mattis arcu ac facilisis. Praesent ante leo, sodales eu efficitur sit amet, condimentum nec tellus. Vivamus vehicula vulputate rutrum. Aenean vitae nunc quis dui feugiat commodo sed in felis.
+            
+            </p>
+
+        </div>
+
+        <div class = "map-download-box">
+          
+        <div class = "mapbox">
+
+          <div id = "text_01" class = "slice-map-text">you are here</div>
+          <div id = "text_02" class = "slice-map-text">angle on the sky</div>
+          <div id = "text_03" class = "slice-map-text">redshift</div>
+          <div id = "text_04" class = "slice-map-text">lookback time <br> [billions of years]</div>
+          <!--
+
+          <div id = "area_01" class = "map-effect slice-map-area"></div>
+          <div id = "area_02" class = "map-effect slice-map-area"></div>
+          <div id = "area_03" class = "map-effect slice-map-area"></div>
+          <div id = "area_04" class = "map-effect slice-map-area"></div>
+          -->
+
+          <img id = "slice-map" src = "Images/Slice/NoText.png"/> 
+        </div>
+        </div>
+
+        <br>
+
+        <!--
+
+        <div class="row"  style="width: 100%">
+          <div class="col">
+          </div>
+          <div class="col">
+          </div>
+
+          <div class="col">
+            <div class = "info-box">
+
+              <div class="dropdown">
+                <button  class="btn  btn-outline-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Download
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >2K Image</a>
+                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >4K Image</a>
+                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >Phone Background</a>
+                </div>
+              </div>
+              <h1>Map of the Universe</h1>
+
+              <p> 200,000 <span id = "area_01" class = "map-effect underline-hover">galaxies</span> and <span class = "map-effect underline-hover">quasars</span> with their actual positions and colors, 
+                from the Milky Way all the way to the <span class = "map-effect underline-hover">Cosmic Microwave Background </span> — 
+                the edge of the Observable Universe.
+                <br/>
+                <br/>
+                 This is a slice with a thickness of 13 degrees. 
+              </p>
+
+            </div>
+          </div>
+        </div>
+        -->
+
+      </div>
+      
+      <div class = "separator"></div>
+
+    <div class = "child">
+      <div class = "flavor-text">
+        You are about to take a journey spanning 13 billion years
+        <br/>
+        We start at the Milky Way
+        <br/>
+
+        Our home galaxy
+        <br/>
+
+        <button id = "scroll-btn" type="button" class="btn btn-outline-light">
+          <div class = "button-text">
+            Scroll to the beginning.
+          </div>
+        </button>
+      </div>
+  </div>
+
+    <div class = "separator"></div>
+    <!--The Banner-->
+      <div class="row" style="padding-left: 1%; padding-right: 4%;">
+        <div class = "col-1">
+          <div class = "banner-sidebar">
+            <div class = "row">
+              <div class = "col-1">
+                a
+              </div>
+              <div class = "col-5">
+                <div class = "banner-navigator">
+                  <img height="100%" src = "Images/Banner/Banner-Sidebar.png"/>
+                  <div class = "banner-navigator-section">
+                  </div>
+                </div>
+              </div>
+              <div class = "col-1">
+                <div id = "lookback-tick-01"  class = "banner-tick left">
+                  13.7
+                </div>
+                <div id = "lookback-tick-02"  class = "banner-tick left">
+                  12
+                </div>             
+                
+                <div id = "lookback-tick-03"  class = "banner-tick left">
+                  10
+                </div>
+
+                <div id = "lookback-tick-04"  class = "banner-tick left">
+                  8
+                </div>
+
+                <div id = "lookback-tick-05"  class = "banner-tick left">
+                  6
+                </div>
+
+                <div id = "lookback-tick-06"  class = "banner-tick left">
+                  4
+                </div>
+
+                <div id = "lookback-tick-07"  class = "banner-tick left">
+                  2
+                </div>
+
+                <div id = "lookback-tick-08"  class = "banner-tick left">
+                  0
+                </div>              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-8"> 
+          <div class = "banner-box">
+            <!--
+
+            <div id = "banner-area-01" class = "banner-map-area"></div>
+            <div id = "banner-area-02" class = "banner-map-area"></div>
+            <div id = "banner-area-03" class = "banner-map-area"></div>
+            <div id = "banner-area-04" class = "banner-map-area"></div>
+            -->
+            <div class = "row">
+              <div class = "col-1">
+                <div id = "redshift-tick-01"  class = "banner-tick right">
+                  13.7
+                </div>
+                <div id = "redshift-tick-02"  class = "banner-tick right">
+                  12
+                </div>             
+
+              </div>
+              <div class = "col-10">
+                <div class = "banner-outline">
+                  <img src="/Images/Banner/Banner Flipped.png" width="100%"/>
+                </div>
+                <div class = "banner-tick" style="position: relative; text-align: center;"  > 
+                  you are here
+                </div>
+              </div>
+              <div class = "col-1">
+                <div id = "lookback-tick-01"  class = "banner-tick left">
+                  13.7
+                </div>
+                <div id = "lookback-tick-02"  class = "banner-tick left">
+                  12
+                </div>             
+                
+                <div id = "lookback-tick-03"  class = "banner-tick left">
+                  10
+                </div>
+
+                <div id = "lookback-tick-04"  class = "banner-tick left">
+                  8
+                </div>
+
+                <div id = "lookback-tick-05"  class = "banner-tick left">
+                  6
+                </div>
+
+                <div id = "lookback-tick-06"  class = "banner-tick left">
+                  4
+                </div>
+
+                <div id = "lookback-tick-07"  class = "banner-tick left">
+                  2
+                </div>
+
+                <div id = "lookback-tick-08"  class = "banner-tick left">
+                  0
+                </div>
+              </div>
+
+            </div>
+
+            <div id = "bottom"></div>
+          </div>
+        </div>
+        <div class="col-3" style="position: relative;">
+          <div id = "banner-info-1" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/CMB.jpeg"/>
+            <h1>The Cosmic Microwave Backround</h1>
+            <p> This is an actual photograph of the first flash of light emitted soon 
+              after the big bang, 13.7 billion years ago. This light has been stretched 
+              by the expansion of the Universe and arrives at us as radiowaves. 
+              This is the edge of the observable Universe.</p>
+              <span>View the Sky Here</span>
+          </div>
+
+          <div id = "banner-info-2" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/Quasar.jpeg"/>
+            <h1>Redshifted quasars</h1>
+            <p> At these distances, the expansion of the Universe stretches the light of the quasars, 
+              turning them from blue to red, as was the case for the galaxies towards 
+              the bottom of this banner. Beyond 13 billions of years, the Universe is filled 
+              with hydrogen that blocks the propagation of visible photons. It appears dark.</p>
+              <span>View the Sky Here</span>
+          </div>
+          <div id = "banner-info-3" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/Quasar.jpeg"/>
+            <h1>Quasars</h1>
+            <p> They are massive black holes located at the center of certain galaxies. 
+              As they accrete surrounding gas, they become extremely bright and can be
+               seen across the Universe. Their light is blueish. At these distances, 
+               galaxies have become too faint the Sloan Digital Sky Survey telescope.</p>
+              <span>View the Sky Here</span>
+          </div>
+          <div id = "banner-info-4" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/Redshift.jpeg"/>
+            <h1>Red galaxies            </h1>
+            <p> They are massive black holes located at the center of certain galaxies. 
+              As they accrete surrounding gas, they become extremely bright and can be 
+              seen across the Universe. Their light is blueish. At these distances, galaxies 
+              have become too faint the Sloan Digital Sky Survey telescope.</p>
+              <span>View the Sky Here</span>
+          </div>
+
+          <div id = "banner-info-5" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/CMB.jpeg"/>
+            <h1>The expansion of the Universe            </h1>
+            <p> As the Universe expands, light gets stretched and objects appear redder. 
+              This is the case for the elliptical galaxies.</p>
+              <span>View the Sky Here</span>
+          </div>
+          
+          <div id = "banner-info-6" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/CMB.jpeg"/>
+            <h1>Countless Galaxies Organized in Filaments and Clusters
+            </h1>
+            <p> Each dot is a galaxy. All together, they form a filamentary structure.
+              Spiral galaxies are faint and blue. Elliptical galaxies are yellowish and much brighter. 
+              We can see them farther away.</p>
+              <span>View the Sky Here</span>
+          </div>          
+
+          <div id = "banner-info-7" class = "banner-info-box">
+            <img style= "width: 100%" src = "Images/Placeholder images/Example Explanations/Near Galaxies.png"/>
+            <h1>Our galaxy, the Milky Way
+            </h1>
+            <p> The Milky Way is a dot at the bottom of the map.</p>
+              <span>View the Sky Here</span>
+          </div>        
+
+        </div>
+      </div>
+
+    
+    </div>
+    <div class = "black-separator"></div>
+
+
+    <!--About page-->
+    <div class = "about-container">
+      <div class = "row">
+        <div class="col">
+          <!--
+
+          <h3>Credits</h3>
+          <hr>
+          <p>
+            Scientific visualization: B. Ménard & N. Shtarkman<br/>
+            Data for galaxies and quasars are from the Sloan Digital Sky Survey (SDSS). <br/> The cosmic microwave background image was obtained by the Planck satellite.
+          </h3> 
+          -->
+
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Credits
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>Scientific visualization:</strong> <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a><br/>
+                  Data for galaxies and quasars are from the <a href = "https://www.sdss.org/"> Sloan Digital Sky Survey (SDSS).</a>
+                   <br/> The cosmic microwave background image was obtained by the <a href = "https://www.esa.int/Science_Exploration/Space_Science/Planck/Planck_and_the_cosmic_microwave_background">Planck satellite. </a>
+                      </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col">
+          <!--
+
+          <h3>Copyrights</h3>
+          <hr>
+          <p>Created by: Dr. Brice Menard and Nikita Shtarkman</h3> 
+          <p>Support was provided by the Johns Hopkins University and the National Science Foundation.          </h3> 
+          -->
+            <div class="accordion" id="accordionExample2">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class=" accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Copyrights
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "black-separator">
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <!--
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="code/code.js"></script>
+</body>
+</html>
