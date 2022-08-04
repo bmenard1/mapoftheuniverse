@@ -26,7 +26,7 @@ hr {
     width: 100%;
 }
 .cover{
-    background-image: url("/Images/Generated\ Images/banner_06.png");
+    background-image: url("../Images/Generated\ Images/banner_06.png");
 
     /* Full height */
     height: 130%;
