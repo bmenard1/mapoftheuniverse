@@ -48,25 +48,31 @@ $(document).ready(function() {
             $(".map-container-info").fadeIn(200);
             switch(e.target.id) {
                 case "area_01":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceCMB.png")
+                    $("#slice-map").attr('src', "Images/WebMap_V01/near.png")
                     $(".map-container-info > h1").text(information[1].title)
                     $(".map-container-info>img").attr('src', information[1].img)
                     break;
                 case "area_02":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceQuasar.png")
+                    $("#slice-map").attr('src', "Images/WebMap_V01/red.png")
                     $(".map-container-info > h1").text(information[2].title)
                     $(".map-container-info>img").attr('src', information[2].img)
                     break;
                 case "area_03":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceLRG.png")
+                    $("#slice-map").attr('src', "Images/WebMap_V01/quasars.png")
                     $(".map-container-info > h1").text(information[3].title)
                     $(".map-container-info>img").attr('src', information[3].img)
                     break;
                 case "area_04":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceNear.png")
+                    $("#slice-map").attr('src', "Images/WebMap_V01/cmb.png")
                     $(".map-container-info > h1").text(information[4].title)
                     $(".map-container-info>img").attr('src', information[4].img)
                     break;
+                case "area_05":
+                    $("#slice-map").attr('src', "Images/WebMap_V01/galaxies.png")
+                    $(".map-container-info > h1").text(information[4].title)
+                    $(".map-container-info>img").attr('src', information[4].img)
+                    break;
+
             }
 
             //$(".map-container-info").css('visibility', 'visible');
@@ -74,7 +80,7 @@ $(document).ready(function() {
             console.log("in")
         }, function(){
             $(".map-container-info").fadeOut(0);
-            $("#slice-map").attr('src', "Images/Slice/NoText.png")
+            $("#slice-map").attr('src', "Images/WebMap_V01/total.png")
 
             //$(".map-container-info").css('visibility', 'hidden');
             console.log("out")

@@ -3,7 +3,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="Images/iconmonstr-map-1.svg">
+    <link rel="shortcut icon" href="Images/Icons/webicon.png">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -13,7 +13,7 @@
     <title> Map of the Universe</title>
   </head>
   <div class = "logo">
-    Map of the Universe
+    <img src="Images/Logo/Logo.png"/>
   </div>
   
   <!--
@@ -59,62 +59,76 @@
         </div>
 
         <div class = "map-download-box">
-          
-        <div class = "mapbox">
+          <div class = "mapbox">
 
-          <div id = "text_01" class = "slice-map-text">you are here</div>
-          <div id = "text_02" class = "slice-map-text">angle on the sky</div>
-          <div id = "text_03" class = "slice-map-text">redshift</div>
-          <div id = "text_04" class = "slice-map-text">lookback time <br> [billions of years]</div>
-          <!--
+            <div id = "text_01" class = "slice-map-text">you are here</div>
+            <div id = "text_02" class = "slice-map-text">angle on the sky</div>
+            <div id = "text_03" class = "slice-map-text">redshift</div>
+            <div id = "text_04" class = "slice-map-text">lookback time <br> [billions of years]</div>
+            <!--
 
-          <div id = "area_01" class = "map-effect slice-map-area"></div>
-          <div id = "area_02" class = "map-effect slice-map-area"></div>
-          <div id = "area_03" class = "map-effect slice-map-area"></div>
-          <div id = "area_04" class = "map-effect slice-map-area"></div>
-          -->
+            <div id = "area_01" class = "map-effect slice-map-area"></div>
+            <div id = "area_02" class = "map-effect slice-map-area"></div>
+            <div id = "area_03" class = "map-effect slice-map-area"></div>
+            <div id = "area_04" class = "map-effect slice-map-area"></div>
+            -->
 
-          <img id = "slice-map" src = "Images/Slice/NoText.png"/> 
+            <img id = "slice-map" src = "Images/WebMap_V01/total.png"/> 
+          </div>
         </div>
-        </div>
-
         <br>
 
-        <!--
-
-        <div class="row"  style="width: 100%">
-          <div class="col">
+        
+        <div class="row" style = "width: 100%;">
+          <div class="col-4">
           </div>
-          <div class="col">
+          <div class="col-4">
           </div>
 
-          <div class="col">
+          <div class="col-4" >
+
             <div class = "info-box">
-
-              <div class="dropdown">
-                <button  class="btn  btn-outline-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Download
+              <div class="dropdown  dropup" style="float: right">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown button
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >2K Image</a>
-                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >4K Image</a>
-                  <a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >Phone Background</a>
-                </div>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                  <li><a class="dropdown-item active" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >2K Image</a></li>
+                  <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >4K Image</a></li>
+                  <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1" >Phone Background</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Banner 2K</a></li>
+                  <li><a class="dropdown-item" href="#">Banner 4K</a></li>
+                  <li><a class="dropdown-item" href="#">Banner Phone</a></li>
+
+                </ul>
               </div>
+
+
               <h1>Map of the Universe</h1>
 
-              <p> 200,000 <span id = "area_01" class = "map-effect underline-hover">galaxies</span> and <span class = "map-effect underline-hover">quasars</span> with their actual positions and colors, 
+              <p> 
+                <strong>This is an actual map of our Universe. </strong>
+                <br>
+                <br>
+
+                 Each dot is a <span id = "area_05" class = "map-effect underline-hover">galaxy</span> or a <span id = "area_03" class = "map-effect underline-hover">quasar</span>. About 
+                 200,000 are shown with their actual position and color, from the Milky Way, to the <span id = "area_01" class = "map-effect underline-hover">the Near Galaxies</span>, the <span id = "area_02" class = "map-effect underline-hover">the Luminous Red Galaxies</span>, all the way to the 
+                 <span id = "area_04" class = "map-effect underline-hover">Cosmic Microwave Background</span> — the edge of the observable Universe.
+
+                This map shows a slice of the Universe. Its thickness is about 10 degrees.
+                <!--
+                200,000 galaxies</span> and <span class = "map-effect underline-hover">quasars</span> with their actual positions and colors, 
                 from the Milky Way all the way to the <span class = "map-effect underline-hover">Cosmic Microwave Background </span> — 
                 the edge of the Observable Universe.
                 <br/>
                 <br/>
                  This is a slice with a thickness of 13 degrees. 
+                -->
               </p>
-
             </div>
           </div>
         </div>
-        -->
 
       </div>
       
@@ -342,13 +356,13 @@
           -->
 
           <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
+            <div class="accordion-item ">
               <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Credits
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <strong>Scientific visualization:</strong> <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a><br/>
                   Data for galaxies and quasars are from the <a href = "https://www.sdss.org/"> Sloan Digital Sky Survey (SDSS).</a>
@@ -374,7 +388,7 @@
                   Copyrights
                 </button>
               </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
                 <div class="accordion-body">
                   <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                 </div>
