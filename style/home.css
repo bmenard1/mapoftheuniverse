@@ -7,6 +7,7 @@ body {
 }
 hr {
     border-color: rgba(255, 255, 255, 0.362);
+    border-color: white;
 }
 .black-separator{
     height: 20%;
@@ -21,12 +22,13 @@ hr {
     z-index: 5;
     width: 20%;
     cursor: pointer;
+    border: solid 1px grey;
 }
 .logo>img {
     width: 100%;
 }
 .cover{
-    background-image: url("../Images/Generated\ Images/banner_06.png");
+    background-image: url("../Images/Cover\ Images/Cover Image 03.png");
 
     /* Full height */
     height: 130%;
@@ -55,7 +57,7 @@ hr {
     transform: translate(-50%, -50%);
 
     font-family:  "Helvetica Neue", Arial, Helvetica, sans-serif;
-    top: 85vh;
+    top: 60vh;
     padding: 3%;
     background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     font-weight: lighter;
@@ -79,16 +81,40 @@ hr {
     display: inline-block;
 }
 .map-container-info{
-    position: fixed;
-    top:30%;
+    position: relative;
+    top:0%;
     z-index: 10;
-    width: 25%;
+    width: 100%;
     background-color: black;
     display: none;
     text-align: justify;
     padding: 1%;
 }
 
+.right-label {
+    float: right;
+  position: sticky;
+  font-size: 1em;
+  line-height: 100%;
+  font-weight: 600;
+  top: 50%;
+  text-align: right;    
+  /* rotate the text */
+  writing-mode: tb;
+  transform: scale(-1);
+  color: grey;
+  /* don't take any space*/
+  width: 0;
+    /*
+    transform-origin:top right;
+    right:0;
+    top:80%;
+    background-color: black;
+    display: inline-block;
+    transform: rotate(90deg) translateX(50%);
+    position: sticky;
+    */
+  }
 .map-container-info>h1{
     text-align: left;
 }
@@ -142,6 +168,7 @@ hr {
     z-index: 5;
     outline: 1px solid white;
     height: 70vh;
+    margin: 10px;
 }
 .banner-navigator-section {
     border: 2px solid white;
@@ -177,7 +204,7 @@ hr {
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
 }
-
+/*
 #area_01 {
     top: 5%;
     height: 15%;
@@ -206,6 +233,7 @@ hr {
 
 }
 
+*/
 .slice-map-text:hover{
     color: white;
     cursor: pointer;
@@ -259,6 +287,7 @@ h3 {
 }
 h1 {
     font-weight: lighter;
+    font-size: 20pt;
 }
 
 .fluid-container {
@@ -315,8 +344,10 @@ h1 {
 }
 p {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-size: smaller;
+    font-size: 10pt;
     line-height: normal;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+
 }
 
 .vl {
@@ -325,19 +356,34 @@ p {
 
 .banner-box {
 }
+.button-text {
+    font-weight: 100;
+    font-size: 15pt;
+}
 
+@media only screen and (max-width: 600px) {
+    p {
+        font-size: 8pt;
+    }
+    .button-text {
+        font-size: 8pt;
+    }
+}
+  
 .banner-outline {
     border: 1px solid gray;
 }
-
+.term-box {
+}
 .banner-tick {
-    font-size: x-large;
-    font-weight: 100;
+    font-size: 15pt;
+    font-weight: 800;
     color: gray;
     cursor: pointer;
     position: absolute;
     top: 0%;
 }
+
 
 .banner-tick:hover {
     color: white;
@@ -366,6 +412,10 @@ p {
     top: 20%;
     cursor: pointer;
 }
+.sidebar-tick {
+    font-size: 12pt;
+    font-weight: 800;
+}
 
 #banner-area-01{
     bottom: 0%;
@@ -384,15 +434,7 @@ p {
     height: 5%;
 }
 
-p {
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-    font-size: large;
-}
 
-.button-text {
-    font-size: x-large;
-    font-weight: 100;
-}
 .accordion {
     background-color: black;
 }
@@ -412,7 +454,7 @@ p {
 .accordion-button:not(.collapsed) {
     background-color: black;
     color: white;
-        font-size: x-large;
+    font-size: x-large;
     font-weight: 100;
 
 }
@@ -427,9 +469,27 @@ p {
 }
 
 .underline-hover {
-    color:rgb(178, 178, 178);
+    color:rgb(98, 98, 98);
     font-weight: 800;
     text-decoration: underline;
+    
+}
+
+.term-hover { 
+    color:rgb(98, 98, 98);
+    font-size: 10pt;
+    font-weight: 400;
+    border: 1px solid rgb(98, 98, 98);
+    display: inline-block;
+    padding: 1%;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.term-hover:hover {
+    color: white;
+    border: 1px solid white;
+
 }
 .underline-hover:hover {
     color: white;
@@ -439,9 +499,13 @@ p {
 .icon-button {
     width: 50px;
 }
-
+strong {
+    font-size: 12pt;
+}
 .btn-outline-light {
-    border: 0px;
+    border: 1px solid grey;
+    border-radius: 0 !important;
+    font-size: 10pt;
 
 }
 .btn-outline-light:hover {
@@ -455,11 +519,48 @@ p {
 .col-3{
     position: relative;
 }
+.col-xs-1{
+    position: relative;
+}
+.axis {
+    width: 5%;
+    padding: 0px;
+}
+.dropdown-menu-dark {
+    background-color: black;
+}
+.dropdown-divider {
+    border-color:rgb(215, 215, 215)
+}
+.axis-label {
+    display: inline-block;
+    padding: 10px;
+    z-index: 2;
+    transform-origin: bottom; 
+    background-color: black;
+    font-size: 20pt;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    position: sticky;
+    transform: rotate(-90deg);
+    left: 0%;
+    top: 50%;
+
+}
+/*
+.right-label{
+    transform: rotate(-270deg);
+    right: 0px;
+}
+*/
 .col-1{
     position: relative;
 }
 .banner-info-box {
     position: absolute;
+    border: 1px solid white;
+    padding: 5%;
 }
 .banner-info-box>img{
     padding: 10%;
@@ -485,11 +586,11 @@ p {
 }
 
 #banner-info-6 {
-    top: 85%;
+    top: 82%;
 }
 
 #banner-info-7 {
-    top: 95%;
+    top: 88%;
 }
 
 
@@ -526,4 +627,41 @@ p {
 }
 #lookback-tick-10{
     top:0%
+}
+
+#redshift-tick-01{
+    top:0%
+}
+
+#redshift-tick-02{
+    top:20%
+}
+
+#redshift-tick-03{
+    top:40%
+}
+
+#redshift-tick-04{
+    top:60%
+}
+
+#redshift-tick-05{
+    top:80%
+}
+
+.modal-content {
+    background-color: black;
+    border: 1px solid rgb(58, 58, 58);
+    border-radius: 0%;
+}
+
+.modal-body {
+    padding: 0%;
+}
+.modal {
+
+}
+.modal-backdrop
+{
+    opacity:.8 !important;
 }
