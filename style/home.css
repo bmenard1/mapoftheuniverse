@@ -12,6 +12,9 @@ hr {
 .black-separator{
     height: 20%;
 }
+.cover-logo {
+    width: 30%;
+}
 .logo {
     position: fixed;
     left: 0%;
@@ -27,17 +30,63 @@ hr {
 .logo>img {
     width: 100%;
 }
-.cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 03.png");
-
-    /* Full height */
-    height: 130%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.hr-text {
+    display: flex;
+    flex-direction: row;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
   }
+.hr-text:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+}
+
+.hr-text:before {
+    margin-right: 10px
+}
+.hr-text:after {
+    margin-left: 10px
+}
+  
+.cover{
+    background-image: url("../Images/Cover\ Images/Cover Image 08.png");
+    background-size:100% auto;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 150vw;
+    width: 100%;
+}
+
+.background{
+    color: #999999;
+    position: absolute;
+    background-color: blue;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -100;
+    overflow: hidden;
+}
+.background>img {
+    min-width: 100%;
+    height: 100%;
+}
+
+.filament-section {
+    height: 300%;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom center;
+
+
+    background-image: url("../Images/Filaments/LongFilament.png");
+
+}
 .nav_darkening {
     top: 56px; 
     width: 100%;
@@ -63,8 +112,10 @@ hr {
     font-weight: lighter;
     font-size: x-large;
 }
+.map-effect:hover{
+    color: white;
+}
 .separator {
-   
     border-left: 0.5px solid rgba(255, 255, 255, 0.488);
     position: relative;
     left: 50%;
@@ -81,6 +132,7 @@ hr {
     display: inline-block;
 }
 .map-container-info{
+
     position: relative;
     top:0%;
     z-index: 10;
@@ -89,6 +141,7 @@ hr {
     display: none;
     text-align: justify;
     padding: 1%;
+
 }
 
 .right-label {
@@ -150,6 +203,12 @@ hr {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
 }
+
+.highlighted-axis {
+    color:white;
+}
+
+
 .map-download-box{
     display: inline-block;
     position: relative;
@@ -166,19 +225,20 @@ hr {
     top: 70%;
     left: 0%;
     z-index: 5;
-    outline: 1px solid white;
+    outline: 1px solid grey;
     height: 70vh;
     margin: 10px;
 }
+
 .banner-navigator-section {
-    border: 2px solid white;
+    border: 1px solid white;
     width: 100%;
     position: absolute;
     top: 0px;
     height: 50px;
 }
-#text_01 {
 
+#text_01 {
     bottom:0%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -193,51 +253,120 @@ hr {
 
 #text_03 {
     top: 65%;
-    left: 20%;
+    left: 17%;
     transform: translate(-50%, -50%);
     transform: rotate(45deg);
 }
 
 #text_04 {
     top: 65%;
-    left: 73%;
+    left: 76%;
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
 }
-/*
-#area_01 {
-    top: 5%;
-    height: 15%;
+
+#map_time_01 {
+    top: 85%;
+    left: 59%;
+    text-align: center; 
+}
+#map_time_02 {
+    top: 75%;
+    left: 67%
+}
+#map_time_03 {
+    top: 65%;
+    left: 75%
+}
+#map_time_04 {
+    top: 55%;
+    left: 83%
+}
+#map_time_05 {
+    top: 45%;
+    left: 91%
 }
 
-#area_02 {
-    top: 20%;
-    height: 30%;
-    width: 80%;
-    left: 10%;
+#map_time_06 {
+    top: 35%;
+    left: 99%
 }
 
-#area_03 {
-    top: 50%;
-    height: 30%;
-    width: 40%;
-    left: 30%;
-
+#map_time_01 {
+    top: 85%;
+    left: 59%;
+}
+#map_time_02 {
+    top: 75%;
+    left: 67%
+}
+#map_time_03 {
+    top: 65%;
+    left: 75%
+}
+#map_time_04 {
+    top: 55%;
+    left: 83%
+}
+#map_time_05 {
+    top: 45%;
+    left: 91%
 }
 
-#area_04 {
-    top: 80%;
-    height: 15%;
-    width: 20%;
-    left: 40%;
-
+#map_time_06 {
+    top: 35%;
+    left: 99%
 }
 
-*/
+#map_red_01 {
+    top: 85%;
+    left: 37%
+}
+
+#map_red_02 {
+    top: 75%;
+    left: 29%
+}
+
+#map_red_03 {
+    top: 58%;
+    left: 18%
+}
+
+#map_red_04 {
+    top: 49%;
+    left: 11%
+}
+
+#map_red_05 {
+    top: 41%;
+    left: 6%
+}
+
+#map_angle_01 {
+    top: 30%;
+    left: 1%
+}
+
+#map_angle_02 {
+    top: 7%;
+    left: 30%
+}
+
+#map_angle_03 {
+    top: 7%;
+    left: 70%
+}
+
+#map_angle_04 {
+    top: 30%;
+    left: 99%
+}
+
+
 .slice-map-text:hover{
-    color: white;
-    cursor: pointer;
 }
+
 .map-container>.row{
     position: absolute;
     bottom: 0%;
@@ -282,9 +411,11 @@ hr {
 .slice-info-box>img {
     width: 50%;
 }
+
 h3 {
     font-weight: 100;;
 }
+
 h1 {
     font-weight: lighter;
     font-size: 20pt;
@@ -366,18 +497,56 @@ p {
         font-size: 8pt;
     }
     .button-text {
+        font-size: 12pt;
+    }
+    .slice-map-text {
         font-size: 8pt;
     }
+    h1 {
+        font-size: 12pt;
+    }
+    .cover {
+        height: 300vw
+    }
+    .cover-logo{
+        width: 70%;
+    }
+    .flavor-text {
+        font-size: 15pt;
+    }
 }
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+    p {
+        font-size: 8pt;
+    }
+    .slice-map-text {
+        font-size: 10pt;
+    } 
+    h1 {
+        font-size: 15pt;
+    }
+   
+    .cover-logo{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+    h1 {
+        font-size: 15pt;
+    }
+}
+
   
 .banner-outline {
-    border: 1px solid gray;
+    border: 1px solid rgb(65, 65, 65);
+    position: relative;
 }
 .term-box {
 }
 .banner-tick {
     font-size: 15pt;
-    font-weight: 800;
+    font-weight: 100;
     color: gray;
     cursor: pointer;
     position: absolute;
@@ -385,9 +554,6 @@ p {
 }
 
 
-.banner-tick:hover {
-    color: white;
-}
 
 .left {
     text-align: left;
@@ -409,9 +575,34 @@ p {
 .banner-sidebar {
     position: sticky;
     text-align: center;
-    top: 20%;
+    top: 10%;
     cursor: pointer;
 }
+.bar_container {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 80%;
+    height: 0px;
+    z-index: 30;
+}
+
+.desktop_bar {
+    background: rgb(74, 74, 74);
+    width: 60px;
+    height: 2px;
+    float: left;
+}
+#barone {
+    float: left;
+}
+#bartwo {
+    float: right;
+}
+.sidebar-counter {
+    font-size: 18pt;
+    font-weight: 400;
+}
+
 .sidebar-tick {
     font-size: 12pt;
     font-weight: 800;
@@ -476,19 +667,17 @@ p {
 }
 
 .term-hover { 
-    color:rgb(98, 98, 98);
+    color:rgb(152, 152, 152);
     font-size: 10pt;
     font-weight: 400;
-    border: 1px solid rgb(98, 98, 98);
-    display: inline-block;
-    padding: 1%;
-    margin: 1%;
+    /*border: 1px solid rgb(98, 98, 98);*/  
+    display: inline;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .term-hover:hover {
     color: white;
-    border: 1px solid white;
 
 }
 .underline-hover:hover {
@@ -502,20 +691,39 @@ p {
 strong {
     font-size: 12pt;
 }
+
+.light-text {
+    font-size: 10pt;
+    color: gray;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 .btn-outline-light {
     border: 1px solid grey;
     border-radius: 0 !important;
     font-size: 10pt;
-
+    color: grey;
 }
+
+.btn-no-outline-light {
+    border: 0px solid grey;
+    border-radius: 0 !important;
+    font-size: 10pt;
+    color: grey;
+    padding: 0px;
+}
+
 .btn-outline-light:hover {
-    color: blue;
+    color: white;
+    border: 1px solid white;
 }
 .btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active, .btn-outline-light.active, .open>.dropdown-toggle.btn-outline-light {
     background-color: #00b3db00;
     border-color: #ffffff; /*set the color you want here*/
     border: 0px;
+    color: white;
+    border: 1px solid white;
 }
+
 .col-3{
     position: relative;
 }
@@ -559,11 +767,18 @@ strong {
 }
 .banner-info-box {
     position: absolute;
-    border: 1px solid white;
     padding: 5%;
 }
 .banner-info-box>img{
     padding: 10%;
+}
+.banner-button {
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    max-width: 30%;
+    left: 0%;
+    text-align: left;
 }
 #banner-info-1 {
     top: 0%;
@@ -582,15 +797,15 @@ strong {
 }
 
 #banner-info-5 {
-    top: 75%;
+    top: 70%;
 }
 
 #banner-info-6 {
-    top: 82%;
+    top: 79%;
 }
 
 #banner-info-7 {
-    top: 88%;
+    top: 95%;
 }
 
 
@@ -661,7 +876,27 @@ strong {
 .modal {
 
 }
+.modal-header {
+    border: none;
+}
+.modal-footer {
+    border: none;
+}
 .modal-backdrop
 {
     opacity:.8 !important;
+}
+
+.phone-counter {
+    position: sticky;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 5;
+    background-color: black;
+    text-align: center;
+    display: inline-block;
+    margin: auto;
+    width: 40%;
+    padding: 10px;
 }
