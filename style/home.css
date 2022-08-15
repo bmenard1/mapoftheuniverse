@@ -13,7 +13,7 @@ hr {
     height: 20%;
 }
 .cover-logo {
-    width: 30%;
+    width: 60%;
 }
 .logo {
     position: fixed;
@@ -52,12 +52,12 @@ hr {
 }
   
 .cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 08.png");
+    background-image: url("../Images/Cover\ Images/Cover Image 09.png");
     background-size:100% auto;
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    height: 150vw;
+    height: 188vw;
     width: 100%;
 }
 
@@ -78,7 +78,7 @@ hr {
 }
 
 .filament-section {
-    height: 300%;
+    height: 320%;
     width: 100%;
     background-size: cover;
     background-position: bottom center;
@@ -107,8 +107,10 @@ hr {
 
     font-family:  "Helvetica Neue", Arial, Helvetica, sans-serif;
     top: 60vh;
-    padding: 3%;
+    padding: 6%;
     background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    background-image: radial-gradient(circle, black, rgba(0, 0, 0, 0), rgba(0, 128, 0, 0));
+
     font-weight: lighter;
     font-size: x-large;
 }
@@ -139,10 +141,10 @@ hr {
     width: 100%;
     background-color: black;
     display: none;
-    text-align: justify;
-    padding: 1%;
+    padding: 3%;
 
 }
+
 
 .right-label {
     float: right;
@@ -170,6 +172,14 @@ hr {
   }
 .map-container-info>h1{
     text-align: left;
+    font-size: 30pt;
+}
+.modal-xl {
+}
+.modal-content {
+    width: 100%;
+    overflow: scroll;
+
 }
 
 .slice-map-area {
@@ -226,8 +236,12 @@ hr {
     left: 0%;
     z-index: 5;
     outline: 1px solid grey;
-    height: 70vh;
-    margin: 10px;
+    height: 80vh;
+    float: right;
+    margin-right: 10%;
+}
+.banner-navigator>img {
+    float: right;
 }
 
 .banner-navigator-section {
@@ -239,13 +253,13 @@ hr {
 }
 
 #text_01 {
-    bottom:0%;
+    bottom:2%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 #text_02 {
-    top: 4%;
+    top: 6%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -253,14 +267,14 @@ hr {
 
 #text_03 {
     top: 65%;
-    left: 17%;
+    left: 19%;
     transform: translate(-50%, -50%);
     transform: rotate(45deg);
 }
 
 #text_04 {
     top: 65%;
-    left: 76%;
+    left: 73%;
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
 }
@@ -294,73 +308,73 @@ hr {
 
 #map_time_01 {
     top: 85%;
-    left: 59%;
+    left: 57%;
 }
 #map_time_02 {
     top: 75%;
-    left: 67%
+    left: 65%
 }
 #map_time_03 {
     top: 65%;
-    left: 75%
+    left: 73%
 }
 #map_time_04 {
     top: 55%;
-    left: 83%
+    left: 80%
 }
 #map_time_05 {
     top: 45%;
-    left: 91%
+    left: 88%
 }
 
 #map_time_06 {
     top: 35%;
-    left: 99%
+    left: 96%
 }
 
 #map_red_01 {
     top: 85%;
-    left: 37%
+    left: 39%
 }
 
 #map_red_02 {
     top: 75%;
-    left: 29%
+    left: 32%
 }
 
 #map_red_03 {
     top: 58%;
-    left: 18%
+    left: 20%
 }
 
 #map_red_04 {
     top: 49%;
-    left: 11%
+    left: 13%
 }
 
 #map_red_05 {
     top: 41%;
-    left: 6%
+    left: 8%
 }
 
 #map_angle_01 {
     top: 30%;
-    left: 1%
+    left: 4%
 }
 
 #map_angle_02 {
-    top: 7%;
+    top: 10%;
     left: 30%
 }
 
 #map_angle_03 {
-    top: 7%;
+    top: 10%;
     left: 70%
 }
 
 #map_angle_04 {
     top: 30%;
-    left: 99%
+    left: 95%
 }
 
 
@@ -373,6 +387,12 @@ hr {
     padding-left: 3%;
     padding-right: 3%;
 }
+.map-container>.row2{
+    top: 20%;
+
+}
+
+
 .mapbox>img{
     position: relative;
     max-width:100vw;
@@ -420,7 +440,9 @@ h1 {
     font-weight: lighter;
     font-size: 20pt;
 }
-
+.more-info >p{
+    column-count: 2;
+}
 .fluid-container {
     /*
 
@@ -553,7 +575,9 @@ p {
     top: 0%;
 }
 
-
+.banner-tick:hover {
+    color: white;
+}
 
 .left {
     text-align: left;
@@ -605,7 +629,7 @@ p {
 
 .sidebar-tick {
     font-size: 12pt;
-    font-weight: 800;
+    font-weight: 400;
 }
 
 #banner-area-01{
@@ -628,6 +652,7 @@ p {
 
 .accordion {
     background-color: black;
+    z-index: 5;
 }
 .accordion-item {
     background-color: black;
@@ -640,6 +665,7 @@ p {
     color: white;
     font-size: x-large;
     font-weight: 100;
+    padding: 1%;
 
 }
 .accordion-button:not(.collapsed) {
@@ -647,7 +673,12 @@ p {
     color: white;
     font-size: x-large;
     font-weight: 100;
+    z-index: 5;
 
+}
+.accordion-body {
+    background-color: black;
+    z-index: 5;
 }
 
 .accordion-button:not(.collapsed)::after {
@@ -669,15 +700,20 @@ p {
 .term-hover { 
     color:rgb(152, 152, 152);
     font-size: 10pt;
-    font-weight: 400;
-    /*border: 1px solid rgb(98, 98, 98);*/  
-    display: inline;
+    display: inline-block;
+    padding: 2%;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 200;
+      
+    border: 1px solid rgb(98, 98, 98);  
     cursor: pointer;
-    white-space: nowrap;
+    margin: 1%;
 }
 
 .term-hover:hover {
     color: white;
+    border: 1px solid white;  
+
 
 }
 .underline-hover:hover {
@@ -698,10 +734,15 @@ strong {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 .btn-outline-light {
-    border: 1px solid grey;
+    border: 1px solid grey !important;
     border-radius: 0 !important;
     font-size: 10pt;
     color: grey;
+}
+.nav-pills .nav-link.active {
+    background-color:black !important;
+    border: 1px solid white !important;
+    color: white;
 }
 
 .btn-no-outline-light {
@@ -767,11 +808,36 @@ strong {
 }
 .banner-info-box {
     position: absolute;
-    padding: 5%;
+    color: rgb(188, 188, 188);
+    padding: 4%;
+
 }
-.banner-info-box>img{
-    padding: 10%;
+.banner-info-box-content:hover {
+    cursor: pointer;
+    color: white;
 }
+.banner-info-box-content {
+}
+.banner-info-box-content h1 {
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 300ms;  
+}
+.banner-info-box-content:hover h1{
+    text-decoration-color: rgb(255, 255, 255);
+}
+
+
+.banner-info-box img{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 1px solid rgb(48, 48, 48);
+    
+
+}
+
 .banner-button {
     background-color: black;
     position: absolute;
@@ -805,7 +871,7 @@ strong {
 }
 
 #banner-info-7 {
-    top: 95%;
+    top: 98%;
 }
 
 
@@ -835,7 +901,7 @@ strong {
     top: 85.40145%
 }
 #lookback-tick-08{
-    top:99%
+    top:97%
 }
 #lookback-tick-09{
     top:0%
@@ -871,7 +937,6 @@ strong {
 }
 
 .modal-body {
-    padding: 0%;
 }
 .modal {
 
@@ -885,6 +950,15 @@ strong {
 .modal-backdrop
 {
     opacity:.8 !important;
+}
+.dropdown-menu {
+    font-size: 15pt;
+    font-weight: 100;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+.dropdown-item {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: 100;
 }
 
 .phone-counter {

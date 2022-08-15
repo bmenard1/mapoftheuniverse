@@ -1,13 +1,12 @@
+
 $(document).ready(function() {
     console.log("HELLO")
     $('.more-info').hide();
-
     /*
     $(".slice-map-text").hover(
         function(e){
             //$(".map-container-info").show(200);
             $(".map-container-info").fadeIn(200);
-
             //$(".map-container-info").css('visibility', 'visible');
             $(".map-container-info > h1").text(information[1].title)
             switch(e.target.id) {
@@ -40,7 +39,6 @@ $(document).ready(function() {
             console.log("in")
         }, function(){
             $(".map-container-info").fadeOut(0);
-
             //$(".map-container-info").css('visibility', 'hidden');
             console.log("out")
         }
@@ -64,7 +62,7 @@ $(document).ready(function() {
             //$(".map-container-info").fadeIn(500);
             if($('.map-container-info').is(":hidden")){
 
-                $(".map-container-info").slideDown(100);
+                $(".map-container-info").fadeIn(200);
             }
             switch(e.target.id) {
                 case "area_01":
@@ -102,25 +100,25 @@ $(document).ready(function() {
                     break;
 
                 case "axis_01":
-                    $(".angle-on-sky-axis").addClass('highlighted-axis');
+                    //$(".angle-on-sky-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[7].title)
                     $(".map-container-info>img").attr('src', information[7].img)
                     $(".map-container-info>p").text(information[7].caption)
                     break;
                 case "axis_02":
-                    $(".redshift-axis").addClass('highlighted-axis');
+                    //$(".redshift-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[5].title)
                     $(".map-container-info>img").attr('src', information[5].img)
                     $(".map-container-info>p").text(information[5].caption)
                     break;
                 case "axis_03":
-                    $(".lookback-time-axis").addClass('highlighted-axis');
+                    //$(".lookback-time-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[6].title)
                     $(".map-container-info>img").attr('src', information[6].img)
                     $(".map-container-info>p").text(information[6].caption)
                     break;
                 case "axis_04":
-                    $(".you-are-here-axis").addClass('highlighted-axis');
+                    //$(".you-are-here-axis").addClass('highlighted-axis');
 
                     $(".map-container-info > h1").text(information[8].title)
                     $(".map-container-info>img").attr('src', information[8].img)
@@ -132,17 +130,36 @@ $(document).ready(function() {
         
             console.log("in")
         }, function(){
+            $(".map-container-info").fadeOut(100);
+
             $("#slice-map").attr('src', "Images/WebMap_V02/total.png")
-            $(".slice-map-text").removeClass('highlighted-axis');
+            //$(".slice-map-text").removeClass('highlighted-axis');
 
             //$(".map-container-info").css('visibility', 'hidden');
             console.log("out")
         }
     )
 
-    $("#read-more").click(function(e){
-        console.log("READ MORE");
-        $(".more-info").slideDown();
+    $(".read-more").click(function(e){
+        console.log("HELLO")
+        $(".read-more").hide();
+        $(".more-info").show();
+        $('.info-col').removeClass('col-lg-3');
+        $('.info-col').addClass('col-lg-6');
+        $('.other-col').addClass('col-lg-3')
+        $('.other-col').removeClass('col-lg-6')
+
+    })
+
+    $(".read-less").click(function(e){
+        $(".read-more").show();
+
+        $('.info-col').removeClass('col-lg-6');
+        $('.info-col').addClass('col-lg-3');
+        $('.other-col').removeClass('col-lg-3');
+        $('.other-col').addClass('col-lg-6');
+        $(".more-info").hide();
+
 
     })
     $(".term-box").hover(
@@ -150,8 +167,8 @@ $(document).ready(function() {
 
         }, function(e){
             if($('.map-container-info').is(":visible")){
-
-                $(".map-container-info").slideUp();
+                
+                $(".map-container-info").show();
             }
 
         }
@@ -167,7 +184,7 @@ $(document).ready(function() {
                 case "banner-area-04":
                     $("#slice-map").attr('src', "Images/Slice/EditedSliceCMB.png")
                     $(".map-container-info > h1").text(information[1].title)
-                    $(".map-container-info>img").attr('src', information[1].img)
+                    $(".map-container-info > img").attr('src', information[1].img)
                     break;
                 case "banner-area-03":
                     $("#slice-map").attr('src', "Images/Slice/EditedSliceQuasar.png")
@@ -190,7 +207,7 @@ $(document).ready(function() {
         
             console.log("in")
         }, function(){
-            $(".map-container-info").fadeOut(0);
+            $(".map-container-info").hide(0);
             $("#slice-map").attr('src', "Images/Slice/NoText.png")
 
             //$(".map-container-info").css('visibility', 'hidden');
@@ -221,74 +238,67 @@ $(document).ready(function() {
     })
     
     $("#scroll-btn").click(function() {
-        window.scrollTo({
-            top: $('#bottom').offset().top - window.innerHeight,
-            left: 0,
-            behavior: 'smooth'
-          })  
+        $('html, body').animate({scrollTop:$('#bottom').offset().top - window.innerHeight, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+            console.log("HEY")
+            }})
+
     })
 
+    /*
     $("#viewMap").click(function() {
+        $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+            console.log("HEY")
+            }})
 
+        
         window.scrollTo({
             top: $('.map-container').offset().top,
             left: 0,
             behavior: 'smooth'
-          })    })
-    
+          })    
+    })
+    */
+
     $("#viewBanner").click(function() {
+        /*
         window.scrollTo({
             top: $('#bottom').offset().top - window.innerHeight,
             left: 0,
             behavior: 'smooth'
         })  
+        */
+
     });
 
     $(".banner-modal").click(function(e) {
         console.log("HELLO")
         console.log(e.target.id)
-        switch(e.target.id){
-            case "banner-info-1":
-                $(".modal-body > img").attr('src', "Images/Skyview/Skyview_137.png")
-                break; 
-            case "banner-info-2":
-                $(".modal-body > img").attr('src', "Images/Skyview/Skyview_120.png")
-                break;   
-            case "banner-info-3":
-                $(".modal-body > img").attr('src', "Images/Skyview/Skyview_185.png")
-                break; 
-            case "banner-info-4":
-                $(".modal-body > img").attr('src', "Images/Skyview/Skyview_045.png")
-                break; 
-            case "banner-info-5":
-                $(".modal-body > img").attr('src', "Images/Skyview/Skyview_015.png")
-                break; 
-        }
+        set_modal_pic(e.target.id)
 
     })
 
+    $(".banner-info-box-content").click(function(e) {
+         set_modal_pic($(this).parent().attr("id"))
+    })
 
-    $("#about").click(function() {
-        window.scrollTo({
-            top: $('.about-container').offset().top,
-            left: 0,
-            behavior: 'smooth'
-        })  
-    })
-    /*
-    $("#hide-term-box").click(function() {
-        $(".term-box").hide()
-    })
-    */
+
     $(".banner-tick").click(function() {
         var id = $(this).attr('id');
+        /*
         window.scrollTo({
             top: $('.axis #' + id).offset().top - (window.innerHeight/4 * 3),
             left: 0,
             behavior: 'smooth'
         })  
+        */
         console.log(id)
     })
+
+    $(".banner-info-box-content").click(function() {
+        $('#myModal').modal('toggle');
+
+    })
+
     $(".banner-navigator").click(function(e) {
         var parentOffset = $(this).parent().offset(); 
 
@@ -324,4 +334,34 @@ const information = {
 
 const modal_info = {
     1: {img: "Images/SkyView"}
+}
+
+
+$("#viewMap").click(function() {
+    $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+        }})
+})
+
+function set_modal_pic(id) {
+    switch(id){
+        case "banner-info-1":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/cmb.png")
+            break; 
+        case "banner-info-2":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/12.png")
+            break;   
+        case "banner-info-3":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/8.5.png")
+            break; 
+        case "banner-info-4":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/4.5.png")
+            break; 
+        case "banner-info-5":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/1.8.png")
+            break; 
+        case "banner-info-6":
+            $(".modal-body > img").attr('src', "Images/Skyview/V_01/0.1.png")
+            break; 
+    }
+
 }
