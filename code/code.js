@@ -159,9 +159,21 @@ $(document).ready(function() {
         $('.other-col').removeClass('col-lg-3');
         $('.other-col').addClass('col-lg-6');
         $(".more-info").hide();
+    })
 
+    $(".info-accordion").click(function(e){
+        $(".more-info").hide();
+        $(".read-more").show();
+
+        $('.info-col').removeClass('col-lg-6');
+        $('.info-col').addClass('col-lg-3');
+        $('.other-col').removeClass('col-lg-3');
+        $('.other-col').addClass('col-lg-6');
+
+        console.log("TEST")
 
     })
+
     $(".term-box").hover(
         function(e){
 
@@ -238,7 +250,7 @@ $(document).ready(function() {
     })
     
     $("#scroll-btn").click(function() {
-        $('html, body').animate({scrollTop:$('#bottom').offset().top - window.innerHeight, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+        $('html, body').animate({scrollTop:$('#bottom').offset().top + window.innerHeight * 0.2 - window.innerHeight, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
             console.log("HEY")
             }})
 
@@ -278,12 +290,15 @@ $(document).ready(function() {
     })
 
     $(".banner-info-box-content").click(function(e) {
-         set_modal_pic($(this).parent().attr("id"))
+        console.log("HEY")
+        console.log($(this).parent().attr("id"))
+         set_modal_pic($(this).parent().parent().attr("id"))
     })
 
 
     $(".banner-tick").click(function() {
         var id = $(this).attr('id');
+        console.log($(this).top)
         /*
         window.scrollTo({
             top: $('.axis #' + id).offset().top - (window.innerHeight/4 * 3),
@@ -336,9 +351,19 @@ const modal_info = {
     1: {img: "Images/SkyView"}
 }
 
+$(document).on("click", function (event) {
+    // If the target is not the container or a child of the container, then process
+    // the click event for outside of the container.
+    if ($(event.target).closest(".info-box").length === 0) {
+        $('.collapse').collapse('hide')
+        $(".more-info").hide();
 
+      console.log("You clicked outside of the container element");
+    }
+});
+  
 $("#viewMap").click(function() {
-    $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+    $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 500, easing: "linear", complete: function () {
         }})
 })
 
