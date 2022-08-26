@@ -1,3 +1,9 @@
+:root {
+    --grey: #707070;
+    scroll-behavior: auto;
+ 
+}
+
 body {
     margin: 0px;
     background-color:black;
@@ -6,11 +12,11 @@ body {
 
 }
 hr {
-    border-color: rgba(255, 255, 255, 0.362);
+    border-color: var(--grey);
     border-color: white;
 }
 .black-separator{
-    height: 20%;
+    height: 20vh;
 }
 .cover-logo {
     width: 100%;
@@ -52,7 +58,7 @@ hr {
 }
   
 .cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 11.png");
+    background-image: url("../Images/Cover\ Images/Cover Image 12.png");
     background-size:100% auto;
     background-size: cover;
     background-position: top center;
@@ -86,6 +92,9 @@ hr {
 
     background-image: url("../Images/Filaments/LongFilament.png");
 }
+.bottom-arrow {
+    text-align: center;
+}
 .bottom-arrow img{
     width: 30px;
 }
@@ -111,10 +120,12 @@ hr {
     top: 60vh;
     padding: 6%;
     background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-    background-image: radial-gradient(circle, black, rgba(0, 0, 0, 0), rgba(0, 128, 0, 0));
 
     font-weight: lighter;
     font-size: x-large;
+}
+.full-cover{
+    background-image: radial-gradient(circle, black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 }
 .map-effect:hover{
     color: white;
@@ -124,7 +135,7 @@ hr {
     position: relative;
     left: 50%;
     width: 50%;
-    height: 20%;
+    height: 20vh;
     margin-top: 5%;
     margin-bottom: 5%;
 }
@@ -537,6 +548,9 @@ p {
     .flavor-text {
         font-size: 15pt;
     }
+    .download-button {
+        border-radius: 2px !important;
+    }
 }
 @media only screen and (min-width: 600px) and (max-width: 800px) {
     p {
@@ -550,7 +564,10 @@ p {
     }
    
     .cover-logo{
-        width: 50%;
+        width: 100%;
+    }
+    .download-button {
+        border-radius: 10px !important;
     }
 }
 
@@ -729,11 +746,16 @@ p {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-weight: 400;
     text-decoration: underline;
+    text-underline-position: from-font;
     /*border: 1px solid rgb(98, 98, 98);  
         margin: 1%;
 
     */
     cursor: pointer;
+}
+.hideme {
+    opacity:0;
+    background-color: black;
 }
 
 .term-hover:hover {
@@ -764,6 +786,7 @@ strong {
     border-radius: 0 !important;
     font-size: 10pt;
     color: grey;
+    
 }
 .nav-pills .nav-link.active {
     background-color:black !important;
@@ -804,9 +827,10 @@ strong {
 }
 .dropdown-menu-dark {
     background-color: black;
+    border: 1px solid var(--grey);
 }
 .dropdown-divider {
-    border-color:rgb(215, 215, 215)
+    border-color:var(--grey)
 }
 .axis-label {
     display: inline-block;
@@ -835,25 +859,40 @@ strong {
 }
 .banner-info-box {
     position: absolute;
-    color: rgb(188, 188, 188);
-    padding: 4%;
+    color: var(--grey);
+    outline:  solid 1px rgba(255, 255, 255, 0);
+    transition: outline 0.1s linear;
 
 }
-.banner-info-box-content:hover {
+.banner-info-box:hover {
+}
+
+
+
+
+.banner-info-box:hover {
     cursor: pointer;
     color: white;
 }
 .banner-info-box-content {
 }
-.banner-info-box-content h1 {
+.banner-info-box h1 {
+    padding-top: 10px;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    text-underline-position: from-font;
     text-decoration-thickness: 1px;
     transition: text-decoration-color 300ms;  
+    text-align: left;
 }
-.banner-info-box-content:hover h1{
+.banner-info-box:hover h1{
+    color: white;
     text-decoration-color: rgb(255, 255, 255);
 }
 
+.banner-info-box:hover img{
+    border:  solid 1px white;
+
+}
 
 .banner-info-box img{
     position: relative;
@@ -861,6 +900,7 @@ strong {
     /*
     margin-bottom: 10px;
     */
+    transition: border 300ms;
     object-fit: cover;
     border: 1px solid rgb(48, 48, 48);
     
@@ -872,8 +912,14 @@ strong {
     position: absolute;
     top: 0px;
     max-width: 30%;
-    left: 0%;
-    text-align: left;
+    right: 4%;
+    text-align: right;
+    font-size: 15pt;
+    font-weight: 200;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+.banner-button:hover {
+    background-color: black;
 }
 #banner-info-1 {
     top: 0%;
@@ -892,11 +938,11 @@ strong {
 }
 
 #banner-info-5 {
-    top: 70%;
+    top: 80%;
 }
 
 #banner-info-6 {
-    top: 79%;
+    top: 88%;
 }
 
 #banner-info-7 {
@@ -966,6 +1012,7 @@ strong {
 }
 
 .modal-body {
+    padding: 0px;
 }
 .modal {
 
@@ -975,6 +1022,7 @@ strong {
 }
 .modal-footer {
     border: none;
+    justify-content:start;
 }
 .modal-backdrop
 {
@@ -991,7 +1039,6 @@ strong {
     display: flex;
     text-align: left;
     align-items: center;
-    height: 33%;
 }
 .nav {
     display: none;
@@ -1000,7 +1047,26 @@ strong {
     width: 80%;
     padding: 5%
 }
+
+.download-button {
+    font-weight: 800;
+    padding: 1%;
+}
+.download-button .button-text {
+    color: white;
+}
+.download-button img {
+    width: 25px;
+}
+.dropdown-toggle::after {
+    display: none;
+}
 .dropdown-menu-center {
+    right: auto !important;
+    left: 50% !important;
+    -webkit-transform: translate(-50%, 0) !important;
+    -o-transform: translate(-50%, 0) !important;
+    transform: translate(-50%, 50px) !important;
 
     /*
     left: 50% !important;
@@ -1013,23 +1079,24 @@ strong {
   }
   
 .phone-counter-out {
-    height: 0%;
+    height: 0px;
     position: sticky;
     top: 80%;
     left: 50%;
-    transform: translate(-50%, 0);
-    width: 40%;
-
+    width: 100%;
+    text-align: left;
 }
 
 .phone-counter {
     position: sticky;
     z-index: 5;
+    border-top: solid 1px var(--grey);
     background-color: black;
     text-align: center;
     display: inline-block;
     margin: auto;
     padding: 10px;
+    left: 4%;
 }
 
 .banner-info-image-container {

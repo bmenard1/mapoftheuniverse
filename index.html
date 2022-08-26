@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,30 +10,45 @@
     <link rel="stylesheet" href="style/home.css">
     <title> The Map of the Universe</title>
   </head>
-  <style>
-    :root {
-        scroll-behavior: auto;
-    }
-  </style>
   <body>
 
     <div class = "fluid-container">
       <div class = "cover" style="position: relative">
-        <div class = "cover-text">
-          <img class = "cover-logo" src = "Images/Logo/Logo3.svg" />
-          <h1>
-            from the Milky Way to the edge of what can be seen
-          </h1>
-          <br>
-          <br>
-          <div class = "bottom-arrow">
-            <img src = "Images/Icons/Down.svg"/>
+        <div class = "full-cover" style="height: 100vh; width: 100vw;">
+
+          <div class = "cover-text">
+            <img class = "cover-logo" src = "Images/Logo/Logo3.svg" />
+            <h1>
+              from the Milky Way to the edge of what can be seen
+            </h1>
+            <br>
+            <br>
+            <div class = "bottom-arrow">
+              <img src = "Images/Icons/Down.svg"/>
+            </div>
           </div>
+    
         </div>
+        <div class = "flavor-text hideme" style="top:40%; position: absolute; width: 100%;">
+          Something dramatic could go here
+        </div>
+
+        <div class = "flavor-text hideme" style="top:60%; position: absolute; width: 100%;">
+          Then another dramatic point could be put here
+        </div>
+
+
+        <div class = "flavor-text hideme" style="top:80%; position: absolute; width: 100%;">
+          Every point on this page represents a galaxy
+        </div>
+
       </div>
-      <div class = "flavor-text">
-        Each dot on this screen is a galaxy
-      </div>
+    </div>
+
+      <div class = "black-separator"></div>
+
+
+
       <!--
 
       <button type="button" class="btn btn-outline-light" style="background-color: black;">
@@ -42,15 +58,8 @@
       </button>
       -->
 
-      <div class = "black-separator"></div>
 
-      <div class = "black-separator"></div>
-
-      </div>
     
-      <br>
-      <div class = "">
-      </div>
 
       <div class = "map-container child" >
         <div class = "map-download-box">
@@ -201,7 +210,8 @@
           
                           This map shows a slice of the Universe. Its thickness is about 10 degrees.
                           <br>
-                          <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%; text-align: right;">
+                          <br>
+                          <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%; text-align: left;">
                             Read more
                           </button>
 
@@ -213,7 +223,7 @@
                             </p>
                           </div>
                           <hr/>
-                          <button type="button" class="btn btn-no-outline-light banner-modal" style="width: 100%" data-bs-toggle="modal" data-bs-target="#infoModal">
+                          <button type="button" class="btn btn-no-outline-light banner-modal" style="width: 100%; text-align: center;" data-bs-toggle="modal" data-bs-target="#infoModal">
                             More Map Information
                         </button>
 
@@ -307,17 +317,19 @@
     </div>
     <div>
       <div class="dropdown" style="text-align: center;">
-        <button class="btn btn-outline-light  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-outline-light download-button  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false">
           <div class = "button-text">
             Download the Map
           </div>
+          <img src = "Images/Icons/white-download-1.svg">
+
         </button>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2">
           <div class = "row">
             <div class = "col">
-              <img src="Images/Deliverables/Thumbnail/2K.png" />
+              <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
             </div>
-            <div class = "col">
+            <div class = "col" style="border-left: 1px solid gray">
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
@@ -326,10 +338,10 @@
           <li><hr class="dropdown-divider"></li>
 
           <div class = "row">
-            <div class = "col">
-              <img src="Images/Deliverables/Thumbnail/Banner@300x.png"/>
+            <div class = "col" >
+              <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
             </div>
-            <div class = "col">
+            <div class = "col" style="border-left: 1px solid gray">
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
               <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
@@ -413,6 +425,8 @@
       <div class = "flavor-text">
         You are about to take a journey spanning 13 billion years
         <br/>
+        Click on the sidebar images to view the sky
+        <br/>
         We start at the Milky Way
         <br/>
 
@@ -488,16 +502,15 @@
                 <div class = "phone-counter d-lg-none">
                   <h1 class = "sidebar-counter"> <span id = "sidebar-lookback-time_2"></span> GYR</h1>
                 </div>
-  
               </div>
     
-              <div class = bar_container>
-                <div id = "barone" class = "desktop_bar"></div>
-                <div id = "bartwo" class = "desktop_bar two"></div>
+              <div class = "bar_container">
+                <div id = "barone" class = "desktop_bar d-none d-lg-block"></div>
+                <div id = "bartwo" class = "desktop_bar two d-none d-lg-block"></div>
               </div>
               <div class = "d-md-none">
                 <button id = "banner-info-1" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  The Cosmic Microwave Backround
+                  The Cosmic Microwave Background
                 </button>
                 <button id = "banner-info-2" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
                   Redshifted Quasars
@@ -518,7 +531,7 @@
                   Our galaxy, the Milky Way
                 </button>
               </div>
-              <img src="Images/Banner/test_79.png" width="100%"/>
+              <img src="Images/Banner/test_82.png" width="100%"/>
             </div>
             <div class = "banner-tick" style="position: relative; text-align: center;"  > 
               you are here
@@ -529,33 +542,8 @@
 
         <div class="col-lg-3 col-md-4 col-xs-1 col-4 d-none d-md-block" style="position: relative;">
           <div id = "banner-info-1" class = "banner-info-box ">
-
-            <div class = "banner-info-image-container">
-              <img style= "width: 100%" src = "Images/Explanations/cmb.png"/>
-            </div>
-            <button type="button " class="btn btn-outline-light banner-info-box-content"  style="height: 20%; width: 100%;">
-              View the Sky
-            </button>
-
-            <div class="accordion" id="accordionExample2">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="info-accordion accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <h1> The Cosmic Microwave Backround</h1>
-                  </button>  
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                  <div class="accordion-body">
-                    <div class = "info-box">
-                      <p> This is an actual photograph of the first flash of light emitted soon 
-                        after the big bang, 13.7 billion years ago. This light has been stretched 
-                        by the expansion of the Universe and arrives at us as radiowaves. 
-                        This is the edge of the observable Universe.</p>
-                    </div>                  
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img style= "width: 100%" src = "Images/Explanations/cmb.png"/>
+            <h1> The Cosmic Microwave Backround</h1>
           </div>
 <!--
   <div id = "banner-info-2" class = "banner-info-box ">
@@ -594,149 +582,28 @@
   </div>
   -->
   <div id = "banner-info-3" class = "banner-info-box">
-    <ul class="nav nav-pills mb-3" id="pills-tab_03" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link  active" id="pills-home-tab_03" data-bs-toggle="pill" data-bs-target="#pills-home_03" type="button" role="tab" aria-controls="pills-home_03" aria-selected="true">
-          Explanation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link " id="pills-profile-tab_03" data-bs-toggle="pill" data-bs-target="#pills-profile_03" type="button" role="tab" aria-controls="pills-profile_03" aria-selected="false">
-          View the Sky
-        </button>
-      </li>
-    </ul>
-
-    <div class = "banner-info-box-content">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home_03" role="tabpanel" aria-labelledby="pills-home-tab_03">
-          <img style= "width: 100%" src = "Images/Explanations/black hole.png"/>
-        </div>
-        <div class="tab-pane fade" id="pills-profile_03" role="tabpanel" aria-labelledby="pills-profile-tab_03">
-          <img  src = "Images/Skyview/V_01/8.5.png"/>
-        </div>
-      </div>
-
-      <h1>Quasars</h1>
-      <div class = "d-none d-lg-block">
-      <p> They are massive black holes located at the center of certain galaxies. 
-        As they accrete surrounding gas, they become extremely bright and can be
-        seen across the Universe. Their light is blueish. At these distances, 
-        galaxies have become too faint the Sloan Digital Sky Survey telescope.</p>
-        
-      </div>
-    </div>
+    <img style= "width: 100%" src = "Images/Explanations/black hole.png"/>
+    <h1>Quasars</h1>
   </div>
+
   <div id = "banner-info-4" class = "banner-info-box">
-    <ul class="nav nav-pills mb-3" id="pills-tab_04" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link  active" id="pills-home-tab_04" data-bs-toggle="pill" data-bs-target="#pills-home_04" type="button" role="tab" aria-controls="pills-home_04" aria-selected="true">
-          Explanation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link " id="pills-profile-tab_04" data-bs-toggle="pill" data-bs-target="#pills-profile_04" type="button" role="tab" aria-controls="pills-profile_04" aria-selected="false">
-          View the Sky
-        </button>
-      </li>
-    </ul>
-
-    <div class = "banner-info-box-content">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home_04" role="tabpanel" aria-labelledby="pills-home-tab_04">
-          <img style= "width: 100%" src = "Images/Explanations/red.png"/>
-        </div>
-        <div class="tab-pane fade" id="pills-profile_04" role="tabpanel" aria-labelledby="pills-profile-tab_04">
-          <img  src = "Images/Skyview/V_01/4.5.png"/>
-        </div>
-      </div>
-
-      <h1>Red Galaxies</h1>
-      <div class = "d-none d-lg-block">
-
-      <p> They are massive black holes located at the center of certain galaxies. 
-        As they accrete surrounding gas, they become extremely bright and can be 
-        seen across the Universe. Their light is blueish. At these distances, galaxies 
-        have become too faint the Sloan Digital Sky Survey telescope.</p>
-        
-      </div>
-    </div>
-
-
+    <img style= "width: 100%" src = "Images/Explanations/Red Elliptical.png"/>
+    <h1>Red Galaxies</h1>
   </div>
 
   <div id = "banner-info-5" class = "banner-info-box">
+    <img style= "width: 100%" src = "Images/Explanations/Yellow Elliptical Galaxy_cropped.png"/>
+    <h1>The Expansion of the Universe            </h1>
 
-    <ul class="nav nav-pills mb-3" id="pills-tab_05" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link  active" id="pills-home-tab_05" data-bs-toggle="pill" data-bs-target="#pills-home_05" type="button" role="tab" aria-controls="pills-home_05" aria-selected="true">
-          Explanation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link " id="pills-profile-tab_05" data-bs-toggle="pill" data-bs-target="#pills-profile_05" type="button" role="tab" aria-controls="pills-profile_05" aria-selected="false">
-          View the Sky
-        </button>
-      </li>
-    </ul>
-
-    <div class = "banner-info-box-content">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home_05" role="tabpanel" aria-labelledby="pills-home-tab_05">
-          <img style= "width: 100%" src = "Images/Explanations/Elliptical.png"/>
-        </div>
-        <div class="tab-pane fade" id="pills-profile_05" role="tabpanel" aria-labelledby="pills-profile-tab_05">
-          <img  src = "Images/Skyview/V_01/1.8.png"/>
-        </div>
-      </div>
-
-      <h1>The Expansion of the Universe            </h1>
-      <div class = "d-none d-lg-block">
-
-      <p> As the Universe expands, light gets stretched and objects appear redder. 
-        This is the case for the elliptical galaxies.</p>
-        
-      </div>
-    </div>
   </div>
   
   <div id = "banner-info-6" class = "banner-info-box">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link btn-outline-light active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-          Explanation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link btn-outline-light" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-          View the Sky
-        </button>
-      </li>
-    </ul>
-    <div class = "banner-info-box-content">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <img  src = "Images/Explanations/cosmicvoid.jpeg"/>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <img  src = "Images/Skyview/V_01/0.1.png"/>
-        </div>
-      </div>
-      
+      <img  src = "Images/Explanations/Galaxies_Wikipedia cropped.png"/>
       <h1>Countless Galaxies Organized in Filaments and Clusters</h1>
-      <div class = "d-none d-lg-block">
-
-      <p> Each dot is a galaxy. All together, they form a filamentary structure.
-        Spiral galaxies are faint and blue. Elliptical galaxies are yellowish and much brighter. 
-        We can see them farther away.</p>
-      </div>
-    </div>
-
   </div>          
 
   <div id = "banner-info-7" class = "banner-info-box">
-    <h1>Our galaxy, the Milky Way
-    </h1>
+    <h1>Our galaxy, the Milky Way</h1>
     <p> The Milky Way is a dot at the bottom of the map.</p>
   </div>        
 
@@ -890,45 +757,19 @@ IMPORTANT: Please review the legal disclaimer and feedback page
             <!-- Modal body -->
             <div class="modal-body" style="padding: 4%;">
               <div class = "container-fluid">
-                <div class = "row">
-                  <div class = "col-6">
-                    <img src = "Images/Explanations/You are Here@300x.png" style="width: 100%;">
-                    <h1>You are Here</h1>
-                    <p>
-                      We are currently in the Milky Way, in the Agsastarious neighborhood, in the Stamsf arm, in the Solar System, on Planet Earth.", img: "Images/Explanations/You are Here@300x.png
-                    </p>
-                  </div>
-                  <div class = "col-6">
-                    <img src = "Images/Explanations/Angle on the Sky@300x.png" style="width: 100%;">
-                    <h1>Angle on the Sky</h1>
-                    <p>
-                      This is a slice of the sky this small...
-                    </p>
-                  </div>
-                  
-                  <div class = "col-6">
-                    <img src = "Images/Explanations/Redshift@300x.png" style="width: 100%;">
-                    <h1>Redshift</h1>
-                    <p>
-                      PLAGARIZED: 'Red shift' is a key concept for astronomers. The term can be understood literally - the wavelength of the light is stretched, so the light is seen as 'shifted' towards the red part of the spectrum. Something similar happens to sound waves when a source of sound moves relative to an observer.
-                    </p>
-                  </div>
-                  <div class = "col-6">
-                    <img src = "Images/Explanations/Lookback Time@300x.png" style="width: 100%;">
-                    <h1>Lookback Time</h1>
-                    <p>
-                      PLAGARIZED: The time elapsed between when we detect the light here on Earth and when it was originally emitted by the source, is known as the 'lookback time'. The more distant an object is from us, the further back in time we are looking.
-                    </p>
-                  </div>
-                  
-
-                </div>  
+                <img src = "Images/Explanations/3d.png" style="width: 100%"></img>
               </div>
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna eu lectus interdum pellentesque. Vestibulum interdum velit ut nisl rutrum viverra. Nullam risus augue, pharetra at vestibulum in, tincidunt vel erat. Nulla facilisi. Suspendisse vel sodales risus, ac hendrerit nibh. Integer eu felis nec libero facilisis dictum id a libero. Aenean semper varius justo eget placerat. Aliquam erat volutpat. In odio nibh, tempus eget suscipit a, porta sed metus. Proin gravida tempor metus, consectetur pulvinar velit convallis vitae. Duis laoreet ante sed quam ullamcorper, varius ornare lorem molestie. Mauris euismod, tortor vitae venenatis consectetur, justo sem luctus mauris, scelerisque pretium massa diam pharetra justo. Etiam ac libero sed justo auctor varius sit amet nec magna. Maecenas sit amet ante scelerisque, posuere justo at, porttitor ante. Quisque euismod pulvinar quam a convallis.
 
+Aenean diam elit, vehicula id malesuada vel, gravida vitae erat. Suspendisse potenti. Vestibulum nec gravida nibh, ut commodo mauris. Quisque mattis mollis aliquet. Sed vehicula nisi eu lectus pellentesque commodo. Cras vel dolor malesuada, luctus erat et, vestibulum eros. Aliquam erat volutpat. Nunc eget odio mauris. Suspendisse ultrices, magna placerat auctor malesuada, quam nulla finibus mauris, id venenatis magna risus ut turpis.
+
+
+              </p>
 
             </div>
       
@@ -954,77 +795,3 @@ IMPORTANT: Please review the legal disclaimer and feedback page
 </body>
 </html>
 
-
-
-              <!--
-
-              <div class = "term-box">
-                
-                <div>
-                  <button id = "hide-terms" type="button" class="btn btn-no-outline-light" style = "float: right" >
-                    Hide
-                  </button>
-                  
-                  <div>/</div>
-                  
-                </div>
-                <div class = "term-box-words">
-
-                  <div class = "hr-text">
-                    Axis
-                  </div>
-
-                  <div id = "axis_01" class = "map-effect term-hover">Angle on the Sky</div> -
-                  <div id = "axis_02" class = "map-effect term-hover">Redshift</div> -
-                  <div id = "axis_03" class = "map-effect term-hover">Lookback Time</div> -
-                  <div id = "axis_04" class = "map-effect term-hover">You Are Here</div>
-
-                  <div class = "hr-text">
-                    Parts of the Universe
-                  </div>
-
-                  <div id = "area_05" class = "map-effect term-hover">Galaxies</div> -
-                  <div id = "area_01" class = "map-effect term-hover">Near Galaxies</div> -
-                  <div id = "area_02" class = "map-effect term-hover">Luminous Red Galaxies</div> - 
-                  <div id = "area_03" class = "map-effect term-hover">Quasars</div> - 
-                  <div id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</div>
-                </div>
-              </div>
-                                -->
-
-
-                                 <!--
-
-              <div class = "term-box">
-                
-                <div>
-                  <button id = "hide-terms" type="button" class="btn btn-no-outline-light" style = "float: right" >
-                    Hide
-                  </button>
-                  
-                  <div>/</div>
-                  
-                </div>
-                <div class = "term-box-words">
-
-                  <div class = "hr-text">
-                    Axis
-                  </div>
-
-                  <div id = "axis_01" class = "map-effect term-hover">Angle on the Sky</div> -
-                  <div id = "axis_02" class = "map-effect term-hover">Redshift</div> -
-                  <div id = "axis_03" class = "map-effect term-hover">Lookback Time</div> -
-                  <div id = "axis_04" class = "map-effect term-hover">You Are Here</div>
-
-                  <div class = "hr-text">
-                    Parts of the Universe
-                  </div>
-
-                  <div id = "area_05" class = "map-effect term-hover">Galaxies</div> -
-                  <div id = "area_01" class = "map-effect term-hover">Near Galaxies</div> -
-                  <div id = "area_02" class = "map-effect term-hover">Luminous Red Galaxies</div> - 
-                  <div id = "area_03" class = "map-effect term-hover">Quasars</div> - 
-                  <div id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</div>
-                </div>
-              </div>
-                                -->
