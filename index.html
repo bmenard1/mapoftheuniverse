@@ -23,23 +23,30 @@
             </h1>
             <br>
             <br>
-            <div class = "bottom-arrow">
-              <img src = "Images/Icons/Down.svg"/>
-            </div>
           </div>
-    
+          <div class = "bottom-arrow">
+            <img src = "Images/Icons/Down.svg"/>
+          </div>
+
         </div>
-        <div class = "flavor-text hideme" style="top:40%; position: absolute; width: 100%;">
-          Something dramatic could go here
+        <div class = "flavor-text fade" style="top:40%; position: absolute; width: 100%;">
+          <div class = "action-text">
+            Astronomers have observed millions of galaxies
+          </div>
         </div>
 
-        <div class = "flavor-text hideme" style="top:60%; position: absolute; width: 100%;">
-          Then another dramatic point could be put here
+        <div class = "flavor-text fade" style="top:60%; position: absolute; width: 100%;">
+          <div class = "action-text">
+            They are organized in a filamentary network
+          </div>
         </div>
 
 
-        <div class = "flavor-text hideme" style="top:80%; position: absolute; width: 100%;">
-          Every point on this page represents a galaxy
+        <div class = "flavor-text fade" style="top:80%; position: absolute; width: 100%;">
+          <div class = "action-text">
+            Each point on this page represents a galaxy
+          </div>
+
         </div>
 
       </div>
@@ -63,19 +70,6 @@
 
       <div class = "map-container child" >
         <div class = "map-download-box">
-          <div class = "row" style = "width: 100%; text-align: left;  padding-left: 4%; padding-right: 4%;">
-            <div class = "col-12 d-lg-none">
-              <div class = "map-container-info">
-                <h1>You are Here</h1>
-                <p>
-                  LLorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec diam sit amet quam tristique maximus. Donec quis augue purus. Quisque congue mauris nisl, ut dictum dolor sollicitudin et. Phasellus ante odio, fermentum et eleifend non, molestie in justo. Duis eget tristique odio. Aliquam erat volutpat. Cras hendrerit, purus aliquet auctor fermentum, justo orci porta eros, nec varius nisi eros at nulla. Vivamus metus leo, suscipit at laoreet a, bibendum eget nisl.
-                  <br>
-                  Vivamus sed ullamcorper neque, eget cursus turpis. Vestibulum varius ultricies tortor et molestie. Quisque ut lectus mauris. Sed ornare mattis arcu ac facilisis. Praesent ante leo, sodales eu efficitur sit amet, condimentum nec tellus. Vivamus vehicula vulputate rutrum. Aenean vitae nunc quis dui feugiat commodo sed in felis.
-                </p>
-              </div>
-            </div>
-          </div>
-          
           <div class = "mapbox">
             <div id = "text_01" class = "slice-map-text you-are-here-axis">you are here</div>
             <div id = "text_02" class = "slice-map-text angle-on-sky-axis">angle on the sky</div>
@@ -103,9 +97,78 @@
 
             <img id = "slice-map" src = "Images/WebMap_V02/total.png"/> 
           </div>
+
+          <div style="width: 100%; position: absolute; bottom:4%; z-index: 5; padding-left: 3%; padding-right: 3%;">
+            <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5; --bs-gutter-x: 0 rem">
+              <div class="info-col col-3 col-lg-3">
+                <img src="Images/Logo/Logo3.svg" style="width: 250px"/>
+              </div>
+              <div class="other-col col-6 col-lg-6">
+              </div>
+    
+              <div class="col-3 col-lg-3">
+                <div class = "term-box">        
+                  <div style="width: 100%; height: 20px; border-bottom: 0px solid rgb(255, 255, 255); text-align: center; z-index: 10;">
+                    <span style="font-size: 12px; background-color: #000000; padding: 0 10px;">
+                    </span>
+                  </div>      
+                  <div class="accordion" id="accordionExample3">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class=" accordion-button collapsed info-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                          <h1>Description</h1>
+                        </button>  
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample3">
+                        <div class="accordion-body">
+                          <div class = "info-box">
+                          
+                            <p> 
+                              Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
+                              200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
+                              <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
+                              — the edge of the observable Universe.
+      
+                              <br/>
+                              <br/>
+                              <img style="width: 100%" src = "Images/3D/3D_103.png"/>
+    
+                              This map shows a slice of the Universe. Its thickness is about 10 degrees.
+                              <br>
+                              <br>
+                              <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%; text-align: left;">
+                                Read more
+                              </button>
+    
+      
+                              <div class = "more-info" style="display: hidden;">
+                                <p>
+                                  The Sloan Digital Sky Survey has created the most detailed three-dimensional maps of the Universe ever made, with deep multi-color images of one third of the sky, and spectra for more than three million astronomical objects. <br/> <br/>
+                                  Observations were conducted using a dedicated 2.5-m wide-angle optical telescope at Apache Point Observatory in New Mexico, United States. The Sloan Digital Sky Survey has been running for more than 20 years to make a map of the Universe. It has been one of the most successful surveys in the history of astronomy.
+                                </p>
+                              </div>
+                              <hr/>
+                              <button type="button" class="btn btn-no-outline-light banner-modal" style="width: 100%; text-align: center;" data-bs-toggle="modal" data-bs-target="#infoModal">
+                                More Map Information
+                            </button>
+    
+                              
+                            </p>
+                          </div>               
+                          
+                
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
         <br>
-      
+        <!--
         <div class = "row row2 d-none d-lg-block d-none d-lg-block" style = "width: 100%; text-align: left;  padding-left: 4%; padding-right: 4%;">
           <div class = "col-2">
             <div class = "map-container-info">
@@ -118,59 +181,13 @@
             </div>
           </div>
         </div>
+-->
+        <!--
 
         <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5;">
           <div class="info-col col-3 col-lg-3">
-            <img src="Images/Logo/Logo3.svg" style="width: 300px"/>
-            <!--
-              
-            <div class="accordion" id="accordionExample2">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                  <button class="info-accordion accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <img src="Images/Logo/Logo3.svg" style="width: 300px"/>
-                  </button>  
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                  <div class="accordion-body">
-                    <div class = "info-box">
-                      
-                      <p> 
-                        
-                        Each dot is a galaxy or a quasar. About 
-                        200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
-                        Cosmic Microwave Background — the edge of the observable Universe.
-
-                        <br/>
-                        <br/>
-        
-                        This map shows a slice of the Universe. Its thickness is about 10 degrees.
-                        <br>
-                        <br>
-
-
-                        <div class = "more-info" style="display: hidden;">
-                          <hr/>
-
-                      <p>
-                            The Sloan Digital Sky Survey has created the most detailed three-dimensional maps of the Universe ever made, with deep multi-color images of one third of the sky, and spectra for more than three million astronomical objects. Observations were conducted using a dedicated 2.5-m wide-angle optical telescope at Apache Point Observatory in New Mexico, United States. The Sloan Digital Sky Survey has been running for more than 20 years to make a map of the Universe. It has been one of the most successful surveys in the history of astronomy.
-                          </p>
-                        </div>
-                        <hr/>
-                        <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%">
-                          Read more...
-                        </button>
-
-                        
-                      </p>
-                    </div>                  
-                  
-                  
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
+            <img src="Images/Logo/Logo3.svg" style="width: 250px"/>
+  
 
 
           </div>
@@ -181,7 +198,6 @@
           <div class="col-3 col-lg-3" >
 
             <div class = "term-box">
-
               
               <div style="width: 100%; height: 20px; border-bottom: 0px solid rgb(255, 255, 255); text-align: center; z-index: 10;">
                 <span style="font-size: 12px; background-color: #000000; padding: 0 10px;">
@@ -199,7 +215,6 @@
                       <div class = "info-box">
                       
                         <p> 
-                          
                           Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
                           200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
                           <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
@@ -207,7 +222,8 @@
   
                           <br/>
                           <br/>
-          
+                          <img style="width: 100%" src = "Images/3D/3D Slice.png"/>
+
                           This map shows a slice of the Universe. Its thickness is about 10 degrees.
                           <br>
                           <br>
@@ -230,24 +246,7 @@
                           
                         </p>
                       </div>               
-                      <!--
-
-                      <div class = "info-box">
-                        <div class = "cont">
-                          <div id = "area_05" class = "map-effect term-hover">Galaxies</div> - 
-
-                          <div id = "area_01" class = "map-effect term-hover">Near Galaxies</div>
-                          <div id = "area_02" class = "map-effect term-hover">Luminous Red Galaxies</div>
-
-                          <div id = "area_03" class = "map-effect term-hover">Quasars</div> - 
-                          <div id = "area_04" class = "map-effect term-hover">Cosmic Radiation</div>
-                        </div>
-
-                        <hr/>
-
-                        
-                      </div>      
-                      -->
+                      
             
                     </div>
                   </div>
@@ -259,6 +258,7 @@
 
           </div>
         </div>
+        -->
 
       </div>
 
@@ -315,112 +315,52 @@
     <div class = "black-separator">
 
     </div>
-    <div>
-      <div class="dropdown" style="text-align: center;">
-        <button class="btn btn-outline-light download-button  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false">
+    <div style="text-align: center;">
+      
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button id = "scroll-btn" type="button" class="btn btn-outline-light">
           <div class = "button-text">
-            Download the Map
+            Scroll to the Milky Way.
           </div>
-          <img src = "Images/Icons/white-download-1.svg">
-
         </button>
-        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2">
-          <div class = "row">
-            <div class = "col">
-              <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
-            </div>
-            <div class = "col" style="border-left: 1px solid gray">
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
-            </div>
+          <div class="dropdown" style="text-align: center;">
+            <button class="btn btn-outline-light download-button  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false">
+              <div class = "button-text">
+                Download the Map
+              </div>
+      
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2">
+              <div class = "row">
+                <div class = "col">
+                  <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
+                </div>
+                <div class = "col" style="border-left: 1px solid gray">
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
+                </div>
+              </div>
+              <li><hr class="dropdown-divider"></li>
+    
+              <div class = "row">
+                <div class = "col" >
+                  <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
+                </div>
+                <div class = "col" style="border-left: 1px solid gray">
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
+                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
+                </div>
+              </div>
+            </ul>
           </div>
-          <li><hr class="dropdown-divider"></li>
-
-          <div class = "row">
-            <div class = "col" >
-              <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
-            </div>
-            <div class = "col" style="border-left: 1px solid gray">
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
-              <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
-            </div>
-          </div>
-          <!--
-          <div class = "row">
-            <div class = "col">
-              <li><a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">
-                <div class = "row">
-                  <div class = "col">
-                    2K Image 
-                  </div>
-                  <div class = "col">
-                    <img src="Images/Deliverables/Thumbnail/2K.png" style="width: 200px"/>
-                  </div>
-                </div>
-                </a></li>
-              <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">
-                <div class = "row">
-                  <div class = "col">
-                    4K Image 
-                  </div>
-                  <div class = "col">
-                    <img src="Images/Deliverables/Thumbnail/4K.png" style="width: 200px"/>
-                  </div>
-                </div>
-                </a></li>
-              <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">
-                <div class = "row">
-                  <div class = "col">
-                    2K Image 
-                  </div>
-                  <div class = "col">
-                    <img src="Images/Deliverables/Thumbnail/SDSS_2K_smaller_logo copy@300x.png" style="width: 200px"/>
-                  </div>
-                </div>
-              </a></li>
-            </div>
-            <div class = "col">
-              <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1"> 
-                <div class = "row">
-                  <div class = "col-6">
-                    Banner 2K 
-                  </div>
-                  <div class = "col-6">
-                    <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 200px"/>
-                  </div>
-                </div>
-                 
-              </a></li>
-              <li><a class="dropdown-item" href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">
-                <div class = "row">
-                  <div class = "col-6">
-                    Banner 4K 
-                  </div>
-                  <div class = "col-6">
-                    <img src="Images/Deliverables/Banner@300x.png" style="width: 200px"/>
-                  </div>
-                </div>
-              </a></li>
-              <li><a class="dropdown-item"href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">
-                <div class = "row">
-                  <div class = "col-6">
-                    Banner P
-                  </div>
-                  <div class = "col-6">
-                    <img src="Images/Deliverables/Banner@300x.png" style="width: 200px"/>
-                  </div>
-                </div> 
-              </a></li>
-            </div>
-          </div>
-          -->
-        </ul>
       </div>
+      
     </div>
-    <div class = "separator"></div>
+    <!--
 
+    <div class = "separator"></div>
     <div class = "child">
       <div class = "flavor-text">
         You are about to take a journey spanning 13 billion years
@@ -443,7 +383,10 @@
 
 
     <div class = "separator"></div>
-   
+       -->
+       <div class = "separator"></div>
+
+
       <div class="row" style="padding-left: 1%; padding-right: 1%;">
         <div class = " col-md-1 col-xs-1  d-none d-lg-block ">
           <div class = "banner-sidebar">
@@ -510,7 +453,7 @@
               </div>
               <div class = "d-md-none">
                 <button id = "banner-info-1" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  The Cosmic Microwave Background
+                  The Cosmic Microwave Backround
                 </button>
                 <button id = "banner-info-2" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
                   Redshifted Quasars
@@ -519,29 +462,27 @@
                   Quasars
                 </button>
                 <button id = "banner-info-4" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  Red Galaxies
+                  Red Elliptical Galaxies
                 </button>
                 <button id = "banner-info-5" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  The Expansion of the Universe
+                  Elliptical Galaxies
                 </button>
                 <button id = "banner-info-6" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  Countless Galaxies Organized in Filaments and Clusters
+                  Spiral Galaxies
                 </button>
-                <button id = "banner-info-7" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
-                  Our galaxy, the Milky Way
-                </button>
+
               </div>
               <img src="Images/Banner/test_82.png" width="100%"/>
             </div>
             <div class = "banner-tick" style="position: relative; text-align: center;"  > 
-              you are here
+              Our galaxy, the Milky Way
             </div>
             <div id = "bottom"></div>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-4 col-xs-1 col-4 d-none d-md-block" style="position: relative;">
-          <div id = "banner-info-1" class = "banner-info-box ">
+          <div id = "banner-info-1" class = "banner-info-box fade ">
             <img style= "width: 100%" src = "Images/Explanations/cmb.png"/>
             <h1> The Cosmic Microwave Backround</h1>
           </div>
@@ -581,31 +522,27 @@
     </div>
   </div>
   -->
-  <div id = "banner-info-3" class = "banner-info-box">
-    <img style= "width: 100%" src = "Images/Explanations/black hole.png"/>
+  <div id = "banner-info-3" class = "banner-info-box fade">
+    <img style= "width: 100%" src = "Images/Explanations/black hole blue.png"/>
     <h1>Quasars</h1>
   </div>
 
-  <div id = "banner-info-4" class = "banner-info-box">
-    <img style= "width: 100%" src = "Images/Explanations/Red Elliptical.png"/>
-    <h1>Red Galaxies</h1>
+  <div id = "banner-info-4" class = "banner-info-box fade">
+    <img style= "width: 100%" src = "Images/Explanations/Red Mosaic.png"/>
+    <h1>Red Elliptical Galaxies</h1>
   </div>
 
-  <div id = "banner-info-5" class = "banner-info-box">
-    <img style= "width: 100%" src = "Images/Explanations/Yellow Elliptical Galaxy_cropped.png"/>
-    <h1>The Expansion of the Universe            </h1>
+  <div id = "banner-info-5" class = "banner-info-box fade">
+    <img style= "width: 100%" src = "Images/Explanations/Ellipse Mosaic.png"/>
+    <h1>Elliptical Galaxies            </h1>
 
   </div>
   
-  <div id = "banner-info-6" class = "banner-info-box">
-      <img  src = "Images/Explanations/Galaxies_Wikipedia cropped.png"/>
-      <h1>Countless Galaxies Organized in Filaments and Clusters</h1>
+  <div id = "banner-info-6" class = "banner-info-box fade">
+      <img  src = "Images/Explanations/Spiral Mosaic.png"/>
+      <h1>Spiral Galaxies</h1>
   </div>          
 
-  <div id = "banner-info-7" class = "banner-info-box">
-    <h1>Our galaxy, the Milky Way</h1>
-    <p> The Milky Way is a dot at the bottom of the map.</p>
-  </div>        
 
 
           <!--
@@ -694,12 +631,8 @@
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
                 <div class="accordion-body">
                   <p>
-© 1996-2022 Daniel A. Tysver. All Rights Reserved. <br/>
-Forsgren Fisher McCalmont DeMarea Tysver LLP, Minneapolis, MN <br/>
-No claim to copyright ownership is made to underlying materials originating with the U.S. Government,
-including MPEP and TMEP sections and indexes, statutes, regulations, and court decisions. <br/>
-IMPORTANT: Please review the legal disclaimer and feedback page
-</p>
+                  © Brice Menard & Nikita Shtarkman. All Rights Reserved. <br/>
+                </p>
                 </div>
               </div>
             </div>
@@ -757,16 +690,14 @@ IMPORTANT: Please review the legal disclaimer and feedback page
             <!-- Modal body -->
             <div class="modal-body" style="padding: 4%;">
               <div class = "container-fluid">
-                <img src = "Images/Explanations/3d.png" style="width: 100%"></img>
+                <img src = "Images/3D/3D_103.png" style="width: 100%"></img>
               </div>
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar magna eu lectus interdum pellentesque. Vestibulum interdum velit ut nisl rutrum viverra. Nullam risus augue, pharetra at vestibulum in, tincidunt vel erat. Nulla facilisi. Suspendisse vel sodales risus, ac hendrerit nibh. Integer eu felis nec libero facilisis dictum id a libero. Aenean semper varius justo eget placerat. Aliquam erat volutpat. In odio nibh, tempus eget suscipit a, porta sed metus. Proin gravida tempor metus, consectetur pulvinar velit convallis vitae. Duis laoreet ante sed quam ullamcorper, varius ornare lorem molestie. Mauris euismod, tortor vitae venenatis consectetur, justo sem luctus mauris, scelerisque pretium massa diam pharetra justo. Etiam ac libero sed justo auctor varius sit amet nec magna. Maecenas sit amet ante scelerisque, posuere justo at, porttitor ante. Quisque euismod pulvinar quam a convallis.
-
-Aenean diam elit, vehicula id malesuada vel, gravida vitae erat. Suspendisse potenti. Vestibulum nec gravida nibh, ut commodo mauris. Quisque mattis mollis aliquet. Sed vehicula nisi eu lectus pellentesque commodo. Cras vel dolor malesuada, luctus erat et, vestibulum eros. Aliquam erat volutpat. Nunc eget odio mauris. Suspendisse ultrices, magna placerat auctor malesuada, quam nulla finibus mauris, id venenatis magna risus ut turpis.
+                Each dot is a galaxy or a quasar. About 200,000 are shown with their actual position and color, from the Milky Way, all the way to the Cosmic Microwave Background — the edge of the observable Universe.
 
 
               </p>

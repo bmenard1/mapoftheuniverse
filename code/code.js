@@ -246,11 +246,12 @@ $(document).ready(function() {
         console.log("YES")
         $("#sidebar-lookback-time").html((lookback).toFixed(1));
         $("#sidebar-lookback-time_2").html((lookback).toFixed(1));
-        var fade = $('.banner-info-box');
-        
+        //var fade = $('.banner-info-box');
+        var fade = $('.fade');
         var range = 400;
         var st = $(this).scrollTop();
-        var center = st + $(window).outerHeight() * (3/4);
+        var center = st + $(window).outerHeight() * (2/4);
+        /*
         $('.hideme').each( function(i){
             var bottom_of_object = $(this).position().top + $(this).outerHeight();
             var bottom_of_window = $(window).scrollTop() + $(window).height();
@@ -261,21 +262,22 @@ $(document).ready(function() {
             console.log(bottom_of_object)
             console.log(bottom_of_window)
 
-            /* If the object is completely visible in the window, fade it it */
             if( bottom_of_window > bottom_of_object ){
                 $(this).animate({'opacity':'1'},1000);
             }
         });
+        */
 
         fade.each(function () {
             var offset = $(this).offset().top;
             var height = $(this).outerHeight();
-            offset = offset + height / 1; 
+            offset = offset + height / 2; 
+            var perc = Math.pow((center - offset) /  ($(window).outerHeight()/2), 2)
             //center =  offset + height / 1; 
             if(center-offset > 0){
-                $(this).css({ 'opacity': 1 - (center - offset) /  ($(window).outerHeight()/2) });
+                $(this).css({ 'opacity': 1 - perc });
             } else {
-                $(this).css({ 'opacity': 1 + (center - offset) /  ($(window).outerHeight()/2) });
+                $(this).css({ 'opacity': 1 - perc });
             }
         });
         
@@ -343,12 +345,14 @@ $(document).ready(function() {
 
     $(".banner-info-box").click(function(e) {
         $('#myModal').modal('toggle');
-        
         console.log(e.target.id)
         console.log( $(this).attr('id') )
         set_modal_pic($(this).attr('id') )
     })
-
+    $('#myModal').on('hidden.bs.modal', function () {
+        // do something…
+        set_modal_pic(-1 )
+    })
     $(".banner-navigator").click(function(e) {
         var parentOffset = $(this).parent().offset(); 
 
@@ -434,6 +438,11 @@ function set_modal_pic(id) {
             $(".modal-header > h1").text(modal_info[6]["header"])
             $(".modal-footer > p").text(modal_info[6]["caption"])
             break; 
+        default:
+            $(".modal-body > img").attr('src', "")
+            $(".modal-header > h1").text("")
+            $(".modal-footer > p").text("")
+
     }
 
 }
@@ -441,9 +450,9 @@ function set_modal_pic(id) {
 const modal_info = {
     1: {img: "Images/Skyview/V_01/cmb.png", header: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
     2: {img: "Images/Skyview/V_01/12.png", header: "Redshifted Quasars", caption: "At these distances, the expansion of the Universe stretches the light of the quasars, turning them from blue to red, as was the case for the galaxies towards the bottom of this banner. Beyond 13 billions of years, the Universe is filled with hydrogen that blocks the propagation of visible photons. It appears dark."},
-    3: {img: "Images/Skyview/V_01/8.5.png", header: "Quasars", caption: "They are massive black holes located at the center of certain galaxies. As they accrete surrounding gas, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint the Sloan Digital Sky Survey telescope."},
-    4: {img: "Images/Skyview/V_01/4.5.png", header: "Red Galaxies", caption: "They are massive black holes located at the center of certain galaxies. As they accrete surrounding gas, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint the Sloan Digital Sky Survey telescope."},
-    5: {img: "Images/Skyview/V_01/1.8.png", header: "The Expansion of the Universe", caption: "As the Universe expands, light gets stretched and objects appear redder. This is the case for the elliptical galaxies."},
-    6: {img: "Images/Skyview/V_01/0.1.png", header: "Countless Galaxies Organized in Filaments and Clusters", caption: "Each dot is a galaxy. All together, they form a filamentary structure. Spiral galaxies are faint and blue. Elliptical galaxies are yellowish and much brighter. We can see them farther away."},
+    3: {img: "Images/Skyview/V_01/8.5.png", header: "Quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint the Sloan Digital Sky Survey telescope. It only sees quasars."},
+    4: {img: "Images/Skyview/V_01/4.5.png", header: "Red Elliptical Galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us."},
+    5: {img: "Images/Skyview/V_01/1.8.png", header: "Elliptical Galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
+    6: {img: "Images/Skyview/V_01/0.1.png", header: "Spiral Galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue."},
 
 }
