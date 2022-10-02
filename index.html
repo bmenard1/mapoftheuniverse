@@ -98,7 +98,7 @@
             <img id = "slice-map" src = "Images/WebMap_V02/total.png"/> 
           </div>
 
-          <div style="width: 100%; position: absolute; bottom:4%; z-index: 5; padding-left: 3%; padding-right: 3%;">
+          <div style="width: 100%; position: absolute; bottom:4%; z-index: 5; padding-left: 0; padding-right: 0;">
             <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5; --bs-gutter-x: 0 rem">
               <div class="info-col col-3 col-lg-3">
                 <img src="Images/Logo/Logo3.svg" style="width: 250px"/>
@@ -106,7 +106,7 @@
               <div class="other-col col-6 col-lg-6">
               </div>
     
-              <div class="col-3 col-lg-3">
+              <div class="this-col col-3 col-lg-3">
                 <div class = "term-box">        
                   <div style="width: 100%; height: 20px; border-bottom: 0px solid rgb(255, 255, 255); text-align: center; z-index: 10;">
                     <span style="font-size: 12px; background-color: #000000; padding: 0 10px;">
@@ -124,20 +124,21 @@
                           <div class = "info-box">
                           
                             <p> 
+      
+                              <br/>
+                              <br/>
+                              <img style="width: 100%" src = "Images/3D/3D.png"/>
                               Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
                               200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
                               <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
                               — the edge of the observable Universe.
-      
-                              <br/>
-                              <br/>
-                              <img style="width: 100%" src = "Images/3D/3D_103.png"/>
-    
+                              <br>
+                              <br>
+
                               This map shows a slice of the Universe. Its thickness is about 10 degrees.
-                              <br>
-                              <br>
-                              <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%; text-align: left;">
-                                Read more
+                              <hr>
+                              <button  type="button" class="btn btn-no-outline-light read-more" style="width: 100%; text-align: right;;">
+                                Read more about the telescopes...
                               </button>
     
       
@@ -147,11 +148,7 @@
                                   Observations were conducted using a dedicated 2.5-m wide-angle optical telescope at Apache Point Observatory in New Mexico, United States. The Sloan Digital Sky Survey has been running for more than 20 years to make a map of the Universe. It has been one of the most successful surveys in the history of astronomy.
                                 </p>
                               </div>
-                              <hr/>
-                              <button type="button" class="btn btn-no-outline-light banner-modal" style="width: 100%; text-align: center;" data-bs-toggle="modal" data-bs-target="#infoModal">
-                                More Map Information
-                            </button>
-    
+
                               
                             </p>
                           </div>               
@@ -168,7 +165,6 @@
           </div>
         </div>
         <br>
-        <!--
         <div class = "row row2 d-none d-lg-block d-none d-lg-block" style = "width: 100%; text-align: left;  padding-left: 4%; padding-right: 4%;">
           <div class = "col-2">
             <div class = "map-container-info">
@@ -181,7 +177,6 @@
             </div>
           </div>
         </div>
--->
         <!--
 
         <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5;">
@@ -316,74 +311,51 @@
 
     </div>
     <div style="text-align: center;">
-      
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button id = "scroll-btn" type="button" class="btn btn-outline-light">
+      <button id = "scroll-btn" type="button" class="btn btn-outline-light">
+        <div class = "button-text">
+          Scroll to the Milky Way
+        </div>
+      </button>
+      <div class="dropdown" style="text-align: center; display: inline-block;">
+        <button class="btn btn-outline-light download-button  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false">
           <div class = "button-text">
-            Scroll to the Milky Way.
+            Download the Map
           </div>
+  
         </button>
-          <div class="dropdown" style="text-align: center;">
-            <button class="btn btn-outline-light download-button  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false">
-              <div class = "button-text">
-                Download the Map
-              </div>
-      
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2">
-              <div class = "row">
-                <div class = "col">
-                  <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
-                </div>
-                <div class = "col" style="border-left: 1px solid gray">
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
-                </div>
-              </div>
-              <li><hr class="dropdown-divider"></li>
-    
-              <div class = "row">
-                <div class = "col" >
-                  <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
-                </div>
-                <div class = "col" style="border-left: 1px solid gray">
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">2K Image</a>
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">4K Image</a>
-                  <a class="dropdown-item " href="https://www.dropbox.com/s/her0a0z2cxufmmj/2K_A.png?dl=1">Phone Image</a>
-                </div>
-              </div>
-            </ul>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2">
+          <div class = "row">
+            <p style="text-align: center; font-size: 15pt;">Slice</p>
+            <div class = "col">
+              <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
+            </div>
+            <div class = "col" >
+              <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">2K Image</a>
+              <a class="dropdown-item " href="https://www.dropbox.com/s/2ap76lfimdhgugw/4K_Original_Padded%40300x.png?dl=1">4K Image</a>
+              <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">Phone Image</a>
+            </div>
           </div>
+          <li><hr class="dropdown-divider"></li>
+
+          <div class = "row">
+            <p style="text-align: center; font-size: 15pt;">Banner</p>
+
+            <div class = "col" >
+              <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
+            </div>
+            <div class = "col" >
+              <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">2K Image</a>
+              <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4K Image</a>
+              <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">Phone Image</a>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+
       </div>
       
     </div>
-    <!--
-
-    <div class = "separator"></div>
-    <div class = "child">
-      <div class = "flavor-text">
-        You are about to take a journey spanning 13 billion years
-        <br/>
-        Click on the sidebar images to view the sky
-        <br/>
-        We start at the Milky Way
-        <br/>
-
-        Our home galaxy
-        <br/>
-        <br>
-        <button id = "scroll-btn" type="button" class="btn btn-outline-light">
-          <div class = "button-text">
-            Scroll to the Milky Way.
-          </div>
-        </button>
-      </div>
-  </div>
-
-
-    <div class = "separator"></div>
-       -->
        <div class = "separator"></div>
 
 
@@ -391,7 +363,7 @@
         <div class = " col-md-1 col-xs-1  d-none d-lg-block ">
           <div class = "banner-sidebar">
             <h1 class = "sidebar-counter"> <span id = "sidebar-lookback-time"></span> </h1>
-            <h1 class = "sidebar-counter">GYR</h1>
+            <h1 class = "sidebar-counter">Billions of Years</h1>
             <br>
             <div class = "row">
               <div class = "col-8" style="padding: 0px; float:right;">
@@ -483,65 +455,85 @@
 
         <div class="col-lg-3 col-md-4 col-xs-1 col-4 d-none d-md-block" style="position: relative;">
           <div id = "banner-info-1" class = "banner-info-box fade ">
-            <img style= "width: 100%" src = "Images/Explanations/cmb.png"/>
+            <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/cmb.png"/>
+            <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/cmb.png"/>
+
             <h1> The Cosmic Microwave Backround</h1>
+            <p class = "d-none d-lg-block">
+              This is an actual photograph of the first flash of light emitted soon after
+               the big bang, 13.7 billion years ago. This light has been stretched by 
+               the expansion of the Universe and arrives at us as radiowaves. 
+               This is the edge of the observable Universe.
+            </p>
           </div>
-<!--
-  <div id = "banner-info-2" class = "banner-info-box ">
-    <ul class="nav nav-pills mb-3" id="pills-tab_01" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link  active" id="pills-home-tab_02" data-bs-toggle="pill" data-bs-target="#pills-home_02" type="button" role="tab" aria-controls="pills-home_02" aria-selected="true">
-          Explanation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn-outline-light nav-link " id="pills-profile-tab_02" data-bs-toggle="pill" data-bs-target="#pills-profile_02" type="button" role="tab" aria-controls="pills-profile_02" aria-selected="false">
-          View the Sky
-        </button>
-      </li>
-    </ul>
 
-    <div class = "banner-info-box-content">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home_02" role="tabpanel" aria-labelledby="pills-home-tab_02">
-          <img style= "width: 100%" src = "Images/Explanations/Quasar.png"/>
+          <div id = "banner-info-2" class = "banner-info-box fade">
+            <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole.png"/>
+            <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/12.png"/>
+
+
+            <h1>Redshifted Quasars</h1>
+            <p class = "d-none d-lg-block">
+              At these distances, the expansion of the Universe is so great that the 
+              blue photons from quasars get stretched and appear redder. 
+              A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation 
+              of visible light we could observe today. This epoch is called the "dark ages".
+            </p>
+          </div>
+
+        <div id = "banner-info-3" class = "banner-info-box fade">
+          <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole blue.png"/>
+          <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/8.5.png"/>
+
+          <h1>Quasars</h1>
+          <p class = "d-none d-lg-block">
+            Quasars are massive black holes located at the center of certain galaxies. 
+            As they accrete surrounding gas and stars, they become extremely bright and 
+            can be seen across the Universe. Their light is blueish.
+          </p>
         </div>
-        <div class="tab-pane fade" id="pills-profile_02" role="tabpanel" aria-labelledby="pills-profile-tab_02">
-          <img  src = "Images/Skyview/V_01/12.png"/>
+        <div id = "banner-info-7" class = "banner-info-box fade">
+          <hr>
+          <p>
+            Beyond this distance, galaxies are harder to see. However, we can still see quasars.
+            They are much brighter and bluer.
+          </p>
         </div>
-      </div>
+        <div id = "banner-info-4" class = "banner-info-box fade">
+          <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Red Mosaic.png"/>
+          <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/4.5.png"/>
 
-      <h1>Redshifted Quasars</h1>
-      <div class = "d-none d-lg-block">
-
-      <p> At these distances, the expansion of the Universe stretches the light of the quasars, 
-        turning them from blue to red, as was the case for the galaxies towards 
-        the bottom of this banner. Beyond 13 billions of years, the Universe is filled 
-        with hydrogen that blocks the propagation of visible photons. It appears dark.</p>
+          <h1>Redshifted Elliptical Galaxies</h1>
+          <p class = "d-none d-lg-block">
+            As the Universe expands, photons gets stretched and objects appear redder. 
+            This is the case for the elliptical galaxies. At these distances, 
+            they appear red to us.As we no longer detect the fainter spiral galaxies, 
+            the filamentary structure is less visible.
+          </p>
         </div>
-    </div>
-  </div>
-  -->
-  <div id = "banner-info-3" class = "banner-info-box fade">
-    <img style= "width: 100%" src = "Images/Explanations/black hole blue.png"/>
-    <h1>Quasars</h1>
-  </div>
 
-  <div id = "banner-info-4" class = "banner-info-box fade">
-    <img style= "width: 100%" src = "Images/Explanations/Red Mosaic.png"/>
-    <h1>Red Elliptical Galaxies</h1>
-  </div>
+        <div id = "banner-info-5" class = "banner-info-box fade">
+          <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Ellipse Mosaic.png"/>
+          <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/1.8.png"/>
 
-  <div id = "banner-info-5" class = "banner-info-box fade">
-    <img style= "width: 100%" src = "Images/Explanations/Ellipse Mosaic.png"/>
-    <h1>Elliptical Galaxies            </h1>
+          <h1>Elliptical Galaxies</h1>
+          <p class = "d-none d-lg-block">
+            Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away.
+          </p>
+        </div>
+        
+        <div id = "banner-info-6" class = "banner-info-box fade">
+            <img class = "explanation_image" src = "Images/Explanations/Spiral Mosaic.png"/>
+            <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/0.1.png"/>
 
-  </div>
-  
-  <div id = "banner-info-6" class = "banner-info-box fade">
-      <img  src = "Images/Explanations/Spiral Mosaic.png"/>
-      <h1>Spiral Galaxies</h1>
-  </div>          
+            <h1>Spiral Galaxies</h1>
+            <p class = "d-none d-lg-block">
+              Each dot is a galaxy shown with its apparent color.
+              Spiral galaxies are faint and blue. Our galaxy, the Milky Way, 
+              is a blue spiral that would look like one of these if we 
+              could observe it from the outside.
+            </p>
+        </div>          
 
 
 
@@ -690,7 +682,7 @@
             <!-- Modal body -->
             <div class="modal-body" style="padding: 4%;">
               <div class = "container-fluid">
-                <img src = "Images/3D/3D_103.png" style="width: 100%"></img>
+                <img src = "Images/3D/3D.png" style="width: 100%"></img>
               </div>
             </div>
       

@@ -2,48 +2,6 @@
 $(document).ready(function() {
     console.log("HELLO")
     $('.more-info').hide();
-    /*
-    $(".slice-map-text").hover(
-        function(e){
-            //$(".map-container-info").show(200);
-            $(".map-container-info").fadeIn(200);
-            //$(".map-container-info").css('visibility', 'visible');
-            $(".map-container-info > h1").text(information[1].title)
-            switch(e.target.id) {
-                case "text_01":
-                    $(".map-container-info > h1").text(information[8].title)
-                    $(".map-container-info>img").attr('src', information[8].img)
-                    $(".map-container-info>p").text(information[8].caption)
-                    break;
-                case "text_02":
-                    $(".map-container-info > h1").text(information[7].title)
-                    $(".map-container-info>img").attr('src', information[7].img)
-                    $(".map-container-info>p").text(information[7].caption)
-
-                    break;
-                case "text_03":
-                    $(".map-container-info > h1").text(information[8].title)
-                    $(".map-container-info>img").attr('src', information[8].img)
-                    $(".map-container-info>p").text(information[6].caption)
-
-                    break;
-                case "text_04":
-                    $(".map-container-info > h1").text(information[6].title)
-                    $(".map-container-info>img").attr('src', information[6].img)
-                    $(".map-container-info>p").text(information[6].caption)
-
-                    break;
-            
-            }
-        
-            console.log("in")
-        }, function(){
-            $(".map-container-info").fadeOut(0);
-            //$(".map-container-info").css('visibility', 'hidden');
-            console.log("out")
-        }
-    )
-    */
 
     $("#hide-terms").click(function(e){
         $(".term-box-words").slideToggle( 'slow', function(){
@@ -141,35 +99,49 @@ $(document).ready(function() {
     )
 
     $(".read-more").click(function(e){
+        
         console.log("HELLO")
         $(".read-more").hide();
         $(".more-info").show();
+        /*
         $('.info-col').removeClass('col-lg-3');
         $('.info-col').addClass('col-lg-6');
         $('.other-col').addClass('col-lg-3')
         $('.other-col').removeClass('col-lg-6')
-
+        */
     })
 
     $(".read-less").click(function(e){
         $(".read-more").show();
-
+        /*
         $('.info-col').removeClass('col-lg-6');
         $('.info-col').addClass('col-lg-3');
         $('.other-col').removeClass('col-lg-3');
         $('.other-col').addClass('col-lg-6');
+        */
         $(".more-info").hide();
     })
 
     $(".info-accordion").click(function(e){
+        var myClass = $(this).attr("class");
+        console.log(myClass)
+        if(myClass.includes("collapsed")){
+            $('.other-col').removeClass('col-lg-3');
+            $('.other-col').addClass('col-lg-6');
+            $('.this-col').removeClass('col-lg-6');
+            $('.this-col').addClass('col-lg-3');
+        } else {
+            $('.other-col').removeClass('col-lg-6');
+            $('.other-col').addClass('col-lg-3');
+            $('.this-col').addClass('col-lg-6');
+            $('.this-col').removeClass('col-lg-3');
+    
+        }
+
         $(".more-info").hide();
         $(".read-more").show();
-
         $('.info-col').removeClass('col-lg-6');
         $('.info-col').addClass('col-lg-3');
-        $('.other-col').removeClass('col-lg-3');
-        $('.other-col').addClass('col-lg-6');
-
         console.log("TEST")
 
     })
@@ -391,9 +363,15 @@ const information = {
 $(document).on("click", function (event) {
     // If the target is not the container or a child of the container, then process
     // the click event for outside of the container.
-    if ($(event.target).closest(".info-box").length === 0) {
+    if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 ) {
+        console.log($(event.target).closest(".accordion-button").length)
         $('.collapse').collapse('hide')
         $(".more-info").hide();
+        $('.other-col').removeClass('col-lg-3');
+        $('.other-col').addClass('col-lg-6');
+        $('.this-col').removeClass('col-lg-6');
+        $('.this-col').addClass('col-lg-3');
+
 
       console.log("You clicked outside of the container element");
     }
@@ -449,10 +427,10 @@ function set_modal_pic(id) {
 
 const modal_info = {
     1: {img: "Images/Skyview/V_01/cmb.png", header: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
-    2: {img: "Images/Skyview/V_01/12.png", header: "Redshifted Quasars", caption: "At these distances, the expansion of the Universe stretches the light of the quasars, turning them from blue to red, as was the case for the galaxies towards the bottom of this banner. Beyond 13 billions of years, the Universe is filled with hydrogen that blocks the propagation of visible photons. It appears dark."},
-    3: {img: "Images/Skyview/V_01/8.5.png", header: "Quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint the Sloan Digital Sky Survey telescope. It only sees quasars."},
-    4: {img: "Images/Skyview/V_01/4.5.png", header: "Red Elliptical Galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us."},
+    2: {img: "Images/Skyview/V_01/12.png", header: "Redshifted Quasars", caption: "At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the 'dark ages'."},
+    3: {img: "Images/Skyview/V_01/8.5.png", header: "Quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
+    4: {img: "Images/Skyview/V_01/4.5.png", header: "Redshifted Elliptical Galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us. As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
     5: {img: "Images/Skyview/V_01/1.8.png", header: "Elliptical Galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
-    6: {img: "Images/Skyview/V_01/0.1.png", header: "Spiral Galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue."},
+    6: {img: "Images/Skyview/V_01/0.1.png", header: "Spiral Galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
 
 }
