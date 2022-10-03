@@ -887,7 +887,7 @@ strong {
 }
 .banner-info-text {
     position: absolute;
-    color: var(--grey);
+    color: white;
 
 }
 .banner-info-box:hover {

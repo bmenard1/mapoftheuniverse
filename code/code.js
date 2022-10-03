@@ -161,17 +161,17 @@ $(document).ready(function() {
 
     )
 
-    $(".banner-info-box > .term-hover").hover(function(e){
+    $(".banner-info-box >p> .term-hover").hover(function(e){
         console.log("ANOTHER oNE")
-        console.log($(this).siblings('img.explanation_image'))
-        console.log($(this).siblings('img.skyview_image'))
+        console.log($(this).parent().siblings('img.explanation_image'))
+        console.log($(this).parent().siblings('img.skyview_image'))
 
-        $(this).siblings('img.explanation_image').hide()
-        $(this).siblings('img.skyview_image').show()
+        $(this).parent().siblings('img.explanation_image').hide()
+        $(this).parent().siblings('img.skyview_image').show()
 
     }, function(e) {
-        $(this).siblings('img.explanation_image').show()
-        $(this).siblings('img.skyview_image').hide()
+        $(this).parent().siblings('img.explanation_image').show()
+        $(this).parent().siblings('img.skyview_image').hide()
 
     })
     
