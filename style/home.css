@@ -1,5 +1,5 @@
 :root {
-    --grey: #707070;
+    --grey: #8c8c8c;
     scroll-behavior: auto;
  
 }
@@ -58,7 +58,7 @@ hr {
 }
   
 .cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 14.png");
+    background-image: url("../Images/Cover\ Images/Cover Image 14 Lower Res.png");
     background-size:100% auto;
     background-size: cover;
     background-position: top center;
@@ -439,7 +439,7 @@ hr {
 }
 
 .info-box {
-    text-align: left;
+    text-align:justify;
 }
 
 .slice-info-box {
@@ -873,9 +873,14 @@ strong {
 }
 .banner-info-box {
     position: absolute;
-    color: var(--grey);
+    /*color: var(--grey);*/
+    color: white;
     outline:  solid 1px rgba(255, 255, 255, 0);
     transition: outline 0.1s linear;
+}
+.banner-info-text {
+    position: absolute;
+    color: var(--grey);
 
 }
 .banner-info-box:hover {
@@ -890,17 +895,25 @@ strong {
 }
 
 .skyview_image {
-    visibility: hidden;
     display: none;
 }
-.banner-info-box:hover .explanation_image{
+
+.term-hover:hover ~ .explanation_image{
+    background-color: red;
+border: solid white 3px;
+
+}
+.banner-info-box>.term-hover:hover ~ .explanation_image{
     visibility: hidden;
     display: none;
+    background-color: red;
 }
-.banner-info-box:hover .skyview_image{
+.banner-info-box>.term-hover:hover ~ .skyview_image{
     visibility: visible;
     display: block;
+
 }
+
 
 .banner-info-box-content {
 }
@@ -912,6 +925,8 @@ strong {
     transition: text-decoration-color 300ms;  
     text-align: left;
 }
+/*
+
 .banner-info-box:hover h1{
     color: white;
     text-decoration-color: rgb(255, 255, 255);
@@ -921,6 +936,7 @@ strong {
     border:  solid 1px white;
 
 }
+*/
 .col-lg-3 {
     flex-grow: 1;
     transition: all 400ms ease;
@@ -962,7 +978,7 @@ strong {
     background-color: black;
 }
 #banner-info-1 {
-    top: 0%;
+    top: -5%;
 }
 
 #banner-info-2 {
@@ -1092,7 +1108,6 @@ strong {
     font-weight: 800;
 }
 .download-button .button-text {
-    color: white;
 }
 .download-button img {
     width: 25px;

@@ -159,6 +159,21 @@ $(document).ready(function() {
 
     )
 
+    $(".banner-info-box > .term-hover").hover(function(e){
+        console.log("ANOTHER oNE")
+        console.log($(this).siblings('img.explanation_image'))
+        console.log($(this).siblings('img.skyview_image'))
+
+        $(this).siblings('img.explanation_image').hide()
+        $(this).siblings('img.skyview_image').show()
+
+    }, function(e) {
+        $(this).siblings('img.explanation_image').show()
+        $(this).siblings('img.skyview_image').hide()
+
+    })
+    
+
     $(".banner-map-area").hover(
         function(e){
             console.log(e.target.id)
@@ -256,7 +271,7 @@ $(document).ready(function() {
     })
     
     $("#scroll-btn").click(function() {
-        $('html, body').animate({scrollTop:$('#bottom').offset().top + window.innerHeight * 0.2 - window.innerHeight, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
+        $('html, body').animate({scrollTop:$('#bottom').offset().top + window.innerHeight * 0.2 - window.innerHeight, easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
             console.log("HEY")
             }})
 
