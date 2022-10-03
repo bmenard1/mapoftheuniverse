@@ -103,6 +103,8 @@ $(document).ready(function() {
         console.log("HELLO")
         $(".read-more").hide();
         $(".more-info").show();
+        $(".more-info-phone").show();
+
         /*
         $('.info-col').removeClass('col-lg-3');
         $('.info-col').addClass('col-lg-6');
@@ -119,7 +121,7 @@ $(document).ready(function() {
         $('.other-col').removeClass('col-lg-3');
         $('.other-col').addClass('col-lg-6');
         */
-        $(".more-info").hide();
+        $(".more-info-phone").hide();
     })
 
     $(".info-accordion").click(function(e){

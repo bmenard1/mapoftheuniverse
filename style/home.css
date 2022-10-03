@@ -530,22 +530,29 @@ p {
     font-weight: 100;
     font-size: 15pt;
 }
-
-@media only screen and (max-width: 600px) {
+@media only screen  and (max-width: 600px) {
+    .cover {
+        height: 600vw
+    }
+}
+@media only screen and (min-width: 300px) and (max-width: 600px) {
     p {
         font-size: 12pt;
     }
     .button-text {
-        font-size: 12pt;
+        font-size: 15pt;
     }
     .slice-map-text {
-        font-size: 12pt;
+        font-size: 8pt;
     }
     h1 {
         font-size: 20pt;
     }
     .cover {
-        height: 300vw
+        height: 400vw
+    }
+    #text_01 {
+        top: 95%;
     }
     .cover-logo{
         width: 70%;
