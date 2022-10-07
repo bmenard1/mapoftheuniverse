@@ -160,6 +160,31 @@ $(document).ready(function() {
         }
 
     )
+    let toggle_banner = false;
+    $(".banner-switch").click (function(e) {
+        console.log("CLICKED!")
+        if(!toggle_banner) {
+            $(".banner-section").show()
+            $(".map-section").hide()
+            $(".screen_viewer").scrollTop($(".banner-section").outerHeight())
+            toggle_banner = true;
+        } else {
+            $(".map-section").show()
+            $(".banner-section").hide()
+            toggle_banner = false
+
+        }
+    })
+    $(".banner-switch").hover(function(e){
+        $("#slice-map").attr('src', "Images/WebMap_V02/total_line.png")
+    }, function(e){
+        console.log("OFF")
+        $("#slice-map").attr('src', "Images/WebMap_V02/total.png")
+
+    })
+    $(".banner-extra").click(function(e) {
+        $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
+    })
 
     $(".banner-info-box >p> .term-hover").hover(function(e){
         console.log("ANOTHER oNE")

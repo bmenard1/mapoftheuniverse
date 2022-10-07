@@ -8,8 +8,16 @@ body {
     margin: 0px;
     background-color:black;
     color: white;
-    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif
-
+    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+.screen_viewer{
+    height: 100vh;
+    position: relative;
+    overflow:scroll;
+}
+.interior_screen {
+    height: 300vh
 }
 hr {
     border-color: var(--grey);
@@ -807,8 +815,31 @@ strong {
     border-radius: 0 !important;
     font-size: 10pt;
     color: grey;
-    
+    background-color: black;
+
 }
+.credit  a {
+    color: grey;
+    font-size: 10pt ;
+}
+.map-sidebar {
+    position: sticky;
+    top: 0%;
+    left: 100%;
+    z-index: 5;
+    align-items: right;
+    text-align: right;
+
+}
+.banner-switch {
+    font-size: large;
+    background-color: black;
+}
+.banner-switch:hover {
+    background-color: black;
+}
+
+
 .nav-pills .nav-link.active {
     background-color:black !important;
     border: 1px solid white !important;
@@ -821,15 +852,22 @@ strong {
     font-size: 10pt;
     color: grey;
     padding: 0px;
+    background-color: black;
     text-align: left;
 }
 
 .btn-outline-light:hover {
     color: white;
     border: 1px solid white;
+    background-color: black;
+
+}
+.btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active, .btn-outline-light.active, .open>.dropdown-toggle.btn-outline-light {
+    background-color: #00b3db00 !important;
 }
 .btn-outline-light:hover, .btn-outline-light:focus, .btn-outline-light:active, .btn-outline-light.active, .open>.dropdown-toggle.btn-outline-light {
     background-color: #00b3db00;
+
     border-color: #ffffff; /*set the color you want here*/
     border: 0px;
     color: white;
