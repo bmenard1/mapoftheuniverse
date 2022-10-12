@@ -105,22 +105,11 @@ $(document).ready(function() {
         $(".more-info").show();
         $(".more-info-phone").show();
 
-        /*
-        $('.info-col').removeClass('col-lg-3');
-        $('.info-col').addClass('col-lg-6');
-        $('.other-col').addClass('col-lg-3')
-        $('.other-col').removeClass('col-lg-6')
-        */
     })
 
     $(".read-less").click(function(e){
         $(".read-more").show();
-        /*
-        $('.info-col').removeClass('col-lg-6');
-        $('.info-col').addClass('col-lg-3');
-        $('.other-col').removeClass('col-lg-3');
-        $('.other-col').addClass('col-lg-6');
-        */
+
         $(".more-info-phone").hide();
     })
 
@@ -132,12 +121,26 @@ $(document).ready(function() {
             $('.other-col').addClass('col-lg-6');
             $('.this-col').removeClass('col-lg-6');
             $('.this-col').addClass('col-lg-3');
+
+            //OTHER
+            $('.this-col-2').removeClass('col-lg-6');
+            $('.this-col-2').addClass('col-lg-4');
+
+            $('.other-col-2').removeClass('col-lg-6');
+            $('.other-col-2').addClass('col-lg-8');
+
         } else {
             $('.other-col').removeClass('col-lg-6');
             $('.other-col').addClass('col-lg-3');
             $('.this-col').addClass('col-lg-6');
             $('.this-col').removeClass('col-lg-3');
     
+            //OTHER
+            $('.other-col-2').removeClass('col-lg-8');
+            $('.other-col-2').addClass('col-lg-6');
+            $('.this-col-2').removeClass('col-lg-4');
+            $('.this-col-2').addClass('col-lg-6');
+
         }
 
         $(".more-info").hide();
@@ -166,24 +169,32 @@ $(document).ready(function() {
         if(!toggle_banner) {
             $(".banner-section").show()
             $(".map-section").hide()
-            $(".screen_viewer").scrollTop($(".banner-section").outerHeight())
+            $(".cover").hide()
+            $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
+
+            //$(".screen_viewer").scrollTop($(".banner-section").outerHeight())
             toggle_banner = true;
         } else {
+            $(".cover").show()
+
             $(".map-section").show()
             $(".banner-section").hide()
+            $(window).scrollTop($(".map-section").offset().top + $(".map-section").outerHeight() - $(window).height())
+
+            
             toggle_banner = false
 
         }
     })
-    $(".banner-switch").hover(function(e){
-        $("#slice-map").attr('src', "Images/WebMap_V02/total_line.png")
+    $(".banner-switch-hover").hover(function(e){
+        $("#overlay").fadeIn("fast", function(){})
+        //$("#slice-map").attr('src', "Images/WebMap_V02/total_line.png")
     }, function(e){
         console.log("OFF")
-        $("#slice-map").attr('src', "Images/WebMap_V02/total.png")
+        $("#overlay").fadeOut("fast", function(){})
 
     })
     $(".banner-extra").click(function(e) {
-        $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
     })
 
     $(".banner-info-box >p> .term-hover").hover(function(e){
@@ -367,7 +378,7 @@ $(document).ready(function() {
         // do something…
         set_modal_pic(-1 )
     })
-    $(".banner-navigator").click(function(e) {
+    $(".banner-navigator, .edit").click(function(e) {
         var parentOffset = $(this).parent().offset(); 
 
         var posX = $(this).position().left,
@@ -411,8 +422,13 @@ $(document).on("click", function (event) {
         $(".more-info").hide();
         $('.other-col').removeClass('col-lg-3');
         $('.other-col').addClass('col-lg-6');
+
         $('.this-col').removeClass('col-lg-6');
         $('.this-col').addClass('col-lg-3');
+        $('.other-col-2').removeClass('col-lg-6');
+        $('.other-col-2').addClass('col-lg-8');
+        $('.this-col-2').removeClass('col-lg-6');
+        $('.this-col-2').addClass('col-lg-4');
 
 
       console.log("You clicked outside of the container element");
