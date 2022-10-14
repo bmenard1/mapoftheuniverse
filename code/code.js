@@ -167,19 +167,28 @@ $(document).ready(function() {
     $(".banner-switch").click (function(e) {
         console.log("CLICKED!")
         if(!toggle_banner) {
-            $(".banner-section").show()
-            $(".map-section").hide()
+            $(".map-section").fadeOut(400, function() {
+                $(".banner-section").fadeIn(800)
+
+                $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
+
+            }) 
+            
+
             $(".cover").hide()
-            $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
 
             //$(".screen_viewer").scrollTop($(".banner-section").outerHeight())
             toggle_banner = true;
         } else {
-            $(".cover").show()
+            $(".banner-section").fadeOut(400, function() {
+                $(".map-section").fadeIn(800)
+                $(".cover").show()
 
-            $(".map-section").show()
-            $(".banner-section").hide()
-            $(window).scrollTop($(".map-section").offset().top + $(".map-section").outerHeight() - $(window).height())
+                $(window).scrollTop($(".mapbox").offset().top + $(".mapbox").outerHeight() - $(window).height())
+
+            })
+
+            //$(".banner-section").hide()
 
             
             toggle_banner = false
@@ -276,6 +285,9 @@ $(document).ready(function() {
         var range = 400;
         var st = $(this).scrollTop();
         var center = st + $(window).outerHeight() * (2/4);
+
+
+
         /*
         $('.hideme').each( function(i){
             var bottom_of_object = $(this).position().top + $(this).outerHeight();
@@ -292,7 +304,12 @@ $(document).ready(function() {
             }
         });
         */
-
+        
+        var scroll_msg = $(".scroll-up-message");
+        var scrollPercent =  $(window).scrollTop() / ($(document).height() - $(window).height());
+        console.log(scrollPercent)
+        console.log("PERCENT OF WINDOW!")
+        scroll_msg.css({opacity: 1-  (1-scrollPercent) *6 })
         fade.each(function () {
             var offset = $(this).offset().top;
             var height = $(this).outerHeight();
