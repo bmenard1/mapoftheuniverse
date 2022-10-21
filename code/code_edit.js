@@ -184,7 +184,8 @@ $(document).ready(function() {
                 $(".map-section").fadeIn(800)
                 $(".cover").show()
 
-                $(window).scrollTop($(".mapbox").offset().top + $(".mapbox").outerHeight() - $(window).height())
+                //$(window).scrollTop($(".map-section").offset().top + $(".map-section").outerHeight() - $(window).height())
+                $(window).scrollTop($(".map-section").offset().top + $(".map-section").outerHeight() - $(window).height())
 
             })
 

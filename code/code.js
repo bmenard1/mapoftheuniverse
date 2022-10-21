@@ -117,29 +117,46 @@ $(document).ready(function() {
         var myClass = $(this).attr("class");
         console.log(myClass)
         if(myClass.includes("collapsed")){
+
+            $('.other-col').removeClass('col-lg-3 this-col-change');
+            $('.other-col').addClass('col-lg-6');
+            /*
+            $('.this-col').removeClass('col-lg-6');
+            $('.this-col').addClass('col-lg-3 this-col-change');
+            */
+                        /*
+
+
             $('.other-col').removeClass('col-lg-3');
             $('.other-col').addClass('col-lg-6');
             $('.this-col').removeClass('col-lg-6');
             $('.this-col').addClass('col-lg-3');
 
             //OTHER
+
             $('.this-col-2').removeClass('col-lg-6');
             $('.this-col-2').addClass('col-lg-4');
-
             $('.other-col-2').removeClass('col-lg-6');
             $('.other-col-2').addClass('col-lg-8');
+            */
 
         } else {
+
             $('.other-col').removeClass('col-lg-6');
-            $('.other-col').addClass('col-lg-3');
+            $('.other-col').addClass('col-lg-3 this-col-change');
+            /*
             $('.this-col').addClass('col-lg-6');
-            $('.this-col').removeClass('col-lg-3');
-    
+            $('.this-col').removeClass('col-lg-3 this-col-change');
+            */
+                            /*
+
             //OTHER
             $('.other-col-2').removeClass('col-lg-8');
             $('.other-col-2').addClass('col-lg-6');
+            
             $('.this-col-2').removeClass('col-lg-4');
             $('.this-col-2').addClass('col-lg-6');
+            */
 
         }
 
@@ -184,7 +201,7 @@ $(document).ready(function() {
                 $(".map-section").fadeIn(800)
                 $(".cover").show()
 
-                $(window).scrollTop($(".mapbox").offset().top + $(".mapbox").outerHeight() - $(window).height())
+                $(window).scrollTop($(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height())
 
             })
 
@@ -442,8 +459,10 @@ $(document).on("click", function (event) {
 
         $('.this-col').removeClass('col-lg-6');
         $('.this-col').addClass('col-lg-3');
+
         $('.other-col-2').removeClass('col-lg-6');
         $('.other-col-2').addClass('col-lg-8');
+
         $('.this-col-2').removeClass('col-lg-6');
         $('.this-col-2').addClass('col-lg-4');
 

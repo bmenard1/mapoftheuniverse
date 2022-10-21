@@ -8,16 +8,24 @@ body {
     margin: 0px;
     background-color:black;
     color: white;
-    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+    width: 100%;
+    font-family: "Helvetica-Neue", "Helvetica" "Roboto", sans-serif;
     overflow-x: hidden;
 }
+.counter { 
+    font-size: 25pt;
+    font-weight: 200;
+}
 .billions {
-    font-size: 10pt !important;
+    font-size: 15pt !important;
 }
 .screen_viewer{
     height: 100vh;
     position: relative;
     overflow:scroll;
+}
+.read-more {
+    padding-bottom: 2% !important;
 }
 .interior_screen {
     height: 300vh
@@ -50,7 +58,8 @@ hr {
 .hr-text {
     display: flex;
     flex-direction: row;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
+
     font-weight: 400;
     font-size: 10pt;
   }
@@ -86,6 +95,7 @@ hr {
     margin-left: 0%;
     margin-right: auto;
     left: 0%;
+    display: none;
 }
 .background{
     color: #999999;
@@ -117,6 +127,8 @@ hr {
     text-align: center;
     top:95vh;
     left: 50%;
+    transform: translate(-50%,0%);
+
 }
 .bottom-arrow img{
     width: 30px;
@@ -139,7 +151,8 @@ hr {
     display: inline-block;
     transform: translate(-50%, -50%);
 
-    font-family:  "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family:  "Helvetica Neue", Arial, Helvetica, sans-serif;*/
+
     top: 60vh;
     padding: 6%;
     background-image: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
@@ -237,14 +250,27 @@ hr {
 }
 
 .scroll-up-message {
-    position:fixed;
-    bottom: 80vh;
+    position:sticky;
+    top: 10vh;
     left: 0%;
     text-align: center;
     width: 100%;
+    height: 0px;
     z-index: 10;
     pointer-events: none
  
+}
+.RETURN {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: fit-content;
+    z-index: 10;
+    padding: 0%;
+    background-color: black;
+}
+.return-button {
+    padding: 20px !important;
 }
 .scroll-up-message img{
     animation: blink 1s infinite;
@@ -333,7 +359,7 @@ hr {
 }
 
 #text_01 {
-    bottom:3%;
+    bottom:2%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -557,6 +583,11 @@ h1 {
 .nav-item {
     font-size: medium;
 }
+
+.phone-logo{
+    width: 200px; 
+    padding-bottom: 20px
+}
 .navbar-brand {
     font-size: x-large;
 }
@@ -569,16 +600,17 @@ h1 {
     padding: 3%;
 }
 .download-card > p{
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
+
     font-size: large;
     color: rgb(215, 215, 215);
 
 }
 p {
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
     font-size: 10pt;
     line-height: normal;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
 
 }
 
@@ -596,10 +628,48 @@ p {
     .cover {
         height: 600vw
     }
+    #text_01 {
+        bottom: 1%;
+    }
+    .banner-button {
+        font-size:12pt !important;
+    }
+
+    .slice-map-text {
+        font-size: 8pt !important;
+    }
+    .credit {
+        font-size: 8pt !important;
+    }
+    .action-text {
+        margin: 10% !important;
+    }
+    .bottom-arrow{
+        top: 70vh;
+    }
+    .counter  {
+        font-size: 20pt !important;
+    }
+    #slice-map {
+        width: 95vw;
+    }
+    .cover-text h1 {
+        font-size: 15pt;
+    }
+    .phone-logo {
+        width: 150px;
+    }
+
 }
 @media only screen and (min-width: 300px) and (max-width: 600px) {
+    .map-section {
+        right: 5% !important;
+    }
+    .accordion-button-custom {
+        font-size: 12pt !important;
+    }
     p {
-        font-size: 12pt;
+        font-size: 10pt;
     }
     .button-text {
         font-size: 15pt;
@@ -614,7 +684,46 @@ p {
         height: 400vw
     }
     #text_01 {
-        top: 95%;
+        bottom: -2%;
+    }
+    #text_03 {
+        left: 15%;
+        top: 67%;
+    }
+    #map_red_01 {
+        left: 39%;
+        top: 85%;
+    }
+
+    #map_red_02 {
+        left: 31%;
+        top: 75%;
+    }
+
+    #map_angle_01 {
+        top: 28%;
+        left: 2%;
+    }
+    #map_angle_02 {
+        top: 7%;
+        left: 26%;
+    }
+
+    #map_angle_03 {
+        top: 7%;
+        left: 70%;
+    }
+
+    #map_angle_04 {
+        top: 28%;
+        left: 95%;
+    }
+
+    #text_02 {
+        top:5%;
+        left: 50%;
+    }
+    .mapbox {
     }
     .cover-logo{
         width: 70%;
@@ -625,13 +734,19 @@ p {
     .download-button {
         border-radius: 2px !important;
     }
+
+
+    .slice-map-text {
+        font-size: 12pt;
+    } 
+
 }
 @media only screen and (min-width: 600px) and (max-width: 800px) {
     p {
-        font-size: 10pt;
+        font-size: 12pt;
     }
     .slice-map-text {
-        font-size: 10pt;
+        font-size: 12pt;
     } 
    
     .cover-logo{
@@ -640,9 +755,18 @@ p {
     .download-button {
         border-radius: 10px !important;
     }
+    .btn-no-outline-light {
+        font-size: 12pt !important;
+    }
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1200px) {
+    #text_01 {
+        bottom: 1%;
+    }
+    .accordion-button-custom {
+        font-size: 15pt !important;
+    }
 
 }
 
@@ -759,7 +883,7 @@ p {
     text-decoration-thickness: 1px;
     transition: text-decoration-color 300ms;  
     margin-bottom: 0px;
-    font-size: 20pt;
+    font-size: 20pt ;
     color: white;
     padding-top: 1%;
     padding-right: 3%;
@@ -837,16 +961,18 @@ p {
 }
 
 .action-text { 
-    background-color: black;
+    /*background-color: black;*/
     display: inline-block;
     padding: 1%;
+    background: radial-gradient( rgb(0, 0, 0),rgba(0, 0, 0, 0)); 
+
 }
 
 .term-hover { 
     color:rgb(152, 152, 152);
     font-size: 10pt;
     display: inline-block;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    /*font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;*/
     font-weight: 400;
     text-decoration: underline;
     text-underline-position: from-font;
@@ -894,7 +1020,9 @@ strong {
 }
 .credit  a {
     color: grey;
-    font-size: 10pt ;
+}
+.credit {
+    font-size: 10pt;
 }
 .map-sidebar {
     position: sticky;
@@ -905,10 +1033,12 @@ strong {
     text-align: right;
 
 }
+/*
 .banner-switch {
     font-size: large;
     background-color: black;
 }
+*/
 .banner-switch:hover {
     background-color: black;
 }
@@ -1100,14 +1230,25 @@ border: solid white 3px;
 .additional:hover {
     border: 1px solid white;
 }
+
+/*
 .col-lg-3 {
     flex-grow: 1;
-    transition: all 400ms ease;
-    
+    transition: all 400ms ease; 
 }  
+*/
+.other-col {
+
+}
+.this-col-change{
+    flex-grow: 1;
+    transition: all 400ms ease; 
+    
+}
 .col-lg-6{
     flex-shrink: 1;
     transition: all 400ms ease;
+    min-width: 0 
 }
 
 .col-lg-4{
@@ -1141,7 +1282,7 @@ border: solid white 3px;
     background-color: black;
     position: absolute;
     top: 0px;
-    max-width: 30%;
+    max-width: 50%;
     right: 4%;
     text-align: right;
     font-size: 15pt;
@@ -1181,6 +1322,10 @@ border: solid white 3px;
 
 
 
+#phone-banner-1 {
+    top: 0 !important;
+
+}
 #lookback-tick-01{
     top:0%
 }
@@ -1321,14 +1466,17 @@ border: solid white 3px;
 .phone-counter {
     position: sticky;
     z-index: 5;
-    border-top: solid 1px var(--grey);
     text-align: center;
     display: inline-block;
     margin: auto;
-    padding: 10px;
+    width: 100%;
     left: 4%;
+    padding-left: 4%;
 }
 
+.creditModalText p a {
+    color: gray;
+}
 .banner-info-image-container {
     position: relative;
 }
