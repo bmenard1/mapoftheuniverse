@@ -478,7 +478,7 @@ $("#viewMap").click(function() {
 
 function set_modal_pic(id) {
     switch(id){
-        case "banner-info-1":
+        case "banner-info-1": case "phone-banner-1":
             $(".modal-body > img").attr('src', modal_info[1]["img"])
             $(".modal-header > h1").text(modal_info[1]["header"])
             $(".modal-footer > p").text(modal_info[1]["caption"])
@@ -520,11 +520,11 @@ function set_modal_pic(id) {
 }
 
 const modal_info = {
-    1: {img: "Images/Skyview/V_01/cmb.png", header: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
-    2: {img: "Images/Skyview/V_01/12.png", header: "Redshifted Quasars", caption: "At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the 'dark ages'."},
-    3: {img: "Images/Skyview/V_01/8.5.png", header: "Quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
-    4: {img: "Images/Skyview/V_01/4.5.png", header: "Redshifted Elliptical Galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us. As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
-    5: {img: "Images/Skyview/V_01/1.8.png", header: "Elliptical Galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
-    6: {img: "Images/Skyview/V_01/0.1.png", header: "Spiral Galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
+    1: {img: "Images/Skyview/V_01/cmb.png", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
+    2: {img: "Images/Skyview/V_01/12.png", header: "Redshifted Quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
+    3: {img: "Images/Skyview/V_01/8.5.png", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
+    4: {img: "Images/Skyview/V_01/4.5.png", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
+    5: {img: "Images/Skyview/V_01/1.8.png", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
+    6: {img: "Images/Skyview/V_01/0.1.png", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
 
 }
