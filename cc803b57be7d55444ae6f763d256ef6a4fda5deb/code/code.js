@@ -13,9 +13,15 @@ $(document).ready(function() {
 
     })
 
+    $(".phone-banner-box").click(function(e){
+        console.log("YES")
+        set_modal_pic(this.id)
+        $('#myModal').modal('toggle');
+
+    })
+
     $(".map-effect").hover(
         function(e){
-            console.log(e.target.id)
             //$(".map-container-info").show(200);
             //$(".map-container-info").fadeIn(500);
             if($('.map-container-info').is(":hidden")){
@@ -86,7 +92,6 @@ $(document).ready(function() {
 
             //$(".map-container-info").css('visibility', 'visible');
         
-            console.log("in")
         }, function(){
             $(".map-container-info").fadeOut(100);
 
@@ -94,13 +99,11 @@ $(document).ready(function() {
             //$(".slice-map-text").removeClass('highlighted-axis');
 
             //$(".map-container-info").css('visibility', 'hidden');
-            console.log("out")
         }
     )
 
     $(".read-more").click(function(e){
         
-        console.log("HELLO")
         $(".read-more").hide();
         $(".more-info").show();
         $(".more-info-phone").show();
@@ -164,7 +167,6 @@ $(document).ready(function() {
         $(".read-more").show();
         $('.info-col').removeClass('col-lg-6');
         $('.info-col').addClass('col-lg-3');
-        console.log("TEST")
 
     })
 
@@ -224,9 +226,6 @@ $(document).ready(function() {
     })
 
     $(".banner-info-box >p> .term-hover").hover(function(e){
-        console.log("ANOTHER oNE")
-        console.log($(this).parent().siblings('img.explanation_image'))
-        console.log($(this).parent().siblings('img.skyview_image'))
 
         $(this).parent().siblings('img.explanation_image').hide()
         $(this).parent().siblings('img.skyview_image').show()
@@ -294,7 +293,6 @@ $(document).ready(function() {
         var barPercentage = barPos/galaxyHeight
         lookback = 13.74 -  barPercentage * 13.74
         //$("#sidebar-lookback-time").html((1.0).toFixed(2))
-        console.log("YES")
         $("#sidebar-lookback-time").html((lookback).toFixed(1));
         $("#sidebar-lookback-time_2").html((lookback).toFixed(1));
         //var fade = $('.banner-info-box');
@@ -324,8 +322,6 @@ $(document).ready(function() {
         
         var scroll_msg = $(".scroll-up-message");
         var scrollPercent =  $(window).scrollTop() / ($(document).height() - $(window).height());
-        console.log(scrollPercent)
-        console.log("PERCENT OF WINDOW!")
         scroll_msg.css({opacity: 1-  (1-scrollPercent) *6 })
         fade.each(function () {
             var offset = $(this).offset().top;
@@ -376,15 +372,11 @@ $(document).ready(function() {
     });
 
     $(".banner-modal").click(function(e) {
-        console.log("HELLO")
-        console.log(e.target.id)
         set_modal_pic(e.target.id)
 
     })
 
     $(".banner-info-box-content").click(function(e) {
-        console.log("HEY")
-        console.log($(this).parent().attr("id"))
         set_modal_pic($(this).parent().parent().attr("id"))
     })
 
@@ -404,8 +396,6 @@ $(document).ready(function() {
 
     $(".banner-info-box").click(function(e) {
         $('#myModal').modal('toggle');
-        console.log(e.target.id)
-        console.log( $(this).attr('id') )
         set_modal_pic($(this).attr('id') )
     })
     $('#myModal').on('hidden.bs.modal', function () {
@@ -420,8 +410,6 @@ $(document).ready(function() {
         height = $(this).parent().outerHeight();
         var percentage = ((e.pageY - parentOffset.top)/height)
         var pixelposition = $(".banner-outline").offset().top + $('.banner-outline').outerHeight() * percentage - ($(window).outerHeight()/2)
-        console.log(percentage)
-        console.log(pixelposition)
         window.scrollTo({
             top: pixelposition,
             left: 0,

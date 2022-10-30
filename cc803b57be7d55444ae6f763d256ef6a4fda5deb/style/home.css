@@ -3,6 +3,9 @@
     scroll-behavior: auto;
  
 }
+a {
+    color: var(--grey)
+}
 
 body {
     margin: 0px;
@@ -17,7 +20,7 @@ body {
     font-weight: 200;
 }
 .billions {
-    font-size: 15pt !important;
+    font-size: 12pt !important;
 }
 .screen_viewer{
     height: 100vh;
@@ -39,6 +42,11 @@ hr {
 }
 .cover-logo {
     width: 100%;
+}
+.end-of-banner {
+    text-align: center; 
+    padding-left: 20%;
+    padding-right: 20%;
 }
 .logo {
     position: fixed;
@@ -82,7 +90,7 @@ hr {
 }
   
 .cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 14 Lower Res.png");
+    background-image: url("../Images/Cover\ Images/Cover Image 21.png");
     background-size:100% auto;
     background-size: cover;
     background-position: top center;
@@ -625,6 +633,10 @@ p {
     font-size: 15pt;
 }
 @media only screen  and (max-width: 600px) {
+    .end-of-banner {
+        padding-left: 0%;
+        padding-right: 0%;
+    }
     .cover {
         height: 600vw
     }
@@ -662,6 +674,10 @@ p {
     .scroll-up-message h1 {
         font-size: 15pt;
     }
+    .flavor-text {
+        font-size: 15pt;
+    }
+
 
 }
 @media only screen and (min-width: 300px) and (max-width: 600px) {
@@ -1019,7 +1035,6 @@ strong {
     font-size: 10pt;
     color: grey;
     background-color: black;
-
 }
 .credit  a {
     color: grey;
@@ -1281,6 +1296,36 @@ border: solid white 3px;
 .banner-info-box:hover {
     
 }
+.scientific-accurate{
+    font-size: 10pt;
+    color: var(--grey)
+    
+}
+
+.phone-banner-box{
+    position: absolute;
+    width: 45vw;
+    right: 2%;
+    background-color: black;
+    padding: 5%;
+    text-align: right;
+}
+.phone-banner-box img {
+    border: 1px solid rgb(48, 48, 48)
+}
+.download-info{
+    font-size: 8pt;
+    font-weight: 400;
+    color: var(--grey);
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.phone-banner-box h2{
+    font-weight: 100;
+    font-size: 10pt;
+    padding: 0%;
+    margin: 0px;
+}
 .banner-button {
     background-color: black;
     position: absolute;
@@ -1291,6 +1336,7 @@ border: solid white 3px;
     font-size: 15pt;
     font-weight: 200;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border: none !important;
 }
 .banner-button:hover {
     background-color: black;
