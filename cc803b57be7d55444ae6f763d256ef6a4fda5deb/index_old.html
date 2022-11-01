@@ -61,28 +61,9 @@
       </div>
       <div class = "banner-section"  style = " display: none; padding-left: 4%; padding-right: 3%;">
         <!-- Begin BANNER SECTION-->
+        <div class = "black-separator"></div>
 
 
-        <div class = "end-of-banner" >
-          <div class = "black-separator"></div>
-
-          <div class = "black-separator"></div>
-          <button class = "btn btn-outline-light banner-switch">
-            <div class = "button-text">
-              return to main map
-            </div>
-          </button>
-          <br/>
-          <br/>
-          <hr/>
-          <br/>
-
-
-          <div class = "flavor-text">
-            We cannot see anything beyond this point: the light travel time to us is greater than the age of the Universe. These regions are not causally connected to us.
-          </div>
-          
-        </div>
         <div class = "black-separator"></div>
         <div class = "black-separator"></div>
 
@@ -144,7 +125,6 @@
         
         <div class="col-lg-7 col-md-9 col-xs-1 col-12" style="position: relative;">  
           <!--
-
           
           <div class = "RETURN" style="text-align: center;">
             <button class = "btn btn-no-outline-light return-button banner-switch"> 
@@ -181,41 +161,15 @@
                 <div id = "bartwo" class = "desktop_bar two d-none d-lg-block"></div>
               </div>
               <div class = "d-md-none">
-                <div id = "banner-info-1" class = "phone-banner-box">
-                  <img src = "Images/Explanations/cmb.png" style="width:100%"/>
-                  <h2>the cosmic microwave background</h2>
-                </div>
-                <div id = "banner-info-2" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole lower res.png"/>
-                  <h2>redshifted quasars</h2>
-                </div>
-                <div id = "banner-info-3" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole blue lower res.png"/>
-                  <h2>quasars</h2>
-                </div>
-                <div id = "banner-info-4" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Red Mosaic lower res.png"/>
-                  <h2>red elliptical galaxies</h2>
-                </div>
-                <div id = "banner-info-5" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Ellipse Mosaic lower res.png"/>
-                  <h2>elliptical galaxies</h2>
-                </div>
-                <div id = "banner-info-6" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Spiral Mosaic lower res.png"/>
-                  <h2>spiral galaxies</h2>
-                </div>
-
-
-                <!--
-
+                <button id = "phone-banner-1" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
+                  the cosmic microwave backround
+                </button>
                 <button id = "banner-info-2" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
                   redshifted quasars
                 </button>
-                <div id = "banner-info-3" class = "phone-banner-box">
-                  <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole blue lower res.png"/>
-                  <h2>quasars </h2>
-                </div>
+                <button id = "banner-info-3" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
+                  quasars
+                </button>
                 <button id = "banner-info-4" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
                   red elliptical galaxies
                 </button>
@@ -225,7 +179,6 @@
                 <button id = "banner-info-6" type="button" class="btn btn-outline-light banner-button banner-modal" data-bs-toggle="modal" data-bs-target="#myModal">
                   spiral galaxies
                 </button>
-                -->
 
               </div>
               <img src="Images/Banner/test_82.png" width="100%"/>
@@ -242,7 +195,7 @@
             <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/cmb.png"/>
             <img class = "skyview_image" style= "width: 100%; aspect-ratio: 4 / 3; object-fit:cover;" src = "Images/Skyview/V_01/cmb.png"/>
 
-            <h1> the cosmic microwave background</h1>
+            <h1> the cosmic microwave backround</h1>
             <p class = "">
               This is an actual photograph of the first flash of light emitted soon after
                the big bang, 13.7 billion years ago. This light has been stretched by 
@@ -375,20 +328,10 @@
         <img id = "slice-map" src = "Images/WebMap_V02/total.png"/> 
       </div>
 
-      <div style="width: 100%; position: absolute; bottom:12%; z-index: 5; padding-left: 0; padding-right: 0;">
+      <div style="width: 100%; position: absolute; bottom:15%; z-index: 5; padding-left: 0; padding-right: 0;">
         <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5; --bs-gutter-x: 0 rem; padding-left: 2%; padding-right: 2%;">
           <div class="info-col col-3 col-lg-3">
             <img src="Images/Logo/Logo3.svg" style="width: 300px"/>
-            <div style="width: 300px; height: 15px; border-bottom: 1px solid rgb(129, 129, 129); text-align: center">
-              <span style="font-size: 15px; background-color: #000000; padding: 0 10px; color:rgb(129, 129, 129);">
-                real data - scientifically accurate
-              </span>
-            </div>
-            <!--
-
-            <div class = "scientific-accurate">real data | scientifically accurate</div>
-                        -->
-
           </div>
 
           <div class="other-col col-6 col-lg-6">
@@ -411,7 +354,6 @@
                     <div class = "accordion-button-custom"> description</div>
                   </button>  
                 </h2>
-
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample3">
                   <div class="accordion-body">
                     <div class = "info-box">
@@ -470,6 +412,7 @@
                   </div>
                 </div>
                 <li><hr class="dropdown-divider"></li>
+        
                 <div class = "row">
                   <p style="text-align: center; font-size: 15pt;">Banner</p>
         
@@ -477,15 +420,6 @@
                     <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
                     <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">2k Image</a>
                     <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4k Image</a>
-                  </div>
-                </div>
-                <li><hr class="dropdown-divider"></li>
-                <div class = "row">
-                  <div class = "col" >
-                    <div class = "download-info">
-                      for non-commercial use only. <br/>
-                      Otherwise, contact us at <a href = "mailto:nikitash98@gmail.com" target="_blank">nikitash98@gmail.com</a>.
-                    </div>
                   </div>
                 </div>
               </ul>
@@ -539,6 +473,11 @@
 
         <div class = "row">
           <div class = "col">
+            <div class = "accordion-button-custom banner-switch-hover banner-extra banner-switch" style="text-align: center; border: 1px solid white;" >
+              explore the map
+            </div>
+          </div>
+          <div class = "col">
             <div class="dropup " style="text-align: center; display: inline-block; width: 100%;">
               <button class="btn btn-no-outline-light download-button  dropdown-toggle popup" style="background-color: black !important; width: 100%;" type="button" id="dropdownMenuButton2" data-bs-display="static"  data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true"  >
                 <div class = "accordion-button-custom" style="text-align: center; border: 1px solid white;">
@@ -565,28 +504,12 @@
                     <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4k Image</a>
                   </div>
                 </div>
-                <li><hr class="dropdown-divider"></li>
-                <div class = "row">
-                  <div class = "col" >
-                    <div class = "download-info">
-                      for non-commercial use only. <br/>
-                      Otherwise, contact us at <a href = "mailto:nikitash98@gmail.com" target="_blank">nikitash98@gmail.com</a>
-                    </div>
-                  </div>
-                </div>
               </ul>
             </div>
           </div>
-          <div class = "col">
-            <div class = "accordion-button-custom banner-switch-hover banner-extra banner-switch" style="text-align: center; border: 1px solid white;" >
-              explore the map
-            </div>
-          </div>
-          
         </div>
 
         <!--
-
         <button  type="button" class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#threeModal">
           click to view the 3D slice
         </button>
@@ -624,8 +547,8 @@
           <hr>
           <div class = "row">
             <div class = "col-sm">
-              Visualization by <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a> | 
-              <a data-bs-toggle="modal" data-bs-target="#creditModal" href="#creditModal">View Credits</a>
+              Visualization by <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a><br/>
+              <a data-bs-toggle="modal" data-bs-target="#creditModal" href="#creditModal">Credits</a>
             </div>
             <div class = "col-sm" style="text-align: right;">
               © Brice Menard & Nikita Shtarkman. All Rights Reserved
@@ -642,7 +565,7 @@
               © Brice Menard & Nikita Shtarkman. All Rights Reserved
               <br/>
 
-                Visualization by <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a> | 
+                Visualization by <a href = "https://menard.pha.jhu.edu/">B. Ménard</a> & <a href = "https://nikitashtarkman.com/index.html">N. Shtarkman</a><br/>
                 <a data-bs-toggle="modal" data-bs-target="#creditModal" href="#creditModal">view credits</a>
               
             </div>
