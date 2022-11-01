@@ -21,6 +21,7 @@ body {
 }
 .billions {
     font-size: 12pt !important;
+    font-weight: 200 !important;
 }
 .screen_viewer{
     height: 100vh;
@@ -45,8 +46,8 @@ hr {
 }
 .end-of-banner {
     text-align: center; 
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .logo {
     position: fixed;
@@ -666,7 +667,9 @@ p {
         width: 95vw;
     }
     .cover-text h1 {
-        font-size: 15pt;
+        font-size: 12pt;
+        padding-left: 10%;
+        padding-right: 10%;
     }
     .phone-logo {
         width: 150px;
@@ -676,6 +679,10 @@ p {
     }
     .flavor-text {
         font-size: 15pt;
+    }
+
+    .banner-edges {
+        font-size: 12pt !important;
     }
 
 
@@ -803,6 +810,14 @@ p {
     color: gray;
     position: absolute;
     top: 0%;
+}
+.banner-edges {
+    font-size: 15pt;
+    font-weight: 100;
+    width: 100%;
+    color: gray;
+    text-align: left;
+
 }
 
 
@@ -1281,7 +1296,7 @@ border: solid white 3px;
 
 }
 
-.banner-info-box img{
+.banner-info-box .explanation_image{
     position: relative;
     width: 100%;
     /*
@@ -1305,10 +1320,11 @@ border: solid white 3px;
 .phone-banner-box{
     position: absolute;
     width: 45vw;
-    right: 2%;
+    right: 0%;
     background-color: black;
     padding: 5%;
     text-align: right;
+    cursor: pointer;
 }
 .phone-banner-box img {
     border: 1px solid rgb(48, 48, 48)
@@ -1326,6 +1342,7 @@ border: solid white 3px;
     padding: 0%;
     margin: 0px;
 }
+
 .banner-button {
     background-color: black;
     position: absolute;
@@ -1338,6 +1355,7 @@ border: solid white 3px;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     border: none !important;
 }
+
 .banner-button:hover {
     background-color: black;
 }
