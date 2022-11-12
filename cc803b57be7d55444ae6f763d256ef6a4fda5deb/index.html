@@ -10,8 +10,19 @@
     
     <link rel="stylesheet" href="style/home.css">
     <title> The Map of the Universe</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZFQVBFNYD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4ZFQVBFNYD');
+    </script>
+
   </head>
   <body>
+
     <div class = "fluid-container">
       <div class = "cover" style="position: relative">
         <div class = "full-cover" style="height: 100vh; width: 100vw;">
@@ -68,7 +79,10 @@
           <div class = "black-separator"></div>
 
           <button class = "btn btn-no-outline-light banner-switch" style="padding-bottom: 2%;">
+
             <div class = "button-text">
+              <span>             <img height="15px" src = "Images/Icons/leftthin.svg"/>
+              </span>
               return to the map
             </div>
           </button>
@@ -83,8 +97,8 @@
         <div class=" col-md-2 col-xs-2  d-none d-lg-block ">
         </div>
         <div class="col-lg-7 col-md-9 col-xs-1 col-12">
-          <div class = "banner-edges" class = "position: relative" style = "padding-left: 0%; padding-right: 0%; padding-bottom: 10%;">
-            We cannot see anything beyond this point: the light travel time to us is greater than the age of the Universe. These regions are not causally connected to us.
+          <div class = "banner-edges" class = "position: relative" style = "padding-left: 2%; padding-right: 0%; padding-bottom: 10%; text-align: center;">
+            We cannot see anything beyond this point: the light travel time to us is greater than the age of the Universe.
           </div>
 
         </div>
@@ -189,9 +203,7 @@
               </div>
               <div class = "d-md-none">
                 <div id = "phone-banner-1" class = "phone-banner-box">
-                  <img style= "width: 100%" src = "Images/Explanations/cmbthin.png"/>
-
-                  <h2>the cosmic microwave background</h2>
+                  <h2>the edge of the observable Universe</h2>
                 </div>
                 <div id = "banner-info-2" class = "phone-banner-box">
                   <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/black hole lower res.png"/>
@@ -213,8 +225,6 @@
                   <img class = "explanation_image" style= "width: 100%" src = "Images/Explanations/Spiral Mosaic lower res.png"/>
                   <h2>spiral galaxies</h2>
                 </div>
-
-
               
 
               </div>
@@ -231,12 +241,12 @@
           <div id = "phone-banner-1" class = "banner-info-box ">
             <img style= "width: 100%" src = "Images/Explanations/cmbthin.png"/>
 
-            <h1> the cosmic microwave background</h1>
-            <p class = "">
+            <h1> the edge of the observable Universe</h1>
+            <p class = "" style="text-align: left;">
               This is an actual photograph of the first flash of light emitted soon after
                the big bang, 13.7 billion years ago. This light has been stretched by 
                the expansion of the Universe and arrives at us as radiowaves. 
-              This is the edge of the observable Universe.
+              It is called the Cosmic Microwave Background.
               <span class = "term-hover">See the sky view.</span>
 
             </p>
@@ -368,11 +378,15 @@
         <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: left; z-index: 5; --bs-gutter-x: 0 rem; padding-left: 2%; padding-right: 2%;">
           <div class="info-col col-3 col-lg-3">
             <img src="Images/Logo/Logo3.svg" style="width: 300px"/>
+            <!--
+
+            
             <div style="width: 300px; height: 15px; border-bottom: 1px solid rgb(129, 129, 129); text-align: center">
               <span style="font-size: 15px; background-color: #000000; padding: 0 10px; color:rgb(129, 129, 129);">
                 real data - scientifically accurate
               </span>
             </div>
+            -->
             <!--
 
             <div class = "scientific-accurate">real data | scientifically accurate</div>
@@ -396,7 +410,7 @@
             <div class="accordion" id="accordionExample3">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                  <button class=" accordion-button accordion-button-custom collapsed info-accordion" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  <button class=" accordion-button accordion-button-custom desc-custom collapsed info-accordion" dir="rtl" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <div class = "accordion-button-custom"> description</div>
                   </button>  
                 </h2>
@@ -404,12 +418,160 @@
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample3">
                   <div class="accordion-body">
                     <div class = "info-box">
-                      <p> 
-                        <br/>
-                        <br/>
+
+                      <div class="accordion" id="small_accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingOne">
+                            <button class="accordion-button small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseOne" aria-expanded="true" aria-controls="small_collapseOne">
+                              What is this map?
+                            </button>
+                          </h2>
+                          <div id="small_collapseOne" class="accordion-collapse collapse show" aria-labelledby="small_headingOne" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              
+                              <p>
+                                
+
+                                This map shows a slice of our Universe. It was created from astronomical data taken night after night over a period of 15 years using a telescope in New Mexico, USA. We are located at the bottom. At the top is the actual edge of the observable Universe. In between, we see about 200,000 galaxies.
+                                <br/>
+                                <img style="width: 100%" src = "Images/3D/3D_fixed_other.png"/>
+
+                                <br/>
+                                The full map is actually a sphere. This visualization shows a thin slice of the Universe. Its thickness is about 10 degrees. More astronomical data is available but it is not possible to show all of it at once. The map would be completely covered with dots.
+                                <!--
+
+                                Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
+                                200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
+                                <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
+                                — the edge of the observable Universe.
+                                <br>
+                                <br>
+        
+                                This map shows a slice of the Universe. Its thickness is about 10 degrees.     
+                                
+                                                                -->
+
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingTwo">
+                            <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseTwo" aria-expanded="false" aria-controls="small_collapseTwo">
+                              What are these colorful dots?
+                            </button>
+                          </h2>
+                          <div id="small_collapseTwo" class="accordion-collapse collapse" aria-labelledby="small_headingTwo" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              <p>
+                              <img style="width: 100%" src = "Images/Explanations/Galaxy is Point 2.png">
+                              Each tiny dot is a galaxy. About 200,000 are shown with their actual position and color. Each galaxy contains billions of stars and planets. We are located at the bottom. Our galaxy, the Milky Way is just a dot. Looking up, we see that space is filled with galaxies forming a global filamentary structure. Far away from us (higher up in the map), the filaments become harder to see.
+                            </p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingThree">
+                            <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseThree" aria-expanded="false" aria-controls="small_collapseThree">
+                              Why are the colors changing?
+                            </button>
+                          </h2>
+                          <div id="small_collapseThree" class="accordion-collapse collapse" aria-labelledby="small_headingThree" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              <p>
+                              The Universe expands with time. This expansion stretches the wavelength of light. The farther an object, the redder it will appear to us.
+                              
+                              <br>
+                              <br>
+                              <img style="width: 100%" src = "Images/Description Images/Redshift@300x.png">
+                              <br>
+                              <br>
+                              The map shows two blue-to-red redshift sequences: one for galaxies (lower half) and one for quasars (upper half).
+                            </p>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingFour">
+                            <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseFour" aria-expanded="false" aria-controls="small_collapseFour">
+                              Why is there an edge?
+                            </button>
+                          </h2>
+                          <div id="small_collapseFour" class="accordion-collapse collapse" aria-labelledby="small_headingFour" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              <p>
+
+                              The top of the map reveals the first flash of radiation emitted soon after the Big Bang. This happened 13.7 billion years ago. Today we observe this radiation not as visible light but through radio waves. It is called the Cosmic Microwave Background. It is the edge of the observable Universe. Any light emitted beyond that has not yet reached us as its travel time is longer than the age of the Universe.
+                              <br>
+                              <br>
+                              <img style="width: 100%" src = "Images/Description Images/cmb_illust.png">
+
+                            </p>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingFive">
+                            <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseFive" aria-expanded="false" aria-controls="small_collapseFive">
+                              Why are we at the center?
+                            </button>
+                          </h2>
+                          <div id="small_collapseFive" class="accordion-collapse collapse" aria-labelledby="small_headingFive" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              <p>
+
+                              Our galaxy, the Milky Way, is not located at any special position in space. The expansion of the Universe and the redshift effect makes all other galaxies appear redder as we look farther. This map would look similarly if we were looking at the Universe from another galaxy.
+                            </p>
+
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="small_headingSix">
+                            <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#small_collapseSix" aria-expanded="false" aria-controls="small_collapseSix">
+                              Which telescope was used?
+                            </button>
+                          </h2>
+                          <div id="small_collapseSix" class="accordion-collapse collapse" aria-labelledby="small_headingSix" data-bs-parent="#small_accordionExample">
+                            <div class="accordion-body">
+                              <p>
+
+                              Observations were conducted using a dedicated 2.5-m wide-angle optical telescope at Apache Point Observatory in New Mexico, United States.
+                              <br/>
+                              <br>
+                              <img style="width: 100%" src="Images/Description Images/Sloan Telescope.jpeg">
+                              <br>
+                              <br>
+
+                              This project is called the Sloan Digital Sky Survey. It has been running for more than 20 years. It has observed millions of galaxies. A fraction of all the available data has been used to create this map.
+
+                              <br/>
+                              The Cosmic Microwave Background was observed using the Planck space telescope by the European Space Agency.
+                            </p>
+
+                            </div>
+                          </div>
+                        </div>
+                
+
+                      </div>
+                      
+                     
+                        <!--
 
                         
-                        <img style="width: 100%" src = "Images/3D/backline.png"/>
+                        <img style="width: 100%" src = "Images/3D/3D_Fixed.png"/>
                         Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
                         200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
                         <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
@@ -431,8 +593,8 @@
                           </p>
                         </div>
       
-                        
-                      </p>
+                                                -->
+
                     </div>               
                     
           
@@ -449,14 +611,115 @@
                   download the map
                 </div>
               </button>
+
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2" style="width: 100%">
                 <div class = "row">
                   <p style="text-align: center; font-size: 15pt;">Slice</p>
                   <div class = "col" >
                     <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/2ap76lfimdhgugw/4K_Original_Padded%40300x.png?dl=1">4k</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <li><hr class="dropdown-divider"></li>
+
+                <div class = "row">
+                  <p style="text-align: center; font-size: 15pt;">Educational Poster</p>
+
+                  <div class = "col" >
+                    <img src="Images/Deliverables/Thumbnail/Near_Final@300x.png" style="width: 100%"/>
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/0nf5wcce0wonimf/Near_Final%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/0nf5wcce0wonimf/Near_Final%40300x.png?dl=1">4k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.redbubble.com/people/scientific-viz/shop" target="_blank">order online</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <li><hr class="dropdown-divider"></li>
+                <div class = "row">
+                  <p style="text-align: center; font-size: 15pt;">Banner</p>
+        
+                  <div class = "col" >
+                    <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4k</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <li><hr class="dropdown-divider"></li>
+                <div class = "row">
+                  <div class = "col" >
+                    <div class = "download-info">
+                      for non-commercial use only. <br/>
+                      Otherwise, contact us at <a href = "mailto:nikitash98@gmail.com" target="_blank">nikitash98@gmail.com</a>.
+                    </div>
+                  </div>
+                </div>
+              </ul>
+
+              <!--
+
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-center" aria-labelledby="dropdownMenuButton2" style="width: 100%">
+                <div class = "row">
+                  <p style="text-align: center; font-size: 15pt;">Slice</p>
+                  <div class = "col" >
+                    <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
+                    <div class = "row drop">
+                      <div class = "col-6">
+                        2k Image
+                      </div>
+                      <div class = "col-6">
+                        <div class = "row">
+                          <div class = "col-6" style="padding:0%"><a class = "dropdown-item" href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">png</a></div>
+                          <div class = "col-6" style="padding:0%"><a class = "dropdown-item" href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">jpg</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "row drop">
+                      <div class = "col-6">
+                        4k Image
+                      </div>
+                      <div class = "col-6">
+                        <div class = "row">
+                          <div class = "col-6"><a  href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">PNG</a></div>
+                          <div class = "col-6"><a  href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">JPG</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "row drop">
+                      <div class = "col-6">
+                        Poster
+                      </div>
+                      <div class = "col-6">
+                        <div class = "row">
+                          <div class = "col-6"><a  href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">PNG</a></div>
+                          <div class = "col-6"><a  href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">JPG</a></div>
+                        </div>
+                      </div>
+                    </div>
+
                     <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">2k Image</a>
                     <a class="dropdown-item " href="https://www.dropbox.com/s/2ap76lfimdhgugw/4K_Original_Padded%40300x.png?dl=1">4k Image</a>
                     <a class="dropdown-item " href="https://www.dropbox.com/s/f8xc5a7eqg6r0le/Educational%20Poster.png?dl=1">Educational Poster</a>
+
 
                   </div>
                 </div>
@@ -481,6 +744,8 @@
                   </div>
                 </div>
               </ul>
+                            -->
+
             </div>
 
 
@@ -498,7 +763,157 @@
         <br/>
         <img class = "phone-logo" src="Images/Logo/Logo3.svg"/>
         <p> 
+          
+          <div class="accordion" id="phone_accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingOne">
+                <button class="accordion-button small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseOne" aria-expanded="true" aria-controls="phone_collapseOne">
+                  What is this map?
+                </button>
+              </h2>
+              <div id="phone_collapseOne" class="accordion-collapse collapse show" aria-labelledby="phone_headingOne" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+
+                    This map shows a slice of our Universe. It was created from astronomical data taken night after night over a period of 15 years using a telescope in New Mexico, USA. We are located at the bottom. At the top is the actual edge of the observable Universe. In between, we see about 200,000 galaxies.
+                    <br/>
+                    <img style="width: 100%" src = "Images/3D/3D_fixed_other.png"/>
+
+                    <br/>
+                    The full map is actually a sphere. This visualization shows a thin slice of the Universe. Its thickness is about 10 degrees. More astronomical data is available but it is not possible to show all of it at once. The map would be completely covered with dots.
+                    <!--
+
+                    Each dot is a <span id = "area_05" class = "map-effect term-hover">galaxy</span> or a <span id = "area_03" class = "map-effect term-hover">quasar</span>. About 
+                    200,000 are shown with their actual position and color, from the Milky Way, all the way to the 
+                    <span id = "area_04" class = "map-effect term-hover">Cosmic Microwave Background</span>
+                    — the edge of the observable Universe.
+                    <br>
+                    <br>
+
+                    This map shows a slice of the Universe. Its thickness is about 10 degrees.     
                     
+                                                    -->
+
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingTwo">
+                <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseTwo" aria-expanded="false" aria-controls="phone_collapseTwo">
+                  What are these colorful dots?
+                </button>
+              </h2>
+              <div id="phone_collapseTwo" class="accordion-collapse collapse" aria-labelledby="phone_headingTwo" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+                    Each tiny dot is a galaxy. About 200,000 are shown with their actual position and color. Each galaxy contains billions of stars and planets. We are located at the bottom. Our galaxy, the Milky Way is just a dot. Looking up, we see that space is filled with galaxies forming a global filamentary structure. Far away from us (higher up in the map), the filaments become harder to see.
+                  </p>
+
+                  <img style="width: 100%" src = "Images/Explanations/Galaxy is Point 2.png">
+
+                  
+
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingThree">
+                <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseThree" aria-expanded="false" aria-controls="phone_collapseThree">
+                  Why are the colors changing?
+                </button>
+              </h2>
+              <div id="phone_collapseThree" class="accordion-collapse collapse" aria-labelledby="phone_headingThree" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+                  The Universe expands with time. This expansion stretches the wavelength of light. The farther an object, the redder it will appear to us.
+                  
+                  <br>
+                  <br>
+                  <img style="width: 100%" src = "Images/Description Images/Redshift@300x.png">
+                  <br>
+                  <br>
+                  The map shows two blue-to-red redshift sequences: one for galaxies (lower half) and one for quasars (upper half).
+                </p>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingFour">
+                <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseFour" aria-expanded="false" aria-controls="phone_collapseFour">
+                  Why is there an edge?
+                </button>
+              </h2>
+              <div id="phone_collapseFour" class="accordion-collapse collapse" aria-labelledby="phone_headingFour" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+
+                  The top of the map reveals the first flash of radiation emitted soon after the Big Bang. This happened 13.7 billion years ago. Today we observe this radiation not as visible light but through radio waves. It is called the Cosmic Microwave Background. It is the edge of the observable Universe. Any light emitted beyond that has not yet reached us as its travel time is longer than the age of the Universe.
+                  <br>
+                  <br>
+                  <img style="width: 100%" src = "Images/Description Images/cmb_illust.png">
+
+                </p>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingFive">
+                <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseFive" aria-expanded="false" aria-controls="phone_collapseFive">
+                  Why are we at the center?
+                </button>
+              </h2>
+              <div id="phone_collapseFive" class="accordion-collapse collapse" aria-labelledby="phone_headingFive" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+
+                  Our galaxy, the Milky Way, is not located at any special position in space. The expansion of the Universe and the redshift effect makes all other galaxies appear redder as we look farther. This map would look similarly if we were looking at the Universe from another galaxy.
+                </p>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="phone_headingSix">
+                <button class="accordion-button collapsed small-accordion" type="button" data-bs-toggle="collapse" data-bs-target="#phone_collapseSix" aria-expanded="false" aria-controls="phone_collapseSix">
+                  Which telescope was used?
+                </button>
+              </h2>
+              <div id="phone_collapseSix" class="accordion-collapse collapse" aria-labelledby="phone_headingSix" data-bs-parent="#phone_accordionExample">
+                <div class="accordion-body">
+                  <p>
+
+                  Observations were conducted using a dedicated 2.5-m wide-angle optical telescope at Apache Point Observatory in New Mexico, United States.
+                  <br/>
+                  <br>
+                  <img style="width: 100%" src="Images/Description Images/Sloan Telescope.jpeg">
+                  <br>
+                  <br>
+
+                  This project is called the Sloan Digital Sky Survey. It has been running for more than 20 years. It has observed millions of galaxies. A fraction of all the available data has been used to create this map.
+
+                  <br/>
+                  The Cosmic Microwave Background was observed using the Planck space telescope by the European Space Agency.
+                </p>
+
+                </div>
+              </div>
+            </div>
+    
+
+          </div>
+          <!--
+
           Each dot is a galaxy or a quasar. About 
           200,000 are shown with their actual position and color, from the Milky Way, to the the Near Galaxies, the the Luminous Red Galaxies, all the way to the 
           Cosmic Microwave Background — the edge of the observable Universe.
@@ -507,7 +922,11 @@
           <br/>
     
           This map shows a slice of the Universe. Its thickness is about 10 degrees.
+                    -->
+
         </p>
+        <!--
+
         <button type="button" class="btn btn-no-outline-light read-more" style="width: 100%">
           learn more about the telescopes...
         </button>
@@ -528,6 +947,8 @@
           <br/>
           <br/>
         </div>
+                -->
+
 
         <div class = "row">
           <div class = "col">
@@ -542,21 +963,51 @@
                   <p style="text-align: center; font-size: 15pt;">Slice</p>
                   <div class = "col" >
                     <img  src="Images/Deliverables/Thumbnail/2K.png" style="width: 100%"/>
-                    <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">2k Image</a>
-                    <a class="dropdown-item " href="https://www.dropbox.com/s/2ap76lfimdhgugw/4K_Original_Padded%40300x.png?dl=1">4k Image</a>
-                    <a class="dropdown-item " href="https://www.dropbox.com/s/f8xc5a7eqg6r0le/Educational%20Poster.png?dl=1">Educational Poster</a>
-
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/w8kbbvbkrlubh26/2K_Original_Padded%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/2ap76lfimdhgugw/4K_Original_Padded%40300x.png?dl=1">4k</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <li><hr class="dropdown-divider"></li>
-        
+
+                <div class = "row">
+                  <p style="text-align: center; font-size: 15pt;">Educational Poster</p>
+
+                  <div class = "col" >
+                    <img src="Images/Deliverables/Thumbnail/Near_Final@300x.png" style="width: 100%"/>
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/0nf5wcce0wonimf/Near_Final%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/0nf5wcce0wonimf/Near_Final%40300x.png?dl=1">4k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.redbubble.com/people/scientific-viz/shop" target="_blank">order online</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <li><hr class="dropdown-divider"></li>
                 <div class = "row">
                   <p style="text-align: center; font-size: 15pt;">Banner</p>
         
                   <div class = "col" >
                     <img src="Images/Deliverables/Thumbnail/Banner@300x.png" style="width: 100%"/>
-                    <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">2k Image</a>
-                    <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4k Image</a>
+                    <div class = "row">
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/5wbn796a6ouw7tv/2K%20Banner%40300x.png?dl=1">2k</a>
+                      </div>
+                      <div class = "col">
+                        <a class="dropdown-item " href="https://www.dropbox.com/s/44ehjzimvlxv81i/4K%20Banner%40300x.png?dl=1">4k</a>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
                 <li><hr class="dropdown-divider"></li>
@@ -564,7 +1015,7 @@
                   <div class = "col" >
                     <div class = "download-info">
                       for non-commercial use only. <br/>
-                      Otherwise, contact us at <a href = "mailto:nikitash98@gmail.com" target="_blank">nikitash98@gmail.com</a>
+                      Otherwise, contact us at <a href = "mailto:nikitash98@gmail.com" target="_blank">nikitash98@gmail.com</a>.
                     </div>
                   </div>
                 </div>
@@ -594,7 +1045,6 @@
 
 
     </div>
-
     <div class = "sep" style="padding-top: 5%"> </div>
       <div class="row align-items-end d-none d-lg-flex"  style = "width: 100%; text-align: center; z-index: 5; position: absolute; bottom: 0%; padding-left: 0%; padding-right: 0%;">
         <div class="other-col-2 col-8 col-lg-8">

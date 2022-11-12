@@ -116,6 +116,14 @@ $(document).ready(function() {
         $(".more-info-phone").hide();
     })
 
+    $(".bottom-arrow").click(function(e){
+        console.log("YES")
+        $('html, body').animate({scrollTop:$(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height(), easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
+            console.log("HEY")
+            }})
+
+    })
+
     $(".info-accordion").click(function(e){
         var myClass = $(this).attr("class");
         console.log(myClass)
