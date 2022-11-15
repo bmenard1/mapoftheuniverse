@@ -12,6 +12,10 @@ $(document).ready(function() {
          });
 
     })
+    $('.mapbox').bind('contextmenu',function() { return false; });
+    $('img').on('dragstart', function(event) { event.preventDefault(); });
+
+    $()
 
     $(".phone-banner-box").click(function(e){
         console.log("YES")

@@ -652,6 +652,12 @@ p {
     font-size: 15pt;
 }
 @media only screen  and (max-width: 600px) {
+    .dropdown-menu-center {
+        left: 0%;
+        transform: translate(0px, 0px);
+        left: 105% !important;
+        width: 70vw;
+    }
     .end-of-banner {
         padding-left: 0%;
         padding-right: 0%;
@@ -786,6 +792,13 @@ p {
 
 }
 @media only screen and (min-width: 600px) and (max-width: 800px) {
+    .dropdown-menu-center {
+        left: 0%;
+        transform: translate(0px, 0px);
+        left: 105% !important;
+        width: 90vw !important;
+
+    }
     p {
         font-size: 12pt;
     }
@@ -804,10 +817,17 @@ p {
     }
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1200px) {
+@media only screen and (min-width: 800px) and (max-width: 1000px) {
     #text_01 {
         bottom: 1%;
     }
+    .dropdown-menu-center {
+        transform: translate(0px, 0px);
+        left:  105% !important;
+        width: 90vw !important;
+       
+    }
+
     .accordion-button-custom {
         font-size: 15pt !important;
     }
@@ -1358,11 +1378,14 @@ border: solid white 3px;
     border: 1px solid rgb(48, 48, 48)
 }
 .download-info{
-    font-size: 8pt;
+    font-size: 8pt !important;
     font-weight: 400;
     color: var(--grey);
     padding-left: 4%;
     padding-right: 4%;
+}
+.download-info a {
+    font-size: 8pt !important;
 }
 .phone-banner-box h2{
     font-weight: 100;
@@ -1502,6 +1525,31 @@ border: solid white 3px;
     font-size: 15pt;
     font-weight: 100;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+    width: 45vw;
+    text-align: center;
+
+}
+
+.dropdown-menu a {
+    font-size: 12pt;
+    color: var(--grey);
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    text-underline-position: from-font;
+    text-decoration-thickness: 1px;
+
+}
+.dropdown-menu a:hover {
+    color: white;
+    text-decoration-color: rgb(255, 255, 255);
+
+}
+
+.dropdown-menu .col {
+    text-align: center ;
+}
+
+.dropdown-menu h1 {
+    font-size: 15pt;
 }
 .dropdown-item {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -1517,7 +1565,9 @@ border: solid white 3px;
 }
 .dropdown-menu img {
     width: 80%;
-    padding: 5%
+    margin-left: auto;
+    margin-right: auto;
+  
 }
 
 .download-button {
@@ -1536,11 +1586,10 @@ border: solid white 3px;
 }
 .dropdown-menu-center {
     right: auto !important;
-    left: 50% !important;
+    /*left: 50% !important;*/
     -webkit-transform: translate(-50%, 0) !important;
     -o-transform: translate(-50%, 0) !important;
     transform: translate(-50%, -10px) !important;
-
     /*
     left: 50% !important;
     transform: translate(-50%, -10%) !important;
