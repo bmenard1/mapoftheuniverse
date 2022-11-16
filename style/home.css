@@ -151,14 +151,14 @@ hr {
 .bottom-arrow {
     position: absolute;
     text-align: center;
-    top:95vh;
+    top:90vh;
     left: 50%;
     transform: translate(-50%,0%);
     cursor: pointer;
 
 }
 .bottom-arrow img{
-    width: 30px;
+    width: 40px;
 }
 .nav_darkening {
     top: 56px; 
@@ -301,6 +301,11 @@ hr {
 }
 .scroll-up-message img{
     animation: blink 1s infinite;
+}
+
+.bottom-arrow img {
+    animation: blink 1s infinite;
+
 }
 
     @keyframes blink {

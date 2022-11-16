@@ -119,6 +119,10 @@ $(document).ready(function() {
 
         $(".more-info-phone").hide();
     })
+    $(".dropdown-menu-center").click(function(e){
+        e.stopPropagation();
+     })
+     
 
     $(".bottom-arrow").click(function(e){
         console.log("YES")
