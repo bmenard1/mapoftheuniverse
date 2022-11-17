@@ -8,11 +8,12 @@ $(document).ready(function() {
             var text = $("#hide-terms").text();
             $("#hide-terms").text(
                 text == "Show" ? "Hide" : "Show");
-
          });
-
     })
+
+
     $('.mapbox').bind('contextmenu',function() { return false; });
+
     $('img').on('dragstart', function(event) { event.preventDefault(); });
 
     $()
@@ -26,8 +27,6 @@ $(document).ready(function() {
 
     $(".map-effect").hover(
         function(e){
-            //$(".map-container-info").show(200);
-            //$(".map-container-info").fadeIn(500);
             if($('.map-container-info').is(":hidden")){
 
                 $(".map-container-info").fadeIn(200);
@@ -38,21 +37,18 @@ $(document).ready(function() {
                     $(".map-container-info > h1").text(information[4].title)
                     $(".map-container-info>img").attr('src', information[4].img)
                     $(".map-container-info>p").text(information[4].caption)
-
                     break;
                 case "area_02":
                     $("#slice-map").attr('src', "Images/WebMap_V02/red.png")
                     $(".map-container-info > h1").text(information[3].title)
                     $(".map-container-info>img").attr('src', information[3].img)
                     $(".map-container-info>p").text(information[3].caption)
-
                     break;
                 case "area_03":
                     $("#slice-map").attr('src', "Images/WebMap_V02/quasars.png")
                     $(".map-container-info > h1").text(information[2].title)
                     $(".map-container-info>img").attr('src', information[2].img)
                     $(".map-container-info>p").text(information[2].caption)
-
                     break;
                 case "area_04":
                     $("#slice-map").attr('src', "Images/WebMap_V02/cmb.png")
@@ -66,43 +62,30 @@ $(document).ready(function() {
                     $(".map-container-info>img").attr('src', information[9].img)
                     $(".map-container-info>p").text(information[9].caption)
                     break;
-
                 case "axis_01":
-                    //$(".angle-on-sky-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[7].title)
                     $(".map-container-info>img").attr('src', information[7].img)
                     $(".map-container-info>p").text(information[7].caption)
                     break;
                 case "axis_02":
-                    //$(".redshift-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[5].title)
                     $(".map-container-info>img").attr('src', information[5].img)
                     $(".map-container-info>p").text(information[5].caption)
                     break;
                 case "axis_03":
-                    //$(".lookback-time-axis").addClass('highlighted-axis');
                     $(".map-container-info > h1").text(information[6].title)
                     $(".map-container-info>img").attr('src', information[6].img)
                     $(".map-container-info>p").text(information[6].caption)
                     break;
                 case "axis_04":
-                    //$(".you-are-here-axis").addClass('highlighted-axis');
-
                     $(".map-container-info > h1").text(information[8].title)
                     $(".map-container-info>img").attr('src', information[8].img)
                     $(".map-container-info>p").text(information[8].caption)
                     break;    
-            }
-
-            //$(".map-container-info").css('visibility', 'visible');
-        
+            }        
         }, function(){
             $(".map-container-info").fadeOut(100);
-
             $("#slice-map").attr('src', "Images/WebMap_V02/total.png")
-            //$(".slice-map-text").removeClass('highlighted-axis');
-
-            //$(".map-container-info").css('visibility', 'hidden');
         }
     )
 
@@ -139,124 +122,75 @@ $(document).ready(function() {
 
             $('.other-col').removeClass('col-lg-3 this-col-change');
             $('.other-col').addClass('col-lg-6');
-            /*
-            $('.this-col').removeClass('col-lg-6');
-            $('.this-col').addClass('col-lg-3 this-col-change');
-            */
-                        /*
-
-
-            $('.other-col').removeClass('col-lg-3');
-            $('.other-col').addClass('col-lg-6');
-            $('.this-col').removeClass('col-lg-6');
-            $('.this-col').addClass('col-lg-3');
-
-            //OTHER
-
-            $('.this-col-2').removeClass('col-lg-6');
-            $('.this-col-2').addClass('col-lg-4');
-            $('.other-col-2').removeClass('col-lg-6');
-            $('.other-col-2').addClass('col-lg-8');
-            */
-
         } else {
 
             $('.other-col').removeClass('col-lg-6');
             $('.other-col').addClass('col-lg-3 this-col-change');
-            /*
-            $('.this-col').addClass('col-lg-6');
-            $('.this-col').removeClass('col-lg-3 this-col-change');
-            */
-                            /*
-
-            //OTHER
-            $('.other-col-2').removeClass('col-lg-8');
-            $('.other-col-2').addClass('col-lg-6');
-            
-            $('.this-col-2').removeClass('col-lg-4');
-            $('.this-col-2').addClass('col-lg-6');
-            */
-
         }
 
         $(".more-info").hide();
         $(".read-more").show();
         $('.info-col').removeClass('col-lg-6');
         $('.info-col').addClass('col-lg-3');
-
     })
 
     $(".term-box").hover(
         function(e){
-
         }, function(e){
             if($('.map-container-info').is(":visible")){
-                
                 $(".map-container-info").show();
             }
-
         }
-
     )
+
     let toggle_banner = false;
+
     $(".banner-switch").click (function(e) {
         console.log("CLICKED!")
         if(!toggle_banner) {
             $(".map-section").fadeOut(400, function() {
                 $(".banner-section").fadeIn(800)
-
                 $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
-
             }) 
             
 
             $(".cover").hide()
 
-            //$(".screen_viewer").scrollTop($(".banner-section").outerHeight())
             toggle_banner = true;
         } else {
             $(".banner-section").fadeOut(400, function() {
                 $(".map-section").fadeIn(800)
                 $(".cover").show()
-
                 $(window).scrollTop($(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height())
-
             })
-
-            //$(".banner-section").hide()
-
             
             toggle_banner = false
 
         }
     })
+
     $(".banner-switch-hover").hover(function(e){
         $("#overlay").fadeIn("fast", function(){})
-        //$("#slice-map").attr('src', "Images/WebMap_V02/total_line.png")
     }, function(e){
         console.log("OFF")
         $("#overlay").fadeOut("fast", function(){})
-
     })
+
     $(".banner-extra").click(function(e) {
     })
 
     $(".banner-info-box >p> .term-hover").hover(function(e){
-
         $(this).parent().siblings('img.explanation_image').hide()
         $(this).parent().siblings('img.skyview_image').show()
-
     }, function(e) {
         $(this).parent().siblings('img.explanation_image').show()
         $(this).parent().siblings('img.skyview_image').hide()
-
     })
     
 
     $(".banner-map-area").hover(
         function(e){
             console.log(e.target.id)
-            //$(".map-container-info").show(200);
             $(".map-container-info").fadeIn(200);
             switch(e.target.id) {
                 case "banner-area-04":
@@ -281,17 +215,14 @@ $(document).ready(function() {
                     break;
             }
 
-            //$(".map-container-info").css('visibility', 'visible');
-        
             console.log("in")
         }, function(){
             $(".map-container-info").hide(0);
             $("#slice-map").attr('src', "Images/Slice/NoText.png")
-
-            //$(".map-container-info").css('visibility', 'hidden');
             console.log("out")
-        }
-    )
+        })
+    
+
     $(window).scroll(function() {
         var windowTop = $(this).scrollTop() 
         var windowBottom = $(this).scrollTop() + $(window).outerHeight()
@@ -308,43 +239,23 @@ $(document).ready(function() {
 
         var barPercentage = barPos/galaxyHeight
         lookback = 13.74 -  barPercentage * 13.74
-        //$("#sidebar-lookback-time").html((1.0).toFixed(2))
         $("#sidebar-lookback-time").html((lookback).toFixed(1));
         $("#sidebar-lookback-time_2").html((lookback).toFixed(1));
-        //var fade = $('.banner-info-box');
         var fade = $('.fade');
         var range = 400;
         var st = $(this).scrollTop();
         var center = st + $(window).outerHeight() * (2/4);
-
-
-
-        /*
-        $('.hideme').each( function(i){
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            var top_of_window = $(window).scrollTop()
-            var top_of_object = $(this).position().top
-            //var bottom_of_window = $(window).scrollTop() 
-
-            console.log(bottom_of_object)
-            console.log(bottom_of_window)
-
-            if( bottom_of_window > bottom_of_object ){
-                $(this).animate({'opacity':'1'},1000);
-            }
-        });
-        */
         
         var scroll_msg = $(".scroll-up-message");
         var scrollPercent =  $(window).scrollTop() / ($(document).height() - $(window).height());
+        
         scroll_msg.css({opacity: 1-  (1-scrollPercent) *6 })
         fade.each(function () {
             var offset = $(this).offset().top;
             var height = $(this).outerHeight();
             offset = offset + height / 2; 
             var perc = Math.pow((center - offset) /  ($(window).outerHeight()/2), 2)
-            //center =  offset + height / 1; 
+
             if(center-offset > 0){
                 $(this).css({ 'opacity': 1 - perc });
             } else {
@@ -361,29 +272,9 @@ $(document).ready(function() {
 
     })
 
-    /*
-    $("#viewMap").click(function() {
-        $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 1000, easing: "linear", complete: function () {
-            console.log("HEY")
-            }})
-
-        
-        window.scrollTo({
-            top: $('.map-container').offset().top,
-            left: 0,
-            behavior: 'smooth'
-          })    
-    })
-    */
+  
 
     $("#viewBanner").click(function() {
-        /*
-        window.scrollTo({
-            top: $('#bottom').offset().top - window.innerHeight,
-            left: 0,
-            behavior: 'smooth'
-        })  
-        */
 
     });
 
@@ -400,13 +291,7 @@ $(document).ready(function() {
     $(".banner-tick").click(function() {
         var id = $(this).attr('id');
         console.log($(this).top)
-        /*
-        window.scrollTo({
-            top: $('.axis #' + id).offset().top - (window.innerHeight/4 * 3),
-            left: 0,
-            behavior: 'smooth'
-        })  
-        */
+   
         console.log(id)
     })
 
