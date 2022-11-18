@@ -99,7 +99,7 @@ hr {
 }
   
 .cover{
-    background-image: url("../Images/Cover\ Images/Cover Image 21.png");
+    background-image: url("https://mapoftheuniverse.s3.amazonaws.com/Images/Cover\ Images/Cover Image 21.png");
     background-size:100% auto;
     background-size: cover;
     background-position: top center;
@@ -658,9 +658,8 @@ p {
 }
 @media only screen  and (max-width: 600px) {
     .dropdown-menu-center {
-        left: 0%;
         transform: translate(0px, 0px);
-        left: 105% !important;
+        left: 50% !important;
         width: 90vw !important;
     }
     .end-of-banner {
@@ -798,9 +797,8 @@ p {
 }
 @media only screen and (min-width: 600px) and (max-width: 800px) {
     .dropdown-menu-center {
-        left: 0%;
         transform: translate(0px, 0px);
-        left: 105% !important;
+        left: 50% !important;
         width: 90vw !important;
 
     }
@@ -828,7 +826,7 @@ p {
     }
     .dropdown-menu-center {
         transform: translate(0px, 0px);
-        left:  105% !important;
+        left:  50% !important;
         width: 90vw !important;
        
     }
@@ -963,9 +961,7 @@ p {
     font-size: 20pt ;
     color: white;
     padding-top: 1%;
-    padding-right: 3%;
     padding-bottom: 1%;
-    padding-left: 3%;
 
     font-size: x-large;
     font-weight: 100;
@@ -1416,7 +1412,7 @@ border: solid white 3px;
     background-color: black;
 }
 #banner-info-1 {
-    top: -5%;
+    top: 0;
 }
 
 #banner-info-2 {

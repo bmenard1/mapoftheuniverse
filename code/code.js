@@ -16,10 +16,8 @@ $(document).ready(function() {
 
     $('img').on('dragstart', function(event) { event.preventDefault(); });
 
-    $()
 
     $(".phone-banner-box").click(function(e){
-        console.log("YES")
         set_modal_pic(this.id)
         $('#myModal').modal('toggle');
 
@@ -89,19 +87,6 @@ $(document).ready(function() {
         }
     )
 
-    $(".read-more").click(function(e){
-        
-        $(".read-more").hide();
-        $(".more-info").show();
-        $(".more-info-phone").show();
-
-    })
-
-    $(".read-less").click(function(e){
-        $(".read-more").show();
-
-        $(".more-info-phone").hide();
-    })
     $(".dropdown-menu-center").click(function(e){
         e.stopPropagation();
      })
@@ -112,7 +97,6 @@ $(document).ready(function() {
         $('html, body').animate({scrollTop:$(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height(), easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
             console.log("HEY")
             }})
-
     })
 
     $(".info-accordion").click(function(e){
@@ -134,14 +118,6 @@ $(document).ready(function() {
         $('.info-col').addClass('col-lg-3');
     })
 
-    $(".term-box").hover(
-        function(e){
-        }, function(e){
-            if($('.map-container-info').is(":visible")){
-                $(".map-container-info").show();
-            }
-        }
-    )
 
     let toggle_banner = false;
 
@@ -152,8 +128,7 @@ $(document).ready(function() {
                 $(".banner-section").fadeIn(800)
                 $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
             }) 
-            
-
+        
             $(".cover").hide()
 
             toggle_banner = true;
@@ -176,9 +151,6 @@ $(document).ready(function() {
         $("#overlay").fadeOut("fast", function(){})
     })
 
-    $(".banner-extra").click(function(e) {
-    })
-
     $(".banner-info-box >p> .term-hover").hover(function(e){
         $(this).parent().siblings('img.explanation_image').hide()
         $(this).parent().siblings('img.skyview_image').show()
@@ -186,42 +158,6 @@ $(document).ready(function() {
         $(this).parent().siblings('img.explanation_image').show()
         $(this).parent().siblings('img.skyview_image').hide()
     })
-    
-
-    $(".banner-map-area").hover(
-        function(e){
-            console.log(e.target.id)
-            $(".map-container-info").fadeIn(200);
-            switch(e.target.id) {
-                case "banner-area-04":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceCMB.png")
-                    $(".map-container-info > h1").text(information[1].title)
-                    $(".map-container-info > img").attr('src', information[1].img)
-                    break;
-                case "banner-area-03":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceQuasar.png")
-                    $(".map-container-info > h1").text(information[2].title)
-                    $(".map-container-info>img").attr('src', information[2].img)
-                    break;
-                case "banner-area-02":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceLRG.png")
-                    $(".map-container-info > h1").text(information[3].title)
-                    $(".map-container-info>img").attr('src', information[3].img)
-                    break;
-                case "banner-area-01":
-                    $("#slice-map").attr('src', "Images/Slice/EditedSliceNear.png")
-                    $(".map-container-info > h1").text(information[4].title)
-                    $(".map-container-info>img").attr('src', information[4].img)
-                    break;
-            }
-
-            console.log("in")
-        }, function(){
-            $(".map-container-info").hide(0);
-            $("#slice-map").attr('src', "Images/Slice/NoText.png")
-            console.log("out")
-        })
-    
 
     $(window).scroll(function() {
         var windowTop = $(this).scrollTop() 
@@ -264,23 +200,10 @@ $(document).ready(function() {
         });
         
     })
-    
-    $("#scroll-btn").click(function() {
-        $('html, body').animate({scrollTop:$('#bottom').offset().top + window.innerHeight * 0.2 - window.innerHeight, easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
-            console.log("HEY")
-            }})
 
-    })
-
-  
-
-    $("#viewBanner").click(function() {
-
-    });
 
     $(".banner-modal").click(function(e) {
         set_modal_pic(e.target.id)
-
     })
 
     $(".banner-info-box-content").click(function(e) {
@@ -290,22 +213,20 @@ $(document).ready(function() {
 
     $(".banner-tick").click(function() {
         var id = $(this).attr('id');
-        console.log($(this).top)
-   
-        console.log(id)
     })
 
     $(".banner-info-box").click(function(e) {
         $('#myModal').modal('toggle');
         set_modal_pic($(this).attr('id') )
     })
+
     $('#myModal').on('hidden.bs.modal', function () {
         // do something…
         set_modal_pic(-1 )
     })
+
     $(".banner-navigator, .edit").click(function(e) {
         var parentOffset = $(this).parent().offset(); 
-
         var posX = $(this).position().left,
             posY = $(this).position().top;
         height = $(this).parent().outerHeight();
@@ -354,16 +275,9 @@ $(document).on("click", function (event) {
 
         $('.this-col-2').removeClass('col-lg-6');
         $('.this-col-2').addClass('col-lg-4');
-
-
-      console.log("You clicked outside of the container element");
     }
 });
   
-$("#viewMap").click(function() {
-    $('html,body').animate({scrollTop:$('.map-container').offset().top, easing: 'linear'},{ duration: 500, easing: "linear", complete: function () {
-        }})
-})
 
 function set_modal_pic(id) {
     switch(id){
@@ -409,10 +323,10 @@ function set_modal_pic(id) {
 }
 
 const modal_info = {
-    1: {img: "Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
-    2: {img: "Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
-    3: {img: "Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
-    4: {img: "Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
-    5: {img: "Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
-    6: {img: "Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
+    1: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
+    2: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
+    3: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
+    4: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
+    5: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
+    6: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
 }
