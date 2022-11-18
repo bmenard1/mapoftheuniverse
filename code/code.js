@@ -31,31 +31,31 @@ $(document).ready(function() {
             }
             switch(e.target.id) {
                 case "area_01":
-                    $("#slice-map").attr('src', "Images/WebMap_V02/near.png")
+                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/near.png")
                     $(".map-container-info > h1").text(information[4].title)
                     $(".map-container-info>img").attr('src', information[4].img)
                     $(".map-container-info>p").text(information[4].caption)
                     break;
                 case "area_02":
-                    $("#slice-map").attr('src', "Images/WebMap_V02/red.png")
+                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/red.png")
                     $(".map-container-info > h1").text(information[3].title)
                     $(".map-container-info>img").attr('src', information[3].img)
                     $(".map-container-info>p").text(information[3].caption)
                     break;
                 case "area_03":
-                    $("#slice-map").attr('src', "Images/WebMap_V02/quasars.png")
+                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/quasars.png")
                     $(".map-container-info > h1").text(information[2].title)
                     $(".map-container-info>img").attr('src', information[2].img)
                     $(".map-container-info>p").text(information[2].caption)
                     break;
                 case "area_04":
-                    $("#slice-map").attr('src', "Images/WebMap_V02/cmb.png")
+                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/cmb.png")
                     $(".map-container-info > h1").text(information[1].title)
                     $(".map-container-info>img").attr('src', information[1].img)
                     $(".map-container-info>p").text(information[1].caption)
                     break;
                 case "area_05":
-                    $("#slice-map").attr('src', "Images/WebMap_V02/galaxies.png")
+                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/galaxies.png")
                     $(".map-container-info > h1").text(information[9].title)
                     $(".map-container-info>img").attr('src', information[9].img)
                     $(".map-container-info>p").text(information[9].caption)
@@ -83,7 +83,7 @@ $(document).ready(function() {
             }        
         }, function(){
             $(".map-container-info").fadeOut(100);
-            $("#slice-map").attr('src', "Images/WebMap_V02/total.png")
+            $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/total.png")
         }
     )
 
