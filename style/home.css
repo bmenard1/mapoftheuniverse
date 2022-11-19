@@ -445,24 +445,28 @@ hr {
 }
 
 #map_time_01 {
-    top: 85%;
-    left: 57%;
+    top: 84%;
+    left: 58%;
 }
 #map_time_02 {
     top: 75%;
     left: 65%
 }
+#map_time_07 {
+    top: 66%;
+    left: 72%
+}
 #map_time_03 {
-    top: 65%;
-    left: 73%
+    top:58%;
+    left: 78%
 }
 #map_time_04 {
-    top: 55%;
-    left: 80%
+    top: 50%;
+    left: 84%
 }
 #map_time_05 {
-    top: 45%;
-    left: 88%
+    top: 42%;
+    left: 90%
 }
 
 #map_time_06 {
@@ -470,19 +474,26 @@ hr {
     left: 96%
 }
 
+
+
+
+
+
+
+
 #map_red_01 {
-    top: 85%;
-    left: 41%
+    top: 81%;
+    left: 38%
 }
 
 #map_red_02 {
-    top: 75%;
-    left: 33%
+    top: 70%;
+    left: 29%
 }
 
 #map_red_03 {
-    top: 58%;
-    left: 21%
+    top: 62%;
+    left: 24%
 }
 
 #map_red_04 {
@@ -491,8 +502,8 @@ hr {
 }
 
 #map_red_05 {
-    top: 41%;
-    left: 8%
+    top: 40%;
+    left: 7%
 }
 
 #map_angle_01 {
@@ -801,6 +812,10 @@ p {
         left: 50% !important;
         width: 90vw !important;
 
+    }
+    #text_03 {
+        left: 16%;
+        top: 67%;
     }
     p {
         font-size: 12pt;
