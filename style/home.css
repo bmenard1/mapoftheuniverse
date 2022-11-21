@@ -50,7 +50,7 @@ hr {
     height: 20vh;
 }
 .cover-logo {
-    width: 100%;
+    width: 60%;
 }
 .end-of-banner {
     text-align: center; 
@@ -1547,8 +1547,9 @@ border: solid white 3px;
 }
 
 .dropdown-menu a {
-    font-size: 12pt;
+    font-size: 15pt;
     color: var(--grey);
+    font-weight: 800;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
     text-underline-position: from-font;
     text-decoration-thickness: 1px;
