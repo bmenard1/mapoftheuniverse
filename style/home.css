@@ -6,6 +6,81 @@
 a {
     color: var(--grey)
 }
+.dropdown-item:hover .download-hover-section{
+    visibility: visible;
+}
+
+.keepOpen {
+    display:block;
+}
+.dropdown-item {
+    position: relative;
+}
+
+.download-modal-body img{
+    width: 100%;
+    border: solid 1px var(--grey);
+    margin-bottom: 20px;
+}
+
+.download-hover-section {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.download-click-section {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    /*visibility: hidden;*/
+    display: none;
+}
+
+.download-click-section .row {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 50%;
+}
+
+
+.download-row{
+    margin: 0%;
+}
+
+.download-row .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    padding: 5px;
+    border: solid 1px  rgb(79, 79, 79);
+    text-decoration: none;
+}
+.download-row .col:hover{
+    background-color: rgb(61, 61, 61);
+    cursor: pointer;
+}
+
+
+.download-hover-section .row {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 50%;
+}
+.download-hover-section .col {
+    border: solid 1px white;
+}
+
+.download-dropdown img {
+    border: solid 1px var(--grey);
+    margin-bottom: 10px;
+}
 
 body {
     margin: 0px;
@@ -673,6 +748,8 @@ p {
         left: 50% !important;
         width: 90vw !important;
     }
+    
+
     .end-of-banner {
         padding-left: 0%;
         padding-right: 0%;
@@ -719,7 +796,14 @@ p {
     .flavor-text {
         font-size: 15pt;
     }
+    .download-row .col {
 
+        font-size: 20pt;
+    }
+    .download-row{
+        margin-bottom: 5% !important;
+
+    }
     .banner-edges {
         font-size: 12pt !important;
     }
@@ -727,6 +811,10 @@ p {
 
 }
 @media only screen and (min-width: 300px) and (max-width: 600px) {
+    .download-info {
+        font-size: 12pt !important;
+        text-align: left !important;
+    }
     .map-section {
         right: 5% !important;
     }
@@ -813,6 +901,9 @@ p {
         width: 90vw !important;
 
     }
+    .download-row{
+        margin-bottom: 5% !important;
+    }
     #text_03 {
         left: 16%;
         top: 67%;
@@ -845,7 +936,9 @@ p {
         width: 90vw !important;
        
     }
-
+    .download-row{
+        margin-bottom: 5% !important;
+    }
     .accordion-button-custom {
         font-size: 15pt !important;
     }
@@ -1384,6 +1477,7 @@ border: solid white 3px;
 }
 .phone-banner-box h2 {
     padding: 3% !important;
+    font-size: 15pt !important;
 }
 
 #phone-banner-1 {
@@ -1394,14 +1488,16 @@ border: solid white 3px;
     border: 1px solid rgb(48, 48, 48)
 }
 .download-info{
-    font-size: 8pt !important;
+    font-size: 10pt ;
     font-weight: 400;
     color: var(--grey);
     padding-left: 4%;
     padding-right: 4%;
+    text-align: center;
 }
 .download-info a {
-    font-size: 8pt !important;
+    font-weight: 400 !important;
+    font-size: 10pt !important;
 }
 .phone-banner-box h2{
     font-weight: 100;
@@ -1549,7 +1645,7 @@ border: solid white 3px;
 .dropdown-menu a {
     font-size: 15pt;
     color: var(--grey);
-    font-weight: 800;
+    font-weight: 200;
     text-decoration: underline 0.15em rgba(0, 0, 0, 0);
     text-underline-position: from-font;
     text-decoration-thickness: 1px;
@@ -1581,10 +1677,9 @@ border: solid white 3px;
     display: none;
 }
 .dropdown-menu img {
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-  
 }
 
 .download-button {

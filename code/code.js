@@ -11,6 +11,26 @@ $(document).ready(function() {
          });
     })
 
+    $(".modal-dialog").click(function(e){
+        console.log("ABC")
+    })
+
+    /*
+    var myModalEl = document.getElementById('download-beautiful-modal')
+    myModalEl.addEventListener('hidden.bs.modal', function (event) {
+      // do something...
+      alert("BROKE")
+    })
+    */
+
+
+    $(".dropdown-item").click(function(e){
+        console.log("CLICKED")
+        $('.download-click-section').hide();
+        $(this).children('.download-click-section').show();
+        e.stopPropagation();
+
+    })
 
     $('.mapbox').bind('contextmenu',function() { return false; });
 
@@ -73,7 +93,7 @@ $(document).ready(function() {
                 case "axis_03":
                     $(".map-container-info > h1").text(information[6].title)
                     $(".map-container-info>img").attr('src', information[6].img)
-                    $(".map-container-info>p").text(information[6].caption)
+                    $(".map-container-info>p").text(information[6].caption) 
                     break;
                 case "axis_04":
                     $(".map-container-info > h1").text(information[8].title)
@@ -89,6 +109,8 @@ $(document).ready(function() {
 
     $(".dropdown-menu-center").click(function(e){
         e.stopPropagation();
+        $('.download-click-section').hide();
+
      })
      
 
@@ -276,7 +298,11 @@ $(document).on("click", function (event) {
         $('.this-col-2').removeClass('col-lg-6');
         $('.this-col-2').addClass('col-lg-4');
     }
-});
+    var $target = $(event.target);
+    console.log("OUT OF HERE")
+    $('.download-click-section').hide();
+
+  });
   
 
 function set_modal_pic(id) {
