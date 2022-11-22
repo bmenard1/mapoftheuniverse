@@ -78,7 +78,7 @@ a {
 }
 
 .download-dropdown img {
-    border: solid 1px var(--grey);
+    /*border: solid 1px var(--grey);*/
     margin-bottom: 10px;
 }
 
