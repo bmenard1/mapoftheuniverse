@@ -51,31 +51,31 @@ $(document).ready(function() {
             }
             switch(e.target.id) {
                 case "area_01":
-                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/near.png")
+                    $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/near.png")
                     $(".map-container-info > h1").text(information[4].title)
                     $(".map-container-info>img").attr('src', information[4].img)
                     $(".map-container-info>p").text(information[4].caption)
                     break;
                 case "area_02":
-                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/red.png")
+                    $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/red.png")
                     $(".map-container-info > h1").text(information[3].title)
                     $(".map-container-info>img").attr('src', information[3].img)
                     $(".map-container-info>p").text(information[3].caption)
                     break;
                 case "area_03":
-                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/quasars.png")
+                    $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/quasars.png")
                     $(".map-container-info > h1").text(information[2].title)
                     $(".map-container-info>img").attr('src', information[2].img)
                     $(".map-container-info>p").text(information[2].caption)
                     break;
                 case "area_04":
-                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/cmb.png")
+                    $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/cmb.png")
                     $(".map-container-info > h1").text(information[1].title)
                     $(".map-container-info>img").attr('src', information[1].img)
                     $(".map-container-info>p").text(information[1].caption)
                     break;
                 case "area_05":
-                    $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/galaxies.png")
+                    $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/galaxies.png")
                     $(".map-container-info > h1").text(information[9].title)
                     $(".map-container-info>img").attr('src', information[9].img)
                     $(".map-container-info>p").text(information[9].caption)
@@ -103,7 +103,7 @@ $(document).ready(function() {
             }        
         }, function(){
             $(".map-container-info").fadeOut(100);
-            $("#slice-map").attr('src', "https://mapoftheuniverse.s3.amazonaws.com/Images/WebMap_V02/total.png")
+            $("#slice-map").attr('src', "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/total.png")
         }
     )
 
@@ -349,10 +349,10 @@ function set_modal_pic(id) {
 }
 
 const modal_info = {
-    1: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
-    2: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
-    3: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
-    4: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
-    5: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
-    6: {img: "https://mapoftheuniverse.s3.amazonaws.com/Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
+    1: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
+    2: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
+    3: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
+    4: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
+    5: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
+    6: {img: "https://apps.sciserver.org/mapoftheuniverse/Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
 }
