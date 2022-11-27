@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-    console.log("HELLO")
+    var visible_overlay = "#axis_set_01"
+    var current_checked = 3
     $('.more-info').hide();
 
     $("#hide-terms").click(function(e){
@@ -12,7 +13,6 @@ $(document).ready(function() {
     })
 
     $(".modal-dialog").click(function(e){
-        console.log("ABC")
     })
 
     /*
@@ -25,7 +25,6 @@ $(document).ready(function() {
 
 
     $(".dropdown-item").click(function(e){
-        console.log("CLICKED")
         $('.download-click-section').hide();
         $(this).children('.download-click-section').show();
         e.stopPropagation();
@@ -115,7 +114,6 @@ $(document).ready(function() {
      
 
     $(".bottom-arrow").click(function(e){
-        console.log("YES")
         $('html, body').animate({scrollTop:$(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height(), easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
             console.log("HEY")
             }})
@@ -123,7 +121,6 @@ $(document).ready(function() {
 
     $(".info-accordion").click(function(e){
         var myClass = $(this).attr("class");
-        console.log(myClass)
         if(myClass.includes("collapsed")){
 
             $('.other-col').removeClass('col-lg-3 this-col-change');
@@ -144,7 +141,6 @@ $(document).ready(function() {
     let toggle_banner = false;
 
     $(".banner-switch").click (function(e) {
-        console.log("CLICKED!")
         if(!toggle_banner) {
             $(".map-section").fadeOut(400, function() {
                 $(".banner-section").fadeIn(800)
@@ -166,13 +162,57 @@ $(document).ready(function() {
         }
     })
 
+    $('input').on('change', function() {
+
+        var checked = $("input[name=options-outlined]:checked").val()
+        var other_checked = $("input[name=options-outlined2]:checked").val()
+        var true_checked = 0
+        if (checked != current_checked) {
+            $('input:radio[name=options-outlined2][value=' + checked + ']').click();
+            true_checked = checked
+        } else {
+            $('input:radio[name=options-outlined][value=' + other_checked + ']').click();
+            true_checked = other_checked
+        }
+
+        console.log(true_checked)
+
+        var axis_overlay = ""
+        if(true_checked == 1) {
+            axis_overlay = "#axis_set_03"; 
+        } else if (true_checked == 2) {
+            axis_overlay = "#axis_set_02"; 
+        } else {
+            axis_overlay = "#axis_set_01"; 
+        }
+
+
+
+        $("#black-overlay").fadeIn("fast", function() {
+            $(visible_overlay).hide()
+            $(axis_overlay).show()
+            $("#black-overlay").fadeOut("fast", function(){});
+            visible_overlay = axis_overlay
+            current_checked = true_checked
+        })
+
+    });
+      
+    
     $(".banner-switch-hover").hover(function(e){
         $("#overlay").fadeIn("fast", function(){})
     }, function(e){
         console.log("OFF")
         $("#overlay").fadeOut("fast", function(){})
     })
-
+    /*
+    $(".banner-switch-near").hover(function(e){
+        $("#overlay").fadeIn("fast", function(){})
+    }, function(e){
+        console.log("OFF")
+        $("#overlay").fadeOut("fast", function(){})
+    })
+    */
     $(".banner-info-box >p> .term-hover").hover(function(e){
         $(this).parent().siblings('img.explanation_image').hide()
         $(this).parent().siblings('img.skyview_image').show()
@@ -283,7 +323,6 @@ $(document).on("click", function (event) {
     // If the target is not the container or a child of the container, then process
     // the click event for outside of the container.
     if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 ) {
-        console.log($(event.target).closest(".accordion-button").length)
         $('.collapse').collapse('hide')
         $(".more-info").hide();
         $('.other-col').removeClass('col-lg-3');
@@ -299,7 +338,6 @@ $(document).on("click", function (event) {
         $('.this-col-2').addClass('col-lg-4');
     }
     var $target = $(event.target);
-    console.log("OUT OF HERE")
     $('.download-click-section').hide();
 
   });

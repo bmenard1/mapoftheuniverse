@@ -269,12 +269,121 @@ hr {
     color: white;
 }
 #overlay{
-    position: absolute;
+
+}
+
+.map-overlay {
+    position: absolute !important;
     top: 0%;
     left: 0%;
     width: 100%;
-    z-index: 5;
+    z-index: 1;
+    display: none;
 }
+
+.test-map-overlay {
+    position: absolute !important;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: 1;
+
+}
+#axis_set_01{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    height: 100%;
+}
+
+#axis_set_02{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    height: 100%;
+    background-color: black;
+    display: none;
+}
+
+#axis_set_03{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    height: 100%;
+    background-color: black;
+    display: none;
+
+}
+
+#black-overlay {
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    height: 100%;
+    background-color: black;
+    display: none;
+}
+
+.selector-row .col {
+    margin: 0%;
+    text-align: center;
+    padding: 0%;
+    border: 1px solid rgb(53, 53, 53)
+}
+
+.select-button {
+    border: 0px;
+    border-radius: 0%;
+    width: 100%;
+}
+/*
+.select-button:hover, .select-button:focus, .select-button:active, .select-button.active, .open>.dropdown-toggle.select-button {
+    background-color: #00b3db00 !important;
+    border: 0px;
+
+}
+.select-button:checked + label {
+    background-color: blue !important;
+}
+  /*
+
+
+input[type=radio] + label {
+    color: #ccc !important;
+    font-style: italic;
+} 
+input[type=radio]:checked + label {
+    color: #f00 !important;
+    font-style: normal;
+    background-color: blue !important;
+} 
+*/
+
+.select-button:hover, .select-button:focus, .select-button:active, .select-button.active, .open>.dropdown-toggle.select-button {
+    background-color: #00b3db00;
+
+    border-color: #ffffff;
+    border: 0px;
+    color: white;
+}
+
+
+.btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active{
+    background-color: rgb(50, 50, 50) !important;
+}
+input:checked {
+    height: 50px !important;
+    width: 50px !important;
+  }
+
 .separator {
     border-left: 0.5px solid rgba(255, 255, 255, 0.488);
     position: relative;
@@ -479,8 +588,8 @@ hr {
 }
 
 #text_03 {
-    top: 65%;
-    left: 20%;
+    top: 66%;
+    left: 19%;
     transform: translate(-50%, -50%);
     transform: rotate(45deg);
 }
@@ -1609,6 +1718,90 @@ border: solid white 3px;
 #redshift-tick-05{
     top:80%
 }
+
+#map_time_03_01 {
+    top: 81%;
+    left: 60%;
+}
+
+#map_time_03_02 {
+    top: 71%;
+    left: 68%;
+}
+
+#map_time_03_03 {
+    top: 60%;
+    left: 76%;
+}
+
+#map_time_03_04 {
+    top: 47%;
+    left: 86%;
+}
+
+#map_time_03_05 {
+    top: 36%;
+    left: 95%;
+}
+
+#map_red_03_01 {
+    top: 80%;
+    left: 36%;
+}
+
+#map_red_03_02 {
+    top: 63%;
+    left: 23%;
+}
+
+#map_red_03_03 {
+    top: 45%;
+    left: 9%;
+}
+
+#map_time_02_01{
+    top: 81%;
+    left: 61%;
+}
+
+#map_time_02_02{
+    top: 65%;
+    left: 73%;
+}
+
+#map_time_02_03{
+    top: 50%;
+    left: 84%;
+}
+
+#map_time_02_04{
+    top: 35%;
+    left: 96%;
+}
+
+#map_red_02_01 {
+    top: 76%;
+    left: 34%;
+
+}
+
+#map_red_02_02 {
+    top: 60%;
+    left: 22%;
+
+}
+
+#map_red_02_03 {
+    top: 43%;
+    left: 8%;
+
+}
+#map_red_02_04 {
+    top: 35%;
+    left: 2%;
+
+}
+
 
 .modal-content {
     background-color: black;

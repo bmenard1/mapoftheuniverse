@@ -340,28 +340,71 @@
         <div id = "text_03" class = "slice-map-text redshift-axis">redshift</div>
         <div id = "text_04" class = "slice-map-text lookback-time-axis">lookback time <br> [billions of years]</div>
 
-        <div id = "map_time_01" class = "slice-map-text lookback-time-axis">2</div>
-        <div id = "map_time_02" class = "slice-map-text lookback-time-axis">4</div>
-        <div id = "map_time_07" class = "slice-map-text lookback-time-axis">6</div>
-
-        <div id = "map_time_03" class = "slice-map-text lookback-time-axis">8</div>
-        <div id = "map_time_04" class = "slice-map-text lookback-time-axis">10</div>
-        <div id = "map_time_05" class = "slice-map-text lookback-time-axis">12</div>
-        <div id = "map_time_06" class = "slice-map-text lookback-time-axis">13.7</div>
-
-        <div id = "map_red_01" class = "slice-map-text redshift-axis">0.2</div>
-        <div id = "map_red_02" class = "slice-map-text redshift-axis">0.5</div>
-        <div id = "map_red_03" class = "slice-map-text redshift-axis">1</div>
-        <div id = "map_red_04" class = "slice-map-text redshift-axis">2</div>
-        <div id = "map_red_05" class = "slice-map-text redshift-axis">5</div>
-
         <div id = "map_angle_01" class = "slice-map-text angle-on-sky-axis">0°</div>
         <div id = "map_angle_03" class = "slice-map-text angle-on-sky-axis">60°</div>
         <div id = "map_angle_04" class = "slice-map-text angle-on-sky-axis">90°</div>
-        <div id = "map_angle_02" class = "slice-map-text angle-on-sky-axis">30°</div>
+        <div id = "map_angle_02" class = "slice-map-text angle-on-sky-axis">30°</div>  
 
-        <img id = "overlay" style="display: none;" src = "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/total_line_transparent.png"  >
+        <div id = "axis_set_01" class = "axis_set">
+          <div id = "map_time_01" class = "slice-map-text lookback-time-axis">2</div>
+          <div id = "map_time_02" class = "slice-map-text lookback-time-axis">4</div>
+          <div id = "map_time_07" class = "slice-map-text lookback-time-axis">6</div>
+          <div id = "map_time_03" class = "slice-map-text lookback-time-axis">8</div>
+          <div id = "map_time_04" class = "slice-map-text lookback-time-axis">10</div>
+          <div id = "map_time_05" class = "slice-map-text lookback-time-axis">12</div>
+          <div id = "map_time_06" class = "slice-map-text lookback-time-axis">13.7</div>
+  
+          <div id = "map_red_01" class = "slice-map-text redshift-axis">0.2</div>
+          <div id = "map_red_02" class = "slice-map-text redshift-axis">0.5</div>
+          <div id = "map_red_03" class = "slice-map-text redshift-axis">1</div>
+          <div id = "map_red_04" class = "slice-map-text redshift-axis">2</div>
+          <div id = "map_red_05" class = "slice-map-text redshift-axis">5</div>
+        </div>
+
+
+        <div id = "axis_set_02" class = "axis_set"  > 
+  
+          <div id = "map_time_02_01" class = "slice-map-text lookback-time-axis">1</div>
+          <div id = "map_time_02_02" class = "slice-map-text lookback-time-axis">2</div>
+          <div id = "map_time_02_03" class = "slice-map-text lookback-time-axis">3</div>
+          <div id = "map_time_02_04" class = "slice-map-text lookback-time-axis">4</div>
+  
+          <div id = "map_red_02_01" class = "slice-map-text lookback-time-axis">0.1</div>
+          <div id = "map_red_02_02" class = "slice-map-text lookback-time-axis">0.2</div>
+          <div id = "map_red_02_03" class = "slice-map-text lookback-time-axis">0.3</div>
+          <div id = "map_red_02_04" class = "slice-map-text lookback-time-axis">0.4</div>
+
+          <img id = "outer-overlay" class = "test-map-overlay" src = "outer.png"  >
+
+        </div>
+
+
+        <div id = "axis_set_03" class = "axis_set" >
+  
+          <div id = "map_time_03_01" class = "slice-map-text lookback-time-axis">0.2</div>
+          <div id = "map_time_03_02" class = "slice-map-text lookback-time-axis">0.4</div>
+          <div id = "map_time_03_03" class = "slice-map-text lookback-time-axis">0.6</div>
+          <div id = "map_time_03_04" class = "slice-map-text lookback-time-axis">0.8</div>
+          <div id = "map_time_03_05" class = "slice-map-text lookback-time-axis">1.0</div>
+  
+
+
+          <div id = "map_red_03_01" class = "slice-map-text lookback-time-axis">0.02</div>
+          <div id = "map_red_03_02" class = "slice-map-text lookback-time-axis">0.04</div>
+          <div id = "map_red_03_03" class = "slice-map-text lookback-time-axis">0.06</div>
+          <img id = "near-overlay" class = "test-map-overlay" src = "near.png"  >
+
+        </div>
+        
+
+
+        <div id = "black-overlay"></div>
+
+        <img id = "overlay" class = "map-overlay" src = "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/total_line_transparent.png"  >
+
+
         <img id = "slice-map" src = "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/total.png"  /> 
+
       </div>
 
       <div style="width: 100%; position: absolute; bottom:12%; z-index: 5; padding-left: 0; padding-right: 0;">
@@ -374,6 +417,27 @@
           </div>
 
           <div class="this-col col-3 col-lg-3 this-col-change" style="text-align: right;">
+            <div class = "row selector-row" style="width: 100%; margin: 0%;">
+              <div class = "col" >
+                <input type="radio" class="btn-check" name="options-outlined" id="near" autocomplete="off" value="1">
+                <label class=" btn accordion-button-custom select-button " for="near">
+                  near
+                </label>
+                </div>
+                <div class = "col" >
+                  <input type="radio" class="btn-check" name="options-outlined" id="outer" value="2"  autocomplete="off">
+                  <label class=" btn accordion-button-custom select-button" for="outer">
+                      outer
+                  </label>
+                </div>
+                <div class = "col" >
+                  <input type="radio" class="btn-check" name="options-outlined" id="full"  value="3"  autocomplete="off" checked>
+                  <label class="btn accordion-button-custom select-button" for="full" >
+                      full
+                  </label>
+                </div>
+             </div>
+            <hr/>
 
             <button class = " btn btn-no-outline-light banner-switch banner-switch-hover banner-extra" style="background-color: black !important; width: 100%;">            
               <div class = "accordion-button-custom" style="text-align: right;">
@@ -404,10 +468,8 @@
                           </h2>
                           <div id="small_collapseOne" class="accordion-collapse collapse show" aria-labelledby="small_headingOne" data-bs-parent="#small_accordionExample">
                             <div class="accordion-body">
-                              
+                        
                               <p>
-                                
-
                                 This map shows a slice of our Universe. It was created from astronomical data taken night after night over a period of 15 years using a telescope in New Mexico, USA. We are located at the bottom. At the top is the actual edge of the observable Universe. In between, we see about 200,000 galaxies.
                                 <br/>
                                 <video src = "https://apps.sciserver.org/mapoftheuniverse/Images/3D/3d slice rotating.mp4" autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  id="myVideo2" width="100%"   > </video>
@@ -669,12 +731,37 @@
       </div>
       
       <div class = "d-lg-none" style="padding-left: 4%; padding-right: 4%; text-align: left;">
+        <div class = "row selector-row" style="width: 100%; margin: 0%;">
+          <div style="margin-top: 20px;"></div>
+          <div class = "col" >
+              <input type="radio" class="btn-check" name="options-outlined2" id="near2" autocomplete="off" value="1"  >
+              <label class="btn accordion-button-custom select-button" for="near2">
+                  near
+              </label>
+            </div>
+            <div class = "col" >
+              <input type="radio" class="btn-check" name="options-outlined2" id="outer2" value="2"  autocomplete="off">
+              <label class="btn accordion-button-custom select-button" for="outer2">
+                  outer
+              </label>
+            </div>
+            <div class = "col" >
+              <input type="radio" class="btn-check" name="options-outlined2" id="full2" value="3"  autocomplete="off" checked>
+              <label class="btn accordion-button-custom select-button" for="full2">
+                  full
+              </label>
+            </div>
+        </div>
         <br/>
         <hr/>
         <br/>
         <img class = "phone-logo" src="https://apps.sciserver.org/mapoftheuniverse/Images/Logo/Logo3.png"  />
-        <p> 
+
+          
+          <br>
           <div class = "row">
+            
+
             <div class="accordion" id="none">
               <div class="accordion-item">
                 <div class = "accordion-button-custom banner-switch-hover banner-extra banner-switch" style="text-align: center; border: 1px solid var(--grey);" >
@@ -684,6 +771,7 @@
             </div>
 
           </div>
+
           <p>
 
           </p>
@@ -889,14 +977,8 @@
                   <div class = "row">
                     <h1>Educational</h1>
                     <div class = "dropdown-item" data-bs-toggle="modal" data-bs-target="#download-educational-modal" href="#download-educational-modal">
-
                     <img src="https://apps.sciserver.org/mapoftheuniverse/Images/Deliverables/Thumbnail/Poster Thumbnail.png"  />
-           
-
                    </div>
-
-
-
                   </div>
                 </div>
 
