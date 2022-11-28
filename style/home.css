@@ -601,14 +601,14 @@ input[type=radio]:checked + label {
 
 #text_03 {
     top: 67%;
-    left: 18%;
+    left: 19%;
     transform: translate(-50%, -50%);
     transform: rotate(45deg);
 }
 
 #text_04 {
     top: 67%;
-    left: 75%;
+    left: 72%;
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
 }
