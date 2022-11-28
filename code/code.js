@@ -162,6 +162,29 @@ $(document).ready(function() {
         }
     })
 
+    $('.select-button').hover(function(e){
+        id = this.id
+        console.log(current_checked)
+        if(current_checked == 3 && id == "near_label") {
+            overlay_show = "#near_from_full" 
+        } else if (current_checked == 3 && id == "outer_label") {
+            overlay_show = "#outer_from_full" 
+        } else if(current_checked == 2 && id == "near_label") {
+            console.log("HERE")
+            overlay_show = "#near_from_outer" 
+        } else {
+            overlay_show = "none" 
+        } 
+        if(overlay_show != "none") {
+            console.log("SHOWING")
+            $(overlay_show).show()
+        }
+
+    }, function(e) {
+        $(overlay_show).hide()
+
+    })
+
     $('input').on('change', function() {
 
         var checked = $("input[name=options-outlined]:checked").val()
@@ -189,6 +212,7 @@ $(document).ready(function() {
 
 
         $("#black-overlay").fadeIn("fast", function() {
+            $(".hover-map-overlay").hide()
             $(visible_overlay).hide()
             $(axis_overlay).show()
             $("#black-overlay").fadeOut("fast", function(){});

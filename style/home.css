@@ -287,14 +287,26 @@ hr {
     left: 0%;
     width: 100%;
     z-index: 1;
+}
 
+.hover-map-overlay {
+    position: absolute !important;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: 2;
+    display: none;
+
+}
+.axis_set .slice-map-text{
+    z-index: 3 !important;
 }
 #axis_set_01{
     position: absolute;
     width: 100%;
     top: 0%;
     left: 0%;
-    z-index: 1;
+    z-index: 3;
     height: 100%;
 }
 
@@ -303,7 +315,7 @@ hr {
     width: 100%;
     top: 0%;
     left: 0%;
-    z-index: 1;
+    z-index: 3;
     height: 100%;
     background-color: black;
     display: none;
@@ -314,7 +326,7 @@ hr {
     width: 100%;
     top: 0%;
     left: 0%;
-    z-index: 1;
+    z-index: 3;
     height: 100%;
     background-color: black;
     display: none;
@@ -326,7 +338,7 @@ hr {
     width: 100%;
     top: 0%;
     left: 0%;
-    z-index: 1;
+    z-index: 3;
     height: 100%;
     background-color: black;
     display: none;
@@ -342,7 +354,10 @@ hr {
 .select-button {
     border: 0px;
     border-radius: 0%;
-    width: 100%;
+    width: fit-content;
+    display: inline;
+    padding: 0%;
+    color: rgb(93, 93, 93) !important;
 }
 /*
 .select-button:hover, .select-button:focus, .select-button:active, .select-button.active, .open>.dropdown-toggle.select-button {
@@ -377,12 +392,9 @@ input[type=radio]:checked + label {
 
 
 .btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active{
-    background-color: rgb(50, 50, 50) !important;
+    color: white !important;
 }
-input:checked {
-    height: 50px !important;
-    width: 50px !important;
-  }
+
 
 .separator {
     border-left: 0.5px solid rgba(255, 255, 255, 0.488);
@@ -512,7 +524,7 @@ input:checked {
     left: 0; 
     right: 0; 
     text-align: center;
-    z-index: 3;
+    z-index: 4;
     font-weight: 300;
     position: absolute;
     color: grey;
@@ -588,15 +600,15 @@ input:checked {
 }
 
 #text_03 {
-    top: 66%;
-    left: 19%;
+    top: 67%;
+    left: 18%;
     transform: translate(-50%, -50%);
     transform: rotate(45deg);
 }
 
 #text_04 {
-    top: 65%;
-    left: 73%;
+    top: 67%;
+    left: 75%;
     transform: translate(-50%, -50%);
     transform: rotate(-45deg);
 }
@@ -667,27 +679,27 @@ input:checked {
 
 #map_red_01 {
     top: 81%;
-    left: 38%
+    left: 37%
 }
 
 #map_red_02 {
     top: 70%;
-    left: 29%
+    left: 28%
 }
 
 #map_red_03 {
     top: 62%;
-    left: 24%
+    left: 23%
 }
 
 #map_red_04 {
     top: 49%;
-    left: 14%
+    left: 13%
 }
 
 #map_red_05 {
     top: 40%;
-    left: 7%
+    left: 6%
 }
 
 #map_angle_01 {
@@ -730,8 +742,6 @@ input:checked {
     position: relative;
     max-width:100vw;
     max-height:110vh;
-    height: auto;
-    width:auto;
     
 }
 
@@ -916,6 +926,20 @@ p {
     .banner-edges {
         font-size: 12pt !important;
     }
+    #map_red_03_01 {
+        top: 80%;
+        left: 34% !important;
+    }
+    
+    #map_red_03_02 {
+        top: 58%;
+        left: 17% !important;
+    }
+    
+    #map_red_03_03 {
+        top: 45%;
+        left: 7% !important;
+    }
 
 
 }
@@ -1010,19 +1034,66 @@ p {
         width: 90vw !important;
 
     }
+
+    .slice-map-text {
+        font-size: 12pt;
+    }
+    #text_02 {
+        top:5%;
+        left: 50%;
+    }
+
+    #map_angle_01 {
+        top: 28%;
+        left: 2%;
+    }
+    #map_angle_02 {
+        top: 7%;
+        left: 26%;
+    }
+
+    #map_angle_03 {
+        top: 7%;
+        left: 70%;
+    }
+
+    #map_red_03_01 {
+        top: 80%;
+        left: 34% !important;
+    }
+    
+    #map_red_03_02 {
+        top: 58%;
+        left: 17% !important;
+    }
+    
+    #map_red_03_03 {
+        top: 45%;
+        left: 7% !important;
+    }
+
+    #map_angle_04 {
+        top: 28%;
+        left: 95%;
+    }
+
     .download-row{
         margin-bottom: 5% !important;
+    }
+    #text_01 {
+        bottom: -1%
     }
     #text_03 {
         left: 16%;
         top: 67%;
     }
+    .select-button {
+        width: 100%;
+        display: block;
+    }
     p {
         font-size: 12pt;
     }
-    .slice-map-text {
-        font-size: 12pt;
-    } 
    
     .cover-logo{
         width: 100%;
@@ -1039,6 +1110,12 @@ p {
     #text_01 {
         bottom: 1%;
     }
+    
+    .select-button {
+        width: 100%;
+        display: block;
+    }
+
     .dropdown-menu-center {
         transform: translate(0px, 0px);
         left:  50% !important;
@@ -1182,6 +1259,18 @@ p {
 
     font-size: x-large;
     font-weight: 100;
+}
+
+.accordion-button-custom-nohover {
+    margin-bottom: 0px;
+    font-size: 20pt ;
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: x-large;
+    font-weight: 100;
+    display: inline;
+
 
 }
 
@@ -1725,22 +1814,22 @@ border: solid white 3px;
 }
 
 #map_time_03_02 {
-    top: 71%;
-    left: 68%;
+    top: 70%;
+    left: 69%;
 }
 
 #map_time_03_03 {
-    top: 60%;
-    left: 76%;
+    top: 59%;
+    left: 77.5%;
 }
 
 #map_time_03_04 {
-    top: 47%;
-    left: 86%;
+    top: 48%;
+    left: 86.5%;
 }
 
 #map_time_03_05 {
-    top: 36%;
+    top: 37%;
     left: 95%;
 }
 
@@ -1750,8 +1839,8 @@ border: solid white 3px;
 }
 
 #map_red_03_02 {
-    top: 63%;
-    left: 23%;
+    top: 58%;
+    left: 19%;
 }
 
 #map_red_03_03 {
@@ -1781,24 +1870,24 @@ border: solid white 3px;
 
 #map_red_02_01 {
     top: 76%;
-    left: 34%;
+    left: 32%;
 
 }
 
 #map_red_02_02 {
     top: 60%;
-    left: 22%;
+    left: 20%;
 
 }
 
 #map_red_02_03 {
     top: 43%;
-    left: 8%;
+    left: 7%;
 
 }
 #map_red_02_04 {
     top: 35%;
-    left: 2%;
+    left: 1%;
 
 }
 
@@ -1864,6 +1953,7 @@ border: solid white 3px;
     text-align: left;
     align-items: center;
     text-align: center;
+    cursor: pointer;
 }
 
 .nav {

@@ -373,6 +373,7 @@
           <div id = "map_red_02_02" class = "slice-map-text lookback-time-axis">0.2</div>
           <div id = "map_red_02_03" class = "slice-map-text lookback-time-axis">0.3</div>
           <div id = "map_red_02_04" class = "slice-map-text lookback-time-axis">0.4</div>
+          <img id = "near_from_outer" class = "hover-map-overlay" src = "near_from_outer.jpg"  >
 
           <img id = "outer-overlay" class = "test-map-overlay" src = "https://bmenard1.github.io/mapoftheuniverse/outer.png"  >
 
@@ -399,6 +400,8 @@
 
 
         <div id = "black-overlay"></div>
+        <img id = "outer_from_full" class = "hover-map-overlay" src = "hover_outer_from_full.jpg">
+        <img id = "near_from_full" class = "hover-map-overlay" src = "hover_near_from_full.jpg"  >
 
         <img id = "overlay" class = "map-overlay" src = "https://apps.sciserver.org/mapoftheuniverse/Images/WebMap_V02/total_line_transparent.png"  >
 
@@ -417,26 +420,48 @@
           </div>
 
           <div class="this-col col-3 col-lg-3 this-col-change" style="text-align: right;">
-            <div class = "row selector-row" style="width: 100%; margin: 0%;">
-              <div class = "col" >
+            <div class = "row selector-row" style="width: 100%; margin: 0%; padding: 0%;">
+              
+              <div style="width: 100%; margin: 0%; padding: 0%;">
                 <input type="radio" class="btn-check" name="options-outlined" id="near" autocomplete="off" value="1">
-                <label class=" btn accordion-button-custom select-button " for="near">
+                <label id = "near_label" class=" btn accordion-button-custom select-button " for="near">
                   near
                 </label>
+
+                <label class = " btn accordion-button-custom-nohover select-button" style="display: inline;">
+                  |
+                </label>
+
+                <input type="radio" class="btn-check" name="options-outlined" id="outer" value="2"  autocomplete="off">
+                <label id = "outer_label" class=" btn accordion-button-custom select-button" for="outer">
+                    outer </label>
+                <div class = "btn accordion-button-custom-nohover select-button">
+                  |
+                </div>
+
+                <input type="radio" class="btn-check" name="options-outlined" id="full"  value="3"  autocomplete="off" checked>
+                <label id = "full_label" class="btn accordion-button-custom select-button" for="full" >
+                    full
+                </label>
+  
+              </div>
+              
+              <!--
+
+              
+              -->
+              <!--
+
+              <div class = "col" >
                 </div>
                 <div class = "col" >
-                  <input type="radio" class="btn-check" name="options-outlined" id="outer" value="2"  autocomplete="off">
-                  <label class=" btn accordion-button-custom select-button" for="outer">
-                      outer
-                  </label>
                 </div>
                 <div class = "col" >
-                  <input type="radio" class="btn-check" name="options-outlined" id="full"  value="3"  autocomplete="off" checked>
-                  <label class="btn accordion-button-custom select-button" for="full" >
-                      full
-                  </label>
                 </div>
+                                           -->
+
              </div>
+
             <hr/>
 
             <button class = " btn btn-no-outline-light banner-switch banner-switch-hover banner-extra" style="background-color: black !important; width: 100%;">            
