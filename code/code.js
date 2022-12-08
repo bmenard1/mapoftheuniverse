@@ -199,9 +199,15 @@ $(document).ready(function() {
         } else if (current_checked == 3 && id == "outer_label") {
             overlay_show = "#outer_from_full" 
         } else if(current_checked == 2 && id == "near_label") {
-            console.log("HERE")
             overlay_show = "#near_from_outer" 
-        } else {
+        } else if(current_checked == 2 && id == "close_label") {
+            overlay_show = "#close_from_outer" 
+        } else if (current_checked == 3 && id == "close_label") {
+            overlay_show = "#close_from_full" 
+        } else if (current_checked == 1 && id == "close_label") {
+            overlay_show = "#close_from_near" 
+        }
+         else {
             overlay_show = "none" 
             console.log("HOVERING HERE")
         } 
