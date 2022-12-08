@@ -49,6 +49,10 @@ a {
     height: 50%;
 }
 
+.download-click-section .vertical-row {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 25%;
+}
 
 .download-row{
     margin: 0%;
@@ -73,6 +77,8 @@ a {
     background-color: rgba(0, 0, 0, 0.5);
     height: 50%;
 }
+
+
 .download-hover-section .col {
     border: solid 1px white;
 }
@@ -330,7 +336,17 @@ hr {
     height: 100%;
     background-color: black;
     display: none;
+}
 
+#axis_set_04{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 3;
+    height: 100%;
+    background-color: black;
+    display: none;
 }
 
 #black-overlay {
@@ -861,11 +877,22 @@ p {
     font-weight: 100;
     font-size: 15pt;
 }
+
+.keep-open img {
+    width: 20vw ;
+}
 @media only screen  and (max-width: 600px) {
+    .keep-open img {
+        width: 100%;
+    }
     .dropdown-menu-center {
         transform: translate(0px, 0px);
         left: 50% !important;
         width: 90vw !important;
+    }
+
+    .dropdown-menu h1 {
+        font-size: 10pt !important;
     }
     
 
@@ -941,6 +968,20 @@ p {
         left: 7% !important;
     }
 
+    #map_red_04_01 {
+        top: 76%;
+        left: 30% !important;
+    }
+    
+    #map_red_04_02 {
+        top: 58%;
+        left: 17% !important;
+    }
+    
+    #map_red_04_03 {
+        top: 37%;
+        left: 0% !important;
+    }
 
 }
 @media only screen and (min-width: 300px) and (max-width: 600px) {
@@ -1104,9 +1145,23 @@ p {
     .btn-no-outline-light {
         font-size: 12pt !important;
     }
+    #map_red_04_01 {
+        top: 76%;
+        left: 30% !important;
+    }
+    
+    #map_red_04_02 {
+        top: 58%;
+        left: 17% !important;
+    }
+    
+    #map_red_04_03 {
+        top: 37%;
+        left: 1% !important;
+    }
 }
 
-@media only screen and (min-width: 800px) and (max-width: 1000px) {
+@media only screen and (min-width: 800px) and (max-width: 990px) {
     #text_01 {
         bottom: 1%;
     }
@@ -1127,6 +1182,20 @@ p {
     }
     .accordion-button-custom {
         font-size: 15pt !important;
+    }
+    #map_red_04_01 {
+        top: 76%;
+        left: 30% !important;
+    }
+    
+    #map_red_04_02 {
+        top: 58%;
+        left: 17% !important;
+    }
+    
+    #map_red_04_03 {
+        top: 37%;
+        left: 1% !important;
     }
 
 }
@@ -1314,9 +1383,11 @@ p {
     padding-right: 3%;
     padding-bottom: 1%;
     padding-left: 3%;
-
 }
-
+.first-point {
+    max-height: 60vh;
+    overflow: scroll;
+}
 .info-accordion:not(.collapsed)::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     transform: none;
@@ -1848,6 +1919,36 @@ border: solid white 3px;
     left: 9%;
 }
 
+
+#map_red_04_01 {
+    top: 76%;
+    left: 32%;
+}
+
+#map_red_04_02 {
+    top: 58%;
+    left: 19%;
+}
+
+#map_red_04_03 {
+    top: 37%;
+    left: 2%;
+}
+
+#map_time_04_01 {
+
+    top: 70%;
+    left: 69%;
+
+
+}
+#map_time_04_02{    
+    top: 45%;
+    left: 89%;
+
+}
+
+
 #map_time_02_01{
     top: 81%;
     left: 61%;
@@ -1960,11 +2061,13 @@ border: solid white 3px;
     display: none;
 }
 .dropdown-menu img {
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
+.dropdown-laptop img {
+    width: 100%;
+}
 .download-button {
     font-weight: 800;
 }

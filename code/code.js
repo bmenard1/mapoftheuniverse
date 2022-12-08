@@ -24,6 +24,7 @@ $(document).ready(function() {
     */
 
 
+
     $(".dropdown-item").click(function(e){
         $('.download-click-section').hide();
         $(this).children('.download-click-section').show();
@@ -139,8 +140,36 @@ $(document).ready(function() {
 
 
     let toggle_banner = false;
+    $(".description").click(function(e){
+        console.log("DESCRIPTION")
+        var images = $(".description img")
 
+        images.each(function(index){
+            var data_src = $(this).attr('data-src')
+            if(data_src){
+                console.log(data_src)
+            }
+
+            $(this).attr("src", data_src)
+
+        })
+
+    })
     $(".banner-switch").click (function(e) {
+
+        var images = $(".banner-section img")
+
+        images.each(function(index){
+            var data_src = $(this).attr('data-src')
+            if(data_src){
+                console.log(data_src)
+            }
+
+            $(this).attr("src", data_src)
+
+        })
+
+
         if(!toggle_banner) {
             $(".map-section").fadeOut(400, function() {
                 $(".banner-section").fadeIn(800)
@@ -174,6 +203,7 @@ $(document).ready(function() {
             overlay_show = "#near_from_outer" 
         } else {
             overlay_show = "none" 
+            console.log("HOVERING HERE")
         } 
         if(overlay_show != "none") {
             console.log("SHOWING")
@@ -205,6 +235,9 @@ $(document).ready(function() {
             axis_overlay = "#axis_set_03"; 
         } else if (true_checked == 2) {
             axis_overlay = "#axis_set_02"; 
+        } else if (true_checked == 4) {
+            axis_overlay = "#axis_set_04"; 
+
         } else {
             axis_overlay = "#axis_set_01"; 
         }
