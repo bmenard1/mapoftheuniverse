@@ -94,6 +94,9 @@ a {
     /*border: solid 1px var(--grey);*/
     margin-bottom: 10px;
 }
+.mobile-button h1 {
+    font-weight: 200;
+}
 
 body {
     margin: 0px;
