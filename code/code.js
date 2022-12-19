@@ -25,10 +25,12 @@ $(document).ready(function() {
 
 
 
-    $(".dropdown-item").click(function(e){
+    $(".dropdown-item").hover(function(e){
         $('.download-click-section').hide();
         $(this).children('.download-click-section').show();
         e.stopPropagation();
+    }, function(e) {
+        $('.download-click-section').hide();
 
     })
 

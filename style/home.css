@@ -23,6 +23,11 @@ a {
     margin-bottom: 20px;
 }
 
+.download-modal-body h2 {
+    font-weight: 100;
+    text-align: left !important;
+}
+
 .download-hover-section {
     position: absolute;
     top: 0%;
@@ -59,10 +64,12 @@ a {
 }
 
 .download-row .col {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    font-size: 12pt;
+    font-weight: 400;
     padding: 5px;
     border: solid 1px  rgb(79, 79, 79);
     text-decoration: none;
@@ -83,7 +90,7 @@ a {
     border: solid 1px white;
 }
 
-.download-dropdown img {
+.download-dropdown .dropdown-item img {
     /*border: solid 1px var(--grey);*/
     margin-bottom: 10px;
 }
@@ -397,7 +404,19 @@ input[type=radio]:checked + label {
     background-color: blue !important;
 } 
 */
-
+.download-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0%;
+    bottom: 0%;
+    opacity: 30%;
+    background-color: black;
+    border: solid 1px var(--grey);
+    border-radius: 0px 0px 5px 0px;
+    padding: 5px;
+    visibility: hidd;
+}
 .select-button:hover, .select-button:focus, .select-button:active, .select-button.active, .open>.dropdown-toggle.select-button {
     background-color: #00b3db00;
 
@@ -878,11 +897,20 @@ p {
     font-size: 15pt;
 }
 
-.keep-open img {
+.keep-open .dropdown-item img {
     width: 20vw ;
 }
+
+.mobile-button {
+    border: solid 1px #3a3a3a;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
 @media only screen  and (max-width: 600px) {
-    .keep-open img {
+    .keep-open .dropdown-item img {
         width: 100%;
     }
     .dropdown-menu-center {
@@ -892,7 +920,7 @@ p {
     }
 
     .dropdown-menu h1 {
-        font-size: 10pt !important;
+        font-size: 12pt !important;
     }
     
 
@@ -943,8 +971,8 @@ p {
         font-size: 15pt;
     }
     .download-row .col {
-
-        font-size: 20pt;
+        font-size: 15pt;
+        font-weight: 100;
     }
     .download-row{
         margin-bottom: 5% !important;
@@ -1136,6 +1164,7 @@ p {
         font-size: 12pt;
     }
    
+
     .cover-logo{
         width: 100%;
     }
@@ -1148,6 +1177,10 @@ p {
     #map_red_04_01 {
         top: 76%;
         left: 30% !important;
+    }
+    .download-row .col {
+        font-size: 20pt ;
+        font-weight: 100;
     }
     
     #map_red_04_02 {
@@ -1170,7 +1203,10 @@ p {
         width: 100%;
         display: block;
     }
-
+    .download-row .col {
+        font-size: 20pt ;
+        font-weight: 100;
+    }
     .dropdown-menu-center {
         transform: translate(0px, 0px);
         left:  50% !important;
@@ -2047,7 +2083,7 @@ border: solid white 3px;
 .dropdown-menu h1 {
     font-size: 15pt;
 }
-.dropdown-item {
+.dropdown-item-b {
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-weight: 100;
     /*display: flex;*/
@@ -2056,11 +2092,14 @@ border: solid white 3px;
     text-align: center;
     cursor: pointer;
 }
+.dropdown-item:hover {
+    background-color: black;
+}
 
 .nav {
     display: none;
 }
-.dropdown-menu img {
+.dropdown-item img {
     margin-left: auto;
     margin-right: auto;
 }
