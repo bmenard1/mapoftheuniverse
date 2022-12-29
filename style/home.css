@@ -420,6 +420,8 @@ input[type=radio]:checked + label {
     padding: 5px;
     visibility: hidd;
 }
+
+/*
 .select-button:hover, .select-button:focus, .select-button:active, .select-button.active, .open>.dropdown-toggle.select-button {
     background-color: #00b3db00;
 
@@ -427,12 +429,57 @@ input[type=radio]:checked + label {
     border: 0px;
     color: white;
 }
+*/
 
+
+.zoom_button:active+.btn, .zoom_button:checked+.btn, .zoom_button.active, .zoom_button.show, .zoom_button:active {
+}
+
+.zoom-container {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.zoom-icon {
+    display: inline-block;
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+}
+.zoom-icon img {
+    width: 100%;
+}   
 
 .btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active{
     color: white !important;
+    background-color: rgb(61, 61, 61);
 }
 
+
+.zoom_button {
+    background-color: black; 
+    vertical-align:middle;
+    border: 1px solid var(--grey);
+    height: 70%;
+    aspect-ratio : 1 / 1;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.zoom_button:hover {
+    background-color: rgb(170, 170, 170) !important;
+}
+
+.zoom_button:checked + label {
+    background-color: white;
+}
 
 .separator {
     border-left: 0.5px solid rgba(255, 255, 255, 0.488);
@@ -913,6 +960,10 @@ p {
 }
 
 @media only screen  and (max-width: 600px) {
+
+    .zoom-icon {
+        width: 25px;
+    }
     .keep-open .dropdown-item img {
         width: 100%;
     }
@@ -1106,7 +1157,9 @@ p {
         width: 90vw !important;
 
     }
-
+    .zoom-icon {
+        width: 25px;
+    }
     .slice-map-text {
         font-size: 12pt;
     }
@@ -1159,10 +1212,12 @@ p {
         left: 16%;
         top: 67%;
     }
+    /*
     .select-button {
         width: 100%;
         display: block;
     }
+    */
     p {
         font-size: 12pt;
     }
@@ -1201,11 +1256,15 @@ p {
     #text_01 {
         bottom: 1%;
     }
-    
+    .zoom-icon {
+        width: 20px;
+    }
+    /*
     .select-button {
         width: 100%;
         display: block;
     }
+    */
     .download-row .col {
         font-size: 20pt ;
         font-weight: 100;

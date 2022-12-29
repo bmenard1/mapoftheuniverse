@@ -439,8 +439,38 @@
 
           <div class="this-col col-3 col-lg-3 this-col-change" style="text-align: right;">
             <div class = "row selector-row" style="width: 100%; margin: 0%; padding: 0%;">
-              <div style="width: 100%; margin: 0%; padding: 0%;">
-                <input type="radio" class="btn-check" name="options-outlined" id="close" autocomplete="off" value="4">
+              <div class = "zoom-container">
+                
+                <div class = "zoom-icon">
+                  <img src = "Images/Icons/Minus.svg">
+                </div>
+
+                <input type="radio" class="btn-check" name="options-outlined" id="close" value="4" autocomplete="off" >
+                <label id = "close_label" class="btn zoom_button select-button " for="close">
+                </label>
+
+                <input type="radio" class="btn-check" name="options-outlined" id="near" autocomplete="off" value="1">
+
+                <label id = "near_label" class="btn zoom_button select-button " for="near">
+
+                </label>
+                
+                <input type="radio" class="btn-check" name="options-outlined" id="outer" value="2"  autocomplete="off">
+
+                <label id = "outer_label" class="btn zoom_button select-button" for="outer">
+                  </label>
+                <input type="radio" class="btn-check" name="options-outlined" id="full"  value="3"  autocomplete="off" checked>
+                <label id = "full_label" class="btn zoom_button select-button" for="full" >
+                </label>
+
+                <div class = "zoom-icon">
+                  <img src = "Images/Icons/Plus.svg">
+                </div>
+
+                <!--
+
+                <input type="radio" class="btn-check" name="options-outlined" id="close_label" autocomplete="off" value="4">
+
                 <label id = "close_label" class=" btn accordion-button-custom select-button " for="close">
                   close
                 </label>
@@ -448,7 +478,9 @@
                 <label class = " btn accordion-button-custom-nohover select-button" style="display: inline;">
                   |
                 </label>
+
                 <input type="radio" class="btn-check" name="options-outlined" id="near" autocomplete="off" value="1">
+
                 <label id = "near_label" class=" btn accordion-button-custom select-button " for="near">
                   near
                 </label>
@@ -458,16 +490,22 @@
                 </label>
 
                 <input type="radio" class="btn-check" name="options-outlined" id="outer" value="2"  autocomplete="off">
+
                 <label id = "outer_label" class=" btn accordion-button-custom select-button" for="outer">
-                    outer </label>
+                    outer
+                  </label>
                 <div class = "btn accordion-button-custom-nohover select-button">
                   |
                 </div>
 
                 <input type="radio" class="btn-check" name="options-outlined" id="full"  value="3"  autocomplete="off" checked>
+
                 <label id = "full_label" class="btn accordion-button-custom select-button" for="full" >
                     full
                 </label>
+                -->
+                
+
                 <!--
 
                 <input type="range" id="volume" name="volume" min="0" max="4" style = "width: 100%" list="tickmarks" id="rangeInput" >
@@ -726,13 +764,13 @@
                         <img src="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Thumbnails/thumbnail_vertical_banner.jpeg"  />
                         <div class = "download-click-section">
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                            <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
                             <a class = "col" href="https://www.redbubble.com/i/poster/Map-of-the-Universe-by-scientific-viz/132238689.G7H47" target="_blank" rel="noopener noreferrer">                        
@@ -751,13 +789,13 @@
                         <img src="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Thumbnails/thumbnail_horizontal_banner.jpeg"  />
                         <div class = "download-click-section">
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                            <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
                             <a class = "col" href="https://www.redbubble.com/i/poster/Map-of-the-Universe-by-scientific-viz/132238837.G7H47" target="_blank" rel="noopener noreferrer">                        
@@ -776,13 +814,13 @@
                         <img  src="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Thumbnails/2K Thumbnail.jpg"  />
                         <div class = "download-click-section">
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                            <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
                           </div>
                           <div class = "row download-row vertical-row">
                             <a class = "col" href="https://www.redbubble.com/i/poster/Map-of-the-Universe-by-scientific-viz/132237472.G7H47" target="_blank" rel="noopener noreferrer">                        
@@ -804,7 +842,7 @@
                         <div class = "download-click-section">
                           <div class = "row download-row">
 
-                            <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-educational-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                            <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-educational-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
                           </div>
                           <div class = "row download-row">
                             <a class = "col" href="https://www.redbubble.com/i/poster/Map-of-the-Universe-by-scientific-viz/132237651.G7H47" target="_blank" rel="noopener noreferrer">                        
@@ -843,7 +881,48 @@
       </div>
       
       <div class = "d-lg-none" style="padding-left: 4%; padding-right: 4%; text-align: left;">
+        <br/>
+
+        <!--
+
+        -->
+        <hr/>
+        <br/>
+  
+        <div style="height: 10vh;" >
+          <div class = "zoom-container" style="height: 100%; text-align: center;">
+            <div class = "zoom-icon">
+              <img src = "Images/Icons/Minus.svg">
+            </div>
+
+            <input type="radio" class="btn-check" name="options-outlined" id="close2" value="4" autocomplete="off" >
+            <label id = "close_label" class="btn zoom_button select-button " for="close2">
+            </label>
+
+            <input type="radio" class="btn-check" name="options-outlined" id="near2" autocomplete="off" value="1">
+
+            <label id = "near_label" class="btn zoom_button select-button " for="near2">
+
+            </label>
+            
+            <input type="radio" class="btn-check" name="options-outlined" id="outer2" value="2"  autocomplete="off">
+
+            <label id = "outer_label" class="btn zoom_button select-button" for="outer2">
+              </label>
+            <input type="radio" class="btn-check" name="options-outlined" id="full2"  value="3"  autocomplete="off" checked>
+            <label id = "full_label" class="btn zoom_button select-button" for="full2" >
+            </label>
+
+            <div class = "zoom-icon">
+              <img src = "Images/Icons/Plus.svg">
+            </div>
+          </div>
+        </div>
+
+        <!--
+          
         <div class = "row selector-row" style="width: 100%; margin: 0%;">
+          
           <div style="margin-top: 20px;"></div>
           <div class = "col" >
             <input type="radio" class="btn-check" name="options-outlined2" id="close2" autocomplete="off" value="4"  >
@@ -870,7 +949,9 @@
               </label>
             </div>
         </div>
-        <br/>
+        -->
+
+
         <hr/>
         <br/>
         <img class = "phone-logo" src="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Logo/Logo3.png"  />
@@ -1331,13 +1412,13 @@
               <br>
               <br>
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-beautiful-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-beautiful-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
               </div>
               <br>
               <hr>
@@ -1386,7 +1467,7 @@
                             -->
 
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-educational-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-educational-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
               </div>
               <br>
               <hr>
@@ -1427,13 +1508,13 @@
               <br>
               
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-horizontal-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-horizontal-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
               </div>
               <br>
               <hr>
@@ -1516,13 +1597,13 @@
               <br>
               
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-2k.png" download target="_blank" rel="noopener noreferrer">medium (2k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col"  href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
+                <a class = "col"  href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-thin.png" download target="_blank" rel="noopener noreferrer">high (4k)</a>
               </div>
               <div class = "row download-row">
-                <a class = "col" href="https://faculty.pha.jhu.edu/menard/MapoftheUniverse-vertical-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
+                <a class = "col" href="https://menard.pha.jhu.edu/MapoftheUniverse/Images/Deliverables/Files/MapoftheUniverse-vertical-print.png" download target="_blank" rel="noopener noreferrer">very high (8k)</a>
               </div>
               <br>
               <hr>
