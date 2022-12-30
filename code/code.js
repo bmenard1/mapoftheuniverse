@@ -196,19 +196,19 @@ $(document).ready(function() {
     $('.select-button').hover(function(e){
         id = this.id
         console.log(current_checked)
-        if(current_checked == 3 && id == "near_label") {
+        if(current_checked == 3 && id == "near_label" ) {
             overlay_show = "#near_from_full" 
         } else if (current_checked == 3 && id == "outer_label") {
             overlay_show = "#outer_from_full" 
         } else if(current_checked == 2 && id == "near_label") {
             overlay_show = "#near_from_outer" 
-        } else if(current_checked == 2 && id == "close_label") {
+        } else if(current_checked == 2 && (id == "close_label" || id == "near_galaxy_view_label")) {
             overlay_show = "#close_from_outer" 
-        } else if (current_checked == 3 && id == "close_label") {
+        } else if (current_checked == 3 && (id == "close_label" || id == "near_galaxy_view_label")) {
             overlay_show = "#close_from_full" 
-        } else if (current_checked == 1 && id == "close_label") {
+        } else if (current_checked == 1 && (id == "close_label" || id == "near_galaxy_view_label")) {
             overlay_show = "#close_from_near" 
-        }
+        } 
          else {
             overlay_show = "none" 
             console.log("HOVERING HERE")
@@ -246,6 +246,8 @@ $(document).ready(function() {
         } else if (true_checked == 4) {
             axis_overlay = "#axis_set_04"; 
 
+        } else if(true_checked == 5) {
+            axis_overlay = "#axis_set_05"
         } else {
             axis_overlay = "#axis_set_01"; 
         }

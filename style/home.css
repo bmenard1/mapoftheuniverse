@@ -359,6 +359,17 @@ hr {
     display: none;
 }
 
+#axis_set_05{
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 3;
+    height: 100%;
+    background-color: black;
+    display: none;
+}
+
 #black-overlay {
     position: absolute;
     width: 100%;
