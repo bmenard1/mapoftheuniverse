@@ -1528,9 +1528,9 @@ p {
 }
 
 #near_galaxy_view_label{
-    background-image: url("https://bmenard1.github.io/mapoftheuniverse/Images/Icons/Minus.svg"); 
+    background-image: url("https://bmenard1.github.io/mapoftheuniverse/Images/Icons/GalIcon.png"); 
     background-size:cover; 
-    border: dashed 1px var(--grey);
+    border: dashed .5px var(--grey);
 }
 .term-hover { 
     color:rgb(152, 152, 152);
