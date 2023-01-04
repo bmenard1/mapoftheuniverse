@@ -1,7 +1,9 @@
-
+var current_checked = 3
+var visible_overlay = "#axis_set_01"
+var user_clicked = false;
+var carousel_handle = null;
+var animating = false
 $(document).ready(function() {
-    var visible_overlay = "#axis_set_01"
-    var current_checked = 3
     $('.more-info').hide();
 
     $("#hide-terms").click(function(e){
@@ -44,6 +46,7 @@ $(document).ready(function() {
         $('#myModal').modal('toggle');
 
     })
+
 
     $(".map-effect").hover(
         function(e){
@@ -224,47 +227,14 @@ $(document).ready(function() {
     })
 
     $('input').on('change', function() {
-
-        var checked = $("input[name=options-outlined]:checked").val()
-        var other_checked = $("input[name=options-outlined2]:checked").val()
-        var true_checked = 0
-        if (checked != current_checked) {
-            $('input:radio[name=options-outlined2][value=' + checked + ']').click();
-            true_checked = checked
-        } else {
-            $('input:radio[name=options-outlined][value=' + other_checked + ']').click();
-            true_checked = other_checked
-        }
-
-        console.log(true_checked)
-
-        var axis_overlay = ""
-        if(true_checked == 1) {
-            axis_overlay = "#axis_set_03"; 
-        } else if (true_checked == 2) {
-            axis_overlay = "#axis_set_02"; 
-        } else if (true_checked == 4) {
-            axis_overlay = "#axis_set_04"; 
-
-        } else if(true_checked == 5) {
-            axis_overlay = "#axis_set_05"
-        } else {
-            axis_overlay = "#axis_set_01"; 
-        }
-
-
-
-        $("#black-overlay").fadeIn("fast", function() {
-            $(".hover-map-overlay").hide()
-            $(visible_overlay).hide()
-            $(axis_overlay).show()
-            $("#black-overlay").fadeOut("fast", function(){});
-            visible_overlay = axis_overlay
-            current_checked = true_checked
-        })
-
+        user_clicked = true;
+        console.log("CHANGING INPUT")
+        zoomlevel()
     });
       
+    $('.zoom_button').click(function() {
+        clearInterval(carousel_handle)
+    })
     
     $(".banner-switch-hover").hover(function(e){
         $("#overlay").fadeIn("fast", function(){})
@@ -289,6 +259,27 @@ $(document).ready(function() {
     })
 
     $(window).scroll(function() {
+
+        var top_of_element = $(".mapbox").offset().top;
+        var bottom_of_element = $(".mapbox").offset().top + $(".mapbox").outerHeight();
+        var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+        var top_of_screen = $(window).scrollTop();
+    
+        if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+            // the element is visible, do something
+            if (!animating){
+                console.log("TRYING TO CAROUSEL AGAIN")
+                carousel()
+                animating = true
+            }
+            
+        } else {        
+            $("#full").prop('checked', true);
+            zoomlevel()
+            clearInterval(carousel_handle)
+            animating = false;
+        }
+    
         var windowTop = $(this).scrollTop() 
         var windowBottom = $(this).scrollTop() + $(window).outerHeight()
         var elementTop = $(".banner-outline").offset().top;
@@ -370,7 +361,18 @@ $(document).ready(function() {
     })
 })
 
+function carousel() {
+    options = ["#close", "#near", "#outer", "#full"]
+    option_index = 0
+    carousel_handle = setInterval(function(){ 
+        $(options[option_index]).prop('checked', true);
 
+        option_index += 1
+        option_index = option_index%4
+        zoomlevel()
+    }, 2000);
+
+}
 
 const information = {
     1: {title: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe.", img: "Images/Explanations/cmb_illust.png"},
@@ -450,6 +452,47 @@ function set_modal_pic(id) {
             $(".modal-footer > p").text("")
 
     }
+
+}
+
+function zoomlevel() {
+    var checked = $("input[name=options-outlined]:checked").val()
+    var other_checked = $("input[name=options-outlined2]:checked").val()
+    var true_checked = 0
+    if (checked != current_checked) {
+        $('input:radio[name=options-outlined2][value=' + checked + ']').click();
+        true_checked = checked
+    } else {
+        $('input:radio[name=options-outlined][value=' + other_checked + ']').click();
+        true_checked = other_checked
+    }
+
+    console.log(true_checked)
+
+    var axis_overlay = ""
+    if(true_checked == 1) {
+        axis_overlay = "#axis_set_03"; 
+    } else if (true_checked == 2) {
+        axis_overlay = "#axis_set_02"; 
+    } else if (true_checked == 4) {
+        axis_overlay = "#axis_set_04"; 
+
+    } else if(true_checked == 5) {
+        axis_overlay = "#axis_set_05"
+    } else {
+        axis_overlay = "#axis_set_01"; 
+    }
+
+
+
+    $("#black-overlay").fadeIn("fast", function() {
+        $(".hover-map-overlay").hide()
+        $(visible_overlay).hide()
+        $(axis_overlay).show()
+        $("#black-overlay").fadeOut("fast", function(){});
+        visible_overlay = axis_overlay
+        current_checked = true_checked
+    })
 
 }
 
