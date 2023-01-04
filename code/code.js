@@ -362,7 +362,7 @@ $(document).ready(function() {
 })
 
 function carousel() {
-    options = ["#close", "#near", "#outer", "#full"]
+    options = ["#outer", "#near",  "#close", "#full"]
     option_index = 0
     carousel_handle = setInterval(function(){ 
         $(options[option_index]).prop('checked', true);
