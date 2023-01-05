@@ -121,7 +121,6 @@ $(document).ready(function() {
 
     $(".bottom-arrow").click(function(e){
         $('html, body').animate({scrollTop:$(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height(), easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
-            console.log("HEY")
             }})
     })
 
@@ -198,7 +197,6 @@ $(document).ready(function() {
 
     $('.select-button').hover(function(e){
         id = this.id
-        console.log(current_checked)
         if(current_checked == 3 && id == "near_label" ) {
             overlay_show = "#near_from_full" 
         } else if (current_checked == 3 && id == "outer_label") {
@@ -363,14 +361,23 @@ $(document).ready(function() {
 
 function carousel() {
     options = ["#outer", "#near",  "#close", "#full"]
+    hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near"]
     option_index = 0
-    carousel_handle = setInterval(function(){ 
-        $(options[option_index]).prop('checked', true);
 
+    carousel_handle = setInterval(function(){ 
+        if (option_index %2) {
+            $(hover_options[Math.floor(option_index/2)]).fadeOut()
+
+            $(options[Math.floor(option_index/2)]).prop('checked', true);
+            zoomlevel()
+    
+        } else {
+            $(hover_options[Math.floor(option_index/2)]).fadeIn(300)
+        }
         option_index += 1
-        option_index = option_index%4
-        zoomlevel()
-    }, 2000);
+        option_index = option_index%8
+
+    }, 4000);
 
 }
 
@@ -467,7 +474,6 @@ function zoomlevel() {
         true_checked = other_checked
     }
 
-    console.log(true_checked)
 
     var axis_overlay = ""
     if(true_checked == 1) {
