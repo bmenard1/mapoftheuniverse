@@ -377,7 +377,7 @@ function carousel() {
         option_index += 1
         option_index = option_index%8
 
-    }, 4000);
+    }, 3000);
 
 }
 
