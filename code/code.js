@@ -360,8 +360,8 @@ $(document).ready(function() {
 })
 
 function carousel() {
-    options = ["#outer", "#near",  "#close", "#full", "Galaxy_View"]
-    hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near"]
+    options = ["#outer", "#near",  "#close", "#full"]
+    hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near", "Galaxy_View"]
     option_index = 0
 
     carousel_handle = setInterval(function(){ 
