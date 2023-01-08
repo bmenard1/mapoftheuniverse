@@ -365,7 +365,7 @@ function carousel() {
     option_index = 0
 
     carousel_handle = setInterval(function(){ 
-        if (option_index %2) {
+        if (option_index %2 || option_index == 7) {
             $(hover_options[Math.floor(option_index/2)]).fadeOut()
 
             $(options[Math.floor(option_index/2)]).prop('checked', true);
@@ -374,6 +374,7 @@ function carousel() {
         } else {
             $(hover_options[Math.floor(option_index/2)]).fadeIn(300)
         }
+        
         option_index += 1
         option_index = option_index%10
 
