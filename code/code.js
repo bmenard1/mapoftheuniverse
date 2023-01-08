@@ -365,7 +365,12 @@ function carousel() {
     option_index = 0
 
     carousel_handle = setInterval(function(){ 
-        if (option_index %2 || option_index == 7) {
+        if (option_index %2 || option_index == 6) {
+
+            if(option_index == 7) {
+                option_index = 8
+            }
+
             $(hover_options[Math.floor(option_index/2)]).fadeOut()
 
             $(options[Math.floor(option_index/2)]).prop('checked', true);
@@ -376,7 +381,7 @@ function carousel() {
         }
         
         option_index += 1
-        option_index = option_index%10
+        option_index = option_index%9
 
     }, 3000);
 
