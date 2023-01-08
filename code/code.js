@@ -360,7 +360,7 @@ $(document).ready(function() {
 })
 
 function carousel() {
-    options = ["#outer", "#near",  "#close", "#full", "#Galaxy_View"]
+    options = ["#outer", "#near",  "#close", "#near_galaxy_view", "#full"]
     hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near", "#Galaxy_View"]
     option_index = 0
 
@@ -375,7 +375,7 @@ function carousel() {
             $(hover_options[Math.floor(option_index/2)]).fadeIn(300)
         }
         option_index += 1
-        option_index = option_index%8
+        option_index = option_index%10
 
     }, 3000);
 
