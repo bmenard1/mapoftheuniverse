@@ -124,6 +124,8 @@ $(document).ready(function() {
             }})
     })
 
+
+
     $(".info-accordion").click(function(e){
         var myClass = $(this).attr("class");
         if(myClass.includes("collapsed")){
@@ -145,7 +147,21 @@ $(document).ready(function() {
 
     let toggle_banner = false;
     $(".description").click(function(e){
-        console.log("DESCRIPTION")
+        
+        if ($("#full").is(":checked") && !($("#outer_from_full").is(":visible"))) {
+            
+        } else {
+            $("#full").prop('checked', true);
+            zoomlevel()
+        }
+
+        if(carousel_handle) {
+            clearInterval(carousel_handle)
+            carousel_handle = null
+        }
+
+        console.log(carousel_handle)
+
         var images = $(".description img")
 
         images.each(function(index){
@@ -360,6 +376,7 @@ $(document).ready(function() {
 })
 
 function carousel() {
+    
     options = ["#outer", "#near",  "#close", "#near_galaxy_view", "#full"]
     hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near", "#Galaxy_View"]
     option_index = 0
@@ -404,7 +421,9 @@ const information = {
 $(document).on("click", function (event) {
     // If the target is not the container or a child of the container, then process
     // the click event for outside of the container.
+    console.log("CLICKED")
     if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 ) {
+        console.log("Collapsiing")
         $('.collapse').collapse('hide')
         $(".more-info").hide();
         $('.other-col').removeClass('col-lg-3');
