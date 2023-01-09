@@ -127,7 +127,9 @@ $(document).ready(function() {
 
 
     $(".info-accordion").click(function(e){
+        console.log("INFO")
         var myClass = $(this).attr("class");
+
         if(myClass.includes("collapsed")){
 
             $('.other-col').removeClass('col-lg-3 this-col-change');
@@ -142,34 +144,33 @@ $(document).ready(function() {
         $(".read-more").show();
         $('.info-col').removeClass('col-lg-6');
         $('.info-col').addClass('col-lg-3');
+
+
+        
     })
 
 
     let toggle_banner = false;
     $(".description").click(function(e){
-        
-        if ($("#full").is(":checked") && !($("#outer_from_full").is(":visible"))) {
-            
+        /*
+        if ($("#full").is(":checked")) {
+            $("#outer_from_full").hide();
         } else {
             $("#full").prop('checked', true);
             zoomlevel()
         }
+        */
+       $(".hover-map-overlay").fadeOut("fast")
 
         if(carousel_handle) {
             clearInterval(carousel_handle)
             carousel_handle = null
         }
 
-        console.log(carousel_handle)
-
         var images = $(".description img")
 
         images.each(function(index){
             var data_src = $(this).attr('data-src')
-            if(data_src){
-                console.log(data_src)
-            }
-
             $(this).attr("src", data_src)
 
         })
@@ -382,6 +383,7 @@ function carousel() {
     option_index = 0
 
     carousel_handle = setInterval(function(){ 
+        console.log(option_index)
         if (option_index %2 || option_index == 6) {
 
             if(option_index == 7) {
@@ -421,9 +423,7 @@ const information = {
 $(document).on("click", function (event) {
     // If the target is not the container or a child of the container, then process
     // the click event for outside of the container.
-    console.log("CLICKED")
     if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 ) {
-        console.log("Collapsiing")
         $('.collapse').collapse('hide')
         $(".more-info").hide();
         $('.other-col').removeClass('col-lg-3');
@@ -491,11 +491,14 @@ function zoomlevel() {
     var checked = $("input[name=options-outlined]:checked").val()
     var other_checked = $("input[name=options-outlined2]:checked").val()
     var true_checked = 0
+
     if (checked != current_checked) {
-        $('input:radio[name=options-outlined2][value=' + checked + ']').click();
+        $('input:radio[name=options-outlined2][value=' + checked + ']').prop('checked', true);
+        //$('input:radio[name=options-outlined2][value=' + checked + ']').click();
         true_checked = checked
     } else {
-        $('input:radio[name=options-outlined][value=' + other_checked + ']').click();
+        $('input:radio[name=options-outlined][value=' + other_checked + ']').prop('checked', true);
+        //$('input:radio[name=options-outlined][value=' + other_checked + ']').click();
         true_checked = other_checked
     }
 
@@ -513,9 +516,6 @@ function zoomlevel() {
     } else {
         axis_overlay = "#axis_set_01"; 
     }
-
-
-
     $("#black-overlay").fadeIn("fast", function() {
         $(".hover-map-overlay").hide()
         $(visible_overlay).hide()
@@ -524,7 +524,6 @@ function zoomlevel() {
         visible_overlay = axis_overlay
         current_checked = true_checked
     })
-
 }
 
 const modal_info = {
