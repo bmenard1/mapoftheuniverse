@@ -3,6 +3,11 @@ var visible_overlay = "#axis_set_01"
 var user_clicked = false;
 var carousel_handle = null;
 var animating = false
+function mod(n, m) {
+    return ((n % m) + m) % m;
+  }
+
+  
 $(document).ready(function() {
     $('.more-info').hide();
 
@@ -176,18 +181,15 @@ $(document).ready(function() {
         })
 
     })
+
     $(".banner-switch").click (function(e) {
-
         var images = $(".banner-section img")
-
         images.each(function(index){
             var data_src = $(this).attr('data-src')
             if(data_src){
                 console.log(data_src)
             }
-
             $(this).attr("src", data_src)
-
         })
 
 
@@ -210,6 +212,38 @@ $(document).ready(function() {
             toggle_banner = false
 
         }
+    })
+
+    $(".zoom-icon").click(function(e){
+        
+        change = 1
+        if ($(e.target).hasClass('plus-icon')) {
+            change = -1
+        } else {
+            change = 1
+        }        
+        clearInterval(carousel_handle)
+        options = ["#full", "#outer", "#near",  "#close", "#near_galaxy_view"]
+        var checked = $("input[name=options-outlined]:checked").val()
+        var other_checked = $("input[name=options-outlined2]:checked").val()
+        var true_checked = 0
+        var order = ['3', '2', '1', '4', '5']
+        if (checked != current_checked) {
+            $('input:radio[name=options-outlined2][value=' + checked + ']').prop('checked', true);
+            //$('input:radio[name=options-outlined2][value=' + checked + ']').click();
+            true_checked = checked
+        } else {
+            $('input:radio[name=options-outlined][value=' + other_checked + ']').prop('checked', true);
+            //$('input:radio[name=options-outlined][value=' + other_checked + ']').click();
+            true_checked = other_checked
+        }
+        
+        console.log(typeof(true_checked))
+        
+        $(options[mod((order.indexOf(true_checked)+ change),5)]).prop('checked', true);
+        zoomlevel()
+
+        
     })
 
     $('.select-button').hover(function(e){
@@ -235,13 +269,12 @@ $(document).ready(function() {
             console.log("SHOWING")
             $(overlay_show).show()
         }
-
     }, function(e) {
         $(overlay_show).hide()
-
     })
 
     $('input').on('change', function() {
+        console.log("CHANGING")
         user_clicked = true;
         console.log("CHANGING INPUT")
         zoomlevel()
@@ -249,6 +282,7 @@ $(document).ready(function() {
       
     $('.zoom_button').click(function() {
         clearInterval(carousel_handle)
+
     })
     
     $(".banner-switch-hover").hover(function(e){
@@ -502,6 +536,7 @@ function zoomlevel() {
         true_checked = other_checked
     }
 
+    console.log(true_checked)
 
     var axis_overlay = ""
     if(true_checked == 1) {
