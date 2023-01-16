@@ -457,7 +457,8 @@ const information = {
 $(document).on("click", function (event) {
     // If the target is not the container or a child of the container, then process
     // the click event for outside of the container.
-    if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 ) {
+    if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 && $(event.target).closest(".zoom-container").length != 1) {
+        console.log("ABC")
         $('.collapse').collapse('hide')
         $(".more-info").hide();
         $('.other-col').removeClass('col-lg-3');
