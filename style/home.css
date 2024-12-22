@@ -3,6 +3,18 @@
     scroll-behavior: auto;
  
 }
+.biocubesAD {
+
+    margin-bottom: 50px;
+    border: solid white 1px;
+    color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
 a {
     color: var(--grey)
 }
@@ -14,7 +26,7 @@ a {
     display:block;
 }
 .dropdown-item {
-    position: relative;
+    position: relative;-
 }
 
 .download-modal-body img{
