@@ -5,14 +5,20 @@
 }
 .biocubesAD {
 
-    margin-bottom: 50px;
+    position: relative;
     border: solid white 1px;
     color: white;
     padding-top: 25px;
     padding-bottom: 25px;
+    margin-top: 35px;
+
+    margin-bottom: 25px;
     width: 50%;
+    font-size: 15pt;
+    font-family: "Helvetica-Neue", "Helvetica" "Roboto", sans-serif;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 100;
   
 }
 a {
