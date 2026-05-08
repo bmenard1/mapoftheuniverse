@@ -40,6 +40,28 @@
         }
     }
 
+    // One-shot opacity-transitionend listener. Guarantees `cb` fires exactly once,
+    // either from the real `transitionend` (filtered to the `opacity` property) or
+    // from a safety setTimeout fallback. Always removes the listener so it can't
+    // leak into a later fade on the same element — this was the source of the
+    // "second carousel cycle is too fast" regression: an interrupted fadeOut left
+    // its listener attached, then the next cycle's fadeIn transitionend triggered
+    // the stale listener and the element was hidden the moment it became visible.
+    function _onceOpacityEnd(el, cb, fallbackMs) {
+        let fired = false;
+        const fire = function () {
+            if (fired) return;
+            fired = true;
+            el.removeEventListener('transitionend', handler);
+            cb();
+        };
+        const handler = function (e) {
+            if (e.propertyName === 'opacity') fire();
+        };
+        el.addEventListener('transitionend', handler);
+        setTimeout(fire, fallbackMs);
+    }
+
     function fadeIn(el, ms, cb) {
         if (!el) return;
         const dur = (typeof ms === 'number') ? ms : 200;
@@ -54,22 +76,8 @@
         void el.offsetWidth;
         el.classList.remove('__vfade');
         el.classList.add('__vfade-in');
-        // jQuery .fadeIn(cb) semantics: invoke cb when the opacity transition completes.
         if (typeof cb === 'function') {
-            let fired = false;
-            const fire = function () {
-                if (fired) return;
-                fired = true;
-                el.removeEventListener('transitionend', onEnd);
-                cb();
-            };
-            const onEnd = function (e) {
-                if (e.propertyName !== 'opacity') return;
-                fire();
-            };
-            el.addEventListener('transitionend', onEnd);
-            // Fallback in case transitionend never fires.
-            setTimeout(fire, dur + 50);
+            _onceOpacityEnd(el, cb, dur + 50);
         }
     }
 
@@ -79,17 +87,14 @@
         el.style.setProperty('--vfade-dur', dur + 'ms');
         el.classList.remove('__vfade-in');
         el.classList.add('__vfade');
-        const onEnd = function () {
-            el.style.display = 'none';
-            el.removeEventListener('transitionend', onEnd);
-            if (typeof cb === 'function') cb();
-        };
-        el.addEventListener('transitionend', onEnd);
-        // Fallback in case transitionend never fires (e.g. element already at 0).
-        setTimeout(function () {
-            if (el.style.display !== 'none') {
-                onEnd();
+        _onceOpacityEnd(el, function () {
+            // Only set display:none if the element is still being faded out.
+            // If a subsequent fadeIn started before this completed, the class
+            // is now `__vfade-in` and hiding the element here would cancel it.
+            if (el.classList.contains('__vfade')) {
+                el.style.display = 'none';
             }
+            if (typeof cb === 'function') cb();
         }, dur + 50);
     }
 
