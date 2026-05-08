@@ -231,20 +231,45 @@
 
     // ---------- Banner switch: toggle map-section <-> banner-section ----------
     let toggle_banner = false;
-    // Helper: scroll so the BOTTOM of `el` sits at the bottom of the viewport.
-    // Defers via requestAnimationFrame so any just-applied display change has reflowed
-    // before we measure — without this, getBoundingClientRect can be read while the
-    // browser still has stale layout from the fadeIn we just kicked off, and we land
-    // partway down the page instead of at the bottom of the banner (the original
-    // jQuery fade-callback timing resolved this implicitly).
+
+    // Land scroll position at the BOTTOM of `el`. The original jQuery flow was
+    //   $(window).scrollTop(el.offset().top + el.outerHeight() - $(window).height())
+    // fired synchronously inside the fadeOut() callback. The vanilla equivalent has
+    // had repeated trouble landing at the right spot — depending on which transition
+    // fires its callback first, scrollY can be auto-clamped, getBoundingClientRect
+    // can return values from a layout that hasn't fully flushed yet, or the browser
+    // can re-scroll behind us when the just-shown element gains focus or tab-stops.
+    //
+    // Robust approach: use Element.scrollIntoView({block:'end'}) — the spec-blessed
+    // call that asks the browser to align the element's bottom with the viewport's
+    // bottom. Then ALSO fire the legacy scrollTo(0, target) at multiple timings
+    // (sync, after rAF, after setTimeout) so a clamp/race that affects one path
+    // is covered by another.
     function scrollBottomTo(el) {
         if (!el) return;
+        const tryScroll = function () {
+            if (!el || !el.offsetParent && getComputedStyle(el).display === 'none') return;
+            // 1. scrollIntoView with block:'end' — easiest correct semantics.
+            try {
+                el.scrollIntoView({ block: 'end', inline: 'nearest', behavior: 'auto' });
+            } catch (_) {
+                el.scrollIntoView(false);
+            }
+            // 2. Belt-and-suspenders: also compute the absolute target ourselves and
+            //    issue a legacy two-arg scrollTo, which is always instant.
+            const rect = el.getBoundingClientRect();
+            const target = rect.top + window.scrollY + el.offsetHeight - window.innerHeight;
+            window.scrollTo(0, Math.max(0, target));
+        };
+        // Fire immediately (in case layout is already settled),
+        // then again after the next two animation frames (covers paint races),
+        // then once more after a short timeout (covers everything else).
+        tryScroll();
         requestAnimationFrame(function () {
-            // Force a layout flush, then measure.
-            void el.offsetHeight;
-            const target = el.getBoundingClientRect().top + window.scrollY + el.offsetHeight - window.innerHeight;
-            window.scrollTo({ top: target, left: 0 });
+            tryScroll();
+            requestAnimationFrame(tryScroll);
         });
+        setTimeout(tryScroll, 100);
     }
 
     on('.banner-switch', 'click', function () {
