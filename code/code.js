@@ -188,25 +188,39 @@
     });
 
     // ---------- "Bottom arrow" smooth-scrolls to map ----------
-    // Land in a position where the WHOLE map fits in the viewport — both
-    // "you are here" (bottom axis label) and "angle on the sky" (top axis
-    // label) need to be readable simultaneously. The original jQuery code
-    // put the map's BOTTOM at the viewport bottom, which meant the top
-    // axis label was clipped on screens where mapHeight is anywhere close
-    // to winHeight. We now center the map vertically when it fits, and
-    // fall back to top-alignment when it's taller than the viewport (so
-    // the user at least lands at the top of the map and can scroll down).
+    // The user wants to land on the map with BOTH "angle on the sky" (top axis
+    // label) and "you are here" (bottom axis label) readable. Targeting
+    // `.scroll-to-map` and centering its box can drift either way (top label
+    // clipped, or bottom label clipped) because of padding/positioning around
+    // the .mapbox child. Instead, measure the labels themselves and place
+    // the scroll so the bottom label sits at the bottom of the viewport, then
+    // back off if the top label would be clipped above.
     on('.bottom-arrow', 'click', function () {
-        const target = $1('.scroll-to-map');
-        if (!target) return;
-        const rect = target.getBoundingClientRect();
-        const elementTop = rect.top + window.scrollY;
-        const elementHeight = target.offsetHeight;
+        const youAreHere = $1('.you-are-here-axis');
+        const angleOnSky = $1('.angle-on-sky-axis');
         const winHeight = window.innerHeight;
-        const top = elementHeight < winHeight
-            ? Math.max(0, elementTop - (winHeight - elementHeight) / 2)
-            : elementTop;
-        window.scrollTo({ top: top, left: 0, behavior: 'smooth' });
+        let scrollTarget;
+        if (youAreHere && angleOnSky) {
+            const yhRect = youAreHere.getBoundingClientRect();
+            const asRect = angleOnSky.getBoundingClientRect();
+            const yhBottomPageY = yhRect.bottom + window.scrollY;
+            const asTopPageY = asRect.top + window.scrollY;
+            // Anchor: place "you are here" at the viewport bottom (matches the
+            // original jQuery intent of landing at the bottom of the map).
+            const anchored = yhBottomPageY - winHeight;
+            // If "angle on the sky" would be clipped (above viewport.top),
+            // back off so it just enters the viewport. This loses the strict
+            // bottom-alignment but is what the user explicitly asked for.
+            scrollTarget = Math.min(anchored, asTopPageY);
+        } else {
+            // Fallback if labels aren't in the DOM for some reason.
+            const target = $1('.scroll-to-map');
+            if (!target) return;
+            const rect = target.getBoundingClientRect();
+            scrollTarget = rect.top + window.scrollY + target.offsetHeight - winHeight;
+        }
+        scrollTarget = Math.max(0, scrollTarget);
+        window.scrollTo({ top: scrollTarget, left: 0, behavior: 'smooth' });
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
