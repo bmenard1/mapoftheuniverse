@@ -213,9 +213,13 @@
             // Anything in [lower, upper] keeps both inside the viewport.
             const lower = botVisualPageY - winH;  // any smaller and "you are here" drops off the bottom
             const upper = topVisualPageY;          // any larger and "angle on the sky" rolls off the top
-            scrollTarget = lower <= upper
+            const baseTarget = lower <= upper
                 ? (lower + upper) / 2              // both fit — center the band
                 : lower;                           // can't fit both — favor bottom (matches original jQuery feel)
+            // User-tuned bias: shift down by 2× the rendered height of the
+            // "you are here" label (= ~2 lines of the axis-label font).
+            // bot.offsetHeight respects any responsive font-size overrides.
+            scrollTarget = baseTarget + 2 * bot.offsetHeight;
         } else {
             // Fallback to .mapbox bottom-aligned (original-like).
             const mapbox = $1('.mapbox');
