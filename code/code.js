@@ -188,19 +188,16 @@
     });
 
     // ---------- "Bottom arrow" smooth-scrolls to map ----------
-    // The user wants to land on the map with BOTH "angle on the sky" (top axis
-    // label) and "you are here" (bottom axis label) readable simultaneously.
+    // Per user's reference screenshot: bottom-anchor the map (so "you are here"
+    // sits a small margin above the viewport bottom) and let the natural
+    // leftover space appear above "angle on the sky". When the map is taller
+    // than the viewport, fall back to top-anchoring so the upper axis label
+    // stays in view rather than the bottom.
     //
-    // Use the .mapbox element as the layout anchor — it is the visible map
-    // content and its top/bottom correspond to where the axis labels sit
-    // (axis_set_01 covers it 100%). Targeting the labels directly is unreliable
-    // because they have `transform: translate(-50%, -50%)` which shifts their
-    // bounding-rect away from the visual position.
-    //
-    // Strategy: place .mapbox bottom near the viewport bottom (with a small
-    // margin so "you are here" — which sits 2% from the mapbox bottom — has
-    // breathing room) UNLESS that would push .mapbox top above the viewport
-    // top. Then back off to keep both ends visible.
+    // .mapbox is the right anchor element here (not .scroll-to-map, which
+    // includes absolutely-positioned zoom controls and mobile-hidden flow;
+    // not the label elements directly, which carry `transform: translate(...)`
+    // that shifts their bounding-rect away from the visual edge).
     on('.bottom-arrow', 'click', function () {
         const mapbox = $1('.mapbox');
         const winHeight = window.innerHeight;
@@ -209,21 +206,13 @@
             const rect = mapbox.getBoundingClientRect();
             const mapTopPageY = rect.top + window.scrollY;
             const mapBottomPageY = mapTopPageY + mapbox.offsetHeight;
-            const margin = 24; // breathing room below "you are here" label
-            // Bottom-anchor: mapbox bottom at (viewport bottom - margin)
+            const margin = 30; // breathing room around the labels
+            // Preferred: mapbox bottom sits `margin` px above viewport bottom.
             const bottomAnchored = mapBottomPageY - winHeight + margin;
-            // Top-anchor: mapbox top at (viewport top + margin)
-            const topAnchored = mapTopPageY - margin;
-            // If the map fits within the viewport (with its margins), CENTER it
-            // — gives equal space top and bottom. Otherwise, prefer bottom-
-            // anchored so "you are here" (the original anchor) stays visible
-            // and the top is the one that scrolls off, but back off enough
-            // to keep "angle on the sky" in view.
-            if (mapbox.offsetHeight + 2 * margin <= winHeight) {
-                scrollTarget = mapTopPageY - (winHeight - mapbox.offsetHeight) / 2;
-            } else {
-                scrollTarget = Math.min(bottomAnchored, topAnchored);
-            }
+            // Cap: never push mapbox top above (viewport top + margin) — so
+            // "angle on the sky" always has at least `margin` px of headroom.
+            const topCap = mapTopPageY - margin;
+            scrollTarget = Math.min(bottomAnchored, topCap);
         } else {
             // Last-ditch fallback.
             const target = $1('.scroll-to-map');
