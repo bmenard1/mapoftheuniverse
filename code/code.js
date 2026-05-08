@@ -200,33 +200,54 @@
     // `transform: translate(-50%, -50%)` on the labels and returns the actual
     // visual edges, which is exactly what we need for visibility checks.
     on('.bottom-arrow', 'click', function () {
-        const top = $1('.angle-on-sky-axis');
-        const bot = $1('.you-are-here-axis');
+        const winW = window.innerWidth;
         const winH = window.innerHeight;
-        let scrollTarget;
-        if (top && bot) {
-            const topRect = top.getBoundingClientRect();
-            const botRect = bot.getBoundingClientRect();
-            const topVisualPageY = topRect.top + window.scrollY;     // visual top of "angle on the sky"
-            const botVisualPageY = botRect.bottom + window.scrollY;  // visual bottom of "you are here"
-            // Valid scrollY range for BOTH labels in view simultaneously.
-            // Anything in [lower, upper] keeps both inside the viewport.
-            const lower = botVisualPageY - winH;  // any smaller and "you are here" drops off the bottom
-            const upper = topVisualPageY;          // any larger and "angle on the sky" rolls off the top
-            const baseTarget = lower <= upper
-                ? (lower + upper) / 2              // both fit — center the band
-                : lower;                           // can't fit both — favor bottom (matches original jQuery feel)
-            // User-tuned bias: shift up by 0.0625× the rendered height of the
-            // "you are here" label (i.e., scroll just barely below the band midpoint).
-            // bot.offsetHeight respects any responsive font-size overrides.
-            scrollTarget = baseTarget - 0.0625 * bot.offsetHeight;
+        // Bootstrap's `lg` breakpoint is 992 px — below it the mobile
+        // (.d-lg-none) UI is shown: zoom selectors, "explore the map",
+        // "description" accordion, and "download & poster" button live
+        // beneath the map inside .scroll-to-map. On mobile the user wants
+        // those bottom buttons visible after the cover-down-arrow click;
+        // on desktop the goal is to frame the map with both axis labels
+        // readable.
+        const isMobile = winW < 992;
+        let scrollTarget = null;
+
+        if (isMobile) {
+            // Mobile: scroll so the BOTTOM of .scroll-to-map (= map +
+            // mobile button stack inside .d-lg-none) sits at the viewport
+            // bottom. That guarantees the three action buttons are in view.
+            const stm = $1('.scroll-to-map');
+            if (stm) {
+                const rect = stm.getBoundingClientRect();
+                scrollTarget = rect.top + window.scrollY + stm.offsetHeight - winH;
+            }
         } else {
-            // Fallback to .mapbox bottom-aligned (original-like).
+            // Desktop: midpoint of the band of scrollY values for which
+            // BOTH "angle on the sky" (top axis label) and "you are here"
+            // (bottom axis label) are visible, biased up by a fraction of
+            // the label height per user fine-tuning.
+            const top = $1('.angle-on-sky-axis');
+            const bot = $1('.you-are-here-axis');
+            if (top && bot) {
+                const topRect = top.getBoundingClientRect();
+                const botRect = bot.getBoundingClientRect();
+                const topVisualPageY = topRect.top + window.scrollY;
+                const botVisualPageY = botRect.bottom + window.scrollY;
+                const lower = botVisualPageY - winH;
+                const upper = topVisualPageY;
+                const baseTarget = lower <= upper ? (lower + upper) / 2 : lower;
+                scrollTarget = baseTarget - 0.0625 * bot.offsetHeight;
+            }
+        }
+
+        if (scrollTarget == null) {
+            // Last-ditch fallback: bottom-anchor on .mapbox (original-like).
             const mapbox = $1('.mapbox');
             if (!mapbox) return;
             const rect = mapbox.getBoundingClientRect();
             scrollTarget = rect.top + window.scrollY + mapbox.offsetHeight - winH;
         }
+
         scrollTarget = Math.max(0, scrollTarget);
         window.scrollTo({ top: scrollTarget, left: 0, behavior: 'smooth' });
     });
