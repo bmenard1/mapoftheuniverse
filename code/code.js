@@ -29,12 +29,24 @@
         document.head.appendChild(styleEl);
     }
 
+    // Show an element regardless of whether CSS hides it via `display: none`
+    // (jQuery's .show() semantics). Without this fallback, `style.display = ''`
+    // just removes the inline override and the CSS rule keeps the element hidden.
+    function show(el) {
+        if (!el) return;
+        el.style.display = '';
+        if (getComputedStyle(el).display === 'none') {
+            el.style.display = 'block';
+        }
+    }
+
     function fadeIn(el, ms) {
         if (!el) return;
         const dur = (typeof ms === 'number') ? ms : 200;
         el.style.setProperty('--vfade-dur', dur + 'ms');
-        // make sure the element is in the layout before transitioning
-        el.style.display = '';
+        // Make sure the element is in the layout before transitioning,
+        // even if CSS sets display:none on it.
+        show(el);
         // start from current opacity 0 if hidden
         el.classList.remove('__vfade-in');
         el.classList.add('__vfade');
@@ -88,7 +100,7 @@
     on('.dropdown-item', 'mouseenter', function (e) {
         $$('.download-click-section').forEach(function (el) { el.style.display = 'none'; });
         const inner = $1('.download-click-section', this);
-        if (inner) inner.style.display = '';
+        if (inner) show(inner);
         e.stopPropagation();
     });
     on('.dropdown-item', 'mouseleave', function () {
@@ -178,7 +190,7 @@
             });
         }
         $$('.more-info').forEach(function (el) { el.style.display = 'none'; });
-        $$('.read-more').forEach(function (el) { el.style.display = ''; });
+        $$('.read-more').forEach(function (el) { show(el); });
         $$('.info-col').forEach(function (el) {
             el.classList.remove('col-lg-6');
             el.classList.add('col-lg-3');
@@ -219,7 +231,7 @@
             if (bannerSection) {
                 fadeOut(bannerSection, 400, function () {
                     if (mapSection) fadeIn(mapSection, 800);
-                    if (cover) cover.style.display = '';
+                    if (cover) show(cover);
                     const scrollTarget = $1('.scroll-to-map');
                     if (scrollTarget) {
                         const rect = scrollTarget.getBoundingClientRect();
@@ -283,7 +295,7 @@
         }
         if (overlay_show !== 'none') {
             const el = $1(overlay_show);
-            if (el) el.style.display = '';
+            if (el) show(el);
         }
     });
     on('.select-button', 'mouseleave', function () {
@@ -323,7 +335,7 @@
         const siblings = Array.from(parent.parentElement.children).filter(function (c) { return c !== parent; });
         siblings.forEach(function (s) {
             if (s.matches('img.explanation_image')) s.style.display = 'none';
-            if (s.matches('img.skyview_image')) s.style.display = '';
+            if (s.matches('img.skyview_image')) show(s);
         });
     });
     on('.banner-info-box >p> .term-hover', 'mouseleave', function () {
@@ -331,7 +343,7 @@
         if (!parent) return;
         const siblings = Array.from(parent.parentElement.children).filter(function (c) { return c !== parent; });
         siblings.forEach(function (s) {
-            if (s.matches('img.explanation_image')) s.style.display = '';
+            if (s.matches('img.explanation_image')) show(s);
             if (s.matches('img.skyview_image')) s.style.display = 'none';
         });
     });
@@ -574,7 +586,7 @@
             const oldVis = $1(visible_overlay);
             if (oldVis) oldVis.style.display = 'none';
             const newVis = $1(axis_overlay);
-            if (newVis) newVis.style.display = '';
+            if (newVis) show(newVis);
             visible_overlay = axis_overlay;
             current_checked = true_checked;
             return;
@@ -587,7 +599,7 @@
             const oldVis = $1(visible_overlay);
             if (oldVis) oldVis.style.display = 'none';
             const newVis = $1(axis_overlay);
-            if (newVis) newVis.style.display = '';
+            if (newVis) show(newVis);
             fadeOut(blackOverlay, 100);
             visible_overlay = axis_overlay;
             current_checked = true_checked;
