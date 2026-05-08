@@ -209,6 +209,22 @@
 
     // ---------- Banner switch: toggle map-section <-> banner-section ----------
     let toggle_banner = false;
+    // Helper: scroll so the BOTTOM of `el` sits at the bottom of the viewport.
+    // Defers via requestAnimationFrame so any just-applied display change has reflowed
+    // before we measure — without this, getBoundingClientRect can be read while the
+    // browser still has stale layout from the fadeIn we just kicked off, and we land
+    // partway down the page instead of at the bottom of the banner (the original
+    // jQuery fade-callback timing resolved this implicitly).
+    function scrollBottomTo(el) {
+        if (!el) return;
+        requestAnimationFrame(function () {
+            // Force a layout flush, then measure.
+            void el.offsetHeight;
+            const target = el.getBoundingClientRect().top + window.scrollY + el.offsetHeight - window.innerHeight;
+            window.scrollTo({ top: target, left: 0 });
+        });
+    }
+
     on('.banner-switch', 'click', function () {
         const mapSection = $1('.map-section');
         const bannerSection = $1('.banner-section');
@@ -219,9 +235,9 @@
                 fadeOut(mapSection, 400, function () {
                     if (bannerSection) {
                         fadeIn(bannerSection, 800);
-                        const rect = bannerSection.getBoundingClientRect();
-                        const target = rect.top + window.scrollY + bannerSection.offsetHeight - window.innerHeight;
-                        window.scrollTo({ top: target, left: 0 });
+                        // Land at the bottom of the banner — the Milky Way / present time —
+                        // so the user scrolls UP to "travel through the universe" (the page intent).
+                        scrollBottomTo(bannerSection);
                     }
                 });
             }
@@ -232,12 +248,7 @@
                 fadeOut(bannerSection, 400, function () {
                     if (mapSection) fadeIn(mapSection, 800);
                     if (cover) show(cover);
-                    const scrollTarget = $1('.scroll-to-map');
-                    if (scrollTarget) {
-                        const rect = scrollTarget.getBoundingClientRect();
-                        const target = rect.top + window.scrollY + scrollTarget.offsetHeight - window.innerHeight;
-                        window.scrollTo({ top: target, left: 0 });
-                    }
+                    scrollBottomTo($1('.scroll-to-map'));
                 });
             }
             toggle_banner = false;
