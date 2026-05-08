@@ -1,568 +1,618 @@
-var current_checked = 3
-var visible_overlay = "#axis_set_01"
-var user_clicked = false;
-var carousel_handle = null;
-var animating = false
-function mod(n, m) {
-    return ((n % m) + m) % m;
-  }
+// Vanilla-JS rewrite of code.js. Zero jQuery / jQuery-UI dependencies.
+// Bootstrap 5 vanilla JS API is used for modals/collapses (data-bs-* attributes
+// drive most of it; programmatic toggles use bootstrap.Modal / bootstrap.Collapse).
 
-  
-$(document).ready(function() {
-    $('.more-info').hide();
+(function () {
+    'use strict';
 
-    $("#hide-terms").click(function(e){
-        $(".term-box-words").slideToggle( 'slow', function(){
-            var text = $("#hide-terms").text();
-            $("#hide-terms").text(
-                text == "Show" ? "Hide" : "Show");
-         });
-    })
+    // ---------- Module-level state (was top-level var in the original) ----------
+    let current_checked = 3;
+    let visible_overlay = '#axis_set_01';
+    let user_clicked = false;
+    let carousel_handle = null;
+    let animating = false;
+    let overlay_show = 'none'; // shared between hover-in and hover-out on .select-button
 
-    $(".modal-dialog").click(function(e){
-    })
+    function mod(n, m) {
+        return ((n % m) + m) % m;
+    }
 
-    /*
-    var myModalEl = document.getElementById('download-beautiful-modal')
-    myModalEl.addEventListener('hidden.bs.modal', function (event) {
-      // do something...
-      alert("BROKE")
-    })
-    */
+    // ---------- Tiny fade helpers (replace jQuery .fadeIn/.fadeOut) ----------
+    // Inject the CSS rule once so the helpers can use a class-based opacity transition.
+    const FADE_STYLE_ID = '__vanilla_fade_style__';
+    if (!document.getElementById(FADE_STYLE_ID)) {
+        const styleEl = document.createElement('style');
+        styleEl.id = FADE_STYLE_ID;
+        styleEl.textContent =
+            '.__vfade{opacity:0!important;transition:opacity var(--vfade-dur,200ms) linear;}' +
+            '.__vfade-in{opacity:1!important;transition:opacity var(--vfade-dur,200ms) linear;}';
+        document.head.appendChild(styleEl);
+    }
 
+    function fadeIn(el, ms) {
+        if (!el) return;
+        const dur = (typeof ms === 'number') ? ms : 200;
+        el.style.setProperty('--vfade-dur', dur + 'ms');
+        // make sure the element is in the layout before transitioning
+        el.style.display = '';
+        // start from current opacity 0 if hidden
+        el.classList.remove('__vfade-in');
+        el.classList.add('__vfade');
+        // Force a reflow so the next class change triggers a transition.
+        void el.offsetWidth;
+        el.classList.remove('__vfade');
+        el.classList.add('__vfade-in');
+    }
 
-
-    $(".dropdown-item").hover(function(e){
-        $('.download-click-section').hide();
-        $(this).children('.download-click-section').show();
-        e.stopPropagation();
-    }, function(e) {
-        $('.download-click-section').hide();
-
-    })
-
-    $(".phone-banner-box").click(function(e){
-        set_modal_pic(this.id)
-        $('#myModal').modal('toggle');
-
-    })
-
-
-    $(".map-effect").hover(
-        function(e){
-            if($('.map-container-info').is(":hidden")){
-
-                $(".map-container-info").fadeIn(200);
+    function fadeOut(el, ms, cb) {
+        if (!el) return;
+        const dur = (typeof ms === 'number') ? ms : 200;
+        el.style.setProperty('--vfade-dur', dur + 'ms');
+        el.classList.remove('__vfade-in');
+        el.classList.add('__vfade');
+        const onEnd = function () {
+            el.style.display = 'none';
+            el.removeEventListener('transitionend', onEnd);
+            if (typeof cb === 'function') cb();
+        };
+        el.addEventListener('transitionend', onEnd);
+        // Fallback in case transitionend never fires (e.g. element already at 0).
+        setTimeout(function () {
+            if (el.style.display !== 'none') {
+                onEnd();
             }
-            switch(e.target.id) {
-                case "area_01":
-                    $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/near.png")
-                    $(".map-container-info > h1").text(information[4].title)
-                    $(".map-container-info>img").attr('src', information[4].img)
-                    $(".map-container-info>p").text(information[4].caption)
-                    break;
-                case "area_02":
-                    $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/red.png")
-                    $(".map-container-info > h1").text(information[3].title)
-                    $(".map-container-info>img").attr('src', information[3].img)
-                    $(".map-container-info>p").text(information[3].caption)
-                    break;
-                case "area_03":
-                    $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/quasars.png")
-                    $(".map-container-info > h1").text(information[2].title)
-                    $(".map-container-info>img").attr('src', information[2].img)
-                    $(".map-container-info>p").text(information[2].caption)
-                    break;
-                case "area_04":
-                    $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/cmb.png")
-                    $(".map-container-info > h1").text(information[1].title)
-                    $(".map-container-info>img").attr('src', information[1].img)
-                    $(".map-container-info>p").text(information[1].caption)
-                    break;
-                case "area_05":
-                    $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/galaxies.png")
-                    $(".map-container-info > h1").text(information[9].title)
-                    $(".map-container-info>img").attr('src', information[9].img)
-                    $(".map-container-info>p").text(information[9].caption)
-                    break;
-                case "axis_01":
-                    $(".map-container-info > h1").text(information[7].title)
-                    $(".map-container-info>img").attr('src', information[7].img)
-                    $(".map-container-info>p").text(information[7].caption)
-                    break;
-                case "axis_02":
-                    $(".map-container-info > h1").text(information[5].title)
-                    $(".map-container-info>img").attr('src', information[5].img)
-                    $(".map-container-info>p").text(information[5].caption)
-                    break;
-                case "axis_03":
-                    $(".map-container-info > h1").text(information[6].title)
-                    $(".map-container-info>img").attr('src', information[6].img)
-                    $(".map-container-info>p").text(information[6].caption) 
-                    break;
-                case "axis_04":
-                    $(".map-container-info > h1").text(information[8].title)
-                    $(".map-container-info>img").attr('src', information[8].img)
-                    $(".map-container-info>p").text(information[8].caption)
-                    break;    
-            }        
-        }, function(){
-            $(".map-container-info").fadeOut(100);
-            $("#slice-map").attr('src', "https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/total.png")
-        }
-    )
+        }, dur + 50);
+    }
 
-    $(".dropdown-menu-center").click(function(e){
+    function isHidden(el) {
+        if (!el) return true;
+        // Match jQuery's :hidden semantics loosely — display:none counts as hidden.
+        return el.offsetParent === null || getComputedStyle(el).display === 'none';
+    }
+
+    // ---------- Convenience selector helpers ----------
+    const $$ = function (sel, root) { return Array.from((root || document).querySelectorAll(sel)); };
+    const $1 = function (sel, root) { return (root || document).querySelector(sel); };
+
+    function on(selector, event, handler, opts) {
+        $$(selector).forEach(function (el) {
+            el.addEventListener(event, handler, opts);
+        });
+    }
+
+    // ---------- Main initialisation (script has `defer`, DOM is ready) ----------
+    // Hide any .more-info up front.
+    $$('.more-info').forEach(function (el) { el.style.display = 'none'; });
+
+    // ---------- Dropdown items: show only the hovered .download-click-section ----------
+    on('.dropdown-item', 'mouseenter', function (e) {
+        $$('.download-click-section').forEach(function (el) { el.style.display = 'none'; });
+        const inner = $1('.download-click-section', this);
+        if (inner) inner.style.display = '';
         e.stopPropagation();
-        $('.download-click-section').hide();
+    });
+    on('.dropdown-item', 'mouseleave', function () {
+        $$('.download-click-section').forEach(function (el) { el.style.display = 'none'; });
+    });
 
-     })
-     
-
-    $(".bottom-arrow").click(function(e){
-        $('html, body').animate({scrollTop:$(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height(), easing: 'linear'},{ duration: 2000, easing: "linear", complete: function () {
-            }})
-    })
-
-
-
-    $(".info-accordion").click(function(e){
-        var myClass = $(this).attr("class");
-
-        if(myClass.includes("collapsed")){
-
-            $('.other-col').removeClass('col-lg-3 this-col-change');
-            $('.other-col').addClass('col-lg-6');
-        } else {
-
-            $('.other-col').removeClass('col-lg-6');
-            $('.other-col').addClass('col-lg-3 this-col-change');
+    // ---------- Phone banner box click → open modal with right picture ----------
+    on('.phone-banner-box', 'click', function () {
+        set_modal_pic(this.id);
+        const modalEl = document.getElementById('myModal');
+        if (modalEl && window.bootstrap && bootstrap.Modal) {
+            bootstrap.Modal.getOrCreateInstance(modalEl).toggle();
         }
+    });
 
-        $(".more-info").hide();
-        $(".read-more").show();
-        $('.info-col').removeClass('col-lg-6');
-        $('.info-col').addClass('col-lg-3');
+    // ---------- Map-effect hover: data-driven ----------
+    // Map area/axis IDs to {slice, infoKey}. `slice` is the filename for #slice-map; null = no swap.
+    const SLICE_BASE = 'https://menard.pha.jhu.edu/MapoftheUniverse/Images/WebMap_V02/';
+    const MAP_EFFECT_TARGETS = {
+        area_01: { slice: 'near.png',     infoKey: 4 },
+        area_02: { slice: 'red.png',      infoKey: 3 },
+        area_03: { slice: 'quasars.png',  infoKey: 2 },
+        area_04: { slice: 'cmb.png',      infoKey: 1 },
+        area_05: { slice: 'galaxies.png', infoKey: 9 },
+        axis_01: { slice: null,           infoKey: 7 },
+        axis_02: { slice: null,           infoKey: 5 },
+        axis_03: { slice: null,           infoKey: 6 },
+        axis_04: { slice: null,           infoKey: 8 },
+    };
 
+    on('.map-effect', 'mouseenter', function (e) {
+        const cfg = MAP_EFFECT_TARGETS[e.target.id];
+        if (!cfg) return;
+        const container = $1('.map-container-info');
+        if (container && isHidden(container)) {
+            fadeIn(container, 200);
+        }
+        const sliceMap = document.getElementById('slice-map');
+        if (cfg.slice && sliceMap) {
+            sliceMap.src = SLICE_BASE + cfg.slice;
+        }
+        const info = information[cfg.infoKey];
+        if (!info || !container) return;
+        const h1 = $1('h1', container);
+        const img = $1('img', container);
+        const p = $1('p', container);
+        if (h1) h1.textContent = info.title;
+        if (img) img.src = info.img;
+        if (p) p.textContent = info.caption;
+    });
 
-        
-    })
+    on('.map-effect', 'mouseleave', function () {
+        const container = $1('.map-container-info');
+        if (container) fadeOut(container, 100);
+        const sliceMap = document.getElementById('slice-map');
+        if (sliceMap) sliceMap.src = SLICE_BASE + 'total.png';
+    });
 
+    // ---------- Centered dropdown menu: don't close when clicked, hide downloads ----------
+    on('.dropdown-menu-center', 'click', function (e) {
+        e.stopPropagation();
+        $$('.download-click-section').forEach(function (el) { el.style.display = 'none'; });
+    });
 
+    // ---------- "Bottom arrow" smooth-scrolls to map ----------
+    on('.bottom-arrow', 'click', function () {
+        const target = $1('.scroll-to-map');
+        if (!target) return;
+        const rect = target.getBoundingClientRect();
+        const top = rect.top + window.scrollY + target.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: top, left: 0, behavior: 'smooth' });
+    });
+
+    // ---------- Info-accordion: toggle column widths on open/close ----------
+    on('.info-accordion', 'click', function () {
+        const isCollapsed = this.classList.contains('collapsed');
+        const otherCols = $$('.other-col');
+        if (isCollapsed) {
+            otherCols.forEach(function (el) {
+                el.classList.remove('col-lg-3', 'this-col-change');
+                el.classList.add('col-lg-6');
+            });
+        } else {
+            otherCols.forEach(function (el) {
+                el.classList.remove('col-lg-6');
+                el.classList.add('col-lg-3', 'this-col-change');
+            });
+        }
+        $$('.more-info').forEach(function (el) { el.style.display = 'none'; });
+        $$('.read-more').forEach(function (el) { el.style.display = ''; });
+        $$('.info-col').forEach(function (el) {
+            el.classList.remove('col-lg-6');
+            el.classList.add('col-lg-3');
+        });
+    });
+
+    // ---------- Description click: stop carousel, hide hover overlays ----------
+    // (The image-swap loop on data-src is now dead — native loading="lazy" replaced it.)
+    on('.description', 'click', function () {
+        $$('.hover-map-overlay').forEach(function (el) { fadeOut(el, 100); });
+        if (carousel_handle) {
+            clearInterval(carousel_handle);
+            carousel_handle = null;
+        }
+    });
+
+    // ---------- Banner switch: toggle map-section <-> banner-section ----------
     let toggle_banner = false;
-    $(".description").click(function(e){
-        /*
-        if ($("#full").is(":checked")) {
-            $("#outer_from_full").hide();
-        } else {
-            $("#full").prop('checked', true);
-            zoomlevel()
-        }
-        */
-       $(".hover-map-overlay").fadeOut("fast")
+    on('.banner-switch', 'click', function () {
+        const mapSection = $1('.map-section');
+        const bannerSection = $1('.banner-section');
+        const cover = $1('.cover');
 
-        if(carousel_handle) {
-            clearInterval(carousel_handle)
-            carousel_handle = null
-        }
-
-        var images = $(".description img")
-
-        images.each(function(index){
-            var data_src = $(this).attr('data-src')
-            $(this).attr("src", data_src)
-
-        })
-
-    })
-
-    $(".banner-switch").click (function(e) {
-        var images = $(".banner-section img")
-        images.each(function(index){
-            var data_src = $(this).attr('data-src')
-            $(this).attr("src", data_src)
-        })
-
-
-        if(!toggle_banner) {
-            $(".map-section").fadeOut(400, function() {
-                $(".banner-section").fadeIn(800)
-                $(window).scrollTop($(".banner-section").offset().top + $(".banner-section").outerHeight() - $(window).height())
-            }) 
-        
-            $(".cover").hide()
-
+        if (!toggle_banner) {
+            if (mapSection) {
+                fadeOut(mapSection, 400, function () {
+                    if (bannerSection) {
+                        fadeIn(bannerSection, 800);
+                        const rect = bannerSection.getBoundingClientRect();
+                        const target = rect.top + window.scrollY + bannerSection.offsetHeight - window.innerHeight;
+                        window.scrollTo({ top: target, left: 0 });
+                    }
+                });
+            }
+            if (cover) cover.style.display = 'none';
             toggle_banner = true;
         } else {
-            $(".banner-section").fadeOut(400, function() {
-                $(".map-section").fadeIn(800)
-                $(".cover").show()
-                $(window).scrollTop($(".scroll-to-map").offset().top + $(".scroll-to-map").outerHeight() - $(window).height())
-            })
-            
-            toggle_banner = false
-
+            if (bannerSection) {
+                fadeOut(bannerSection, 400, function () {
+                    if (mapSection) fadeIn(mapSection, 800);
+                    if (cover) cover.style.display = '';
+                    const scrollTarget = $1('.scroll-to-map');
+                    if (scrollTarget) {
+                        const rect = scrollTarget.getBoundingClientRect();
+                        const target = rect.top + window.scrollY + scrollTarget.offsetHeight - window.innerHeight;
+                        window.scrollTo({ top: target, left: 0 });
+                    }
+                });
+            }
+            toggle_banner = false;
         }
-    })
-
-    $(".zoom-icon").click(function(e){
-        
-        change = 1
-        if ($(e.target).hasClass('plus-icon')) {
-            change = -1
-        } else {
-            change = 1
-        }        
-        clearInterval(carousel_handle)
-        options = ["#full", "#outer", "#near",  "#close", "#near_galaxy_view"]
-        var checked = $("input[name=options-outlined]:checked").val()
-        var other_checked = $("input[name=options-outlined2]:checked").val()
-        var true_checked = 0
-        var order = ['3', '2', '1', '4', '5']
-        if (checked != current_checked) {
-            $('input:radio[name=options-outlined2][value=' + checked + ']').prop('checked', true);
-            //$('input:radio[name=options-outlined2][value=' + checked + ']').click();
-            true_checked = checked
-        } else {
-            $('input:radio[name=options-outlined][value=' + other_checked + ']').prop('checked', true);
-            //$('input:radio[name=options-outlined][value=' + other_checked + ']').click();
-            true_checked = other_checked
-        }
-        
-        
-        $(options[mod((order.indexOf(true_checked)+ change),5)]).prop('checked', true);
-        zoomlevel()
-
-        
-    })
-
-    $('.select-button').hover(function(e){
-        id = this.id
-        if(current_checked == 3 && id == "near_label" ) {
-            overlay_show = "#near_from_full" 
-        } else if (current_checked == 3 && id == "outer_label") {
-            overlay_show = "#outer_from_full" 
-        } else if(current_checked == 2 && id == "near_label") {
-            overlay_show = "#near_from_outer" 
-        } else if(current_checked == 2 && (id == "close_label" || id == "near_galaxy_view_label")) {
-            overlay_show = "#close_from_outer" 
-        } else if (current_checked == 3 && (id == "close_label" || id == "near_galaxy_view_label")) {
-            overlay_show = "#close_from_full" 
-        } else if (current_checked == 1 && (id == "close_label" || id == "near_galaxy_view_label")) {
-            overlay_show = "#close_from_near" 
-        } 
-         else {
-            overlay_show = "none" 
-        } 
-        if(overlay_show != "none") {
-            $(overlay_show).show()
-        }
-    }, function(e) {
-        $(overlay_show).hide()
-    })
-
-    $('input').on('change', function() {
-        user_clicked = true;
-        zoomlevel()
     });
-      
-    $('.zoom_button').click(function() {
-        clearInterval(carousel_handle)
 
-    })
-    
-    $(".banner-switch-hover").hover(function(e){
-        $("#overlay").fadeIn("fast", function(){})
-    }, function(e){
-        $("#overlay").fadeOut("fast", function(){})
-    })
-    /*
-    $(".banner-switch-near").hover(function(e){
-        $("#overlay").fadeIn("fast", function(){})
-    }, function(e){
-        $("#overlay").fadeOut("fast", function(){})
-    })
-    */
-    $(".banner-info-box >p> .term-hover").hover(function(e){
-        $(this).parent().siblings('img.explanation_image').hide()
-        $(this).parent().siblings('img.skyview_image').show()
-    }, function(e) {
-        $(this).parent().siblings('img.explanation_image').show()
-        $(this).parent().siblings('img.skyview_image').hide()
-    })
+    // ---------- Zoom-icon clicks: cycle through zoom-level radio buttons ----------
+    on('.zoom-icon', 'click', function (e) {
+        let change = 1;
+        if (e.target.classList.contains('plus-icon')) {
+            change = -1;
+        } else {
+            change = 1;
+        }
+        clearInterval(carousel_handle);
+        const options = ['#full', '#outer', '#near', '#close', '#near_galaxy_view'];
+        const checkedEl1 = $1('input[name="options-outlined"]:checked');
+        const checkedEl2 = $1('input[name="options-outlined2"]:checked');
+        const checked = checkedEl1 ? checkedEl1.value : null;
+        const other_checked = checkedEl2 ? checkedEl2.value : null;
+        let true_checked = 0;
+        const order = ['3', '2', '1', '4', '5'];
+        if (checked != current_checked) {
+            const r = $1('input[type="radio"][name="options-outlined2"][value="' + checked + '"]');
+            if (r) r.checked = true;
+            true_checked = checked;
+        } else {
+            const r = $1('input[type="radio"][name="options-outlined"][value="' + other_checked + '"]');
+            if (r) r.checked = true;
+            true_checked = other_checked;
+        }
+        const targetSel = options[mod(order.indexOf(true_checked) + change, 5)];
+        const targetEl = $1(targetSel);
+        if (targetEl) targetEl.checked = true;
+        zoomlevel();
+    });
 
-    var UNIVERSE_AGE_GYR = 13.7;
-    var scroll_ticking = false;
-    var $mapbox = $(".mapbox");
-    var $bannerOutline = $(".banner-outline");
-    var $bannerNav = $(".banner-navigator-section");
-    var $barContainer = $(".bar_container");
-    var $lookbackA = $("#sidebar-lookback-time");
-    var $lookbackB = $("#sidebar-lookback-time_2");
-    var $scrollMsg = $(".scroll-up-message");
-    var $fullRadio = $("#full");
-    var $win = $(window);
-    var $doc = $(document);
+    // ---------- Select-button hover: show the matching hover-map overlay ----------
+    on('.select-button', 'mouseenter', function () {
+        const id = this.id;
+        if (current_checked == 3 && id == 'near_label') {
+            overlay_show = '#near_from_full';
+        } else if (current_checked == 3 && id == 'outer_label') {
+            overlay_show = '#outer_from_full';
+        } else if (current_checked == 2 && id == 'near_label') {
+            overlay_show = '#near_from_outer';
+        } else if (current_checked == 2 && (id == 'close_label' || id == 'near_galaxy_view_label')) {
+            overlay_show = '#close_from_outer';
+        } else if (current_checked == 3 && (id == 'close_label' || id == 'near_galaxy_view_label')) {
+            overlay_show = '#close_from_full';
+        } else if (current_checked == 1 && (id == 'close_label' || id == 'near_galaxy_view_label')) {
+            overlay_show = '#close_from_near';
+        } else {
+            overlay_show = 'none';
+        }
+        if (overlay_show !== 'none') {
+            const el = $1(overlay_show);
+            if (el) el.style.display = '';
+        }
+    });
+    on('.select-button', 'mouseleave', function () {
+        if (overlay_show && overlay_show !== 'none') {
+            const el = $1(overlay_show);
+            if (el) el.style.display = 'none';
+        }
+    });
+
+    // ---------- Any input change → zoomlevel() ----------
+    $$('input').forEach(function (el) {
+        el.addEventListener('change', function () {
+            user_clicked = true;
+            zoomlevel();
+        });
+    });
+
+    // ---------- Zoom-button click clears the carousel timer ----------
+    on('.zoom_button', 'click', function () {
+        clearInterval(carousel_handle);
+    });
+
+    // ---------- Banner-switch hover: fade #overlay ----------
+    on('.banner-switch-hover', 'mouseenter', function () {
+        const o = document.getElementById('overlay');
+        if (o) fadeIn(o, 100);
+    });
+    on('.banner-switch-hover', 'mouseleave', function () {
+        const o = document.getElementById('overlay');
+        if (o) fadeOut(o, 100);
+    });
+
+    // ---------- Term-hover inside banner-info-box: swap explanation/skyview imgs ----------
+    on('.banner-info-box >p> .term-hover', 'mouseenter', function () {
+        const parent = this.parentElement;
+        if (!parent) return;
+        const siblings = Array.from(parent.parentElement.children).filter(function (c) { return c !== parent; });
+        siblings.forEach(function (s) {
+            if (s.matches('img.explanation_image')) s.style.display = 'none';
+            if (s.matches('img.skyview_image')) s.style.display = '';
+        });
+    });
+    on('.banner-info-box >p> .term-hover', 'mouseleave', function () {
+        const parent = this.parentElement;
+        if (!parent) return;
+        const siblings = Array.from(parent.parentElement.children).filter(function (c) { return c !== parent; });
+        siblings.forEach(function (s) {
+            if (s.matches('img.explanation_image')) s.style.display = '';
+            if (s.matches('img.skyview_image')) s.style.display = 'none';
+        });
+    });
+
+    // ---------- Scroll-driven effects (rAF-throttled) ----------
+    const UNIVERSE_AGE_GYR = 13.7;
+    let scroll_ticking = false;
+    const mapbox = $1('.mapbox');
+    const bannerOutline = $1('.banner-outline');
+    const bannerNav = $1('.banner-navigator-section');
+    const barContainer = $1('.bar_container');
+    const lookbackA = document.getElementById('sidebar-lookback-time');
+    const lookbackB = document.getElementById('sidebar-lookback-time_2');
+    const scrollMsg = $1('.scroll-up-message');
+    const fullRadio = document.getElementById('full');
 
     function onScroll() {
-        var winH = window.innerHeight;
-        var scrollY = window.scrollY;
-        var bottomOfScreen = scrollY + winH;
+        const winH = window.innerHeight;
+        const scrollY = window.scrollY;
+        const bottomOfScreen = scrollY + winH;
 
-        var mapboxOffset = $mapbox.offset();
-        if (mapboxOffset) {
-            var top_of_element = mapboxOffset.top;
-            var bottom_of_element = top_of_element + $mapbox.outerHeight();
+        if (mapbox) {
+            const rect = mapbox.getBoundingClientRect();
+            const top_of_element = rect.top + scrollY;
+            const bottom_of_element = top_of_element + mapbox.offsetHeight;
             if ((bottomOfScreen > top_of_element) && (scrollY < bottom_of_element)) {
                 if (!animating) {
                     carousel();
                     animating = true;
                 }
             } else {
-                $fullRadio.prop('checked', true);
+                if (fullRadio) fullRadio.checked = true;
                 zoomlevel();
                 clearInterval(carousel_handle);
                 animating = false;
             }
         }
 
-        var bannerOffset = $bannerOutline.offset();
-        if (bannerOffset) {
-            var elementTop = bannerOffset.top;
-            var bannerH = $bannerOutline.outerHeight();
-            var percentage = Math.max(Math.min((scrollY - elementTop) / bannerH * 100, 100), 0);
-            var bottomPercentage = Math.min((bottomOfScreen - elementTop) / bannerH * 100, 100);
-            $bannerNav.css({ top: percentage + "%", height: (bottomPercentage - percentage) + "%" });
+        if (bannerOutline) {
+            const rect = bannerOutline.getBoundingClientRect();
+            const elementTop = rect.top + scrollY;
+            const bannerH = bannerOutline.offsetHeight;
+            const percentage = Math.max(Math.min((scrollY - elementTop) / bannerH * 100, 100), 0);
+            const bottomPercentage = Math.min((bottomOfScreen - elementTop) / bannerH * 100, 100);
+            if (bannerNav) {
+                bannerNav.style.top = percentage + '%';
+                bannerNav.style.height = (bottomPercentage - percentage) + '%';
+            }
 
-            var barOffset = $barContainer.offset();
-            if (barOffset) {
-                var barPercentage = (barOffset.top - elementTop) / bannerH;
-                var lookback = UNIVERSE_AGE_GYR - barPercentage * UNIVERSE_AGE_GYR;
-                var lookbackStr = lookback.toFixed(1);
-                $lookbackA.html(lookbackStr);
-                $lookbackB.html(lookbackStr);
+            if (barContainer) {
+                const barRect = barContainer.getBoundingClientRect();
+                const barTop = barRect.top + scrollY;
+                const barPercentage = (barTop - elementTop) / bannerH;
+                const lookback = UNIVERSE_AGE_GYR - barPercentage * UNIVERSE_AGE_GYR;
+                const lookbackStr = lookback.toFixed(1);
+                if (lookbackA) lookbackA.innerHTML = lookbackStr;
+                if (lookbackB) lookbackB.innerHTML = lookbackStr;
             }
         }
 
-        var docH = $doc.height();
-        var scrollPercent = docH > winH ? scrollY / (docH - winH) : 0;
-        $scrollMsg.css({ opacity: 1 - (1 - scrollPercent) * 6 });
+        const docH = document.documentElement.scrollHeight;
+        const scrollPercent = docH > winH ? scrollY / (docH - winH) : 0;
+        if (scrollMsg) scrollMsg.style.opacity = String(1 - (1 - scrollPercent) * 6);
 
-        var center = scrollY + winH * 0.5;
-        var halfWin = winH * 0.5;
-        $('.fade').each(function () {
-            var $el = $(this);
-            var elOffset = $el.offset();
-            if (!elOffset) return;
-            var offset = elOffset.top + $el.outerHeight() / 2;
-            var perc = Math.pow((center - offset) / halfWin, 2);
-            $el.css({ opacity: 1 - perc });
+        const center = scrollY + winH * 0.5;
+        const halfWin = winH * 0.5;
+        $$('.fade').forEach(function (el) {
+            const r = el.getBoundingClientRect();
+            const offset = r.top + scrollY + el.offsetHeight / 2;
+            const perc = Math.pow((center - offset) / halfWin, 2);
+            el.style.opacity = String(1 - perc);
         });
 
         scroll_ticking = false;
     }
 
-    $win.scroll(function() {
+    window.addEventListener('scroll', function () {
         if (!scroll_ticking) {
             window.requestAnimationFrame(onScroll);
             scroll_ticking = true;
         }
-    })
+    }, { passive: true });
 
+    // ---------- Banner-info-box click → open modal with the right picture ----------
+    on('.banner-info-box', 'click', function () {
+        const modalEl = document.getElementById('myModal');
+        if (modalEl && window.bootstrap && bootstrap.Modal) {
+            bootstrap.Modal.getOrCreateInstance(modalEl).toggle();
+        }
+        set_modal_pic(this.id);
+    });
 
-    $(".banner-modal").click(function(e) {
-        set_modal_pic(e.target.id)
-    })
+    // ---------- Reset modal contents when it hides ----------
+    const myModalEl = document.getElementById('myModal');
+    if (myModalEl) {
+        myModalEl.addEventListener('hidden.bs.modal', function () {
+            set_modal_pic(-1);
+        });
+    }
 
-    $(".banner-info-box-content").click(function(e) {
-        set_modal_pic($(this).parent().parent().attr("id"))
-    })
+    // ---------- Banner-navigator click: scroll to corresponding lookback time ----------
+    on('.banner-navigator, .edit', 'click', function (e) {
+        const parent = this.parentElement;
+        if (!parent) return;
+        const parentRect = parent.getBoundingClientRect();
+        const parentTopAbs = parentRect.top + window.scrollY;
+        const height = parent.offsetHeight;
+        if (!height) return;
+        const percentage = (e.pageY - parentTopAbs) / height;
+        const outline = $1('.banner-outline');
+        if (!outline) return;
+        const outRect = outline.getBoundingClientRect();
+        const outlineTopAbs = outRect.top + window.scrollY;
+        const pixelposition = outlineTopAbs + outline.offsetHeight * percentage - (window.innerHeight / 2);
+        window.scrollTo({ top: pixelposition, left: 0, behavior: 'smooth' });
+    });
 
+    // ---------- Outside-click: close collapses, reset column widths ----------
+    document.addEventListener('click', function (event) {
+        const target = event.target;
+        if (target instanceof Element &&
+            !target.closest('.info-box') &&
+            !target.closest('.accordion-button') &&
+            !target.closest('.zoom-container')) {
+            // Hide all currently-open Bootstrap collapses.
+            $$('.collapse.show').forEach(function (el) {
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }).hide();
+                } else {
+                    el.classList.remove('show');
+                }
+            });
+            $$('.more-info').forEach(function (el) { el.style.display = 'none'; });
 
-    $(".banner-tick").click(function() {
-        var id = $(this).attr('id');
-    })
+            $$('.other-col').forEach(function (el) {
+                el.classList.remove('col-lg-3');
+                el.classList.add('col-lg-6');
+            });
+            $$('.this-col').forEach(function (el) {
+                el.classList.remove('col-lg-6');
+                el.classList.add('col-lg-3');
+            });
+            $$('.other-col-2').forEach(function (el) {
+                el.classList.remove('col-lg-6');
+                el.classList.add('col-lg-8');
+            });
+            $$('.this-col-2').forEach(function (el) {
+                el.classList.remove('col-lg-6');
+                el.classList.add('col-lg-4');
+            });
+        }
+        $$('.download-click-section').forEach(function (el) { el.style.display = 'none'; });
+    });
 
-    $(".banner-info-box").click(function(e) {
-        $('#myModal').modal('toggle');
-        set_modal_pic($(this).attr('id') )
-    })
+    // ---------- carousel(): cycle hover overlays + zoom levels ----------
+    function carousel() {
+        const options = ['#outer', '#near', '#close', '#near_galaxy_view', '#full'];
+        const hover_options = ['#outer_from_full', '#near_from_outer', '#close_from_near', '#Galaxy_View'];
+        let option_index = 0;
 
-    $('#myModal').on('hidden.bs.modal', function () {
-        // do something…
-        set_modal_pic(-1 )
-    })
+        carousel_handle = setInterval(function () {
+            if (option_index % 2 || option_index == 6) {
+                if (option_index == 7) {
+                    option_index = 8;
+                }
+                const hov = $1(hover_options[Math.floor(option_index / 2)]);
+                if (hov) fadeOut(hov, 200);
 
-    $(".banner-navigator, .edit").click(function(e) {
-        var parentOffset = $(this).parent().offset(); 
-        var posX = $(this).position().left,
-            posY = $(this).position().top;
-        height = $(this).parent().outerHeight();
-        var percentage = ((e.pageY - parentOffset.top)/height)
-        var pixelposition = $(".banner-outline").offset().top + $('.banner-outline').outerHeight() * percentage - ($(window).outerHeight()/2)
-        window.scrollTo({
-            top: pixelposition,
-            left: 0,
-            behavior: 'smooth'
-          })  
-
-    })
-})
-
-function carousel() {
-    
-    options = ["#outer", "#near",  "#close", "#near_galaxy_view", "#full"]
-    hover_options = ["#outer_from_full", "#near_from_outer", "#close_from_near", "#Galaxy_View"]
-    option_index = 0
-
-    carousel_handle = setInterval(function(){ 
-        if (option_index %2 || option_index == 6) {
-
-            if(option_index == 7) {
-                option_index = 8
+                const opt = $1(options[Math.floor(option_index / 2)]);
+                if (opt) opt.checked = true;
+                zoomlevel();
+            } else {
+                const hov = $1(hover_options[Math.floor(option_index / 2)]);
+                if (hov) fadeIn(hov, 300);
             }
 
-            $(hover_options[Math.floor(option_index/2)]).fadeOut()
+            option_index += 1;
+            option_index = option_index % 9;
+        }, 3000);
+    }
 
-            $(options[Math.floor(option_index/2)]).prop('checked', true);
-            zoomlevel()
-    
-        } else {
-            $(hover_options[Math.floor(option_index/2)]).fadeIn(300)
+    // ---------- set_modal_pic: data-driven, accepts banner-info-N or phone-banner-N ----------
+    function set_modal_pic(id) {
+        const modalImg = $1('.modal-body > img');
+        const modalH1  = $1('.modal-header > h1');
+        const modalP   = $1('.modal-footer > p');
+
+        let key = null;
+        if (typeof id === 'string') {
+            const m = id.match(/^(?:banner-info-|phone-banner-)(\d+)$/);
+            if (m) key = parseInt(m[1], 10);
         }
-        
-        option_index += 1
-        option_index = option_index%9
-
-    }, 3000);
-
-}
-
-const information = {
-    1: {title: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the Big Bang, 13.7 billion years ago. The expansion of the Universe has stretched this light, so it now reaches us as microwave radio waves. It marks the edge of the observable Universe.", img: "Images/Explanations/cmb_illust.png"},
-    2: {title: "Quasars", caption: "Quasars are massive black holes at the centers of certain galaxies. As they accrete surrounding gas, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint for the Sloan Digital Sky Survey telescope to detect.", img: "Images/Explanations/Quasar@300x.png" },
-    3: {title: "Luminous Red Galaxy", caption: "Luminous Red Galaxies are massive elliptical galaxies hundreds of times brighter than the Milky Way. Their old, cool stars give them a distinctly reddish color, and their brightness lets us see them billions of light years away.", img: "Images/Explanations/Redshift@300x.png"},
-    4: {title: "Near Galaxies", caption: "Each dot is a galaxy. Together they form a filamentary structure. Spiral galaxies are faint and blue. Elliptical galaxies are yellowish and much brighter, so we can see them farther away.", img: "Images/Explanations/Near_placeholder.png" },
-    5: {title: "Redshift", caption: "As the Universe expands, light traveling toward us gets stretched. This shifts its wavelength toward the red end of the spectrum — what astronomers call redshift. The more distant an object, the more its light is stretched, and the redder it appears.", img: "Images/Explanations/Redshift@300x.png"},
-    6: {title: "Lookback Time", caption: "Light takes time to travel. When we look at a distant object, we see it as it was when its light first set out. This delay is the lookback time. The farther we look, the further back in time we see.", img: "Images/Explanations/Lookback Time@300x.png" },
-    7: {title: "Angle on the Sky", caption: "The map shows a thin slice of the sky, about 10° wide. The full survey covers a larger region, but a 2D map could not display it all at once without saturating the image with dots.", img: "Images/Explanations/Lookback Time@300x.png" },
-    8: {title: "You are Here", caption: "We are currently in the Local Group, in the Milky Way galaxy, in the Orion Arm, in the Solar System, on Planet Earth.", img: "Images/Explanations/You are Here@300x.png" },
-    9: {title: "Galaxies", caption: "A galaxy is a vast system of stars, gas, dust, and dark matter held together by gravity. Each contains millions to trillions of stars. Most large galaxies host a supermassive black hole at their center.", img: "Images/Explanations/Galaxies_wikipedia cropped.png" },
-}
-
-
-
-$(document).on("click", function (event) {
-    // If the target is not the container or a child of the container, then process
-    // the click event for outside of the container.
-    if ($(event.target).closest(".info-box").length === 0 && $(event.target).closest(".accordion-button").length != 1 && $(event.target).closest(".zoom-container").length != 1) {
-        $('.collapse').collapse('hide')
-        $(".more-info").hide();
-        $('.other-col').removeClass('col-lg-3');
-        $('.other-col').addClass('col-lg-6');
-
-        $('.this-col').removeClass('col-lg-6');
-        $('.this-col').addClass('col-lg-3');
-
-        $('.other-col-2').removeClass('col-lg-6');
-        $('.other-col-2').addClass('col-lg-8');
-
-        $('.this-col-2').removeClass('col-lg-6');
-        $('.this-col-2').addClass('col-lg-4');
-    }
-    var $target = $(event.target);
-    $('.download-click-section').hide();
-
-  });
-  
-
-function set_modal_pic(id) {
-    switch(id){
-        case "banner-info-1": case "phone-banner-1":
-            $(".modal-body > img").attr('src', modal_info[1]["img"])
-            $(".modal-header > h1").text(modal_info[1]["header"])
-            $(".modal-footer > p").text(modal_info[1]["caption"])
-
-            break; 
-        case "banner-info-2":
-            $(".modal-body > img").attr('src', modal_info[2]["img"])
-            $(".modal-header > h1").text(modal_info[2]["header"])
-            $(".modal-footer > p").text(modal_info[2]["caption"])
-            break;   
-        case "banner-info-3":
-            $(".modal-body > img").attr('src', modal_info[3]["img"])
-            $(".modal-header > h1").text(modal_info[3]["header"])
-            $(".modal-footer > p").text(modal_info[3]["caption"])
-
-            break; 
-        case "banner-info-4":
-            $(".modal-body > img").attr('src', modal_info[4]["img"])
-            $(".modal-header > h1").text(modal_info[4]["header"])
-            $(".modal-footer > p").text(modal_info[4]["caption"])
-            break; 
-        case "banner-info-5":
-            $(".modal-body > img").attr('src', modal_info[5]["img"])
-            $(".modal-header > h1").text(modal_info[5]["header"])
-            $(".modal-footer > p").text(modal_info[5]["caption"])
-            break; 
-        case "banner-info-6":
-            $(".modal-body > img").attr('src', modal_info[6]["img"])
-            $(".modal-header > h1").text(modal_info[6]["header"])
-            $(".modal-footer > p").text(modal_info[6]["caption"])
-            break; 
-        default:
-            $(".modal-body > img").attr('src', "")
-            $(".modal-header > h1").text("")
-            $(".modal-footer > p").text("")
-
+        const info = key !== null ? modal_info[key] : null;
+        if (info) {
+            if (modalImg) modalImg.src = info.img;
+            if (modalH1)  modalH1.textContent  = info.header;
+            if (modalP)   modalP.textContent   = info.caption;
+        } else {
+            if (modalImg) modalImg.src = '';
+            if (modalH1)  modalH1.textContent  = '';
+            if (modalP)   modalP.textContent   = '';
+        }
     }
 
-}
+    // ---------- zoomlevel(): swap the visible axis-set with a brief fade-through black ----------
+    function zoomlevel() {
+        const checkedEl1 = $1('input[name="options-outlined"]:checked');
+        const checkedEl2 = $1('input[name="options-outlined2"]:checked');
+        const checked = checkedEl1 ? checkedEl1.value : null;
+        const other_checked = checkedEl2 ? checkedEl2.value : null;
+        let true_checked = 0;
 
-function zoomlevel() {
-    var checked = $("input[name=options-outlined]:checked").val()
-    var other_checked = $("input[name=options-outlined2]:checked").val()
-    var true_checked = 0
+        if (checked != current_checked) {
+            const r = $1('input[type="radio"][name="options-outlined2"][value="' + checked + '"]');
+            if (r) r.checked = true;
+            true_checked = checked;
+        } else {
+            const r = $1('input[type="radio"][name="options-outlined"][value="' + other_checked + '"]');
+            if (r) r.checked = true;
+            true_checked = other_checked;
+        }
 
-    if (checked != current_checked) {
-        $('input:radio[name=options-outlined2][value=' + checked + ']').prop('checked', true);
-        //$('input:radio[name=options-outlined2][value=' + checked + ']').click();
-        true_checked = checked
-    } else {
-        $('input:radio[name=options-outlined][value=' + other_checked + ']').prop('checked', true);
-        //$('input:radio[name=options-outlined][value=' + other_checked + ']').click();
-        true_checked = other_checked
+        let axis_overlay;
+        if (true_checked == 1) {
+            axis_overlay = '#axis_set_03';
+        } else if (true_checked == 2) {
+            axis_overlay = '#axis_set_02';
+        } else if (true_checked == 4) {
+            axis_overlay = '#axis_set_04';
+        } else if (true_checked == 5) {
+            axis_overlay = '#axis_set_05';
+        } else {
+            axis_overlay = '#axis_set_01';
+        }
+
+        const blackOverlay = document.getElementById('black-overlay');
+        if (!blackOverlay) {
+            // Even without the black overlay, perform the swap.
+            $$('.hover-map-overlay').forEach(function (el) { el.style.display = 'none'; });
+            const oldVis = $1(visible_overlay);
+            if (oldVis) oldVis.style.display = 'none';
+            const newVis = $1(axis_overlay);
+            if (newVis) newVis.style.display = '';
+            visible_overlay = axis_overlay;
+            current_checked = true_checked;
+            return;
+        }
+
+        fadeIn(blackOverlay, 100);
+        // After the black overlay is visible, swap and fade out.
+        setTimeout(function () {
+            $$('.hover-map-overlay').forEach(function (el) { el.style.display = 'none'; });
+            const oldVis = $1(visible_overlay);
+            if (oldVis) oldVis.style.display = 'none';
+            const newVis = $1(axis_overlay);
+            if (newVis) newVis.style.display = '';
+            fadeOut(blackOverlay, 100);
+            visible_overlay = axis_overlay;
+            current_checked = true_checked;
+        }, 110);
     }
 
+    // ---------- Data tables (numeric keys + content fields preserved verbatim) ----------
+    var information = {
+        1: {title: "The Cosmic Microwave Background", caption: "This is an actual photograph of the first flash of light emitted soon after the Big Bang, 13.7 billion years ago. The expansion of the Universe has stretched this light, so it now reaches us as microwave radio waves. It marks the edge of the observable Universe.", img: "Images/Explanations/cmb_illust.png"},
+        2: {title: "Quasars", caption: "Quasars are massive black holes at the centers of certain galaxies. As they accrete surrounding gas, they become extremely bright and can be seen across the Universe. Their light is blueish. At these distances, galaxies have become too faint for the Sloan Digital Sky Survey telescope to detect.", img: "Images/Explanations/Quasar@300x.png" },
+        3: {title: "Luminous Red Galaxy", caption: "Luminous Red Galaxies are massive elliptical galaxies hundreds of times brighter than the Milky Way. Their old, cool stars give them a distinctly reddish color, and their brightness lets us see them billions of light years away.", img: "Images/Explanations/Redshift@300x.png"},
+        4: {title: "Near Galaxies", caption: "Each dot is a galaxy. Together they form a filamentary structure. Spiral galaxies are faint and blue. Elliptical galaxies are yellowish and much brighter, so we can see them farther away.", img: "Images/Explanations/Near_placeholder.png" },
+        5: {title: "Redshift", caption: "As the Universe expands, light traveling toward us gets stretched. This shifts its wavelength toward the red end of the spectrum — what astronomers call redshift. The more distant an object, the more its light is stretched, and the redder it appears.", img: "Images/Explanations/Redshift@300x.png"},
+        6: {title: "Lookback Time", caption: "Light takes time to travel. When we look at a distant object, we see it as it was when its light first set out. This delay is the lookback time. The farther we look, the further back in time we see.", img: "Images/Explanations/Lookback Time@300x.png" },
+        7: {title: "Angle on the Sky", caption: "The map shows a thin slice of the sky, about 10° wide. The full survey covers a larger region, but a 2D map could not display it all at once without saturating the image with dots.", img: "Images/Explanations/Lookback Time@300x.png" },
+        8: {title: "You are Here", caption: "We are currently in the Local Group, in the Milky Way galaxy, in the Orion Arm, in the Solar System, on Planet Earth.", img: "Images/Explanations/You are Here@300x.png" },
+        9: {title: "Galaxies", caption: "A galaxy is a vast system of stars, gas, dust, and dark matter held together by gravity. Each contains millions to trillions of stars. Most large galaxies host a supermassive black hole at their center.", img: "Images/Explanations/Galaxies_wikipedia cropped.png" },
+    };
 
-    var axis_overlay = ""
-    if(true_checked == 1) {
-        axis_overlay = "#axis_set_03"; 
-    } else if (true_checked == 2) {
-        axis_overlay = "#axis_set_02"; 
-    } else if (true_checked == 4) {
-        axis_overlay = "#axis_set_04"; 
-
-    } else if(true_checked == 5) {
-        axis_overlay = "#axis_set_05"
-    } else {
-        axis_overlay = "#axis_set_01"; 
-    }
-    $("#black-overlay").fadeIn("fast", function() {
-        $(".hover-map-overlay").hide()
-        $(visible_overlay).hide()
-        $(axis_overlay).show()
-        $("#black-overlay").fadeOut("fast", function(){});
-        visible_overlay = axis_overlay
-        current_checked = true_checked
-    })
-}
-
-const modal_info = {
-    1: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
-    2: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
-    3: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
-    4: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
-    5: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
-    6: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
-}
+    var modal_info = {
+        1: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/cmb.jpeg", header: "the cosmic microwave background", caption: "This is an actual photograph of the first flash of light emitted soon afterthe big bang, 13.7 billion years ago. This light has been stretched by the expansion of the Universe and arrives at us as radiowaves. This is the edge of the observable Universe."},
+        2: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/12.jpeg", header: "redshifted quasars", caption: " At these distances, the expansion of the Universe is so great that the blue photons from quasars get stretched and appear redder. A bit farther, we encounter an epoch during which the Universe is filled with hydrogen gas that prevents the propagation of visible light we could observe today. This epoch is called the \"dark ages\"."},
+        3: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/8.5.jpg", header: "quasars", caption: "Quasars are massive black holes located at the center of certain galaxies. As they accrete surrounding gas and stars, they become extremely bright and can be seen across the Universe. Their light is blueish."},
+        4: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/4.5.jpeg", header: "redshifted elliptical galaxies", caption: "As the Universe expands, photons gets stretched and objects appear redder. This is the case for the elliptical galaxies. At these distances, they appear red to us.As we no longer detect the fainter spiral galaxies, the filamentary structure is less visible."},
+        5: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/1.8.jpeg", header: "elliptical galaxies", caption: "Elliptical galaxies are yellowish and much brighter than spiral galaxies. We can see them farther away."},
+        6: {img: "https://menard.pha.jhu.edu/MapoftheUniverse/Images/Skyview/V_01/0.1.jpeg", header: "spiral galaxies", caption: "Each dot is a galaxy shown with its apparent color. Spiral galaxies are faint and blue. Our galaxy, the Milky Way, is a blue spiral that would look like one of these if we could observe it from the outside."},
+    };
+})();
