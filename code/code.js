@@ -188,37 +188,40 @@
     });
 
     // ---------- "Bottom arrow" smooth-scrolls to map ----------
-    // Per user's reference screenshot: bottom-anchor the map (so "you are here"
-    // sits a small margin above the viewport bottom) and let the natural
-    // leftover space appear above "angle on the sky". When the map is taller
-    // than the viewport, fall back to top-anchoring so the upper axis label
-    // stays in view rather than the bottom.
+    // Constraint: with `.mapbox > img { max-height: 110vh }`, the rendered map
+    // is ~10% taller than the viewport on typical desktops, so the entire
+    // map can't fit at once. The labels themselves span only ~90% of the map
+    // (top one at top:8%, bottom one at bottom:2%), so on a viewport of
+    // height ~1100px BOTH labels CAN fit simultaneously — but only inside a
+    // narrow band of valid scroll positions.
     //
-    // .mapbox is the right anchor element here (not .scroll-to-map, which
-    // includes absolutely-positioned zoom controls and mobile-hidden flow;
-    // not the label elements directly, which carry `transform: translate(...)`
-    // that shifts their bounding-rect away from the visual edge).
+    // Compute the range of scrollY for which both labels are visible, then
+    // pick the midpoint of that range. `getBoundingClientRect` honors the
+    // `transform: translate(-50%, -50%)` on the labels and returns the actual
+    // visual edges, which is exactly what we need for visibility checks.
     on('.bottom-arrow', 'click', function () {
-        const mapbox = $1('.mapbox');
-        const winHeight = window.innerHeight;
+        const top = $1('.angle-on-sky-axis');
+        const bot = $1('.you-are-here-axis');
+        const winH = window.innerHeight;
         let scrollTarget;
-        if (mapbox) {
-            const rect = mapbox.getBoundingClientRect();
-            const mapTopPageY = rect.top + window.scrollY;
-            const mapBottomPageY = mapTopPageY + mapbox.offsetHeight;
-            const margin = 30; // breathing room around the labels
-            // Preferred: mapbox bottom sits `margin` px above viewport bottom.
-            const bottomAnchored = mapBottomPageY - winHeight + margin;
-            // Cap: never push mapbox top above (viewport top + margin) — so
-            // "angle on the sky" always has at least `margin` px of headroom.
-            const topCap = mapTopPageY - margin;
-            scrollTarget = Math.min(bottomAnchored, topCap);
+        if (top && bot) {
+            const topRect = top.getBoundingClientRect();
+            const botRect = bot.getBoundingClientRect();
+            const topVisualPageY = topRect.top + window.scrollY;     // visual top of "angle on the sky"
+            const botVisualPageY = botRect.bottom + window.scrollY;  // visual bottom of "you are here"
+            // Valid scrollY range for BOTH labels in view simultaneously.
+            // Anything in [lower, upper] keeps both inside the viewport.
+            const lower = botVisualPageY - winH;  // any smaller and "you are here" drops off the bottom
+            const upper = topVisualPageY;          // any larger and "angle on the sky" rolls off the top
+            scrollTarget = lower <= upper
+                ? (lower + upper) / 2              // both fit — center the band
+                : lower;                           // can't fit both — favor bottom (matches original jQuery feel)
         } else {
-            // Last-ditch fallback.
-            const target = $1('.scroll-to-map');
-            if (!target) return;
-            const rect = target.getBoundingClientRect();
-            scrollTarget = rect.top + window.scrollY + target.offsetHeight - winHeight;
+            // Fallback to .mapbox bottom-aligned (original-like).
+            const mapbox = $1('.mapbox');
+            if (!mapbox) return;
+            const rect = mapbox.getBoundingClientRect();
+            scrollTarget = rect.top + window.scrollY + mapbox.offsetHeight - winH;
         }
         scrollTarget = Math.max(0, scrollTarget);
         window.scrollTo({ top: scrollTarget, left: 0, behavior: 'smooth' });
