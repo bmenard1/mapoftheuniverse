@@ -189,31 +189,43 @@
 
     // ---------- "Bottom arrow" smooth-scrolls to map ----------
     // The user wants to land on the map with BOTH "angle on the sky" (top axis
-    // label) and "you are here" (bottom axis label) readable. Targeting
-    // `.scroll-to-map` and centering its box can drift either way (top label
-    // clipped, or bottom label clipped) because of padding/positioning around
-    // the .mapbox child. Instead, measure the labels themselves and place
-    // the scroll so the bottom label sits at the bottom of the viewport, then
-    // back off if the top label would be clipped above.
+    // label) and "you are here" (bottom axis label) readable simultaneously.
+    //
+    // Use the .mapbox element as the layout anchor — it is the visible map
+    // content and its top/bottom correspond to where the axis labels sit
+    // (axis_set_01 covers it 100%). Targeting the labels directly is unreliable
+    // because they have `transform: translate(-50%, -50%)` which shifts their
+    // bounding-rect away from the visual position.
+    //
+    // Strategy: place .mapbox bottom near the viewport bottom (with a small
+    // margin so "you are here" — which sits 2% from the mapbox bottom — has
+    // breathing room) UNLESS that would push .mapbox top above the viewport
+    // top. Then back off to keep both ends visible.
     on('.bottom-arrow', 'click', function () {
-        const youAreHere = $1('.you-are-here-axis');
-        const angleOnSky = $1('.angle-on-sky-axis');
+        const mapbox = $1('.mapbox');
         const winHeight = window.innerHeight;
         let scrollTarget;
-        if (youAreHere && angleOnSky) {
-            const yhRect = youAreHere.getBoundingClientRect();
-            const asRect = angleOnSky.getBoundingClientRect();
-            const yhBottomPageY = yhRect.bottom + window.scrollY;
-            const asTopPageY = asRect.top + window.scrollY;
-            // Anchor: place "you are here" at the viewport bottom (matches the
-            // original jQuery intent of landing at the bottom of the map).
-            const anchored = yhBottomPageY - winHeight;
-            // If "angle on the sky" would be clipped (above viewport.top),
-            // back off so it just enters the viewport. This loses the strict
-            // bottom-alignment but is what the user explicitly asked for.
-            scrollTarget = Math.min(anchored, asTopPageY);
+        if (mapbox) {
+            const rect = mapbox.getBoundingClientRect();
+            const mapTopPageY = rect.top + window.scrollY;
+            const mapBottomPageY = mapTopPageY + mapbox.offsetHeight;
+            const margin = 24; // breathing room below "you are here" label
+            // Bottom-anchor: mapbox bottom at (viewport bottom - margin)
+            const bottomAnchored = mapBottomPageY - winHeight + margin;
+            // Top-anchor: mapbox top at (viewport top + margin)
+            const topAnchored = mapTopPageY - margin;
+            // If the map fits within the viewport (with its margins), CENTER it
+            // — gives equal space top and bottom. Otherwise, prefer bottom-
+            // anchored so "you are here" (the original anchor) stays visible
+            // and the top is the one that scrolls off, but back off enough
+            // to keep "angle on the sky" in view.
+            if (mapbox.offsetHeight + 2 * margin <= winHeight) {
+                scrollTarget = mapTopPageY - (winHeight - mapbox.offsetHeight) / 2;
+            } else {
+                scrollTarget = Math.min(bottomAnchored, topAnchored);
+            }
         } else {
-            // Fallback if labels aren't in the DOM for some reason.
+            // Last-ditch fallback.
             const target = $1('.scroll-to-map');
             if (!target) return;
             const rect = target.getBoundingClientRect();
