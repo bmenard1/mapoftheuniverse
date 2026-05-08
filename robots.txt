@@ -1,0 +1,4 @@
+# mapoftheuniverse-v2 — staging/test repository.
+# The production site is https://mapoftheuniverse.net
+User-agent: *
+Disallow: /
