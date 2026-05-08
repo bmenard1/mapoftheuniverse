@@ -216,10 +216,10 @@
             const baseTarget = lower <= upper
                 ? (lower + upper) / 2              // both fit — center the band
                 : lower;                           // can't fit both — favor bottom (matches original jQuery feel)
-            // User-tuned bias: shift up by 0.125× the rendered height of the
-            // "you are here" label (i.e., scroll just under the band midpoint).
+            // User-tuned bias: shift up by 0.0625× the rendered height of the
+            // "you are here" label (i.e., scroll just barely below the band midpoint).
             // bot.offsetHeight respects any responsive font-size overrides.
-            scrollTarget = baseTarget - 0.125 * bot.offsetHeight;
+            scrollTarget = baseTarget - 0.0625 * bot.offsetHeight;
         } else {
             // Fallback to .mapbox bottom-aligned (original-like).
             const mapbox = $1('.mapbox');
