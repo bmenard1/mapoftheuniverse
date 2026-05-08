@@ -188,11 +188,24 @@
     });
 
     // ---------- "Bottom arrow" smooth-scrolls to map ----------
+    // Land in a position where the WHOLE map fits in the viewport — both
+    // "you are here" (bottom axis label) and "angle on the sky" (top axis
+    // label) need to be readable simultaneously. The original jQuery code
+    // put the map's BOTTOM at the viewport bottom, which meant the top
+    // axis label was clipped on screens where mapHeight is anywhere close
+    // to winHeight. We now center the map vertically when it fits, and
+    // fall back to top-alignment when it's taller than the viewport (so
+    // the user at least lands at the top of the map and can scroll down).
     on('.bottom-arrow', 'click', function () {
         const target = $1('.scroll-to-map');
         if (!target) return;
         const rect = target.getBoundingClientRect();
-        const top = rect.top + window.scrollY + target.offsetHeight - window.innerHeight;
+        const elementTop = rect.top + window.scrollY;
+        const elementHeight = target.offsetHeight;
+        const winHeight = window.innerHeight;
+        const top = elementHeight < winHeight
+            ? Math.max(0, elementTop - (winHeight - elementHeight) / 2)
+            : elementTop;
         window.scrollTo({ top: top, left: 0, behavior: 'smooth' });
     });
 
