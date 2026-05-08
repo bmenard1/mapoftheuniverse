@@ -40,7 +40,7 @@
         }
     }
 
-    function fadeIn(el, ms) {
+    function fadeIn(el, ms, cb) {
         if (!el) return;
         const dur = (typeof ms === 'number') ? ms : 200;
         el.style.setProperty('--vfade-dur', dur + 'ms');
@@ -54,6 +54,23 @@
         void el.offsetWidth;
         el.classList.remove('__vfade');
         el.classList.add('__vfade-in');
+        // jQuery .fadeIn(cb) semantics: invoke cb when the opacity transition completes.
+        if (typeof cb === 'function') {
+            let fired = false;
+            const fire = function () {
+                if (fired) return;
+                fired = true;
+                el.removeEventListener('transitionend', onEnd);
+                cb();
+            };
+            const onEnd = function (e) {
+                if (e.propertyName !== 'opacity') return;
+                fire();
+            };
+            el.addEventListener('transitionend', onEnd);
+            // Fallback in case transitionend never fires.
+            setTimeout(fire, dur + 50);
+        }
     }
 
     function fadeOut(el, ms, cb) {
@@ -521,7 +538,7 @@
                     option_index = 8;
                 }
                 const hov = $1(hover_options[Math.floor(option_index / 2)]);
-                if (hov) fadeOut(hov, 200);
+                if (hov) fadeOut(hov, 400); // jQuery default fadeOut() = 400ms
 
                 const opt = $1(options[Math.floor(option_index / 2)]);
                 if (opt) opt.checked = true;
@@ -560,6 +577,9 @@
     }
 
     // ---------- zoomlevel(): swap the visible axis-set with a brief fade-through black ----------
+    // Matches the original jQuery flow exactly: fadeIn(blackOverlay), THEN inside the
+    // completion callback hide hover overlays + old axis_set, show new axis_set, fadeOut(blackOverlay).
+    // (jQuery's $.fadeIn("fast") = 200 ms, hence the 200 here.)
     function zoomlevel() {
         const checkedEl1 = $1('input[name="options-outlined"]:checked');
         const checkedEl2 = $1('input[name="options-outlined2"]:checked');
@@ -603,18 +623,17 @@
             return;
         }
 
-        fadeIn(blackOverlay, 100);
-        // After the black overlay is visible, swap and fade out.
-        setTimeout(function () {
+        fadeIn(blackOverlay, 200, function () {
+            // Black overlay is fully opaque — now swap behind it.
             $$('.hover-map-overlay').forEach(function (el) { el.style.display = 'none'; });
             const oldVis = $1(visible_overlay);
             if (oldVis) oldVis.style.display = 'none';
             const newVis = $1(axis_overlay);
             if (newVis) show(newVis);
-            fadeOut(blackOverlay, 100);
             visible_overlay = axis_overlay;
             current_checked = true_checked;
-        }, 110);
+            fadeOut(blackOverlay, 200);
+        });
     }
 
     // ---------- Data tables (numeric keys + content fields preserved verbatim) ----------
