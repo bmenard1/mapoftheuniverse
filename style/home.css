@@ -1981,9 +1981,29 @@ border: solid white 3px;
 
 
 
+/* Mobile inset banners (.d-md-none version) — these were originally id="banner-info-N"
+   shared with the desktop sidebar entries. After the html-cleanup pass renamed the
+   mobile-only divs to phone-banner-N to remove the duplicate-ID HTML violation, the
+   #banner-info-N positioning rules above stopped applying to them, so they collapsed
+   on top of each other. Mirroring the desktop top:% values keeps them spaced along
+   the banner-outline timeline. */
 #phone-banner-1 {
     top: 1% !important;
-
+}
+#phone-banner-2 {
+    top: 11%;
+}
+#phone-banner-3 {
+    top: 32%;
+}
+#phone-banner-4 {
+    top: 55%;
+}
+#phone-banner-5 {
+    top: 76%;
+}
+#phone-banner-6 {
+    top: 89%;
 }
 #lookback-tick-01{
     top:0%
