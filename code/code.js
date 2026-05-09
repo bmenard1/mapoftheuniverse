@@ -317,15 +317,18 @@
             const target = rect.top + window.scrollY + el.offsetHeight - window.innerHeight;
             window.scrollTo(0, Math.max(0, target));
         };
-        // Fire immediately (in case layout is already settled),
-        // then again after the next two animation frames (covers paint races),
-        // then once more after a short timeout (covers everything else).
+        // Fire immediately, after the next two animation frames, then again at
+        // 100ms, 500ms and 1000ms. Mobile browsers (especially iOS Safari with
+        // URL-bar transitions) can take significantly longer to settle layout
+        // after a cover-hide + fadeOut + fadeIn chain than desktop browsers.
         tryScroll();
         requestAnimationFrame(function () {
             tryScroll();
             requestAnimationFrame(tryScroll);
         });
         setTimeout(tryScroll, 100);
+        setTimeout(tryScroll, 500);
+        setTimeout(tryScroll, 1000);
     }
 
     on('.banner-switch', 'click', function () {
@@ -337,9 +340,13 @@
             if (mapSection) {
                 fadeOut(mapSection, 400, function () {
                     if (bannerSection) {
-                        fadeIn(bannerSection, 800);
-                        // Land at the bottom of the banner — the Milky Way / present time —
-                        // so the user scrolls UP to "travel through the universe" (the page intent).
+                        // Run the multi-attempt scroll AND request one final
+                        // scroll inside fadeIn's completion callback, when
+                        // layout is fully settled (especially needed on mobile
+                        // where viewport/URL-bar transitions race the fade).
+                        fadeIn(bannerSection, 800, function () {
+                            scrollBottomTo(bannerSection);
+                        });
                         scrollBottomTo(bannerSection);
                     }
                 });
@@ -349,9 +356,14 @@
         } else {
             if (bannerSection) {
                 fadeOut(bannerSection, 400, function () {
-                    if (mapSection) fadeIn(mapSection, 800);
+                    const onMapShown = function () {
+                        scrollBottomTo($1('.scroll-to-map'));
+                    };
+                    if (mapSection) {
+                        fadeIn(mapSection, 800, onMapShown);
+                    }
                     if (cover) show(cover);
-                    scrollBottomTo($1('.scroll-to-map'));
+                    onMapShown();
                 });
             }
             toggle_banner = false;
