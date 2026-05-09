@@ -652,10 +652,17 @@
     }
 
     // ---------- set_modal_pic: data-driven, accepts banner-info-N or phone-banner-N ----------
+    // The selectors MUST be scoped to #myModal — otherwise querySelector returns
+    // the first match in the document, which is #creditModal's .modal-header > h1
+    // and .modal-footer > p (since #creditModal appears before #myModal in DOM
+    // order). The original jQuery code worked accidentally because $(sel).text()
+    // updates EVERY matching element, but querySelector returns only the first.
     function set_modal_pic(id) {
-        const modalImg = $1('.modal-body > img');
-        const modalH1  = $1('.modal-header > h1');
-        const modalP   = $1('.modal-footer > p');
+        const myModal = document.getElementById('myModal');
+        if (!myModal) return;
+        const modalImg = $1('.modal-body > img', myModal);
+        const modalH1  = $1('.modal-header > h1', myModal);
+        const modalP   = $1('.modal-footer > p', myModal);
 
         let key = null;
         if (typeof id === 'string') {
