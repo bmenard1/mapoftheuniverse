@@ -104,6 +104,39 @@
         return el.offsetParent === null || getComputedStyle(el).display === 'none';
     }
 
+    // Linear scroll from the current scrollY to `targetY` over `durationMs`.
+    // Equivalent of jQuery $('html, body').animate({scrollTop: y}, {duration, easing:'linear'}).
+    // Used (only) for the cover down-arrow so the long descent into the map
+    // feels deliberate — the visitor watches galaxies pass by, not a snap.
+    // A second click while a scroll is in flight cancels the previous animation.
+    let _linearScrollRAF = null;
+    function scrollToLinear(targetY, durationMs) {
+        if (_linearScrollRAF != null) {
+            cancelAnimationFrame(_linearScrollRAF);
+            _linearScrollRAF = null;
+        }
+        const startY = window.scrollY;
+        const deltaY = targetY - startY;
+        if (Math.abs(deltaY) < 1) {
+            window.scrollTo(0, targetY);
+            return;
+        }
+        const startTime = (typeof performance !== 'undefined' && performance.now)
+            ? performance.now()
+            : Date.now();
+        const step = function (now) {
+            const elapsed = (typeof now === 'number' ? now : Date.now()) - startTime;
+            const t = Math.min(elapsed / durationMs, 1);
+            window.scrollTo(0, Math.round(startY + deltaY * t));
+            if (t < 1) {
+                _linearScrollRAF = requestAnimationFrame(step);
+            } else {
+                _linearScrollRAF = null;
+            }
+        };
+        _linearScrollRAF = requestAnimationFrame(step);
+    }
+
     // ---------- Convenience selector helpers ----------
     const $$ = function (sel, root) { return Array.from((root || document).querySelectorAll(sel)); };
     const $1 = function (sel, root) { return (root || document).querySelector(sel); };
@@ -249,7 +282,11 @@
         }
 
         scrollTarget = Math.max(0, scrollTarget);
-        window.scrollTo({ top: scrollTarget, left: 0, behavior: 'smooth' });
+        // Slow 2-second linear scroll, matching the original jQuery
+        //   $('html, body').animate({scrollTop: ...}, {duration: 2000, easing: 'linear'})
+        // The deliberate pace is intentional — it gives the visitor time to
+        // appreciate the galaxies passing by as the map enters view.
+        scrollToLinear(scrollTarget, 2000);
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
