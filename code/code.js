@@ -323,9 +323,9 @@
         // like") so the visitor can read it, then continue to the map.
         const winHeightNow = window.innerHeight;
         const currentY = window.scrollY;
-        const DWELL_MS = 2500;     // time to dwell at each sentence
-        const SEGMENT_MS = 1500;   // time to scroll BETWEEN sentences
-        const TAIL_MS = 3000;      // time for the final scroll to the map
+        const DWELL_MS = 2000;     // time to dwell at each sentence
+        const SEGMENT_MS = 1000;   // time to scroll BETWEEN sentences
+        const TAIL_MS = 2000;      // time for the final scroll to the map
         const flavorTexts = $$('.cover .flavor-text');
         const stops = [];
         flavorTexts.forEach(function (el) {
