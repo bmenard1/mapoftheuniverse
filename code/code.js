@@ -121,7 +121,14 @@
             _scrollSeqTimeout = null;
         }
     }
-    function scrollToLinear(targetY, durationMs, cb) {
+    // Built-in easings. Linear = constant speed. EaseOutCubic = starts fast,
+    // decelerates to a soft landing at the destination — used between cover
+    // sentences so each stop doesn't feel like an abrupt halt.
+    const _easings = {
+        linear: function (t) { return t; },
+        easeOutCubic: function (t) { return 1 - Math.pow(1 - t, 3); },
+    };
+    function scrollToLinear(targetY, durationMs, cb, easing) {
         _cancelScrollSeq();
         const startY = window.scrollY;
         const deltaY = targetY - startY;
@@ -130,13 +137,17 @@
             if (typeof cb === 'function') cb();
             return;
         }
+        const ease = (typeof easing === 'function')
+            ? easing
+            : (_easings[easing] || _easings.linear);
         const startTime = (typeof performance !== 'undefined' && performance.now)
             ? performance.now()
             : Date.now();
         const step = function (now) {
             const elapsed = (typeof now === 'number' ? now : Date.now()) - startTime;
             const t = Math.min(elapsed / durationMs, 1);
-            window.scrollTo(0, Math.round(startY + deltaY * t));
+            const eased = ease(t);
+            window.scrollTo(0, Math.round(startY + deltaY * eased));
             if (t < 1) {
                 _linearScrollRAF = requestAnimationFrame(step);
             } else {
@@ -166,7 +177,7 @@
                     runNext();
                 }
             };
-            scrollToLinear(step.target, step.scrollMs || 0, afterScroll);
+            scrollToLinear(step.target, step.scrollMs || 0, afterScroll, step.easing);
         };
         runNext();
     }
@@ -324,8 +335,11 @@
         const winHeightNow = window.innerHeight;
         const currentY = window.scrollY;
         const DWELL_MS = 2000;     // time to dwell at each sentence
-        const SEGMENT_MS = 1000;   // time to scroll BETWEEN sentences
-        const TAIL_MS = 2000;      // time for the final scroll to the map
+        const SEGMENT_MS = 800;    // time to scroll BETWEEN sentences (ease-out)
+        const TAIL_MS = 2000;      // time for the final scroll to the map (ease-out)
+        // ease-out for ALL scroll motions so each arrival decelerates into a
+        // soft landing instead of stopping abruptly at the target.
+        const EASING = 'easeOutCubic';
         const flavorTexts = $$('.cover .flavor-text');
         const stops = [];
         flavorTexts.forEach(function (el) {
@@ -335,7 +349,7 @@
             // Only keep stops we haven't already scrolled past (so a repeat
             // click from mid-descent doesn't bounce the user back up).
             if (target >= currentY - 5) {
-                stops.push({ target: target, scrollMs: SEGMENT_MS, dwellMs: DWELL_MS });
+                stops.push({ target: target, scrollMs: SEGMENT_MS, dwellMs: DWELL_MS, easing: EASING });
             }
         });
         // The first stop is usually scrollY≈0 with sentence 1 already in view —
@@ -344,7 +358,7 @@
             stops[0].scrollMs = 0;
         }
         // Final stop: the map landing.
-        stops.push({ target: scrollTarget, scrollMs: TAIL_MS, dwellMs: 0 });
+        stops.push({ target: scrollTarget, scrollMs: TAIL_MS, dwellMs: 0, easing: EASING });
         scrollSequence(stops);
     });
 
