@@ -282,11 +282,10 @@
         }
 
         scrollTarget = Math.max(0, scrollTarget);
-        // Slow 2-second linear scroll, matching the original jQuery
-        //   $('html, body').animate({scrollTop: ...}, {duration: 2000, easing: 'linear'})
-        // The deliberate pace is intentional — it gives the visitor time to
-        // appreciate the galaxies passing by as the map enters view.
-        scrollToLinear(scrollTarget, 2000);
+        // Slow linear scroll. The original jQuery used 2000ms; user has asked
+        // for the descent to feel even more deliberate so visitors have time
+        // to take in the galaxies passing by. 5000ms = a full 5-second walk.
+        scrollToLinear(scrollTarget, 5000);
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
