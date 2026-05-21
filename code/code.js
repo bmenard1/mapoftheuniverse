@@ -110,15 +110,24 @@
     // feels deliberate — the visitor watches galaxies pass by, not a snap.
     // A second click while a scroll is in flight cancels the previous animation.
     let _linearScrollRAF = null;
-    function scrollToLinear(targetY, durationMs) {
+    let _scrollSeqTimeout = null;
+    function _cancelScrollSeq() {
         if (_linearScrollRAF != null) {
             cancelAnimationFrame(_linearScrollRAF);
             _linearScrollRAF = null;
         }
+        if (_scrollSeqTimeout != null) {
+            clearTimeout(_scrollSeqTimeout);
+            _scrollSeqTimeout = null;
+        }
+    }
+    function scrollToLinear(targetY, durationMs, cb) {
+        _cancelScrollSeq();
         const startY = window.scrollY;
         const deltaY = targetY - startY;
-        if (Math.abs(deltaY) < 1) {
+        if (Math.abs(deltaY) < 1 || durationMs <= 0) {
             window.scrollTo(0, targetY);
+            if (typeof cb === 'function') cb();
             return;
         }
         const startTime = (typeof performance !== 'undefined' && performance.now)
@@ -132,9 +141,34 @@
                 _linearScrollRAF = requestAnimationFrame(step);
             } else {
                 _linearScrollRAF = null;
+                if (typeof cb === 'function') cb();
             }
         };
         _linearScrollRAF = requestAnimationFrame(step);
+    }
+    // Walk through a list of {target, scrollMs, dwellMs} stops in sequence.
+    // Used by the cover down-arrow to pause at each .flavor-text sentence so
+    // the visitor has time to read it before the descent continues. Re-entering
+    // (e.g. user clicks the arrow again) cancels the previous sequence.
+    function scrollSequence(steps) {
+        _cancelScrollSeq();
+        let i = 0;
+        const runNext = function () {
+            if (i >= steps.length) return;
+            const step = steps[i++];
+            const afterScroll = function () {
+                if (step.dwellMs && step.dwellMs > 0) {
+                    _scrollSeqTimeout = setTimeout(function () {
+                        _scrollSeqTimeout = null;
+                        runNext();
+                    }, step.dwellMs);
+                } else {
+                    runNext();
+                }
+            };
+            scrollToLinear(step.target, step.scrollMs || 0, afterScroll);
+        };
+        runNext();
     }
 
     // ---------- Convenience selector helpers ----------
@@ -282,10 +316,36 @@
         }
 
         scrollTarget = Math.max(0, scrollTarget);
-        // Slow linear scroll. The original jQuery used 2000ms; user has asked
-        // for the descent to feel even more deliberate so visitors have time
-        // to take in the galaxies passing by. 5000ms = a full 5-second walk.
-        scrollToLinear(scrollTarget, 5000);
+
+        // Build a paused-scroll sequence: pause at each .flavor-text sentence
+        // on the cover ("Astronomers have observed millions of galaxies", "Each
+        // point on this page is a real galaxy", "This is what deep space looks
+        // like") so the visitor can read it, then continue to the map.
+        const winHeightNow = window.innerHeight;
+        const currentY = window.scrollY;
+        const DWELL_MS = 2500;     // time to dwell at each sentence
+        const SEGMENT_MS = 1500;   // time to scroll BETWEEN sentences
+        const TAIL_MS = 3000;      // time for the final scroll to the map
+        const flavorTexts = $$('.cover .flavor-text');
+        const stops = [];
+        flavorTexts.forEach(function (el) {
+            const rect = el.getBoundingClientRect();
+            const centerPageY = rect.top + window.scrollY + el.offsetHeight / 2;
+            const target = Math.max(0, centerPageY - winHeightNow / 2);
+            // Only keep stops we haven't already scrolled past (so a repeat
+            // click from mid-descent doesn't bounce the user back up).
+            if (target >= currentY - 5) {
+                stops.push({ target: target, scrollMs: SEGMENT_MS, dwellMs: DWELL_MS });
+            }
+        });
+        // The first stop is usually scrollY≈0 with sentence 1 already in view —
+        // skip its scroll animation since there's no distance to travel.
+        if (stops.length > 0 && Math.abs(stops[0].target - currentY) < 5) {
+            stops[0].scrollMs = 0;
+        }
+        // Final stop: the map landing.
+        stops.push({ target: scrollTarget, scrollMs: TAIL_MS, dwellMs: 0 });
+        scrollSequence(stops);
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
