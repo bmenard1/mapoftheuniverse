@@ -340,10 +340,10 @@
         const winHeightNow = window.innerHeight;
         const currentY = window.scrollY;
         const DWELL_MS = 2000;     // time to dwell at each sentence
-        const SEGMENT_MS = 800;    // time to scroll BETWEEN sentences (ease-out)
-        const TAIL_MS = 2000;      // time for the final scroll to the map (ease-out)
-        // ease-out for ALL scroll motions so each arrival decelerates into a
-        // soft landing instead of stopping abruptly at the target.
+        const SEGMENT_MS = 1200;   // time to scroll BETWEEN sentences (ease-in-out)
+        const TAIL_MS = 3000;      // time for the final scroll to the map (ease-in-out)
+        // ease-in-out for ALL scroll motions: gentle take-off from rest after
+        // each dwell, then gentle deceleration into a soft landing at the target.
         const EASING = 'easeInOutCubic';
         const flavorTexts = $$('.cover .flavor-text');
         const stops = [];
