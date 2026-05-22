@@ -282,33 +282,28 @@
     // pick the midpoint of that range. `getBoundingClientRect` honors the
     // `transform: translate(-50%, -50%)` on the labels and returns the actual
     // visual edges, which is exactly what we need for visibility checks.
-    on('.bottom-arrow', 'click', function () {
+    // Cover-scroll tunables, shared by the down-arrow auto-sequence AND the
+    // keyboard step-through.
+    const COVER_DWELL_MS = 2000;    // auto-sequence: dwell at each sentence
+    const COVER_SEGMENT_MS = 1200;  // scroll BETWEEN sentences (ease-in-out)
+    const COVER_TAIL_MS = 3000;     // final scroll to the map (ease-in-out)
+    const COVER_EASING = 'easeInOutCubic';
+
+    // The map landing scrollY. Mobile (< 992px): bottom of .scroll-to-map so the
+    // three action buttons are in view. Desktop: midpoint of the band where both
+    // axis labels are visible, biased per user fine-tuning. Falls back to .mapbox.
+    function computeMapTarget() {
         const winW = window.innerWidth;
         const winH = window.innerHeight;
-        // Bootstrap's `lg` breakpoint is 992 px — below it the mobile
-        // (.d-lg-none) UI is shown: zoom selectors, "explore the map",
-        // "description" accordion, and "download & poster" button live
-        // beneath the map inside .scroll-to-map. On mobile the user wants
-        // those bottom buttons visible after the cover-down-arrow click;
-        // on desktop the goal is to frame the map with both axis labels
-        // readable.
         const isMobile = winW < 992;
         let scrollTarget = null;
-
         if (isMobile) {
-            // Mobile: scroll so the BOTTOM of .scroll-to-map (= map +
-            // mobile button stack inside .d-lg-none) sits at the viewport
-            // bottom. That guarantees the three action buttons are in view.
             const stm = $1('.scroll-to-map');
             if (stm) {
                 const rect = stm.getBoundingClientRect();
                 scrollTarget = rect.top + window.scrollY + stm.offsetHeight - winH;
             }
         } else {
-            // Desktop: midpoint of the band of scrollY values for which
-            // BOTH "angle on the sky" (top axis label) and "you are here"
-            // (bottom axis label) are visible, biased up by a fraction of
-            // the label height per user fine-tuning.
             const top = $1('.angle-on-sky-axis');
             const bot = $1('.you-are-here-axis');
             if (top && bot) {
@@ -322,49 +317,77 @@
                 scrollTarget = baseTarget - 0.0625 * bot.offsetHeight;
             }
         }
-
         if (scrollTarget == null) {
-            // Last-ditch fallback: bottom-anchor on .mapbox (original-like).
             const mapbox = $1('.mapbox');
-            if (!mapbox) return;
+            if (!mapbox) return null;
             const rect = mapbox.getBoundingClientRect();
             scrollTarget = rect.top + window.scrollY + mapbox.offsetHeight - winH;
         }
+        return Math.max(0, scrollTarget);
+    }
 
-        scrollTarget = Math.max(0, scrollTarget);
-
-        // Build a paused-scroll sequence: pause at each .flavor-text sentence
-        // on the cover ("Astronomers have observed millions of galaxies", "Each
-        // point on this page is a real galaxy", "This is what deep space looks
-        // like") so the visitor can read it, then continue to the map.
-        const winHeightNow = window.innerHeight;
-        const currentY = window.scrollY;
-        const DWELL_MS = 2000;     // time to dwell at each sentence
-        const SEGMENT_MS = 1200;   // time to scroll BETWEEN sentences (ease-in-out)
-        const TAIL_MS = 3000;      // time for the final scroll to the map (ease-in-out)
-        // ease-in-out for ALL scroll motions: gentle take-off from rest after
-        // each dwell, then gentle deceleration into a soft landing at the target.
-        const EASING = 'easeInOutCubic';
-        const flavorTexts = $$('.cover .flavor-text');
-        const stops = [];
-        flavorTexts.forEach(function (el) {
+    // Ordered list of cover stops: each .flavor-text sentence centered
+    // (clamped ≥ 0) — sentence 1 at top:40% clamps to ~0 since it can't be
+    // centered by scrolling down — then the map landing. Each entry carries
+    // the glide duration to use when scrolling TO it.
+    function buildCoverStops() {
+        const winH = window.innerHeight;
+        const list = [];
+        $$('.cover .flavor-text').forEach(function (el) {
             const rect = el.getBoundingClientRect();
             const centerPageY = rect.top + window.scrollY + el.offsetHeight / 2;
-            const target = Math.max(0, centerPageY - winHeightNow / 2);
+            list.push({ target: Math.max(0, centerPageY - winH / 2), ms: COVER_SEGMENT_MS });
+        });
+        const mapTarget = computeMapTarget();
+        if (mapTarget != null) list.push({ target: mapTarget, ms: COVER_TAIL_MS });
+        return list;
+    }
+
+    // Down-arrow: automatic timed sequence — pause (dwell) at each sentence so
+    // the visitor can read it, then continue to the map.
+    on('.bottom-arrow', 'click', function () {
+        const currentY = window.scrollY;
+        const all = buildCoverStops();
+        const stops = [];
+        all.forEach(function (s, i) {
             // Only keep stops we haven't already scrolled past (so a repeat
             // click from mid-descent doesn't bounce the user back up).
-            if (target >= currentY - 5) {
-                stops.push({ target: target, scrollMs: SEGMENT_MS, dwellMs: DWELL_MS, easing: EASING });
+            if (s.target >= currentY - 5) {
+                const isMap = (i === all.length - 1);
+                stops.push({
+                    target: s.target,
+                    scrollMs: s.ms,
+                    dwellMs: isMap ? 0 : COVER_DWELL_MS,
+                    easing: COVER_EASING,
+                });
             }
         });
-        // The first stop is usually scrollY≈0 with sentence 1 already in view —
-        // skip its scroll animation since there's no distance to travel.
+        // First stop is usually scrollY≈0 (sentence 1 already in view) — skip its
+        // zero-distance scroll but keep the dwell.
         if (stops.length > 0 && Math.abs(stops[0].target - currentY) < 5) {
             stops[0].scrollMs = 0;
         }
-        // Final stop: the map landing.
-        stops.push({ target: scrollTarget, scrollMs: TAIL_MS, dwellMs: 0, easing: EASING });
-        scrollSequence(stops);
+        if (stops.length) scrollSequence(stops);
+    });
+
+    // Keyboard step-through: Enter / Space / ArrowDown advance ONE stop at a
+    // time (manual pacing, no dwell). From the landing, the first press centers
+    // sentence 2 — sentence 1 sits at top:40% and can't be centered by scrolling
+    // down, so it's the starting view — then sentence 3, then the map. Ignored
+    // while typing in a control or when a modal is open.
+    document.addEventListener('keydown', function (e) {
+        const k = e.key;
+        if (k !== 'Enter' && k !== ' ' && k !== 'Spacebar' && k !== 'ArrowDown') return;
+        const t = e.target;
+        if (t && t.closest && t.closest('input, textarea, select, button, a, [contenteditable]')) return;
+        if (document.querySelector('.modal.show')) return;
+        const stops = buildCoverStops();
+        if (!stops.length) return;
+        const currentY = window.scrollY;
+        const next = stops.find(function (s) { return s.target > currentY + 5; });
+        if (!next) return; // at/past the last stop — let the key do its default
+        e.preventDefault();
+        scrollToLinear(next.target, next.ms, null, COVER_EASING);
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
