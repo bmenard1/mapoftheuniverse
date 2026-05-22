@@ -162,6 +162,66 @@
         };
         _linearScrollRAF = requestAnimationFrame(step);
     }
+    // One CONTINUOUS scroll from the current position to `targetY` that EASES
+    // ITS SPEED DOWN near each position in `slowPoints` (to `slowRatio` of the
+    // cruise speed) without ever stopping, then halts at targetY. Used by the
+    // mobile down-arrow: a single tap glides all the way to the map, slowing —
+    // but not pausing — as each cover sentence crosses the vertical center.
+    // The whole trip is normalized to take ~durationMs regardless of distance.
+    function scrollThroughSlowing(targetY, slowPoints, durationMs, slowRatio, slowWidthPx) {
+        _cancelScrollSeq();
+        const startY = window.scrollY;
+        const dist = targetY - startY;
+        if (dist < 1 || durationMs <= 0) {
+            window.scrollTo(0, targetY);
+            return;
+        }
+        const ratio = (typeof slowRatio === 'number') ? slowRatio : 0.25;
+        const width = (typeof slowWidthPx === 'number') ? slowWidthPx : window.innerHeight * 0.18;
+        const points = (slowPoints || []).filter(function (p) {
+            return p > startY + 5 && p < targetY - 5;
+        });
+        // Speed multiplier at a given scroll position: 1 in open space, dipping
+        // smoothly to `ratio` at a slow point.
+        const scaleAt = function (pos) {
+            if (!points.length || width <= 0) return 1;
+            let nearest = Infinity;
+            for (let i = 0; i < points.length; i++) {
+                const d = Math.abs(pos - points[i]);
+                if (d < nearest) nearest = d;
+            }
+            if (nearest >= width) return 1;
+            const t = nearest / width;          // 0 at the point → 1 at the edge
+            const s = t * t * (3 - 2 * t);       // smoothstep
+            return ratio + (1 - ratio) * s;
+        };
+        // Normalize: ∫ dy / scale(y) sets the cruise speed so the trip lasts
+        // durationMs even though the speed varies.
+        const STEPS = 200;
+        const stepPx = dist / STEPS;
+        let integral = 0;
+        for (let i = 0; i < STEPS; i++) {
+            integral += stepPx / scaleAt(startY + (i + 0.5) * stepPx);
+        }
+        const vMax = integral / durationMs;      // px per ms at full (cruise) speed
+        let y = startY;
+        let last = null;
+        const frame = function (now) {
+            const t = (typeof now === 'number') ? now : Date.now();
+            if (last == null) last = t;
+            const dt = Math.min(t - last, 50);   // cap dt so a tab-switch can't jump
+            last = t;
+            y += vMax * scaleAt(y) * dt;
+            if (y >= targetY) {
+                window.scrollTo(0, targetY);
+                _linearScrollRAF = null;
+                return;
+            }
+            window.scrollTo(0, Math.round(y));
+            _linearScrollRAF = requestAnimationFrame(frame);
+        };
+        _linearScrollRAF = requestAnimationFrame(frame);
+    }
     // Walk through a list of {target, scrollMs, dwellMs} stops in sequence.
     // Used by the cover down-arrow to pause at each .flavor-text sentence so
     // the visitor has time to read it before the descent continues. Re-entering
@@ -383,13 +443,22 @@
         if (stops.length) scrollSequence(stops);
     }
 
+    // Cover stop scroll-positions (sentence centers), excluding the map landing.
+    function coverSentenceTargets() {
+        const stops = buildCoverStops();
+        return stops.slice(0, -1).map(function (s) { return s.target; });
+    }
+
     // Down-arrow tap:
-    //  - Mobile (< 992px): advance ONE stop per tap, mirroring the keyboard
-    //    step-through (user wants the visitor to control the pace).
-    //  - Desktop: run the full automatic timed sequence.
+    //  - Mobile (< 992px): ONE continuous slow scroll all the way to the map,
+    //    easing speed down (not stopping) as each sentence crosses center.
+    //  - Desktop: run the full automatic timed sequence (dwell at each sentence).
+    const MOBILE_TRIP_MS = 9000; // total duration of the mobile glide to the map
     on('.bottom-arrow', 'click', function () {
         if (window.innerWidth < 992) {
-            advanceOneCoverStop();
+            const mapTarget = computeMapTarget();
+            if (mapTarget == null) return;
+            scrollThroughSlowing(mapTarget, coverSentenceTargets(), MOBILE_TRIP_MS);
         } else {
             runCoverAutoSequence();
         }
