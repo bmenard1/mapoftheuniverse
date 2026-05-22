@@ -343,9 +343,22 @@
         return list;
     }
 
-    // Down-arrow: automatic timed sequence — pause (dwell) at each sentence so
+    // Advance ONE stop below the current scroll position (manual pacing, no
+    // dwell). Returns true if it moved, false if already at/past the last stop.
+    // Shared by the keyboard step-through and the mobile down-arrow tap.
+    function advanceOneCoverStop() {
+        const stops = buildCoverStops();
+        if (!stops.length) return false;
+        const currentY = window.scrollY;
+        const next = stops.find(function (s) { return s.target > currentY + 5; });
+        if (!next) return false;
+        scrollToLinear(next.target, next.ms, null, COVER_EASING);
+        return true;
+    }
+
+    // Run the full automatic timed sequence — pause (dwell) at each sentence so
     // the visitor can read it, then continue to the map.
-    on('.bottom-arrow', 'click', function () {
+    function runCoverAutoSequence() {
         const currentY = window.scrollY;
         const all = buildCoverStops();
         const stops = [];
@@ -368,6 +381,18 @@
             stops[0].scrollMs = 0;
         }
         if (stops.length) scrollSequence(stops);
+    }
+
+    // Down-arrow tap:
+    //  - Mobile (< 992px): advance ONE stop per tap, mirroring the keyboard
+    //    step-through (user wants the visitor to control the pace).
+    //  - Desktop: run the full automatic timed sequence.
+    on('.bottom-arrow', 'click', function () {
+        if (window.innerWidth < 992) {
+            advanceOneCoverStop();
+        } else {
+            runCoverAutoSequence();
+        }
     });
 
     // Keyboard step-through: Enter / Space / ArrowDown advance ONE stop at a
@@ -381,13 +406,10 @@
         const t = e.target;
         if (t && t.closest && t.closest('input, textarea, select, button, a, [contenteditable]')) return;
         if (document.querySelector('.modal.show')) return;
-        const stops = buildCoverStops();
-        if (!stops.length) return;
-        const currentY = window.scrollY;
-        const next = stops.find(function (s) { return s.target > currentY + 5; });
-        if (!next) return; // at/past the last stop — let the key do its default
-        e.preventDefault();
-        scrollToLinear(next.target, next.ms, null, COVER_EASING);
+        if (advanceOneCoverStop()) {
+            e.preventDefault();
+        }
+        // else: already at/past the last stop — let the key do its default.
     });
 
     // ---------- Info-accordion: toggle column widths on open/close ----------
