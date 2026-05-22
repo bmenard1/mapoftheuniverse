@@ -127,6 +127,11 @@
     const _easings = {
         linear: function (t) { return t; },
         easeOutCubic: function (t) { return 1 - Math.pow(1 - t, 3); },
+        // Soft take-off AND soft landing: accelerates gently from rest,
+        // cruises, then decelerates gently into the stop.
+        easeInOutCubic: function (t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        },
     };
     function scrollToLinear(targetY, durationMs, cb, easing) {
         _cancelScrollSeq();
@@ -339,7 +344,7 @@
         const TAIL_MS = 2000;      // time for the final scroll to the map (ease-out)
         // ease-out for ALL scroll motions so each arrival decelerates into a
         // soft landing instead of stopping abruptly at the target.
-        const EASING = 'easeOutCubic';
+        const EASING = 'easeInOutCubic';
         const flavorTexts = $$('.cover .flavor-text');
         const stops = [];
         flavorTexts.forEach(function (el) {
