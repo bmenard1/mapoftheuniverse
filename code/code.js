@@ -10,6 +10,8 @@
     let visible_overlay = '#axis_set_01';
     let user_clicked = false;
     let carousel_handle = null;
+    let carousel_start_handle = null;
+    const CAROUSEL_START_DELAY_MS = 3000; // wait after the full map appears before the layer sequence begins
     let animating = false;
     let overlay_show = 'none'; // shared between hover-in and hover-out on .select-button
 
@@ -508,6 +510,7 @@
     // (The image-swap loop on data-src is now dead — native loading="lazy" replaced it.)
     on('.description', 'click', function () {
         $$('.hover-map-overlay').forEach(function (el) { fadeOut(el, 100); });
+        clearTimeout(carousel_start_handle);
         if (carousel_handle) {
             clearInterval(carousel_handle);
             carousel_handle = null;
@@ -607,6 +610,7 @@
         } else {
             change = 1;
         }
+        clearTimeout(carousel_start_handle);
         clearInterval(carousel_handle);
         const options = ['#full', '#outer', '#near', '#close', '#near_galaxy_view'];
         const checkedEl1 = $1('input[name="options-outlined"]:checked');
@@ -670,6 +674,7 @@
 
     // ---------- Zoom-button click clears the carousel timer ----------
     on('.zoom_button', 'click', function () {
+        clearTimeout(carousel_start_handle);
         clearInterval(carousel_handle);
     });
 
@@ -726,12 +731,13 @@
             const bottom_of_element = top_of_element + mapbox.offsetHeight;
             if ((bottomOfScreen > top_of_element) && (scrollY < bottom_of_element)) {
                 if (!animating) {
-                    carousel();
+                    carousel_start_handle = setTimeout(carousel, CAROUSEL_START_DELAY_MS);
                     animating = true;
                 }
             } else {
                 if (fullRadio) fullRadio.checked = true;
                 zoomlevel();
+                clearTimeout(carousel_start_handle);
                 clearInterval(carousel_handle);
                 animating = false;
             }
