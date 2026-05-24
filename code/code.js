@@ -346,7 +346,7 @@
     // visual edges, which is exactly what we need for visibility checks.
     // Cover-scroll tunables, shared by the down-arrow auto-sequence AND the
     // keyboard step-through.
-    const COVER_DWELL_MS = 2000;    // auto-sequence: dwell at each sentence
+    const COVER_DWELL_MS = 4000;    // auto-sequence: dwell at each sentence
     const COVER_SEGMENT_MS = 1200;  // scroll BETWEEN sentences (ease-in-out)
     const COVER_TAIL_MS = 3000;     // final scroll to the map (ease-in-out)
     const COVER_EASING = 'easeInOutCubic';
