@@ -492,15 +492,28 @@ input[type=radio]:checked + label {
     background-size:75%, 75%; 
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 }
 
-.plus-icon {
-    background-image: url("https://bmenard1.github.io/mapoftheuniverse/Images/Icons/Plus.svg"); 
-
+/* +/- drawn in pure CSS (the old Plus.svg/Minus.svg URLs 404) */
+.plus-icon::before,
+.plus-icon::after,
+.minus-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d0d0d0;
 }
-.minus-icon {
-    background-image: url("https://bmenard1.github.io/mapoftheuniverse/Images/Icons/Minus.svg"); 
-
+.plus-icon::before,
+.minus-icon::before {
+    width: 58%;
+    height: 2px;
+}
+.plus-icon::after {
+    width: 2px;
+    height: 58%;
 }
 
 
