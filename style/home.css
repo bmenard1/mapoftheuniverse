@@ -1587,7 +1587,7 @@ p {
 }
 
 #near_galaxy_view_label{
-    background-image: url("https://bmenard1.github.io/mapoftheuniverse/Images/Icons/GalIcon.png"); 
+    background-image: url("../Images/Icons/GalIcon.png"); 
     background-size:contain; 
     border: dashed 1px var(--grey);
 }
