@@ -1,4 +1,5 @@
-# mapoftheuniverse-v2 — staging/test repository.
-# The production site is https://mapoftheuniverse.net
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: /
+Disallow:
+
+Sitemap: https://mapoftheuniverse.net/sitemap.xml
