@@ -2,6 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+
+    <!-- Auto-redirect Chinese-language visitors to the Simplified-Chinese version. -->
+    <script>
+      (function () {
+        try {
+          // ?lang=en bypass prevents permanent traps / redirect loops; /zh/ never redirects.
+          if (new URLSearchParams(window.location.search).get("lang") === "en") return;
+          if (/\/zh(\/|$)/.test(window.location.pathname)) return;
+          var primary = (navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language) || "";
+          if (/^zh\b/i.test(primary)) {
+            window.location.replace("zh/" + window.location.hash);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>The Map of the Universe — 200,000 galaxies from the Milky Way to the edge of the cosmos</title>
