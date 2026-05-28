@@ -1586,8 +1586,8 @@ p {
 
 }
 
-#near_galaxy_view_label{
-    background-image: url("../Images/Icons/GalIcon.png"); 
+#near_galaxy_view_label, #near_galaxy_view_label_2{
+    background-image: url("../Images/Icons/GalIcon.png");
     background-size:contain; 
     border: dashed 1px var(--grey);
 }
